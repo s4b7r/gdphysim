@@ -48,9 +48,15 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src|src\kissms" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src\kissms|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="kissms" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
+						<entry excluding="component" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
+						<entry excluding="scalar-leaf|vector-one|vector-two|scalar-two|scalar-one" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-leaf"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-one"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-two"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/vector-one"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/vector-two"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -100,7 +106,13 @@
 					<sourceEntries>
 						<entry excluding="src\kissms|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="kissms" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
+						<entry excluding="component" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
+						<entry excluding="scalar-leaf|vector-one|vector-two|scalar-two|scalar-one" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-leaf"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-one"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-two"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/vector-one"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/vector-two"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
