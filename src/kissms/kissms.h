@@ -9,7 +9,9 @@
 #define KISSMS_H_
 
 
-// Include abstract component
+// Include abstract components
+#include "kissms/component/argumentsOne.h"
+#include "kissms/component/argumentsTwo.h"
 #include "kissms/component/component.h"
 
 // Include scalar leaf components
