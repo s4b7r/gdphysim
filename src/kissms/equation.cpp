@@ -7,4 +7,8 @@
 
 #include <kissms/kissms.h>
 
+namespace kissms {
 
+
+
+}

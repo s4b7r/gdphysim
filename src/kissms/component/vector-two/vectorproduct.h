@@ -9,7 +9,11 @@
 #define VECTORPRODUCT_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* VECTORPRODUCT_H_ */

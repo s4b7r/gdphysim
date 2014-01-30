@@ -9,7 +9,11 @@
 #define ADDITION_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* ADDITION_H_ */

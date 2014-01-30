@@ -9,7 +9,11 @@
 #define COMPONENT_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* COMPONENT_H_ */

@@ -9,7 +9,11 @@
 #define VARIABLE_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* VARIABLE_H_ */

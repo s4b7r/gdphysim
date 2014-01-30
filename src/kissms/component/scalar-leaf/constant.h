@@ -9,7 +9,11 @@
 #define CONSTANT_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* CONSTANT_H_ */

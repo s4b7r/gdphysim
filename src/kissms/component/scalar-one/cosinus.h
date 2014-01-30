@@ -9,7 +9,11 @@
 #define COSINUS_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* COSINUS_H_ */

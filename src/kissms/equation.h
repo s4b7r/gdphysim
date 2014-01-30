@@ -9,7 +9,11 @@
 #define EQUATION_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* EQUATION_H_ */

@@ -9,7 +9,11 @@
 #define RECIPROCAL_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* RECIPROCAL_H_ */

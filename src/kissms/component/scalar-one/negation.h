@@ -9,7 +9,11 @@
 #define NEGATION_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* NEGATION_H_ */

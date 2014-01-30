@@ -9,7 +9,11 @@
 #define MULTIPLICATION_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* MULTIPLICATION_H_ */

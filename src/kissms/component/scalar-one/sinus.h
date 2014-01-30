@@ -9,7 +9,11 @@
 #define SINUS_H_
 
 
+namespace kissms {
 
+
+
+}
 
 
 #endif /* SINUS_H_ */
