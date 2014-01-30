@@ -11,7 +11,11 @@
 
 namespace kissms {
 
+class Addition : public ArgumentsTwo {
 
+
+
+};
 
 }
 

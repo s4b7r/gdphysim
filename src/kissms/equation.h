@@ -11,7 +11,11 @@
 
 namespace kissms {
 
+class Equation : public ArgumentsTwo {
 
+
+
+};
 
 }
 

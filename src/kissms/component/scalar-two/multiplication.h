@@ -11,7 +11,11 @@
 
 namespace kissms {
 
+class Multiplication : public ArgumentsTwo {
 
+
+
+};
 
 }
 

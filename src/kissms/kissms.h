@@ -8,6 +8,7 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
+#include "kissms/component/equation.h"
 
 // Include abstract components
 #include "kissms/component/argumentsOne.h"
