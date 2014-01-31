@@ -8,6 +8,9 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
+// All parts of KissMS belong to the namespace kissms
+
+
 #include "kissms/component/equation.h"
 
 // Include abstract components

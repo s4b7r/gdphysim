@@ -11,9 +11,17 @@
 
 namespace kissms {
 
+/**
+ * @brief Representation of a mathematical component in an Equation
+ * @author sbekemeier
+ *
+ *
+ */
 class Component {
 
-
+public:
+	virtual Component(  ) = 0;
+	virtual ~Component(  ) = 0;
 
 };
 

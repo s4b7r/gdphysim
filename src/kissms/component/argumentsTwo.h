@@ -11,9 +11,39 @@
 
 namespace kissms {
 
+/**
+ * @brief Representation of Components taking two arguments
+ * @author sbekemeier
+ *
+ *
+ */
 class ArgumentsTwo : public Component {
 
+public:
+	virtual ArgumentsTwo(  ) = 0;
+	virtual ~ArgumentsTwo(  ) = 0;
 
+	/**
+	 * @brief
+	 * @param argument Component on this component's left side
+	 *
+	 *
+	 */
+	void setLeft( Component *argument );
+	/**
+	 * @brief
+	 * @details
+	 * @param argument Component on this component's right side
+	 */
+	void setRight( Component *argument );
+	/**
+	 * @brief
+	 * @param left Component on this component's left side
+	 * @param right Component on this component's right side
+	 *
+	 *
+	 */
+	void setArguments( Component *left, Component *right );
 
 };
 

@@ -11,9 +11,25 @@
 
 namespace kissms {
 
+/**
+ * @brief Representation of Components taking one argument
+ * @author sbekemeier
+ *
+ *
+ */
 class ArgumentsOne : public Component {
 
+public:
+	virtual ArgumentsOne(  ) = 0;
+	virtual ~ArgumentsOne(  ) = 0;
 
+	/**
+	 * @brief
+	 * @param argument This component's argument
+	 *
+	 *
+	 */
+	void setArgument( Component *argument );
 
 };
 
