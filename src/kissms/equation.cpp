@@ -33,7 +33,29 @@ ResultCode Equation::solveFor(Variable* variable) {
 
 ResultCode Equation::calculateFor(Variable* variable) {
 
-	return NotYetImplemented;
+	ResultCode rc;
+	Component *calcComp;
+
+	rc = solveFor(variable);
+	if( rc != Successful ) {
+		return rc;
+	}
+	if( isOnLeft(variable) ) {
+		calcComp = m_argumentRight;
+	} else if( isOnRight(variable) ) {
+		calcComp = m_argumentLeft;
+	} else {
+		// Hu? How did this happen?
+		// TODO New error code
+		return GeneralFailure;
+	}
+	if( !calcComp->isCalculable() ) {
+		// TODO New error code
+		return GeneralFailure;
+	}
+	rc = calcComp->calculate();
+
+	return rc;
 
 }
 

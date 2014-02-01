@@ -57,6 +57,14 @@ public:
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
 			Component **placeholder ) = 0;
 
+	/**
+	 * @brief Calculates the Component's numerical value
+	 * @return ResultCode
+	 *
+	 * Calculates the Component's numerical value as far as the Component's childs allow this.
+	 */
+	virtual ResultCode calculate() = 0;
+
 };
 
 }
