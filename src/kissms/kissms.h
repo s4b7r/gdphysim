@@ -10,13 +10,25 @@
 
 // All parts of KissMS belong to the namespace kissms
 
+namespace kissms {
 
-#include "kissms/component/equation.h"
+enum ResultCode {
+	Successful = 0,
+	Failure
+};
+
+// Forward declaration
+// Currently there are no forward declarations
+
+}
 
 // Include abstract components
+#include "kissms/component/component.h"
 #include "kissms/component/argumentsOne.h"
 #include "kissms/component/argumentsTwo.h"
-#include "kissms/component/component.h"
+
+// Include Equation
+#include "kissms/equation.h"
 
 // Include scalar leaf components
 #include "kissms/component/scalar-leaf/constant.h"
