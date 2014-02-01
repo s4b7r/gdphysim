@@ -18,8 +18,8 @@ public:
 	virtual ~Equation(  );
 
 	/**
-	 * @brief Solves this Equation
-	 * @þaram variable Variable for which this Equation shall be solved
+	 * @brief Solves the Equation
+	 * @þaram variable Variable for which the Equation shall be solved
 	 * @return ResultCode
 	 *
 	 * The Equation is reformed so that the given Variable is explicitely represented
@@ -30,8 +30,8 @@ public:
 	ResultCode solveFor( Variable *variable );
 
 	/**
-	 * @brief Solves and calculates this Equation
-	 * @param variable Variable for which this Equation shall be solved
+	 * @brief Solves and calculates the Equation
+	 * @param variable Variable for which the Equation shall be solved
 	 * @return ResultCode
 	 *
 	 * The Equation is solved using solveFor() and afterwards the Variable's value will
@@ -41,7 +41,31 @@ public:
 	 */
 	ResultCode calculateFor( Variable *variable );
 
+	/**
+	 * @brief Checks whether the Equation contains a Variable
+	 * @param variable Variable to check for
+	 */
+	bool contains( Variable *variable );
+
 private:
+	/**
+	 * @brief Checks whether a Variable is on the Equation's left side
+	 * @param variable Variable to check for
+	 */
+	bool isOnLeft( Variable *variable );
+
+	/**
+	 * @brief Checks whether a Variable is on the Equation's right side
+	 * @param variable Variable to check for
+	 */
+	bool isOnRight( Variable *variable );
+
+	/**
+	 * @brief Checks whether the Equation is explicitly representing a Variable
+	 * @param variable Variable to check for
+	 */
+	bool isExplicitly( Variable *variable );
+
 	/**
 	 * @brief All Variables on the Equation's left side
 	 */
