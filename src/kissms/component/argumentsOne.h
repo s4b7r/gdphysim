@@ -20,16 +20,16 @@ namespace kissms {
 class ArgumentsOne : public Component {
 
 public:
-	virtual ArgumentsOne(  ) = 0;
-	virtual ~ArgumentsOne(  ) = 0;
+	ArgumentsOne(  ) { };
+	virtual ~ArgumentsOne(  );
 
 	/**
 	 * @brief
 	 * @param argument This component's argument
-	 *
-	 *
+	 * @retval Successfull
+	 * @retval Failure
 	 */
-	void setArgument( Component *argument );
+	ResultCode setArgument( Component *argument );
 
 };
 
