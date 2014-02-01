@@ -29,7 +29,7 @@ ResultCode Equation::calculateFor(Variable* variable) {
 
 bool Equation::contains(Variable* variable) {
 
-	return false;
+	return isOnLeft(variable) || isOnRight(variable);
 
 }
 
