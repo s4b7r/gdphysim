@@ -24,7 +24,19 @@ public:
 	 * @brief Set the Variable's name
 	 * @param name A zero-terminated character array representing the Variable's name
 	 */
-	void setVariable( char *name );
+	void setName( char *name );
+
+	/**
+	 * @brief Set the Variable's value
+	 * @param value
+	 */
+	void setValue( int value );
+
+	/**
+	 * @brief Set the Variable's value
+	 * @param value
+	 */
+	void setValue( double value );
 
 	virtual bool isCalculable();
 
