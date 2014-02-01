@@ -47,7 +47,11 @@ bool Equation::isOnRight(Variable* variable) {
 
 bool Equation::isExplicitly(Variable* variable) {
 
-	return false;
+	if( m_argumentLeft == variable || m_argumentRight == variable ) {
+		return true;
+	} else {
+		return false;
+	}
 
 }
 
