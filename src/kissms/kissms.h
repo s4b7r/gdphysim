@@ -8,6 +8,9 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
+// Include system libraries
+#include <vector>
+
 // All parts of KissMS belong to the namespace kissms
 
 namespace kissms {

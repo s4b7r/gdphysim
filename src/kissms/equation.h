@@ -41,6 +41,17 @@ public:
 	 */
 	ResultCode calculateFor( Variable *variable );
 
+private:
+	/**
+	 * @brief All Variables on the Equation's left side
+	 */
+	std::vector<Variable*> variablesLeft;
+
+	/**
+	 * @brief All Variables on the Equation's right side
+	 */
+	std::vector<Variable*> variablesRight;
+
 };
 
 }
