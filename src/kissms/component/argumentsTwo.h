@@ -13,7 +13,6 @@ namespace kissms {
 
 /**
  * @brief Representation of Components taking two arguments
- * @author sbekemeier
  *
  *
  */
