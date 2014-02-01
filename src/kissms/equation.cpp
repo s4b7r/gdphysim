@@ -17,12 +17,17 @@ Equation::~Equation() {
 
 ResultCode Equation::solveFor(Variable* variable) {
 
-	while( !isExplicitly(variable) ) {
-		solveFor(variable, isOnLeft(variable));
+	ResultCode solveResult = Successful;
+
+	while( !isExplicitly(variable) && solveResult == Successful ) {
+		solveResult = solveFor(variable, isOnLeft(variable));
 	}
 
-	//return Successful;
-	return NotYetImplemented;
+	if( solveResult == Successful ) {
+		return Successful;
+	} else {
+		return solveResult;
+	}
 
 }
 
@@ -103,7 +108,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
 		return Successful;
 	}
-	return GeneralFailure;
+	return reformResult;
 
 }
 
