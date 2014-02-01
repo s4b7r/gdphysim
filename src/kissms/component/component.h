@@ -19,8 +19,8 @@ namespace kissms {
 class Component {
 
 public:
-	Component(  );
-	virtual ~Component(  );
+	Component();
+	virtual ~Component();
 
 	/**
 	 * @brief Checks whether the Component is calculable
@@ -33,7 +33,7 @@ public:
 	 *
 	 * @see isQuantifiable()
 	 */
-	bool isCalculable(  );
+	virtual bool isCalculable() = 0;
 
 	/**
 	 * @brief Checks whether the Component is representable by a numerical value
@@ -44,7 +44,7 @@ public:
 	 *
 	 * @see isCalculable()
 	 */
-	bool isQuantifiable(  );
+	virtual bool isQuantifiable() = 0;
 
 	/**
 	 * @brief Returns Components for reformation

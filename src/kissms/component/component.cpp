@@ -15,12 +15,6 @@ Component::Component() {
 Component::~Component() {
 }
 
-bool Component::isCalculable() {
-
-	return false;
-
-}
-
 }
 
 
