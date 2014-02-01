@@ -9,9 +9,10 @@
 #define VECTOR_H_
 
 
-namespace kissms : public Component {
+namespace kissms {
 
-class Vector { // TODO Who is Vector's parent? Parents in relation to resulting object?
+class Vector : public Component {
+	// TODO Who is Vector's parent? Parents in relation to resulting object?
 
 
 
