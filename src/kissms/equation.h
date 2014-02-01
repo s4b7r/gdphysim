@@ -19,7 +19,7 @@ public:
 
 	/**
 	 * @brief Solves the Equation
-	 * @þaram variable Variable for which the Equation shall be solved
+	 * @param variable Variable for which the Equation shall be solved
 	 * @return ResultCode
 	 *
 	 * The Equation is reformed so that the given Variable is explicitely represented
@@ -42,7 +42,7 @@ public:
 	ResultCode calculateFor( Variable *variable );
 
 	/**
-	 * @brief Checks whether the Equation contains a Variable
+	 * @brief Checks whether the Equation contains a given Variable
 	 * @param variable Variable to check for
 	 */
 	bool contains( Variable *variable );
