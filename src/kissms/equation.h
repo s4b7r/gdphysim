@@ -61,6 +61,13 @@ private:
 	bool isOnRight( Variable *variable );
 
 	/**
+	 * @brief Checks whether a given std::vector<Variable*> contains a given Variable
+	 * @param variable Variable to check for
+	 * @param vector std::vector<Variable*> in which variable shall be searched
+	 */
+	bool isOnVector( Variable *variable, std::vector<Variable*> vector );
+
+	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable
 	 * @param variable Variable to check for
 	 */
