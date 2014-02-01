@@ -26,26 +26,23 @@ public:
 	/**
 	 * @brief
 	 * @param argument Component on this component's left side
-	 * @return ResultCode
 	 *
 	 */
-	ResultCode setLeft( Component *argument );
+	void setLeft( Component *argument );
 
 	/**
 	 * @brief
 	 * @param argument Component on this component's right side
-	 * @return ResultCode
 	 */
-	ResultCode setRight( Component *argument );
+	void setRight( Component *argument );
 
 	/**
 	 * @brief
 	 * @param left Component on this component's left side
 	 * @param right Component on this component's right side
-	 * @return ResultCode
 	 *
 	 */
-	ResultCode setArguments( Component *left, Component *right );
+	void setArguments( Component *left, Component *right );
 
 };
 

@@ -26,9 +26,8 @@ public:
 	/**
 	 * @brief
 	 * @param argument This component's argument
-	 * @return ResultCode
 	 */
-	ResultCode setArgument( Component *argument );
+	void setArgument( Component *argument );
 
 };
 
