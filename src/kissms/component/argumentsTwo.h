@@ -30,7 +30,7 @@ public:
 	 * @retval Failure
 	 *
 	 */
-	ResultCode setLeft( Component *argument );
+	ResultCode setLeft( const Component *argument );
 	/**
 	 * @brief
 	 * @details
@@ -38,7 +38,7 @@ public:
 	 * @retval Successful
 	 * @retval Failure
 	 */
-	ResultCode setRight( Component *argument );
+	ResultCode setRight( const Component *argument );
 	/**
 	 * @brief
 	 * @param left Component on this component's left side
@@ -47,7 +47,7 @@ public:
 	 * @retval Failure
 	 *
 	 */
-	ResultCode setArguments( Component *left, Component *right );
+	ResultCode setArguments( const Component *left, const Component *right );
 
 };
 
