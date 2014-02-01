@@ -11,6 +11,9 @@
 
 namespace kissms {
 
+/**
+ * @brief Component representing a whole mathematical equation
+ */
 class Equation : public ArgumentsTwo {
 
 public:
@@ -37,7 +40,7 @@ public:
 	 * The Equation is solved using solveFor() and afterwards the Variable's value will
 	 * be calculated, as far as the Equation's other side allows it.
 	 *
-	 * @see solveFor()
+	 * @see solveFor( Variable *variable )
 	 */
 	ResultCode calculateFor( Variable *variable );
 
@@ -72,6 +75,13 @@ private:
 	 * @param variable Variable to check for
 	 */
 	bool isExplicitly( Variable *variable );
+
+	/**
+	 * @brief Does one interation of the solving process
+	 *
+	 * @see solveFor( Variable *variable )
+	 */
+	ResultCode solveFor( Variable *variable, bool variableOnLeft );
 
 	/**
 	 * @brief All Variables on the Equation's left side

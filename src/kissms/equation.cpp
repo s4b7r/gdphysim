@@ -17,6 +17,11 @@ Equation::~Equation() {
 
 ResultCode Equation::solveFor(Variable* variable) {
 
+	while( !isExplicitly(variable) ) {
+		solveFor(variable, isOnLeft(variable));
+	}
+
+	//return Successful;
 	return NotYetImplemented;
 
 }
@@ -68,4 +73,33 @@ bool Equation::isExplicitly(Variable* variable) {
 
 }
 
+ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
+
+	Component *reformComponent;
+	Component *otherSide;
+	Component *newSide;
+	Component *newOtherSide;
+	Component **placeholder;
+	ResultCode reformResult;
+
+	if( variableOnLeft ) {
+		reformComponent = m_argumentLeft;
+		otherSide = m_argumentRight;
+	} else {
+		reformComponent = m_argumentRight;
+		otherSide = m_argumentLeft;
+	}
+
+	reformResult = reformComponent->reformFor(variable, newSide, newOtherSide, placeholder);
+	reformComponent = newSide;
+	// TODO Think about memory leaks
+	// Is the old Component referenced anywhere else?
+	// TODO Replace placeholder in otherSide with old otherSide
+	otherSide = newOtherSide;
+
+	return NotYetImplemented;
+
 }
+
+}
+
