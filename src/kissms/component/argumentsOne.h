@@ -24,10 +24,16 @@ public:
 	virtual ~ArgumentsOne(  );
 
 	/**
-	 * @brief
-	 * @param argument This component's argument
+	 * @brief Sets the Component's argument
+	 * @param argument The Component's new argument
 	 */
 	void setArgument( Component *argument );
+
+private:
+	/**
+	 * @brief The Component's argument
+	 */
+	Component *argument;
 
 };
 

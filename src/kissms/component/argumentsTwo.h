@@ -24,25 +24,36 @@ public:
 	virtual ~ArgumentsTwo(  );
 
 	/**
-	 * @brief
-	 * @param argument Component on this component's left side
+	 * @brief Sets the Component's left side
+	 * @param argument New argument on the Component's left side
 	 *
 	 */
 	void setLeft( Component *argument );
 
 	/**
-	 * @brief
-	 * @param argument Component on this component's right side
+	 * @brief Sets the Component's right side
+	 * @param argument New argument on the Component's right side
 	 */
 	void setRight( Component *argument );
 
 	/**
-	 * @brief
-	 * @param left Component on this component's left side
-	 * @param right Component on this component's right side
+	 * @brief Sets the Component's arguments
+	 * @param left New argument on the Component's left side
+	 * @param right New argument on the Component's right side
 	 *
 	 */
 	void setArguments( Component *left, Component *right );
+
+private:
+	/**
+	 * @brief The Component's left side argument
+	 */
+	Component *argumentLeft;
+
+	/**
+	 * @brief The Component's right side argument
+	 */
+	Component *argumentRight;
 
 };
 
