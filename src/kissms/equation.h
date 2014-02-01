@@ -17,8 +17,8 @@ namespace kissms {
 class Equation : public ArgumentsTwo {
 
 public:
-	Equation(  );
-	virtual ~Equation(  );
+	Equation();
+	virtual ~Equation();
 
 	/**
 	 * @brief Solves the Equation
