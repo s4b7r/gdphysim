@@ -29,7 +29,7 @@ public:
 	 * @retval Successfull
 	 * @retval Failure
 	 */
-	ResultCode setArgument( const Component *argument );
+	ResultCode setArgument( Component *argument );
 
 };
 
