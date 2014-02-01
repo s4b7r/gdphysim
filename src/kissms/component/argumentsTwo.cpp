@@ -10,6 +10,10 @@
 namespace kissms {
 
 ArgumentsTwo::ArgumentsTwo() {
+
+	m_argumentLeft = 0;
+	m_argumentRight = 0;
+
 }
 
 ArgumentsTwo::~ArgumentsTwo() {
