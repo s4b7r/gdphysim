@@ -19,8 +19,8 @@ namespace kissms {
 class ArgumentsOne : public Component {
 
 public:
-	ArgumentsOne(  );
-	virtual ~ArgumentsOne(  );
+	ArgumentsOne();
+	virtual ~ArgumentsOne();
 
 	/**
 	 * @brief Sets the Component's argument

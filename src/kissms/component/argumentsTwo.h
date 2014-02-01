@@ -19,8 +19,8 @@ namespace kissms {
 class ArgumentsTwo : public Component {
 
 public:
-	ArgumentsTwo(  );
-	virtual ~ArgumentsTwo(  );
+	ArgumentsTwo();
+	virtual ~ArgumentsTwo();
 
 	/**
 	 * @brief Sets the Component's left side
