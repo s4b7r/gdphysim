@@ -43,7 +43,7 @@ public:
 	 */
 	void setArguments( Component *left, Component *right );
 
-private:
+protected:
 	/**
 	 * @brief The Component's left side argument
 	 */

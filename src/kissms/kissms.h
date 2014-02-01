@@ -9,6 +9,7 @@
 #define KISSMS_H_
 
 // Include system libraries
+#include <stdlib.h>
 #include <vector>
 
 // All parts of KissMS belong to the namespace kissms
@@ -22,7 +23,7 @@ enum ResultCode {
 };
 
 // Forward declaration
-// Currently there are no forward declarations
+class Variable;
 
 }
 

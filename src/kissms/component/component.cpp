@@ -9,6 +9,19 @@
 
 namespace kissms {
 
+Component::Component() {
+}
 
+Component::~Component() {
+}
+
+ResultCode Component::reformFor(Variable* variable, Component** newSide,
+		Component** otherSide, Component** placeholder) {
+
+	return NotYetImplemented;
 
 }
+
+}
+
+

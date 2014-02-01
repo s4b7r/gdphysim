@@ -55,7 +55,7 @@ bool Equation::isOnVector(Variable* variable, std::vector<Variable*> vector) {
 	std::vector<Variable*>::iterator it = m_variablesRight.begin();
 
 	while( it != m_variablesRight.end() ) {
-		if( &*it == variable ) {
+		if( *it == variable ) {
 			return true;
 		}
 	}
@@ -65,7 +65,7 @@ bool Equation::isOnVector(Variable* variable, std::vector<Variable*> vector) {
 
 bool Equation::isExplicitly(Variable* variable) {
 
-	if( m_argumentLeft == variable || m_argumentRight == variable ) {
+	if( m_argumentLeft == (Component*)variable || m_argumentRight == (Component*)variable ) {
 		return true;
 	} else {
 		return false;
@@ -77,9 +77,9 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
 	Component **reformComponent;
 	Component **otherSide;
-	Component **newSide;
-	Component **newOtherSide;
-	Component **placeholder;
+	Component **newSide = (Component**) malloc(sizeof(Component*));
+	Component **newOtherSide = (Component**) malloc(sizeof(Component*));
+	Component **placeholder = (Component**) malloc(sizeof(Component*));
 	ResultCode reformResult;
 
 	if( variableOnLeft ) {

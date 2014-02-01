@@ -28,7 +28,7 @@ public:
 	 */
 	void setArgument( Component *argument );
 
-private:
+protected:
 	/**
 	 * @brief The Component's argument
 	 */

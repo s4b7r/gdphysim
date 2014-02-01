@@ -9,7 +9,11 @@
 
 namespace kissms {
 
+ArgumentsTwo::ArgumentsTwo() {
+}
 
+ArgumentsTwo::~ArgumentsTwo() {
+}
 
 }
 
