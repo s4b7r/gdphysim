@@ -48,12 +48,12 @@ private:
 	/**
 	 * @brief The Component's left side argument
 	 */
-	Component *argumentLeft;
+	Component *m_argumentLeft;
 
 	/**
 	 * @brief The Component's right side argument
 	 */
-	Component *argumentRight;
+	Component *m_argumentRight;
 
 };
 

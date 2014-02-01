@@ -69,12 +69,12 @@ private:
 	/**
 	 * @brief All Variables on the Equation's left side
 	 */
-	std::vector<Variable*> variablesLeft;
+	std::vector<Variable*> m_variablesLeft;
 
 	/**
 	 * @brief All Variables on the Equation's right side
 	 */
-	std::vector<Variable*> variablesRight;
+	std::vector<Variable*> m_variablesRight;
 
 };
 

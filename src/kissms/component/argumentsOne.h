@@ -33,7 +33,7 @@ private:
 	/**
 	 * @brief The Component's argument
 	 */
-	Component *argument;
+	Component *m_argument;
 
 };
 
