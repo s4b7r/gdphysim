@@ -21,22 +21,10 @@ public:
 	virtual ~Variable();
 
 	/**
-	 * @brief Set a placeholder string as the Variable's value
-	 * @param value A zero-terminated character array representing the placeholder string
+	 * @brief Set the Variable's name
+	 * @param name A zero-terminated character array representing the Variable's name
 	 */
-	void setVariable( char *value );
-
-	/**
-	 * @brief Set an integer value as the Variable's value
-	 * @param value The Variable's new integer value
-	 */
-	void setVariable( int value );
-
-	/**
-	 * @brief Set a double value as the Variable's value
-	 * @param value The Variable's new double value
-	 */
-	void setVariable( double value );
+	void setVariable( char *name );
 
 	virtual bool isCalculable();
 

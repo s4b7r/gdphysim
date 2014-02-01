@@ -18,12 +18,6 @@ Variable::~Variable() {
 void Variable::setVariable(char* value) {
 }
 
-void Variable::setVariable(int value) {
-}
-
-void Variable::setVariable(double value) {
-}
-
 bool Variable::isCalculable() {
 
 	return false;
