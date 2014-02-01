@@ -17,7 +17,8 @@ namespace kissms {
 
 enum ResultCode {
 	Successful = 0,
-	Failure
+	GeneralFailure,
+	NotYetImplemented
 };
 
 // Forward declaration
