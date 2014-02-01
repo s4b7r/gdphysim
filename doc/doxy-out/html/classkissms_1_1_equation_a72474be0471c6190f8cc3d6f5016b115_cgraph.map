@@ -1,0 +1,5 @@
+<map id="kissms::Equation::calculateFor" name="kissms::Equation::calculateFor">
+<area shape="rect" id="node3" href="$classkissms_1_1_equation.html#ad2a8ce5aff621d4e19b5042fcedf04de" title="Solves the Equation. " alt="" coords="256,5,437,35"/>
+<area shape="rect" id="node5" href="$classkissms_1_1_component.html#a442885b45058f07566a0e52192f13cef" title="Checks whether the Component is calculable. " alt="" coords="273,58,420,105"/>
+<area shape="rect" id="node7" href="$classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff" title="Calculates the Component&#39;s numerical value. " alt="" coords="273,127,420,174"/>
+</map>

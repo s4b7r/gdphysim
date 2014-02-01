@@ -1,0 +1,187 @@
+\hypertarget{classkissms_1_1_equation}{\section{kissms\-:\-:Equation Class Reference}
+\label{classkissms_1_1_equation}\index{kissms\-::\-Equation@{kissms\-::\-Equation}}
+}
+
+
+\hyperlink{classkissms_1_1_component}{Component} representing a whole mathematical equation.  
+
+
+
+
+{\ttfamily \#include $<$equation.\-h$>$}
+
+
+
+Inheritance diagram for kissms\-:\-:Equation\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classkissms_1_1_equation__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for kissms\-:\-:Equation\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classkissms_1_1_equation__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classkissms_1_1_equation_a222c08c6b55679b4808f7b807ac94184}{Equation} ()
+\item 
+virtual \hyperlink{classkissms_1_1_equation_ac0c9135b48a8f09ff4ffc0b60cad9c0a}{$\sim$\-Equation} ()
+\item 
+\hyperlink{namespacekissms_a006cc132ffcae81e38527977e0846e0e}{Result\-Code} \hyperlink{classkissms_1_1_equation_ad2a8ce5aff621d4e19b5042fcedf04de}{solve\-For} (\hyperlink{classkissms_1_1_variable}{Variable} $\ast$variable)
+\begin{DoxyCompactList}\small\item\em Solves the \hyperlink{classkissms_1_1_equation}{Equation}. \end{DoxyCompactList}\item 
+\hyperlink{namespacekissms_a006cc132ffcae81e38527977e0846e0e}{Result\-Code} \hyperlink{classkissms_1_1_equation_a72474be0471c6190f8cc3d6f5016b115}{calculate\-For} (\hyperlink{classkissms_1_1_variable}{Variable} $\ast$variable)
+\begin{DoxyCompactList}\small\item\em Solves and calculates the \hyperlink{classkissms_1_1_equation}{Equation}. \end{DoxyCompactList}\item 
+bool \hyperlink{classkissms_1_1_equation_a6f6ded9239ff0a8ec9792e0450d205f1}{contains} (\hyperlink{classkissms_1_1_variable}{Variable} $\ast$variable)
+\begin{DoxyCompactList}\small\item\em Checks whether the \hyperlink{classkissms_1_1_equation}{Equation} contains a given \hyperlink{classkissms_1_1_variable}{Variable}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classkissms_1_1_component}{Component} representing a whole mathematical equation. 
+
+Definition at line 17 of file equation.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classkissms_1_1_equation_a222c08c6b55679b4808f7b807ac94184}{\index{kissms\-::\-Equation@{kissms\-::\-Equation}!Equation@{Equation}}
+\index{Equation@{Equation}!kissms::Equation@{kissms\-::\-Equation}}
+\subsubsection[{Equation}]{\setlength{\rightskip}{0pt plus 5cm}kissms\-::\-Equation\-::\-Equation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classkissms_1_1_equation_a222c08c6b55679b4808f7b807ac94184}
+
+
+Definition at line 12 of file equation.\-cpp.
+
+\hypertarget{classkissms_1_1_equation_ac0c9135b48a8f09ff4ffc0b60cad9c0a}{\index{kissms\-::\-Equation@{kissms\-::\-Equation}!$\sim$\-Equation@{$\sim$\-Equation}}
+\index{$\sim$\-Equation@{$\sim$\-Equation}!kissms::Equation@{kissms\-::\-Equation}}
+\subsubsection[{$\sim$\-Equation}]{\setlength{\rightskip}{0pt plus 5cm}kissms\-::\-Equation\-::$\sim$\-Equation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classkissms_1_1_equation_ac0c9135b48a8f09ff4ffc0b60cad9c0a}
+
+
+Definition at line 15 of file equation.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classkissms_1_1_equation_a72474be0471c6190f8cc3d6f5016b115}{\index{kissms\-::\-Equation@{kissms\-::\-Equation}!calculate\-For@{calculate\-For}}
+\index{calculate\-For@{calculate\-For}!kissms::Equation@{kissms\-::\-Equation}}
+\subsubsection[{calculate\-For}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Result\-Code} kissms\-::\-Equation\-::calculate\-For (
+\begin{DoxyParamCaption}
+\item[{{\bf Variable} $\ast$}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classkissms_1_1_equation_a72474be0471c6190f8cc3d6f5016b115}
+
+
+Solves and calculates the \hyperlink{classkissms_1_1_equation}{Equation}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \hyperlink{classkissms_1_1_variable}{Variable} for which the \hyperlink{classkissms_1_1_equation}{Equation} shall be solved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result\-Code
+\end{DoxyReturn}
+The \hyperlink{classkissms_1_1_equation}{Equation} is solved using \hyperlink{classkissms_1_1_equation_ad2a8ce5aff621d4e19b5042fcedf04de}{solve\-For()} and afterwards the \hyperlink{classkissms_1_1_variable}{Variable}'s value will be calculated, as far as the \hyperlink{classkissms_1_1_equation}{Equation}'s other side allows it.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classkissms_1_1_equation_ad2a8ce5aff621d4e19b5042fcedf04de}{solve\-For( Variable $\ast$variable )} 
+\end{DoxySeeAlso}
+
+
+Definition at line 34 of file equation.\-cpp.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classkissms_1_1_equation_a72474be0471c6190f8cc3d6f5016b115_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classkissms_1_1_equation_a6f6ded9239ff0a8ec9792e0450d205f1}{\index{kissms\-::\-Equation@{kissms\-::\-Equation}!contains@{contains}}
+\index{contains@{contains}!kissms::Equation@{kissms\-::\-Equation}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}bool kissms\-::\-Equation\-::contains (
+\begin{DoxyParamCaption}
+\item[{{\bf Variable} $\ast$}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classkissms_1_1_equation_a6f6ded9239ff0a8ec9792e0450d205f1}
+
+
+Checks whether the \hyperlink{classkissms_1_1_equation}{Equation} contains a given \hyperlink{classkissms_1_1_variable}{Variable}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \hyperlink{classkissms_1_1_variable}{Variable} to check for \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 62 of file equation.\-cpp.
+
+\hypertarget{classkissms_1_1_equation_ad2a8ce5aff621d4e19b5042fcedf04de}{\index{kissms\-::\-Equation@{kissms\-::\-Equation}!solve\-For@{solve\-For}}
+\index{solve\-For@{solve\-For}!kissms::Equation@{kissms\-::\-Equation}}
+\subsubsection[{solve\-For}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Result\-Code} kissms\-::\-Equation\-::solve\-For (
+\begin{DoxyParamCaption}
+\item[{{\bf Variable} $\ast$}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classkissms_1_1_equation_ad2a8ce5aff621d4e19b5042fcedf04de}
+
+
+Solves the \hyperlink{classkissms_1_1_equation}{Equation}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \hyperlink{classkissms_1_1_variable}{Variable} for which the \hyperlink{classkissms_1_1_equation}{Equation} shall be solved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result\-Code
+\end{DoxyReturn}
+The \hyperlink{classkissms_1_1_equation}{Equation} is reformed so that the given \hyperlink{classkissms_1_1_variable}{Variable} is explicitely represented by the \hyperlink{classkissms_1_1_equation}{Equation}'s other side. The \hyperlink{classkissms_1_1_variable}{Variable}'s actual value won't be calculated.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classkissms_1_1_equation_a72474be0471c6190f8cc3d6f5016b115}{calculate\-For()} 
+\end{DoxySeeAlso}
+
+
+Definition at line 18 of file equation.\-cpp.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classkissms_1_1_equation_ad2a8ce5aff621d4e19b5042fcedf04de_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/sieb/eclipse-\/workspace/eclipse-\/wrkspc\-\_\-\-F\-H/\-G\-D\-\_\-\-Phy\-Sim/src/kissms/\hyperlink{equation_8h}{equation.\-h}\item 
+/home/sieb/eclipse-\/workspace/eclipse-\/wrkspc\-\_\-\-F\-H/\-G\-D\-\_\-\-Phy\-Sim/src/kissms/\hyperlink{equation_8cpp}{equation.\-cpp}\end{DoxyCompactItemize}

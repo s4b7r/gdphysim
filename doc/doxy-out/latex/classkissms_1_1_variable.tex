@@ -1,0 +1,168 @@
+\hypertarget{classkissms_1_1_variable}{\section{kissms\-:\-:Variable Class Reference}
+\label{classkissms_1_1_variable}\index{kissms\-::\-Variable@{kissms\-::\-Variable}}
+}
+
+
+\hyperlink{classkissms_1_1_component}{Component} representing a single variable value.  
+
+
+
+
+{\ttfamily \#include $<$variable.\-h$>$}
+
+
+
+Inheritance diagram for kissms\-:\-:Variable\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classkissms_1_1_variable__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for kissms\-:\-:Variable\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classkissms_1_1_variable__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classkissms_1_1_variable_abb117c861a38d6ad571a4d0c9572f959}{Variable} ()
+\item 
+virtual \hyperlink{classkissms_1_1_variable_a53b44b419d55654020b6d0d655bc2f38}{$\sim$\-Variable} ()
+\item 
+void \hyperlink{classkissms_1_1_variable_a963a7b41e6156d3144ddcfba37201872}{set\-Variable} (char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Set the \hyperlink{classkissms_1_1_variable}{Variable}'s name. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classkissms_1_1_variable_a9633a42cf7f3bb8542f705a881106393}{is\-Calculable} ()
+\begin{DoxyCompactList}\small\item\em Checks whether the \hyperlink{classkissms_1_1_component}{Component} is calculable. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classkissms_1_1_variable_a7f12f0ed31f8ee613e50cf4c586c8fe3}{is\-Quantifiable} ()
+\begin{DoxyCompactList}\small\item\em Checks whether the \hyperlink{classkissms_1_1_component}{Component} is representable by a numerical value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classkissms_1_1_component}{Component} representing a single variable value. 
+
+Definition at line 17 of file variable.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classkissms_1_1_variable_abb117c861a38d6ad571a4d0c9572f959}{\index{kissms\-::\-Variable@{kissms\-::\-Variable}!Variable@{Variable}}
+\index{Variable@{Variable}!kissms::Variable@{kissms\-::\-Variable}}
+\subsubsection[{Variable}]{\setlength{\rightskip}{0pt plus 5cm}kissms\-::\-Variable\-::\-Variable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classkissms_1_1_variable_abb117c861a38d6ad571a4d0c9572f959}
+
+
+Definition at line 12 of file variable.\-cpp.
+
+\hypertarget{classkissms_1_1_variable_a53b44b419d55654020b6d0d655bc2f38}{\index{kissms\-::\-Variable@{kissms\-::\-Variable}!$\sim$\-Variable@{$\sim$\-Variable}}
+\index{$\sim$\-Variable@{$\sim$\-Variable}!kissms::Variable@{kissms\-::\-Variable}}
+\subsubsection[{$\sim$\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}kissms\-::\-Variable\-::$\sim$\-Variable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classkissms_1_1_variable_a53b44b419d55654020b6d0d655bc2f38}
+
+
+Definition at line 15 of file variable.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classkissms_1_1_variable_a9633a42cf7f3bb8542f705a881106393}{\index{kissms\-::\-Variable@{kissms\-::\-Variable}!is\-Calculable@{is\-Calculable}}
+\index{is\-Calculable@{is\-Calculable}!kissms::Variable@{kissms\-::\-Variable}}
+\subsubsection[{is\-Calculable}]{\setlength{\rightskip}{0pt plus 5cm}bool kissms\-::\-Variable\-::is\-Calculable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classkissms_1_1_variable_a9633a42cf7f3bb8542f705a881106393}
+
+
+Checks whether the \hyperlink{classkissms_1_1_component}{Component} is calculable. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em True} & The \hyperlink{classkissms_1_1_component}{Component} contains no unresolved Variables \\
+\hline
+{\em False} & The \hyperlink{classkissms_1_1_component}{Component} contains at least one unresolved \hyperlink{classkissms_1_1_variable}{Variable}\\
+\hline
+\end{DoxyRetVals}
+Checks all child-\/\-Components for unresolved Variables. In case of finding at least one unresolved \hyperlink{classkissms_1_1_variable}{Variable} the \hyperlink{classkissms_1_1_component}{Component} is not calculable. Finding no unresolved Variables does not proove the \hyperlink{classkissms_1_1_component}{Component} as representable by a numerical value.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classkissms_1_1_variable_a7f12f0ed31f8ee613e50cf4c586c8fe3}{is\-Quantifiable()} 
+\end{DoxySeeAlso}
+
+
+Implements \hyperlink{classkissms_1_1_component_a442885b45058f07566a0e52192f13cef}{kissms\-::\-Component}.
+
+
+
+Definition at line 21 of file variable.\-cpp.
+
+\hypertarget{classkissms_1_1_variable_a7f12f0ed31f8ee613e50cf4c586c8fe3}{\index{kissms\-::\-Variable@{kissms\-::\-Variable}!is\-Quantifiable@{is\-Quantifiable}}
+\index{is\-Quantifiable@{is\-Quantifiable}!kissms::Variable@{kissms\-::\-Variable}}
+\subsubsection[{is\-Quantifiable}]{\setlength{\rightskip}{0pt plus 5cm}bool kissms\-::\-Variable\-::is\-Quantifiable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classkissms_1_1_variable_a7f12f0ed31f8ee613e50cf4c586c8fe3}
+
+
+Checks whether the \hyperlink{classkissms_1_1_component}{Component} is representable by a numerical value. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em True} & The \hyperlink{classkissms_1_1_component}{Component} is representable by a numerical value \\
+\hline
+{\em False} & The \hyperlink{classkissms_1_1_component}{Component} is not representable by a numerical value\\
+\hline
+\end{DoxyRetVals}
+Checks all child-\/\-Components whether they are representable by numerical values.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classkissms_1_1_variable_a9633a42cf7f3bb8542f705a881106393}{is\-Calculable()} 
+\end{DoxySeeAlso}
+
+
+Implements \hyperlink{classkissms_1_1_component_aa919cd3999147b744975aea91c7d2928}{kissms\-::\-Component}.
+
+
+
+Definition at line 27 of file variable.\-cpp.
+
+\hypertarget{classkissms_1_1_variable_a963a7b41e6156d3144ddcfba37201872}{\index{kissms\-::\-Variable@{kissms\-::\-Variable}!set\-Variable@{set\-Variable}}
+\index{set\-Variable@{set\-Variable}!kissms::Variable@{kissms\-::\-Variable}}
+\subsubsection[{set\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}void kissms\-::\-Variable\-::set\-Variable (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{classkissms_1_1_variable_a963a7b41e6156d3144ddcfba37201872}
+
+
+Set the \hyperlink{classkissms_1_1_variable}{Variable}'s name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & A zero-\/terminated character array representing the \hyperlink{classkissms_1_1_variable}{Variable}'s name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file variable.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/sieb/eclipse-\/workspace/eclipse-\/wrkspc\-\_\-\-F\-H/\-G\-D\-\_\-\-Phy\-Sim/src/kissms/component/scalar-\/leaf/\hyperlink{variable_8h}{variable.\-h}\item 
+/home/sieb/eclipse-\/workspace/eclipse-\/wrkspc\-\_\-\-F\-H/\-G\-D\-\_\-\-Phy\-Sim/src/kissms/component/scalar-\/leaf/\hyperlink{variable_8cpp}{variable.\-cpp}\end{DoxyCompactItemize}
