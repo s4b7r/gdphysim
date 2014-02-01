@@ -20,14 +20,13 @@ namespace kissms {
 class ArgumentsOne : public Component {
 
 public:
-	ArgumentsOne(  ) { };
+	ArgumentsOne(  );
 	virtual ~ArgumentsOne(  );
 
 	/**
 	 * @brief
 	 * @param argument This component's argument
-	 * @retval Successfull
-	 * @retval Failure
+	 * @return ResultCode
 	 */
 	ResultCode setArgument( Component *argument );
 

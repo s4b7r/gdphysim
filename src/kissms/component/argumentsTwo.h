@@ -20,31 +20,29 @@ namespace kissms {
 class ArgumentsTwo : public Component {
 
 public:
-	ArgumentsTwo(  ) { };
+	ArgumentsTwo(  );
 	virtual ~ArgumentsTwo(  );
 
 	/**
 	 * @brief
 	 * @param argument Component on this component's left side
-	 * @retval Successful
-	 * @retval Failure
+	 * @return ResultCode
 	 *
 	 */
 	ResultCode setLeft( Component *argument );
+
 	/**
 	 * @brief
-	 * @details
 	 * @param argument Component on this component's right side
-	 * @retval Successful
-	 * @retval Failure
+	 * @return ResultCode
 	 */
 	ResultCode setRight( Component *argument );
+
 	/**
 	 * @brief
 	 * @param left Component on this component's left side
 	 * @param right Component on this component's right side
-	 * @retval Successful
-	 * @retval Failure
+	 * @return ResultCode
 	 *
 	 */
 	ResultCode setArguments( Component *left, Component *right );
