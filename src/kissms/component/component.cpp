@@ -15,10 +15,9 @@ Component::Component() {
 Component::~Component() {
 }
 
-ResultCode Component::reformFor(Variable* variable, Component** newSide,
-		Component** otherSide, Component** placeholder) {
+bool Component::isCalculable() {
 
-	return NotYetImplemented;
+	return false;
 
 }
 
