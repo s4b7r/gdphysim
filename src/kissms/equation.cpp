@@ -75,29 +75,35 @@ bool Equation::isExplicitly(Variable* variable) {
 
 ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
-	Component *reformComponent;
-	Component *otherSide;
-	Component *newSide;
-	Component *newOtherSide;
+	Component **reformComponent;
+	Component **otherSide;
+	Component **newSide;
+	Component **newOtherSide;
 	Component **placeholder;
 	ResultCode reformResult;
 
 	if( variableOnLeft ) {
-		reformComponent = m_argumentLeft;
-		otherSide = m_argumentRight;
+		reformComponent = &m_argumentLeft;
+		otherSide = &m_argumentRight;
 	} else {
-		reformComponent = m_argumentRight;
-		otherSide = m_argumentLeft;
+		reformComponent = &m_argumentRight;
+		otherSide = &m_argumentLeft;
 	}
 
-	reformResult = reformComponent->reformFor(variable, newSide, newOtherSide, placeholder);
-	reformComponent = newSide;
-	// TODO Think about memory leaks
-	// Is the old Component referenced anywhere else?
-	// TODO Replace placeholder in otherSide with old otherSide
-	otherSide = newOtherSide;
+	reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide, placeholder);
 
-	return NotYetImplemented;
+	if( reformResult == Successful ) {
+		*reformComponent = *newSide;
+		// TODO Think about memory leaks
+		// Is the old Component referenced anywhere else?
+		*placeholder = *otherSide;
+		// TODO Think about memory leaks
+		// Is the placeholder referenced anywhere else?
+		*otherSide = *newOtherSide;
+
+		return Successful;
+	}
+	return GeneralFailure;
 
 }
 
