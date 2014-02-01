@@ -13,7 +13,6 @@ namespace kissms {
 
 /**
  * @brief Representation of a mathematical component in an Equation
- * @author sbekemeier
  *
  *
  */
@@ -46,6 +45,17 @@ public:
 	 * @see isCalculable()
 	 */
 	bool isQuantifiable(  );
+
+	/**
+	 * @brief Returns Components for reformation
+	 * @param variable Variable for which the Component shall reform itself
+	 * @param newSide New Component replacing the Component on this side of the Equation
+	 * @param otherSide Component for reformation of the Equation's other side
+	 * @param placeholder Placeholder which shall be replaced by the Equation's old other side
+	 * @return ResultCode
+	 */
+	ResultCode reformFor( Variable *variable, Component *newSide, Component *otherSide,
+			Component **placeholder );
 
 };
 
