@@ -5,7 +5,7 @@
  *      Author: sieb
  */
 
-#include <kissms/kissms.h>
+#include "kissms/kissms.h"
 
 namespace kissms {
 

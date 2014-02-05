@@ -5,7 +5,7 @@
  *      Author: sieb
  */
 
-#include <kissms/kissms.h>
+#include "kissms/kissms.h"
 
 namespace kissms {
 
@@ -35,7 +35,7 @@ void Constant::setValue(int value) {
 
 	resetValue();
 	this->value = (int*) malloc(sizeof(int));
-	this->*value = value;
+	*((int*)(this->value)) = value;
 	type = Integer;
 
 }
@@ -44,7 +44,7 @@ void Constant::setValue(double value) {
 
 	resetValue();
 	this->value = (double*) malloc(sizeof(double));
-	this->*value = value;
+	*((double*)(this->value)) = value;
 	type = Double;
 
 }
@@ -102,12 +102,12 @@ Constant::Type Constant::getValue(void** value) {
 		break;
 	case Integer:
 		*value = malloc(sizeof(int));
-		**value = this->*value;
+		**(int**)value = *((int*)(this->value));
 
 		break;
 	case Double:
 		*value = malloc(sizeof(double));
-		**value = this->*value;
+		**(double**)value = *((double*)(this->value));
 
 		break;
 	default:
