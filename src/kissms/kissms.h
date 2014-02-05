@@ -8,6 +8,9 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
+// TODO Improve code and doxygen comments
+// TODO Really do a code review sometime
+
 // Include system libraries
 #include <stdlib.h>
 #include <vector>
