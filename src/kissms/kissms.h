@@ -16,11 +16,32 @@
 
 namespace kissms {
 
+/**
+ * @brief ResultCode-Type for KissMS' methods
+ */
 enum ResultCode {
 	Successful = 0,
 	GeneralFailure,
 	NotYetImplemented
 };
+/** @var kissms::ResultCode kissms::Successful
+ * @brief The method successfuly returned
+ */
+/** @var kissms::ResultCode kissms::GeneralFailure
+ * @brief A general failure occured
+ *
+ * On return of GeneralFailure a general failure happend during
+ * the method's execution. This may be any unespected error or an
+ * error which does not match one of the following ResultCodes.
+ *
+ */
+/** @var kissms::ResultCode kissms::NotYetImplemented
+ * @brief The called method is not implemented
+ *
+ * The method which returns with NotYetImplemented is not capable
+ * to do it's job due to a missing implementation. This method may
+ * be developed currently or in the future.
+ */
 
 // Forward declaration
 class Variable;
