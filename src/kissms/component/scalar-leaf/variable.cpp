@@ -38,7 +38,7 @@ void Variable::setName(char* name) {
 
 bool Variable::isCalculable() {
 
-	return false;
+	return isQuantifiable();
 
 }
 
