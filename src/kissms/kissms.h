@@ -13,6 +13,7 @@
 #include <vector>
 #include <string.h>
 #include <math.h>
+#include <stdio.h>
 
 // All parts of KissMS belong to the namespace kissms
 
