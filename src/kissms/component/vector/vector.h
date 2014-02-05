@@ -12,7 +12,6 @@
 namespace kissms {
 
 class Vector : public Component {
-	// TODO Who is Vector's parent? Parents in relation to resulting object?
 
 
 
