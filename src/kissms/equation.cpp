@@ -37,9 +37,9 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		return rc;
 	}
 	if( isOnLeft(variable) ) {
-		calcComp = m_argumentRight;
+		calcComp = argumentRight;
 	} else if( isOnRight(variable) ) {
-		calcComp = m_argumentLeft;
+		calcComp = argumentLeft;
 	} else {
 		return ImpossibleState;
 	}
@@ -58,34 +58,9 @@ bool Equation::contains(Variable* variable) {
 
 }
 
-bool Equation::isOnLeft(Variable* variable) {
-
-	return isOnVector(variable, m_variablesLeft);
-
-}
-
-bool Equation::isOnRight(Variable* variable) {
-
-	return isOnVector(variable, m_variablesRight);
-
-}
-
-bool Equation::isOnVector(Variable* variable, std::vector<Variable*> vector) {
-
-	std::vector<Variable*>::iterator it = m_variablesRight.begin();
-
-	while( it != m_variablesRight.end() ) {
-		if( *it == variable ) {
-			return true;
-		}
-	}
-	return false;
-
-}
-
 bool Equation::isExplicitly(Variable* variable) {
 
-	if( m_argumentLeft == (Component*)variable || m_argumentRight == (Component*)variable ) {
+	if( argumentLeft == (Component*)variable || argumentRight == (Component*)variable ) {
 		return true;
 	} else {
 		return false;
@@ -106,11 +81,11 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 	ResultCode reformResult;
 
 	if( variableOnLeft ) {
-		reformComponent = &m_argumentLeft;
-		otherSide = &m_argumentRight;
+		reformComponent = &argumentLeft;
+		otherSide = &argumentRight;
 	} else {
-		reformComponent = &m_argumentRight;
-		otherSide = &m_argumentLeft;
+		reformComponent = &argumentRight;
+		otherSide = &argumentLeft;
 	}
 
 	reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide, placeholder);

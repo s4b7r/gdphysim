@@ -17,9 +17,15 @@ Addition::~Addition() {
 
 ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide, Component** placeholder) {
+
+
+
 }
 
 ResultCode Addition::calculate() {
+
+
+
 }
 
 }

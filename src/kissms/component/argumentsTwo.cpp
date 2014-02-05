@@ -54,6 +54,31 @@ bool ArgumentsTwo::isQuantifiable() {
 
 }
 
+bool ArgumentsTwo::isOnLeft(Variable* variable) {
+
+	return isOnVector(variable, variablesLeft);
+
+}
+
+bool ArgumentsTwo::isOnRight(Variable* variable) {
+
+	return isOnVector(variable, variablesRight);
+
+}
+
+bool ArgumentsTwo::isOnVector(Variable* variable, std::vector<Variable*> vector) {
+
+	std::vector<Variable*>::iterator it = variablesRight.begin();
+
+	while( it != variablesRight.end() ) {
+		if( *it == variable ) {
+			return true;
+		}
+	}
+	return false;
+
+}
+
 }
 
 

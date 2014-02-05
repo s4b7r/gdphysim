@@ -49,6 +49,26 @@ public:
 
 protected:
 	/**
+	 * @brief Checks whether a Variable is on the Equation's left side
+	 * @param variable Variable to check for
+	 */
+	bool isOnLeft( Variable *variable );
+
+	/**
+	 * @brief Checks whether a Variable is on the Equation's right side
+	 * @param variable Variable to check for
+	 */
+	bool isOnRight( Variable *variable );
+
+	/**
+	 * @brief Checks whether a given std::vector<Variable*> contains a given Variable
+	 * @param variable Variable to check for
+	 * @param vector std::vector<Variable*> in which variable shall be searched
+	 */
+	bool isOnVector( Variable *variable, std::vector<Variable*> vector );
+
+
+	/**
 	 * @brief The Component's left side argument
 	 */
 	Component *argumentLeft;
@@ -57,6 +77,16 @@ protected:
 	 * @brief The Component's right side argument
 	 */
 	Component *argumentRight;
+
+	/**
+	 * @brief All Variables on the Equation's left side
+	 */
+	std::vector<Variable*> variablesLeft;
+
+	/**
+	 * @brief All Variables on the Equation's right side
+	 */
+	std::vector<Variable*> variablesRight;
 
 };
 
