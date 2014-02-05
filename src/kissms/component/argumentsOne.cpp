@@ -9,7 +9,23 @@
 
 namespace kissms {
 
+ArgumentsOne::ArgumentsOne() {
 
+	argument = 0;
+
+}
+
+ArgumentsOne::~ArgumentsOne() {
+
+	free(argument);
+
+}
+
+void ArgumentsOne::setArgument(Component* argument) {
+
+	this->argument = argument;
+
+}
 
 }
 

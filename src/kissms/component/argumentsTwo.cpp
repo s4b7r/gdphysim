@@ -11,12 +11,35 @@ namespace kissms {
 
 ArgumentsTwo::ArgumentsTwo() {
 
-	m_argumentLeft = 0;
-	m_argumentRight = 0;
+	argumentLeft = 0;
+	argumentRight = 0;
 
 }
 
 ArgumentsTwo::~ArgumentsTwo() {
+
+	free(argumentLeft);
+	free(argumentRight);
+
+}
+
+void ArgumentsTwo::setLeft(Component* argument) {
+
+	argumentLeft = argument;
+
+}
+
+void ArgumentsTwo::setRight(Component* argument) {
+
+	argumentRight = argument;
+
+}
+
+void ArgumentsTwo::setArguments(Component* left, Component* right) {
+
+	argumentLeft = left;
+	argumentRight = right;
+
 }
 
 }

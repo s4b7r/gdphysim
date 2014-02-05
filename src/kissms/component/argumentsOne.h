@@ -32,7 +32,7 @@ protected:
 	/**
 	 * @brief The Component's argument
 	 */
-	Component *m_argument;
+	Component *argument;
 
 };
 

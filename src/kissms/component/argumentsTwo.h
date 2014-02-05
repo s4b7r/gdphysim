@@ -47,12 +47,12 @@ protected:
 	/**
 	 * @brief The Component's left side argument
 	 */
-	Component *m_argumentLeft;
+	Component *argumentLeft;
 
 	/**
 	 * @brief The Component's right side argument
 	 */
-	Component *m_argumentRight;
+	Component *argumentRight;
 
 };
 
