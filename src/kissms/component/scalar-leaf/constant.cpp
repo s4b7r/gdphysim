@@ -92,4 +92,31 @@ void Constant::resetValue() {
 
 }
 
+Constant::Type Constant::getValue(void** value) {
+
+	switch ( type ) {
+	case String:
+		*value = malloc(sizeof(char) * 10);
+		strcpy((char*) *value, (char*) this->value);
+
+		break;
+	case Integer:
+		*value = malloc(sizeof(int));
+		**value = this->*value;
+
+		break;
+	case Double:
+		*value = malloc(sizeof(double));
+		**value = this->*value;
+
+		break;
+	default:
+		break;
+	}
+	return type;
+
 }
+
+}
+
+

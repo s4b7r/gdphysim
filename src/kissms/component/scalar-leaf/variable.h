@@ -75,6 +75,13 @@ public:
 	 */
 	void resetValue();
 
+	/**
+	 * @brief
+	 * @param value
+	 * @return
+	 */
+	Type getValue( void **value );
+
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();

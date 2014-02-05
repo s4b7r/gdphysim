@@ -95,4 +95,26 @@ void Variable::setValue(double value) {
 
 }
 
+Variable::Type Variable::getValue(void** value) {
+
+	switch ( type ) {
+	case Integer:
+		*value = malloc(sizeof(int));
+		**value = this->*value;
+
+		break;
+	case Double:
+		*value = malloc(sizeof(double));
+		**value = this->*value;
+
+		break;
+	default:
+		break;
+	}
+	return type;
+
 }
+
+}
+
+
