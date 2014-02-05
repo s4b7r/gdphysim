@@ -137,6 +137,18 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 
 }
 
+bool Equation::isCalculable() {
+
+	return false;
+
+}
+
+bool Equation::isQuantifiable() {
+
+	return false;
+
+}
+
 }
 
 

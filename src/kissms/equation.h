@@ -53,7 +53,11 @@ public:
 	virtual void calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
-				Component **placeholder );
+			Component **placeholder );
+
+	virtual bool isCalculable();
+
+	virtual bool isQuantifiable();
 
 private:
 	/**
@@ -91,12 +95,12 @@ private:
 	/**
 	 * @brief All Variables on the Equation's left side
 	 */
-	std::vector<Variable*> m_variablesLeft;
+	std::vector<Variable*> variablesLeft;
 
 	/**
 	 * @brief All Variables on the Equation's right side
 	 */
-	std::vector<Variable*> m_variablesRight;
+	std::vector<Variable*> variablesRight;
 
 };
 
