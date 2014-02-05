@@ -10,11 +10,19 @@
 namespace kissms {
 
 Component::Component() {
+
+	quantity = NAN;
+
 }
 
 Component::~Component() {
 }
 
+double Component::getQuantity() {
+
+	return quantity;
+
 }
 
+}
 

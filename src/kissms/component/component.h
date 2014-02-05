@@ -65,6 +65,14 @@ public:
 	 */
 	virtual ResultCode calculate() = 0;
 
+	/**
+	 *
+	 */
+	double getQuantity();
+
+protected:
+	double quantity;
+
 };
 
 }
