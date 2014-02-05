@@ -20,10 +20,8 @@ Variable::Variable() {
 
 Variable::~Variable() {
 
+	resetValue();
 	free(name);
-	if( value != 0 ) {
-		free(value);
-	}
 
 }
 
@@ -45,13 +43,13 @@ bool Variable::isCalculable() {
 void Variable::resetValue() {
 
 	switch ( type ) {
-		case Integer:
-		case Double:
-			free(value);
+	case Integer:
+	case Double:
+		free(value);
 
-			break;
-		default:
-			break;
+		break;
+	default:
+		break;
 	}
 	if( name[0] != 0 ) {
 		type = NoValue;
@@ -64,15 +62,15 @@ void Variable::resetValue() {
 bool Variable::isQuantifiable() {
 
 	switch ( type ) {
-		case Integer:
-		case Double:
-			return true;
+	case Integer:
+	case Double:
+		return true;
 
-			break;
-		default:
-			return false;
+		break;
+	default:
+		return false;
 
-			break;
+		break;
 	}
 
 	return false;

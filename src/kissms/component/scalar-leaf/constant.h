@@ -70,12 +70,18 @@ public:
 	 */
 	void setValue( double value );
 
+	/**
+	 * @brief
+	 */
+	void resetValue();
+
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();
 
 private:
 	Type type;
+	void *value;
 
 };
 
