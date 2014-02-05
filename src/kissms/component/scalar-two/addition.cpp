@@ -18,18 +18,24 @@ Addition::~Addition() {
 ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide, Component** placeholder) {
 
+	Addition *addi = new Addition();
+	Negation *nega = new Negation();
+	Constant *cons = new Constant();
 	if( isOnLeft(variable) ) {
-		Addition *addi = new Addition();
-		Negation *nega = new Negation();
-		Constant *cons = new Constant();
-		nega->setArgument(argumentRight);
-		addi->setRight(nega);
-		addi->setLeft(cons);
 		*newSide = argumentLeft;
-		*otherSide = addi;
-		*placeholder = cons;
+		nega->setArgument(argumentRight);
+	} else if( isOnRight(variable) ) {
+		*newSide = argumentRight;
+		nega->setArgument(argumentLeft);
+	} else {
+		return ImpossibleState;
 	}
-	return NotYetImplemented;
+	addi->setRight(nega);
+	addi->setLeft(cons);
+	*otherSide = addi;
+	*placeholder = cons;
+
+	return Successful;
 
 }
 
