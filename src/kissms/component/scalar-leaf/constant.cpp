@@ -123,7 +123,8 @@ Constant::Type Constant::getValue(void** value) {
 ResultCode Constant::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide, Component** placeholder) {
 
-	return NotYetImplemented;
+	printf("const::ref %f",this->getQuantity());
+	return ImpossibleState;
 
 }
 

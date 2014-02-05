@@ -50,6 +50,7 @@ ResultCode Addition::calculate() {
 		quantity = argumentLeft->getQuantity() + argumentRight->getQuantity();
 		return Successful;
 	} else {
+		printf("add::calc");
 		return NotYetImplemented;
 	}
 

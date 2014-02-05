@@ -18,13 +18,15 @@ Negation::~Negation() {
 ResultCode Negation::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide, Component** placeholder) {
 
+	printf("neg::ref");
 	return NotYetImplemented;
 
 }
 
 ResultCode Negation::calculate() {
 
-	return NotYetImplemented;
+	quantity = argument->getQuantity() * -1.0;
+	return Successful;
 
 }
 

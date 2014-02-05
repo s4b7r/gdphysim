@@ -76,6 +76,7 @@ bool Equation::isExplicitly(Variable* variable) {
 
 ResultCode Equation::calculate() {
 
+	printf("eq::calc");
 	return NotYetImplemented;
 
 }
@@ -87,6 +88,8 @@ ComponentType Equation::getType() {
 }
 
 ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
+
+	printf("varonleft:%d\n",variableOnLeft);
 
 	Component **reformComponent;
 	Component **otherSide;
@@ -123,6 +126,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide, Component** placeholder) {
 
+	printf("eq::ref");
 	return NotYetImplemented;
 
 }
