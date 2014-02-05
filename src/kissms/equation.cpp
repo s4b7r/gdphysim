@@ -80,6 +80,12 @@ ResultCode Equation::calculate() {
 
 }
 
+ComponentType Equation::getType() {
+
+	return tEquation;
+
+}
+
 ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
 	Component **reformComponent;

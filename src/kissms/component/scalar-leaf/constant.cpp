@@ -133,6 +133,12 @@ ResultCode Constant::calculate() {
 
 }
 
+ComponentType Constant::getType() {
+
+	return tConstant;
+
+}
+
 }
 
 

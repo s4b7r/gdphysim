@@ -28,6 +28,12 @@ ResultCode Negation::calculate() {
 
 }
 
+ComponentType Negation::getType() {
+
+	return tNegation;
+
+}
+
 }
 
 

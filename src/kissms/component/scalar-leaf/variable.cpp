@@ -130,4 +130,12 @@ ResultCode Variable::calculate() {
 
 }
 
+ComponentType Variable::getType() {
+
+	return tVariable;
+
 }
+
+}
+
+
