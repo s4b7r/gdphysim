@@ -21,7 +21,9 @@ int main(int argc, char **argv) {
 	eq->setArguments(va, co);
 	va->setName(na);
 	co->setValue(4);
-	eq->calculateFor(va);
+	kissms::ResultCode rc = eq->calculateFor(va);
+
+	printf("%d\n", rc);
 
 	double value = -42;
 	value = va->getQuantity();

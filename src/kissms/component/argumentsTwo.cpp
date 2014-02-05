@@ -37,8 +37,8 @@ void ArgumentsTwo::setRight(Component* argument) {
 
 void ArgumentsTwo::setArguments(Component* left, Component* right) {
 
-	argumentLeft = left;
-	argumentRight = right;
+	setLeft(left);
+	setRight(right);
 
 }
 
