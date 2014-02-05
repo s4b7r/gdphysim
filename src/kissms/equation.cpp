@@ -68,7 +68,10 @@ bool Equation::isExplicitly(Variable* variable) {
 
 }
 
-void Equation::calculate() {
+ResultCode Equation::calculate() {
+
+	return NotYetImplemented;
+
 }
 
 ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
@@ -109,18 +112,6 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide, Component** placeholder) {
 
 	return NotYetImplemented;
-
-}
-
-bool Equation::isCalculable() {
-
-	return false;
-
-}
-
-bool Equation::isQuantifiable() {
-
-	return false;
 
 }
 

@@ -50,7 +50,7 @@ public:
 	 */
 	bool contains( Variable *variable );
 
-	virtual void calculate();
+	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
 			Component **placeholder );
