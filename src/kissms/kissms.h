@@ -11,6 +11,7 @@
 // Include system libraries
 #include <stdlib.h>
 #include <vector>
+#include <string.h>
 
 // All parts of KissMS belong to the namespace kissms
 
