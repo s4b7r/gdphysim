@@ -13,13 +13,20 @@ int main(int argc, char **argv) {
 	kissms::Equation *eq = new kissms::Equation();
 	kissms::Variable *va = new kissms::Variable();
 	kissms::Constant *co = new kissms::Constant();
+
 	char *na = (char*) malloc(sizeof(char) * 2);
 	na[0] = 'a';
 	na[1] = 0;
+
 	eq->setArguments(va, co);
 	va->setName(na);
 	co->setValue(4);
 	eq->calculateFor(va);
+
+	int value = -42;
+	value = va->getQuantity();
+
+	printf("%d", value);
 
 }
 
