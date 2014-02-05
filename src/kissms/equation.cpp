@@ -31,6 +31,7 @@ ResultCode Equation::calculateFor(Variable* variable) {
 
 	ResultCode rc;
 	Component *calcComp;
+	Variable *explicitVariable;
 
 	rc = solveFor(variable);
 	if( rc != Successful ) {
@@ -38,8 +39,10 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	}
 	if( isOnLeft(variable) ) {
 		calcComp = argumentRight;
+		explicitVariable = argumentLeft;
 	} else if( isOnRight(variable) ) {
 		calcComp = argumentLeft;
+		explicitVariable = argumentRight;
 	} else {
 		return ImpossibleState;
 	}
@@ -47,6 +50,9 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		return NotCalculable;
 	}
 	rc = calcComp->calculate();
+	if( rc == Successful ) {
+		explicitVariable->setValue(calcComp->getQuantity());
+	}
 
 	return rc;
 
