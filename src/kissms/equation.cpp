@@ -127,6 +127,12 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 
 }
 
+ComponentType Equation::getType() {
+
+	return tEquation;
+
+}
+
 }
 
 

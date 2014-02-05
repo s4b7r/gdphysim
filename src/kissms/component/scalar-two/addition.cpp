@@ -53,7 +53,7 @@ ResultCode Addition::calculate() {
 
 }
 
-ComponentType kissms::Addition::getType() {
+ComponentType Addition::getType() {
 
 	return tAddition;
 
