@@ -49,6 +49,11 @@ enum ResultCode {
  *
  *
  */
+/** @var kissms::ResultCode kissms::ImpossibleState
+ * @brief
+ *
+ *
+ */
 
 // Forward declaration
 class Variable;
