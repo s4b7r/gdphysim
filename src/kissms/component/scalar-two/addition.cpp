@@ -47,9 +47,13 @@ ResultCode Addition::calculate() {
 	if( isQuantifiable() ) {
 		argumentLeft->calculate();
 		argumentRight->calculate();
+		quantity = argumentLeft->getQuantity() + argumentRight->getQuantity();
+		return Successful;
+	} else {
+		return NotYetImplemented;
 	}
 
-	return NotYetImplemented;
+	return ImpossibleState;
 
 }
 
