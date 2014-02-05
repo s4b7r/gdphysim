@@ -39,10 +39,10 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	}
 	if( isOnLeft(variable) ) {
 		calcComp = argumentRight;
-		explicitVariable = argumentLeft;
+		explicitVariable = (Variable*) argumentLeft;
 	} else if( isOnRight(variable) ) {
 		calcComp = argumentLeft;
-		explicitVariable = argumentRight;
+		explicitVariable = (Variable*) argumentRight;
 	} else {
 		return ImpossibleState;
 	}
