@@ -22,7 +22,9 @@ namespace kissms {
 enum ResultCode {
 	Successful = 0,
 	GeneralFailure,
-	NotYetImplemented
+	NotYetImplemented,
+	NotCalculable,
+	ImpossibleState
 };
 /** @var kissms::ResultCode kissms::Successful
  * @brief The method successfuly returned
@@ -41,6 +43,11 @@ enum ResultCode {
  * The method which returns with NotYetImplemented is not capable
  * to do it's job due to a missing implementation. This method may
  * be developed currently or in the future.
+ */
+/** @var kissms::ResultCode kissms::NotCalculable
+ * @brief
+ *
+ *
  */
 
 // Forward declaration

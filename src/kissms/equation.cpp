@@ -46,12 +46,10 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		calcComp = m_argumentLeft;
 	} else {
 		// Hu? How did this happen?
-		// TODO New error code
-		return GeneralFailure;
+		return ImpossibleState;
 	}
 	if( !calcComp->isCalculable() ) {
-		// TODO New error code
-		return GeneralFailure;
+		return NotCalculable;
 	}
 	rc = calcComp->calculate();
 
