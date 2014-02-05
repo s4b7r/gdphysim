@@ -13,7 +13,9 @@ namespace kissms {
 
 class Addition : public ArgumentsTwo {
 
-
+public:
+	Addition();
+	virtual ~Addition();
 
 };
 
