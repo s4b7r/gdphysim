@@ -49,12 +49,9 @@ class Variable;
 #include "kissms/component/scalar-two/addition.h"
 #include "kissms/component/scalar-two/multiplication.h"
 
-// Include vectorial components with one argument
-// TODO Does a vector belong to components with just one argument?
-#include "kissms/component/vector-one/vector.h"
-
-// Include vectorial components with two arguments
-#include "kissms/component/vector-two/vectorproduct.h"
+// Include vectorial components
+#include "kissms/component/vector/vector.h"
+#include "kissms/component/vector/vectorproduct.h"
 
 
 #endif /* KISSMS_H_ */
