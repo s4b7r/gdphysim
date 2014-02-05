@@ -55,6 +55,8 @@ public:
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
 			Component **placeholder );
 
+	virtual ComponentType getType();
+
 private:
 	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable

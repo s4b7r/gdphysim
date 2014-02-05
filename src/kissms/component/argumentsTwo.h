@@ -47,6 +47,8 @@ public:
 
 	virtual bool isQuantifiable();
 
+	virtual ComponentType getType();
+
 protected:
 	/**
 	 * @brief Checks whether a Variable is on the Equation's left side
@@ -79,12 +81,12 @@ protected:
 	Component *argumentRight;
 
 	/**
-	 * @brief All Variables on the Equation's left side
+	 * @brief All Variables on the Component's left side
 	 */
 	std::vector<Variable*> variablesLeft;
 
 	/**
-	 * @brief All Variables on the Equation's right side
+	 * @brief All Variables on the Component's right side
 	 */
 	std::vector<Variable*> variablesRight;
 

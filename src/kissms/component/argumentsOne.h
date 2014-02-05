@@ -32,6 +32,8 @@ public:
 
 	virtual bool isQuantifiable();
 
+	virtual ComponentType getType();
+
 protected:
 	/**
 	 * @brief The Component's argument

@@ -57,6 +57,26 @@ enum ResultCode {
  * The method got to some point where it should be under no circumstances.
  */
 
+/**
+ *
+ */
+enum ComponentType {
+	tUnspecified = 0,
+	tArgumentsOne,
+	tArgumentsTwo,
+	tEquation,
+	tConstant,
+	tVariable,
+	tCosinus,
+	tNegation,
+	tReciprocal,
+	tSinus,
+	tAddition,
+	tMultiplication,
+	tVector,
+	tVectorproduct
+};
+
 // Forward declaration
 class Variable;
 

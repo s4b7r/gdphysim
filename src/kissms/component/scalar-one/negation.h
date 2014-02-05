@@ -22,6 +22,8 @@ public:
 
 	virtual ResultCode calculate();
 
+	virtual ComponentType getType();
+
 };
 
 }

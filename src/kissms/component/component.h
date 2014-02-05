@@ -19,26 +19,6 @@ namespace kissms {
 class Component {
 
 public:
-	/**
-	 *
-	 */
-	enum ComponentType {
-		Unspecified = 0,
-		ArgumentsOne,
-		ArgumentsTwo,
-		Equation,
-		Constant,
-		Variable,
-		Cosinus,
-		Negation,
-		Reciprocal,
-		Sinus,
-		Addition,
-		Multiplication,
-		Vector,
-		Vectorproduct
-	};
-
 	Component();
 	virtual ~Component();
 
@@ -93,7 +73,7 @@ public:
 	/**
 	 *
 	 */
-	virtual Component::ComponentType getType();
+	virtual ComponentType getType();
 
 protected:
 	double quantity;

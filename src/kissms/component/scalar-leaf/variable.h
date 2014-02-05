@@ -91,6 +91,8 @@ public:
 
 	virtual ResultCode calculate();
 
+	virtual ComponentType getType();
+
 private:
 	Type type;
 	char *name;
