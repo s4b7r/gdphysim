@@ -50,9 +50,9 @@ enum ResultCode {
  *
  */
 /** @var kissms::ResultCode kissms::ImpossibleState
- * @brief
+ * @brief The method reached an impossible state
  *
- *
+ * The method got to some point where it should be under no circumstances.
  */
 
 // Forward declaration
