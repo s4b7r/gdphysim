@@ -17,6 +17,11 @@ public:
 	Addition();
 	virtual ~Addition();
 
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
+			Component **placeholder );
+
+	virtual ResultCode calculate();
+
 };
 
 }
