@@ -17,6 +17,38 @@ namespace kissms {
 class Variable : public Component {
 
 public:
+	/**
+	 * @brief
+	 *
+	 *
+	 */
+	enum Type {
+		Unspecified = 0,
+		NoValue,
+		Integer,
+		Double
+	};
+	/** @var kissms::Variable::Type kissms::Variable::Unspecified
+	 * @brief
+	 *
+	 *
+	 */
+	/** @var kissms::Variable::Type kissms::Variable::NoValue
+	 * @brief
+	 *
+	 *
+	 */
+	/** @var kissms::Variable::Type kissms::Variable::Integer
+	 * @brief
+	 *
+	 *
+	 */
+	/** @var kissms::Variable::Type kissms::Variable::Double
+	 * @brief
+	 *
+	 *
+	 */
+
 	Variable();
 	virtual ~Variable();
 
@@ -41,6 +73,9 @@ public:
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();
+
+private:
+	Type type;
 
 };
 

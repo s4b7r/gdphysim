@@ -10,6 +10,9 @@
 namespace kissms {
 
 Variable::Variable() {
+
+	type = Unspecified;
+
 }
 
 Variable::~Variable() {
