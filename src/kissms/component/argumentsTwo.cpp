@@ -74,9 +74,9 @@ bool ArgumentsTwo::isOnRight(Variable* variable) {
 
 bool ArgumentsTwo::isOnVector(Variable* variable, std::vector<Variable*> vector) {
 
-	std::vector<Variable*>::iterator it = variablesRight.begin();
+	std::vector<Variable*>::iterator it = vector.begin();
 
-	while( it != variablesRight.end() ) {
+	while( it != vector.end() ) {
 		if( *it == variable ) {
 			return true;
 		}
