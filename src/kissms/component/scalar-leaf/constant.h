@@ -74,6 +74,9 @@ public:
 
 	virtual bool isQuantifiable();
 
+private:
+	Type type;
+
 };
 
 }

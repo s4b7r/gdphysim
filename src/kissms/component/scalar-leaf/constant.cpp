@@ -10,6 +10,9 @@
 namespace kissms {
 
 Constant::Constant() {
+
+	type = Unspecified;
+
 }
 
 Constant::~Constant() {
@@ -32,7 +35,11 @@ bool Constant::isCalculable() {
 
 bool Constant::isQuantifiable() {
 
-	//
+	if( type == Integer || type == Double ) {
+		return true;
+	} else {
+		return false;
+	}
 
 }
 
