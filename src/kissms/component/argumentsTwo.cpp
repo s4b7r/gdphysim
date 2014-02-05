@@ -26,12 +26,18 @@ ArgumentsTwo::~ArgumentsTwo() {
 void ArgumentsTwo::setLeft(Component* argument) {
 
 	argumentLeft = argument;
+	if( argument->getType() == tVariable ) {
+		variablesLeft.push_back((Variable*) argument);
+	}
 
 }
 
 void ArgumentsTwo::setRight(Component* argument) {
 
 	argumentRight = argument;
+	if( argument->getType() == tVariable ) {
+		variablesRight.push_back((Variable*) argument);
+	}
 
 }
 
