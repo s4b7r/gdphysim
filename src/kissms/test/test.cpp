@@ -9,7 +9,7 @@
 
 int main(int argc, char **argv) {
 
-	kissms::Equation eq = new Equation();
+	kissms::Equation eq = new kissms::Equation();
 
 }
 
