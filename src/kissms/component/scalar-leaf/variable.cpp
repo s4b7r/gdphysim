@@ -83,6 +83,7 @@ void Variable::setValue(int value) {
 	this->value = (int*) malloc(sizeof(int));
 	*((int*)(this->value)) = value;
 	type = Integer;
+	quantity = value;
 
 }
 
@@ -92,6 +93,7 @@ void Variable::setValue(double value) {
 	this->value = (double*) malloc(sizeof(double));
 	*((double*)(this->value)) = value;
 	type = Double;
+	quantity = value;
 
 }
 
