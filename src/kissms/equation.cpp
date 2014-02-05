@@ -23,11 +23,7 @@ ResultCode Equation::solveFor(Variable* variable) {
 		solveResult = solveFor(variable, isOnLeft(variable));
 	}
 
-	if( solveResult == Successful ) {
-		return Successful;
-	} else {
-		return solveResult;
-	}
+	return solveResult;
 
 }
 
@@ -45,7 +41,6 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	} else if( isOnRight(variable) ) {
 		calcComp = m_argumentLeft;
 	} else {
-		// Hu? How did this happen?
 		return ImpossibleState;
 	}
 	if( !calcComp->isCalculable() ) {
