@@ -41,7 +41,15 @@ ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Addition::calculate() {
 
+	if( !isCalculable() ) {
+		return NotCalculable;
+	}
+	if( isQuantifiable() ) {
+		argumentLeft->calculate();
+		argumentRight->calculate();
+	}
 
+	return NotYetImplemented;
 
 }
 
