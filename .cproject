@@ -27,7 +27,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.18223391" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.265727939" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.1193843325" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.include.paths.79018295" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath"/>
+								<option id="gnu.c.compiler.option.include.paths.79018295" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1273209430" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1907932201" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
@@ -47,7 +47,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.54821200" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.792398147" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
-								<option id="gnu.both.asm.option.include.paths.676873645" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
+								<option id="gnu.both.asm.option.include.paths.676873645" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.867357311" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 						</toolChain>
@@ -55,12 +55,13 @@
 					<sourceEntries>
 						<entry excluding="src\kissms|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="kissms" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
-						<entry excluding="component" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
+						<entry excluding="test|component" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
 						<entry excluding="vector|vector-one|vector-two|scalar-one|scalar-leaf|scalar-two" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-leaf"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-one"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-two"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/vector"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/test"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -110,12 +111,13 @@
 					<sourceEntries>
 						<entry excluding="src\kissms|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="kissms" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
-						<entry excluding="component" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
+						<entry excluding="test|component" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
 						<entry excluding="vector|scalar-leaf|vector-one|vector-two|scalar-two|scalar-one" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-leaf"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-one"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-two"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/vector"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/test"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

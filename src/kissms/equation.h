@@ -50,6 +50,8 @@ public:
 	 */
 	bool contains( Variable *variable );
 
+	virtual void calculate();
+
 private:
 	/**
 	 * @brief Checks whether a Variable is on the Equation's left side

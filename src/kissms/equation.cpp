@@ -93,6 +93,9 @@ bool Equation::isExplicitly(Variable* variable) {
 
 }
 
+void Equation::calculate() {
+}
+
 ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
 	Component **reformComponent;
