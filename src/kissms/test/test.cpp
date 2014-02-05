@@ -23,10 +23,10 @@ int main(int argc, char **argv) {
 	co->setValue(4);
 	eq->calculateFor(va);
 
-	int value = -42;
+	double value = -42;
 	value = va->getQuantity();
 
-	printf("%d", value);
+	printf("%f", value);
 
 }
 
