@@ -55,10 +55,6 @@ public:
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
 			Component **placeholder );
 
-	virtual bool isCalculable();
-
-	virtual bool isQuantifiable();
-
 private:
 	/**
 	 * @brief Checks whether a Variable is on the Equation's left side

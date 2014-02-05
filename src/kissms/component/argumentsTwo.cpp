@@ -42,6 +42,18 @@ void ArgumentsTwo::setArguments(Component* left, Component* right) {
 
 }
 
+bool ArgumentsTwo::isCalculable() {
+
+	return argumentLeft->isCalculable() && argumentRight->isCalculable();
+
+}
+
+bool ArgumentsTwo::isQuantifiable() {
+
+	return argumentLeft->isQuantifiable() && argumentRight->isQuantifiable();
+
+}
+
 }
 
 

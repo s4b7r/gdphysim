@@ -43,6 +43,10 @@ public:
 	 */
 	void setArguments( Component *left, Component *right );
 
+	virtual bool isCalculable();
+
+	virtual bool isQuantifiable();
+
 protected:
 	/**
 	 * @brief The Component's left side argument

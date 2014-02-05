@@ -27,6 +27,18 @@ void ArgumentsOne::setArgument(Component* argument) {
 
 }
 
+bool ArgumentsOne::isCalculable() {
+
+	return argument->isCalculable();
+
+}
+
+bool ArgumentsOne::isQuantifiable() {
+
+	return argument->isQuantifiable();
+
+}
+
 }
 
 

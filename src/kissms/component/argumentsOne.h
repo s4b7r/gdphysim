@@ -28,6 +28,10 @@ public:
 	 */
 	void setArgument( Component *argument );
 
+	virtual bool isCalculable();
+
+	virtual bool isQuantifiable();
+
 protected:
 	/**
 	 * @brief The Component's argument
