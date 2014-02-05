@@ -130,5 +130,10 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
 }
 
+ResultCode Equation::reformFor(Variable* variable, Component** newSide,
+		Component** otherSide, Component** placeholder) {
 }
+
+}
+
 

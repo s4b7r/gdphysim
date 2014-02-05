@@ -52,6 +52,9 @@ public:
 
 	virtual void calculate();
 
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
+				Component **placeholder );
+
 private:
 	/**
 	 * @brief Checks whether a Variable is on the Equation's left side
