@@ -79,6 +79,12 @@ bool ArgumentsTwo::isOnVector(Variable* variable, std::vector<Variable*> vector)
 
 }
 
+ComponentType kissms::ArgumentsTwo::getType() {
+
+	return tArgumentsTwo;
+
 }
 
+
+}
 

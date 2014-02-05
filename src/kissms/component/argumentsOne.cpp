@@ -39,6 +39,12 @@ bool ArgumentsOne::isQuantifiable() {
 
 }
 
+ComponentType ArgumentsOne::getType() {
+
+	return tArgumentsOne;
+
+}
+
 }
 
 

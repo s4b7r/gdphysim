@@ -53,6 +53,12 @@ ResultCode Addition::calculate() {
 
 }
 
+ComponentType Addition::getType() {
+
+	return tAddition;
+
+}
+
 }
 
 
