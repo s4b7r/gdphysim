@@ -129,7 +129,7 @@ ResultCode Constant::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Constant::calculate() {
 
-	return NotYetImplemented;
+	return Successful;
 
 }
 
