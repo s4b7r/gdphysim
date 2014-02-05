@@ -24,5 +24,10 @@ double Component::getQuantity() {
 
 }
 
+Component::ComponentType Component::getType() {
+	return Unspecified;
 }
+
+}
+
 
