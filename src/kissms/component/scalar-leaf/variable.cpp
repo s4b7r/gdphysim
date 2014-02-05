@@ -115,6 +115,17 @@ Variable::Type Variable::getValue(void** value) {
 
 }
 
+ResultCode Variable::reformFor(Variable* variable, Component** newSide,
+		Component** otherSide, Component** placeholder) {
+
+	return NotYetImplemented;
+
 }
 
+ResultCode Variable::calculate() {
 
+	return NotYetImplemented;
+
+}
+
+}
