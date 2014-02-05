@@ -17,6 +17,38 @@ namespace kissms {
 class Constant : public Component {
 
 public:
+	/**
+	 * @brief
+	 *
+	 *
+	 */
+	enum Type {
+		Unspecified = 0,
+		String,
+		Integer,
+		Double
+	};
+	/** @var kissms::Constant::Type kissms::Constant::Unspecified
+	 * @brief
+	 *
+	 *
+	 */
+	/** @var kissms::Constant::Type kissms::Constant::String
+	 * @brief
+	 *
+	 *
+	 */
+	/** @var kissms::Constant::Type kissms::Constant::Integer
+	 * @brief
+	 *
+	 *
+	 */
+	/** @var kissms::Constant::Type kissms::Constant::Double
+	 * @brief
+	 *
+	 *
+	 */
+
 	Constant();
 	virtual ~Constant();
 

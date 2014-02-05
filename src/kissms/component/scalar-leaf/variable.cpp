@@ -15,7 +15,7 @@ Variable::Variable() {
 Variable::~Variable() {
 }
 
-void Variable::setVariable(char* value) {
+void Variable::setName(char* value) {
 }
 
 bool Variable::isCalculable() {
