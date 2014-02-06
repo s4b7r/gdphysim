@@ -38,9 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,12 +81,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacekissms.html">kissms</a></li><li class="navelem"><a class="el" href="classkissms_1_1_component.html">Component</a></li>  </ul>
+<li class="navelem"><b>kissms</b></li><li class="navelem"><a class="el" href="classkissms_1_1_component.html">Component</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classkissms_1_1_component-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">kissms::Component Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -98,82 +97,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Representation of a mathematical component in an <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>.  
  <a href="classkissms_1_1_component.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="component_8h_source.html">component.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for kissms::Component:</div>
-<div class="dyncontent">
+<p><code>#include &lt;component.h&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for kissms::Component:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classkissms_1_1_component__inherit__graph.png" border="0" usemap="#kissms_1_1_component_inherit__map" alt="Inheritance graph"/></div>
 <map name="kissms_1_1_component_inherit__map" id="kissms_1_1_component_inherit__map">
-<area shape="rect" id="node3" href="classkissms_1_1_arguments_one.html" title="Representation of Components taking one argument. " alt="" coords="193,112,351,141"/><area shape="rect" id="node13" href="classkissms_1_1_arguments_two.html" title="Representation of Components taking two arguments. " alt="" coords="192,272,352,301"/><area shape="rect" id="node23" href="classkissms_1_1_variable.html" title="Component representing a single variable value. " alt="" coords="213,325,331,355"/><area shape="rect" id="node25" href="classkissms_1_1_vector.html" title="kissms::Vector" alt="" coords="217,379,327,408"/><area shape="rect" id="node5" href="classkissms_1_1_cosinus.html" title="kissms::Cosinus" alt="" coords="417,5,537,35"/><area shape="rect" id="node7" href="classkissms_1_1_negation.html" title="kissms::Negation" alt="" coords="416,59,539,88"/><area shape="rect" id="node9" href="classkissms_1_1_reciprocal.html" title="kissms::Reciprocal" alt="" coords="411,112,544,141"/><area shape="rect" id="node11" href="classkissms_1_1_sinus.html" title="kissms::Sinus" alt="" coords="425,165,529,195"/><area shape="rect" id="node15" href="classkissms_1_1_addition.html" title="kissms::Addition" alt="" coords="419,219,536,248"/><area shape="rect" id="node17" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. " alt="" coords="416,272,539,301"/><area shape="rect" id="node19" href="classkissms_1_1_multiplication.html" title="kissms::Multiplication" alt="" coords="404,325,551,355"/><area shape="rect" id="node21" href="classkissms_1_1_vectorproduct.html" title="kissms::Vectorproduct" alt="" coords="401,379,553,408"/></map>
+<area shape="rect" id="node3" href="classkissms_1_1_arguments_one.html" title="Representation of Components taking one argument. " alt="" coords="193,112,351,141"/><area shape="rect" id="node13" href="classkissms_1_1_arguments_two.html" title="Representation of Components taking two arguments. " alt="" coords="192,272,352,301"/><area shape="rect" id="node23" href="classkissms_1_1_constant.html" title="Component representing a single constant value. " alt="" coords="209,325,335,355"/><area shape="rect" id="node25" href="classkissms_1_1_variable.html" title="Component representing a single variable value. " alt="" coords="213,379,331,408"/><area shape="rect" id="node27" href="classkissms_1_1_vector.html" title="kissms::Vector" alt="" coords="217,432,327,461"/><area shape="rect" id="node5" href="classkissms_1_1_cosinus.html" title="kissms::Cosinus" alt="" coords="417,5,537,35"/><area shape="rect" id="node7" href="classkissms_1_1_negation.html" title="kissms::Negation" alt="" coords="416,59,539,88"/><area shape="rect" id="node9" href="classkissms_1_1_reciprocal.html" title="kissms::Reciprocal" alt="" coords="411,112,544,141"/><area shape="rect" id="node11" href="classkissms_1_1_sinus.html" title="kissms::Sinus" alt="" coords="425,165,529,195"/><area shape="rect" id="node15" href="classkissms_1_1_addition.html" title="kissms::Addition" alt="" coords="419,219,536,248"/><area shape="rect" id="node17" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. " alt="" coords="416,272,539,301"/><area shape="rect" id="node19" href="classkissms_1_1_multiplication.html" title="kissms::Multiplication" alt="" coords="404,325,551,355"/><area shape="rect" id="node21" href="classkissms_1_1_vectorproduct.html" title="kissms::Vectorproduct" alt="" coords="401,379,553,408"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab5dbfef5bbb55dfbcc91de7cc70b78c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#ab5dbfef5bbb55dfbcc91de7cc70b78c7">Component</a> ()</td></tr>
-<tr class="separator:ab5dbfef5bbb55dfbcc91de7cc70b78c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a873c6f07a8fd5d4570dfd525fa703752"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a873c6f07a8fd5d4570dfd525fa703752">~Component</a> ()</td></tr>
-<tr class="separator:a873c6f07a8fd5d4570dfd525fa703752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a256b837afb2726a85fe81a39599a35ff"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">calculate</a> ()=0</td></tr>
+<tr class="memdesc:a256b837afb2726a85fe81a39599a35ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value.  <a href="#a256b837afb2726a85fe81a39599a35ff">More...</a><br/></td></tr>
+<tr class="separator:a256b837afb2726a85fe81a39599a35ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba19927e39bfdfc72a31a058b24995f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaba19927e39bfdfc72a31a058b24995f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>getQuantity</b> ()</td></tr>
+<tr class="separator:aaba19927e39bfdfc72a31a058b24995f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b32f1d444d2ca44ba3c5583fd4abda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91b32f1d444d2ca44ba3c5583fd4abda"></a>
+virtual ComponentType&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
+<tr class="separator:a91b32f1d444d2ca44ba3c5583fd4abda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a442885b45058f07566a0e52192f13cef"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a442885b45058f07566a0e52192f13cef">isCalculable</a> ()=0</td></tr>
 <tr class="memdesc:a442885b45058f07566a0e52192f13cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is calculable.  <a href="#a442885b45058f07566a0e52192f13cef">More...</a><br/></td></tr>
 <tr class="separator:a442885b45058f07566a0e52192f13cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa919cd3999147b744975aea91c7d2928"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aa919cd3999147b744975aea91c7d2928">isQuantifiable</a> ()=0</td></tr>
 <tr class="memdesc:aa919cd3999147b744975aea91c7d2928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is representable by a numerical value.  <a href="#aa919cd3999147b744975aea91c7d2928">More...</a><br/></td></tr>
 <tr class="separator:aa919cd3999147b744975aea91c7d2928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afed1b31c97ebe0113fc0890cbd50f005"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#afed1b31c97ebe0113fc0890cbd50f005">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **placeholder)=0</td></tr>
+<tr class="memitem:afed1b31c97ebe0113fc0890cbd50f005"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#afed1b31c97ebe0113fc0890cbd50f005">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **placeholder)=0</td></tr>
 <tr class="memdesc:afed1b31c97ebe0113fc0890cbd50f005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Components for reformation.  <a href="#afed1b31c97ebe0113fc0890cbd50f005">More...</a><br/></td></tr>
 <tr class="separator:afed1b31c97ebe0113fc0890cbd50f005"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a256b837afb2726a85fe81a39599a35ff"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">calculate</a> ()=0</td></tr>
-<tr class="memdesc:a256b837afb2726a85fe81a39599a35ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value.  <a href="#a256b837afb2726a85fe81a39599a35ff">More...</a><br/></td></tr>
-<tr class="separator:a256b837afb2726a85fe81a39599a35ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aa550c0255d39b7184b3c58d462f3b8af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa550c0255d39b7184b3c58d462f3b8af"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></tr>
+<tr class="separator:aa550c0255d39b7184b3c58d462f3b8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Representation of a mathematical component in an <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>. </p>
-
-<p>Definition at line <a class="el" href="component_8h_source.html#l00019">19</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ab5dbfef5bbb55dfbcc91de7cc70b78c7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">kissms::Component::Component </td>
-          <td>(</td>
-          <td class="paramname">)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="component_8cpp_source.html#l00012">12</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a873c6f07a8fd5d4570dfd525fa703752"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">kissms::Component::~Component </td>
-          <td>(</td>
-          <td class="paramname">)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="component_8cpp_source.html#l00015">15</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a256b837afb2726a85fe81a39599a35ff"></a>
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +146,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Component::calculate </td>
+          <td class="memname">virtual ResultCode kissms::Component::calculate </td>
           <td>(</td>
           <td class="paramname">)</td><td></td>
           <td></td>
@@ -199,14 +163,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>ResultCode</dd></dl>
 <p>Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value as far as the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s childs allow this. </p>
 
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classkissms_1_1_component_a256b837afb2726a85fe81a39599a35ff_icgraph.png" border="0" usemap="#classkissms_1_1_component_a256b837afb2726a85fe81a39599a35ff_icgraph" alt=""/></div>
-<map name="classkissms_1_1_component_a256b837afb2726a85fe81a39599a35ff_icgraph" id="classkissms_1_1_component_a256b837afb2726a85fe81a39599a35ff_icgraph">
-<area shape="rect" id="node3" href="classkissms_1_1_equation.html#a72474be0471c6190f8cc3d6f5016b115" title="Solves and calculates the Equation. " alt="" coords="200,13,403,43"/></map>
-</div>
-</p>
+<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#a9855db6a1fe4aede30340f61c26ce076">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#a51cebd52f8a0bba47d6c9a32c62cb4b6">kissms::Variable</a>, <a class="el" href="classkissms_1_1_equation.html#a1ce00db13b36de15d2495e6f916ddf4a">kissms::Equation</a>, <a class="el" href="classkissms_1_1_negation.html#a103dd83329dbeb55cec2186866db1cc9">kissms::Negation</a>, and <a class="el" href="classkissms_1_1_addition.html#afe27eb760ce0143414083fcf4d5ad5bd">kissms::Addition</a>.</p>
 
 </div>
 </div>
@@ -242,16 +199,7 @@ Here is the caller graph for this function:</div>
 <p>Checks all child-Components for unresolved Variables. In case of finding at least one unresolved <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is not calculable. Finding no unresolved Variables does not proove the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> as representable by a numerical value.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="classkissms_1_1_component.html#aa919cd3999147b744975aea91c7d2928" title="Checks whether the Component is representable by a numerical value. ">isQuantifiable()</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="classkissms_1_1_variable.html#a9633a42cf7f3bb8542f705a881106393">kissms::Variable</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classkissms_1_1_component_a442885b45058f07566a0e52192f13cef_icgraph.png" border="0" usemap="#classkissms_1_1_component_a442885b45058f07566a0e52192f13cef_icgraph" alt=""/></div>
-<map name="classkissms_1_1_component_a442885b45058f07566a0e52192f13cef_icgraph" id="classkissms_1_1_component_a442885b45058f07566a0e52192f13cef_icgraph">
-<area shape="rect" id="node3" href="classkissms_1_1_equation.html#a72474be0471c6190f8cc3d6f5016b115" title="Solves and calculates the Equation. " alt="" coords="200,13,403,43"/></map>
-</div>
-</p>
+<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#a2d2ede1cbcfb344e471afd7bdeac8f14">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#a9633a42cf7f3bb8542f705a881106393">kissms::Variable</a>, <a class="el" href="classkissms_1_1_arguments_two.html#a9973dfc460d49f1d9f59296f2ed35426">kissms::ArgumentsTwo</a>, and <a class="el" href="classkissms_1_1_arguments_one.html#ab4a348facc8d1acae5fb8146f0af62c6">kissms::ArgumentsOne</a>.</p>
 
 </div>
 </div>
@@ -287,7 +235,7 @@ Here is the caller graph for this function:</div>
 <p>Checks all child-Components whether they are representable by numerical values.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="classkissms_1_1_component.html#a442885b45058f07566a0e52192f13cef" title="Checks whether the Component is calculable. ">isCalculable()</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="classkissms_1_1_variable.html#a7f12f0ed31f8ee613e50cf4c586c8fe3">kissms::Variable</a>.</p>
+<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#a94451fa66d467eef7fae40ccd0a75039">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#a7f12f0ed31f8ee613e50cf4c586c8fe3">kissms::Variable</a>, <a class="el" href="classkissms_1_1_arguments_two.html#af4286922473e4a87b8ba0f5b80cc455b">kissms::ArgumentsTwo</a>, and <a class="el" href="classkissms_1_1_arguments_one.html#a8547a025f36e43e3a164b7ad5faed023">kissms::ArgumentsOne</a>.</p>
 
 </div>
 </div>
@@ -299,7 +247,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Component::reformFor </td>
+          <td class="memname">virtual ResultCode kissms::Component::reformFor </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classkissms_1_1_variable.html">Variable</a> *&#160;</td>
           <td class="paramname"><em>variable</em>, </td>
@@ -347,16 +295,18 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ResultCode </dd></dl>
 
+<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#ae6193518345ba262d05fe32f93e544df">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#aa0d1c72b7e3bd7ac4da98582d4806fc7">kissms::Variable</a>, <a class="el" href="classkissms_1_1_equation.html#a5231c01b6cdf190822a424bc3cfcaa42">kissms::Equation</a>, <a class="el" href="classkissms_1_1_negation.html#a6870e43766971eabe76f9266134c7c51">kissms::Negation</a>, and <a class="el" href="classkissms_1_1_addition.html#ac285ac91f5c4e84f86a3dfa41ea4bae0">kissms::Addition</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sieb/eclipse-workspace/eclipse-wrkspc_FH/GD_PhySim/src/kissms/component/<a class="el" href="component_8h_source.html">component.h</a></li>
-<li>/home/sieb/eclipse-workspace/eclipse-wrkspc_FH/GD_PhySim/src/kissms/component/<a class="el" href="component_8cpp_source.html">component.cpp</a></li>
+<li>src/kissms/component/component.h</li>
+<li>src/kissms/component/component.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Feb 1 2014 19:26:24 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 6 2014 00:59:27 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
