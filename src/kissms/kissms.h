@@ -88,7 +88,9 @@ enum ComponentType {
 	tAddition,
 	tMultiplication,
 	tVector,
-	tVectorproduct
+	tVectorproduct,
+	tSinusArc,
+	tCosinusArc
 };
 
 // Forward declaration
