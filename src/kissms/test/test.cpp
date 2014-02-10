@@ -176,19 +176,48 @@ void test6() {
 
 }
 
+void test7() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Sinus *sin = new kissms::Sinus();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Constant *co = new kissms::Constant();
+
+	char *na = (char*) malloc(sizeof(char) * 2);
+	na[0] = 'a';
+	na[1] = 0;
+
+	eq->setArguments(sin, co);
+	sin->setArgument(va);
+	va->setName(na);
+	co->setValue(1);
+
+	kissms::ResultCode rc = eq->calculateFor(va);
+
+	printf("%d\n", rc);
+
+	double value = -42;
+	value = va->getQuantity();
+
+	printf("%f", value);
+
+}
+
 int main(int argc, char **argv) {
 
-	test1();
-	printf("\n\n");
+	/*test1();
+	printf("\n");
 	test2();
-	printf("\n\n");
+	printf("\n");
 	test3();
-	printf("\n\n");
+	printf("\n");
 	test4();
-	printf("\n\n");
+	printf("\n");
 	test5();
-	printf("\n\n");
+	printf("\n");
 	test6();
+	printf("\n");*/
+	test7();
 
 	return 0;
 

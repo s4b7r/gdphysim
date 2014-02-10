@@ -49,6 +49,7 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		calcComp = argumentLeft;
 		explicitVariable = (Variable*) argumentRight;
 	} else {
+		printf("Debug: Equation - Variable neither on left nor on right\n");
 		return ImpossibleState;
 	}
 	if( !calcComp->isCalculable() ) {
@@ -131,6 +132,8 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 		case tNegation:
 		case tReciprocal:
 		case tSinus:
+		case tSinusArc:
+		case tCosinusArc:
 			(*(ArgumentsOne**)newOtherSide)->setArgument(*otherSide);
 
 			break;
