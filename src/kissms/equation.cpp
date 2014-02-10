@@ -38,6 +38,7 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		return rc;
 	}
 	if( isOnLeft(variable) ) {
+		printf("\nc\n");
 		calcComp = argumentRight;
 		explicitVariable = (Variable*) argumentLeft;
 	} else if( isOnRight(variable) ) {
@@ -46,9 +47,12 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	} else {
 		return ImpossibleState;
 	}
+	printf("type of calcComp: %d\n", calcComp->getType());
 	if( !calcComp->isCalculable() ) {
+		printf("\na\n");
 		return NotCalculable;
 	}
+	printf("\nb\n");
 	rc = calcComp->calculate();
 	if( rc == Successful ) {
 		explicitVariable->setValue(calcComp->getQuantity());
@@ -112,6 +116,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 		// TODO Think about memory leaks
 		// Is the old Component referenced anywhere else?
 		*placeholder = *otherSide;
+		(*(ArgumentsTwo**)newOtherSide)->setLeft(*otherSide);
 		// TODO Think about memory leaks
 		// Is the placeholder referenced anywhere else?
 		*otherSide = *newOtherSide;
