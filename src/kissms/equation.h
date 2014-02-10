@@ -44,12 +44,6 @@ public:
 	 */
 	ResultCode calculateFor( Variable *variable );
 
-	/**
-	 * @brief Checks whether the Equation contains a given Variable
-	 * @param variable Variable to check for
-	 */
-	bool contains( Variable *variable );
-
 	virtual ResultCode calculate();
 
 	//virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,

@@ -38,7 +38,6 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		return rc;
 	}
 	if( isOnLeft(variable) ) {
-		printf("\nc\n");
 		calcComp = argumentRight;
 		explicitVariable = (Variable*) argumentLeft;
 	} else if( isOnRight(variable) ) {
@@ -47,24 +46,15 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	} else {
 		return ImpossibleState;
 	}
-	printf("type of calcComp: %d\n", calcComp->getType());
 	if( !calcComp->isCalculable() ) {
-		printf("\na\n");
 		return NotCalculable;
 	}
-	printf("\nb\n");
 	rc = calcComp->calculate();
 	if( rc == Successful ) {
 		explicitVariable->setValue(calcComp->getQuantity());
 	}
 
 	return rc;
-
-}
-
-bool Equation::contains(Variable* variable) {
-
-	return isOnLeft(variable) || isOnRight(variable);
 
 }
 
