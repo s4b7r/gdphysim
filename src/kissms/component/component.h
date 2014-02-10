@@ -54,8 +54,6 @@ public:
 	 * @param placeholder Placeholder which shall be replaced by the Equation's old other side
 	 * @return ResultCode
 	 */
-	//virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
-		//	Component **placeholder ) = 0;
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide ) = 0;
 
 	/**

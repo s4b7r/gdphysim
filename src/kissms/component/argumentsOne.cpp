@@ -29,7 +29,6 @@ void ArgumentsOne::setArgument(Component* argument) {
 
 bool ArgumentsOne::isCalculable() {
 
-	printf("argu1's type: %d\n argu1's argu (type: %d) iscalc: %d", this->getType(), argument->getType(), argument->isCalculable());
 	return argument->isCalculable();
 
 }
@@ -48,9 +47,8 @@ ComponentType ArgumentsOne::getType() {
 
 bool kissms::ArgumentsOne::hasChild(Component* child) {
 
-	if( argument == child ) {
-		return true;
-	} else if( argument->hasChild(child) ) {
+	if( argument == child ||
+			argument->hasChild(child) ) {
 		return true;
 	}
 	return false;

@@ -20,7 +20,6 @@ ResultCode Multiplication::reformFor(Variable* variable,
 
 	Multiplication *multi = new Multiplication();
 	Reciprocal *reci = new Reciprocal();
-	//Constant *cons = new Constant();
 	printf("isOnLeft: %d", isOnLeft((Component*)variable));
 	if( isOnLeft((Component*)variable) ) {
 		*newSide = argumentLeft;
@@ -32,9 +31,7 @@ ResultCode Multiplication::reformFor(Variable* variable,
 		return ImpossibleState;
 	}
 	multi->setRight(reci);
-	//addi->setLeft(cons);
 	*otherSide = multi;
-	//*placeholder = cons;
 
 	return Successful;
 
@@ -51,7 +48,6 @@ ResultCode Multiplication::calculate() {
 		quantity = argumentLeft->getQuantity() * argumentRight->getQuantity();
 		return Successful;
 	} else {
-		printf("mult::calc");
 		return NotYetImplemented;
 	}
 

@@ -20,7 +20,6 @@ ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 
 	Addition *addi = new Addition();
 	Negation *nega = new Negation();
-	//Constant *cons = new Constant();
 	printf("isOnLeft: %d", isOnLeft((Component*)variable));
 	if( isOnLeft((Component*)variable) ) {
 		*newSide = argumentLeft;
@@ -32,9 +31,7 @@ ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 		return ImpossibleState;
 	}
 	addi->setRight(nega);
-	//addi->setLeft(cons);
 	*otherSide = addi;
-	//*placeholder = cons;
 
 	return Successful;
 
@@ -51,7 +48,6 @@ ResultCode Addition::calculate() {
 		quantity = argumentLeft->getQuantity() + argumentRight->getQuantity();
 		return Successful;
 	} else {
-		printf("add::calc");
 		return NotYetImplemented;
 	}
 

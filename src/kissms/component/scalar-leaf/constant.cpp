@@ -54,7 +54,6 @@ void Constant::setValue(double value) {
 bool Constant::isCalculable() {
 
 	if( type != Unspecified ) {
-		printf("const is uncalculable\n");
 		return true;
 	}
 	return false;
@@ -124,7 +123,6 @@ Constant::Type Constant::getValue(void** value) {
 ResultCode Constant::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide) {
 
-	printf("const::ref %f",this->getQuantity());
 	return ImpossibleState;
 
 }

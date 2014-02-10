@@ -126,8 +126,7 @@ ResultCode Variable::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Variable::calculate() {
 
-	printf("var::cacl");
-	return NotYetImplemented;
+	return Successful;
 
 }
 

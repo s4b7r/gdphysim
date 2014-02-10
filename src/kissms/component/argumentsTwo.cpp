@@ -44,9 +44,6 @@ void ArgumentsTwo::setArguments(Component* left, Component* right) {
 
 bool ArgumentsTwo::isCalculable() {
 
-//	printf("argu2's type: %d\n", this->getType());
-//	printf("argu2's left (type %d) iscalculable: %d", argumentLeft->getType(), argumentLeft->isCalculable());
-//	printf("argu2's right (type %d) iscalculable: %d", argumentRight->getType(), argumentRight->isCalculable());
 	return argumentLeft->isCalculable() && argumentRight->isCalculable();
 
 }
@@ -59,9 +56,8 @@ bool ArgumentsTwo::isQuantifiable() {
 
 bool ArgumentsTwo::isOnLeft(Component* component) {
 
-	if( argumentLeft == component ) {
-		return true;
-	} else if( argumentLeft->hasChild(component) ) {
+	if( argumentLeft == component ||
+			argumentLeft->hasChild(component) ) {
 		return true;
 	}
 	return false;
@@ -70,9 +66,8 @@ bool ArgumentsTwo::isOnLeft(Component* component) {
 
 bool ArgumentsTwo::isOnRight(Component* component) {
 
-	if( argumentRight == component ) {
-		return true;
-	} else if( argumentRight->hasChild(component) ) {
+	if( argumentRight == component ||
+			argumentRight->hasChild(component) ) {
 		return true;
 	}
 	return false;
@@ -87,9 +82,8 @@ ComponentType ArgumentsTwo::getType() {
 
 bool ArgumentsTwo::hasChild(Component* child) {
 
-	if( argumentLeft == child || argumentRight == child ) {
-		return true;
-	} else if( argumentLeft->hasChild(child) || argumentRight->hasChild(child) ) {
+	if( argumentLeft == child || argumentRight == child ||
+			argumentLeft->hasChild(child) || argumentRight->hasChild(child) ) {
 		return true;
 	}
 	return false;

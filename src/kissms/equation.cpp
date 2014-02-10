@@ -69,8 +69,7 @@ bool Equation::isExplicitly(Variable* variable) {
 
 ResultCode Equation::calculate() {
 
-	printf("eq::calc");
-	return NotYetImplemented;
+	return ImpossibleState;
 
 }
 
@@ -82,13 +81,10 @@ ComponentType Equation::getType() {
 
 ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
-	printf("varonleft:%d\n",variableOnLeft);
-
 	Component **reformComponent;
 	Component **otherSide;
 	Component **newSide = (Component**) malloc(sizeof(Component*));
 	Component **newOtherSide = (Component**) malloc(sizeof(Component*));
-	//Component **placeholder = (Component**) malloc(sizeof(Component*));
 	ResultCode reformResult;
 
 	if( variableOnLeft ) {
@@ -99,17 +95,12 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 		otherSide = &argumentLeft;
 	}
 
-	//reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide, placeholder);
 	reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide);
 
 	if( reformResult == Successful ) {
+		free(reformComponent);
 		*reformComponent = *newSide;
-		// TODO Think about memory leaks
-		// Is the old Component referenced anywhere else?
-		//*placeholder = *otherSide;
 		(*(ArgumentsTwo**)newOtherSide)->setLeft(*otherSide);
-		// TODO Think about memory leaks
-		// Is the placeholder referenced anywhere else?
 		*otherSide = *newOtherSide;
 
 		return Successful;
@@ -121,8 +112,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide) {
 
-	printf("eq::ref");
-	return NotYetImplemented;
+	return ImpossibleState;
 
 }
 
