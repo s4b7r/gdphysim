@@ -11,6 +11,8 @@
 // TODO Improve code and doxygen comments
 // TODO Really do a code review sometime
 // TODO Take care of non-quantifiable but calculable expressions
+// TODO Will situations occur in which one Variable will be in one Equation for two times?
+// TODO Do not forget to test your library really good
 
 // Include system libraries
 #include <stdlib.h>
