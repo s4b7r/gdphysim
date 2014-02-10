@@ -21,10 +21,10 @@ ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 	Addition *addi = new Addition();
 	Negation *nega = new Negation();
 	Constant *cons = new Constant();
-	if( isOnLeft(variable) ) {
+	if( isOnLeft((Component*)variable) ) {
 		*newSide = argumentLeft;
 		nega->setArgument(argumentRight);
-	} else if( isOnRight(variable) ) {
+	} else if( isOnRight((Component*)variable) ) {
 		*newSide = argumentRight;
 		nega->setArgument(argumentLeft);
 	} else {

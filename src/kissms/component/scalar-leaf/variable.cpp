@@ -137,6 +137,12 @@ ComponentType Variable::getType() {
 
 }
 
+bool kissms::Variable::hasChild(Component* child) {
+
+	return false;
+
+}
+
 }
 
 

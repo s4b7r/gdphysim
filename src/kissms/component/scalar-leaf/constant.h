@@ -93,6 +93,8 @@ public:
 
 	virtual ComponentType getType();
 
+	virtual bool hasChild( Component *child );
+
 private:
 	Type type;
 	void *value;

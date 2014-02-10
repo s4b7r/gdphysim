@@ -140,6 +140,12 @@ ComponentType Constant::getType() {
 
 }
 
+bool Constant::hasChild(Component* child) {
+
+	return false;
+
+}
+
 }
 
 
