@@ -122,7 +122,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
 	// Further processing on success only
 	if( reformResult == Successful ) {
-		// TODO free(reformComponent); ?!
+		free(*reformComponent);
 		// Replace Variable's side
 		*reformComponent = *newSide;
 		// Fill the encapsulating Component with the other side's old Component
