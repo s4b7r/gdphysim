@@ -20,7 +20,6 @@ ResultCode Multiplication::reformFor(Variable* variable,
 
 	*otherSide = new Multiplication();
 	Reciprocal *reci = new Reciprocal();
-	printf("isOnLeft: %d", isOnLeft((Component*)variable));
 	if( isOnLeft((Component*)variable) ) {
 		*newSide = argumentLeft;
 		reci->setArgument(argumentRight);

@@ -28,6 +28,8 @@ Variable::~Variable() {
 void Variable::setName(char* name) {
 
 	strcpy(this->name, name);
+	// Check for previously assigned numerical values
+	// to preserve the Variable's type
 	if( type == Unspecified ) {
 		type = NoValue;
 	}
@@ -51,6 +53,8 @@ void Variable::resetValue() {
 	default:
 		break;
 	}
+	// Check for the Variable's name,
+	// so it will not get marked as unspecified if there is one
 	if( name[0] != 0 ) {
 		type = NoValue;
 	} else {

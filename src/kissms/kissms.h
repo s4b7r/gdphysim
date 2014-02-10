@@ -10,6 +10,7 @@
 
 // TODO Improve code and doxygen comments
 // TODO Really do a code review sometime
+// TODO Take care of non-quantifiable but calculable expressions
 
 // Include system libraries
 #include <stdlib.h>

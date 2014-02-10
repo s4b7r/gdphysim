@@ -20,7 +20,6 @@ ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 
 	*otherSide = new Addition();
 	Negation *nega = new Negation();
-	printf("isOnLeft: %d", isOnLeft((Component*)variable));
 	if( isOnLeft((Component*)variable) ) {
 		*newSide = argumentLeft;
 		nega->setArgument(argumentRight);

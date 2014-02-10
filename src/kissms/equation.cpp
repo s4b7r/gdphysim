@@ -19,6 +19,9 @@ ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
 
+	// Repeatedly try to solve the Equation for the given Variable,
+	// until the Variable is explicitly represented.
+	// Abort if solving process fails.
 	while( !isExplicitly(variable) && solveResult == Successful ) {
 		solveResult = solveFor(variable, isOnLeft(variable));
 	}
@@ -33,10 +36,12 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	Component *calcComp;
 	Variable *explicitVariable;
 
+	// First the Equation has to be solved
 	rc = solveFor(variable);
 	if( rc != Successful ) {
 		return rc;
 	}
+	// Set the placeholder regarding the Equation's side which the Variable belongs to
 	if( isOnLeft(variable) ) {
 		calcComp = argumentRight;
 		explicitVariable = (Variable*) argumentLeft;
@@ -51,6 +56,8 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	}
 	rc = calcComp->calculate();
 	if( rc == Successful ) {
+		// TODO What is with non-quantifiable Components?
+		// If everything is clear, set the Variable's numerical value
 		explicitVariable->setValue(calcComp->getQuantity());
 	}
 
@@ -81,12 +88,26 @@ ComponentType Equation::getType() {
 
 ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
+	/**
+	 * The Equation's argument on the Variable's side. This Component
+	 * will have to reform itself.
+	 */
 	Component **reformComponent;
+	/**
+	 * The Equation's argument not on the Variable's side.
+	 */
 	Component **otherSide;
+	/**
+	 * The Component which will replace the Component on the Variable's side.
+	 */
 	Component **newSide = (Component**) malloc(sizeof(Component*));
+	/**
+	 * The Component which will encapsulate the Component not on the Variable's side.
+	 */
 	Component **newOtherSide = (Component**) malloc(sizeof(Component*));
 	ResultCode reformResult;
 
+	// Set the placeholder regarding the Equation's side which the Variable belongs to
 	if( variableOnLeft ) {
 		reformComponent = &argumentLeft;
 		otherSide = &argumentRight;
@@ -95,11 +116,15 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 		otherSide = &argumentLeft;
 	}
 
+	// Call the Component's reform-method
 	reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide);
 
+	// Further processing on success only
 	if( reformResult == Successful ) {
 		// TODO free(reformComponent); ?!
+		// Replace Variable's side
 		*reformComponent = *newSide;
+		// Fill the encapsulating Component with the other side's old Component
 		ComponentType ct = (*newOtherSide)->getType();
 		switch (ct) {
 		case tCosinus:
@@ -115,8 +140,10 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 
 			break;
 		default:
+			return ImpossibleState;
 			break;
 		}
+		// Replace other side
 		*otherSide = *newOtherSide;
 
 		return Successful;
