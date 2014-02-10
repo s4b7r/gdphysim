@@ -58,7 +58,7 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	rc = calcComp->calculate();
 	if( rc == Successful ) {
 		// TODO What is with non-quantifiable Components?
-		// If everything is clear, set the Variable's numerical value
+		// If everything is okay, set the Variable's numerical value
 		explicitVariable->setValue(calcComp->getQuantity());
 	}
 
