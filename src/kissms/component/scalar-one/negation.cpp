@@ -18,7 +18,9 @@ Negation::~Negation() {
 ResultCode Negation::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide) {
 
-	return NotYetImplemented;
+	*newSide = argument;
+	*otherSide = new Negation();
+	return Successful;
 
 }
 

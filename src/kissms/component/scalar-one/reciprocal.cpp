@@ -18,7 +18,9 @@ Reciprocal::~Reciprocal() {
 ResultCode Reciprocal::reformFor(Variable* variable,
 		Component** newSide, Component** otherSide) {
 
-	return NotYetImplemented;
+	*newSide = argument;
+	*otherSide = new Reciprocal();
+	return Successful;
 
 }
 

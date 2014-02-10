@@ -100,7 +100,23 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 	if( reformResult == Successful ) {
 		// TODO free(reformComponent); ?!
 		*reformComponent = *newSide;
-		(*(ArgumentsTwo**)newOtherSide)->setLeft(*otherSide);
+		ComponentType ct = (*newOtherSide)->getType();
+		switch (ct) {
+		case tCosinus:
+		case tNegation:
+		case tReciprocal:
+		case tSinus:
+			(*(ArgumentsOne**)newOtherSide)->setArgument(*otherSide);
+
+			break;
+		case tAddition:
+		case tMultiplication:
+			(*(ArgumentsTwo**)newOtherSide)->setLeft(*otherSide);
+
+			break;
+		default:
+			break;
+		}
 		*otherSide = *newOtherSide;
 
 		return Successful;
