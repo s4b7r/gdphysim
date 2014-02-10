@@ -34,6 +34,8 @@ public:
 
 	virtual ComponentType getType();
 
+	virtual bool hasChild( Component *child );
+
 protected:
 	/**
 	 * @brief The Component's argument

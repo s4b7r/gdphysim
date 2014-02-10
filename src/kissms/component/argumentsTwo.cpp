@@ -91,6 +91,17 @@ ComponentType ArgumentsTwo::getType() {
 
 }
 
+bool ArgumentsTwo::hasChild(Component* child) {
+
+	if( argumentLeft == child || argumentRight == child ) {
+		return true;
+	} else if( argumentLeft->hasChild(child) || argumentRight->hasChild(child) ) {
+		return true;
+	}
+	return false;
+
+}
+
 }
 
 

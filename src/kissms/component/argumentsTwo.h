@@ -49,6 +49,8 @@ public:
 
 	virtual ComponentType getType();
 
+	virtual bool hasChild( Component *child );
+
 protected:
 	/**
 	 * @brief The Component's left side argument
@@ -79,8 +81,6 @@ protected:
 	// TODO Implement isOnLeft and isOnRight for Components instead of Variables
 	// TODO Remove variablesLeft and variablesRight vectors. Instead ...
 	// ... search for the Component in each children recursively
-	// TODO Add a search function which searches a Component and all it's ...
-	// ... children for a given Component
 
 	/**
 	 * @brief Checks whether a Variable is on the Equation's right side

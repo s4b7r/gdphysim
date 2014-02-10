@@ -75,6 +75,11 @@ public:
 	 */
 	virtual ComponentType getType();
 
+	/**
+	 *
+	 */
+	virtual bool hasChild( Component *child ) = 0;
+
 protected:
 	double quantity;
 

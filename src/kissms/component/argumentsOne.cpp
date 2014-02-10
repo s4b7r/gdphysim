@@ -45,6 +45,15 @@ ComponentType ArgumentsOne::getType() {
 
 }
 
+bool kissms::ArgumentsOne::hasChild(Component* child) {
+
+	if( argument == child ) {
+		return true;
+	} else if( argument->hasChild(child) ) {
+		return true;
+	}
+	return false;
+
 }
 
-
+}
