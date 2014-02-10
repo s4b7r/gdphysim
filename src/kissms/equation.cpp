@@ -98,7 +98,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 	reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide);
 
 	if( reformResult == Successful ) {
-		free(reformComponent);
+		// TODO free(reformComponent); ?!
 		*reformComponent = *newSide;
 		(*(ArgumentsTwo**)newOtherSide)->setLeft(*otherSide);
 		*otherSide = *newOtherSide;
