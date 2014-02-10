@@ -13,7 +13,16 @@ namespace kissms {
 
 class Sinus : public ArgumentsOne {
 
-// TODO Sinus
+public:
+	Sinus();
+	virtual ~Sinus();
+
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
+
+	virtual ResultCode calculate();
+
+	virtual ComponentType getType();
+
 
 };
 

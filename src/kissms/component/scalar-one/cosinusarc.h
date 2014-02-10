@@ -13,7 +13,16 @@ namespace kissms {
 
 class CosinusArc : public ArgumentsOne {
 
-// TODO CosinusArc
+public:
+	CosinusArc();
+	virtual ~CosinusArc();
+
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
+
+	virtual ResultCode calculate();
+
+	virtual ComponentType getType();
+
 
 };
 

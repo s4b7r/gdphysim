@@ -115,6 +115,8 @@ class Variable;
 #include "kissms/component/scalar-one/negation.h"
 #include "kissms/component/scalar-one/reciprocal.h"
 #include "kissms/component/scalar-one/sinus.h"
+#include "kissms/component/scalar-one/sinusarc.h"
+#include "kissms/component/scalar-one/cosinusarc.h"
 
 // Include scalar components with two arguments
 #include "kissms/component/scalar-two/addition.h"
