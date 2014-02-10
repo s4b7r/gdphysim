@@ -11,6 +11,9 @@
 
 namespace kissms {
 
+/**
+ * @brief Component representing an Addition of two Components
+ */
 class Addition : public ArgumentsTwo {
 
 public:

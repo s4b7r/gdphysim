@@ -11,6 +11,9 @@
 
 namespace kissms {
 
+/**
+ * @brief Component representing a multiplication of two Components
+ */
 class Multiplication : public ArgumentsTwo {
 
 public:

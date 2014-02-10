@@ -11,6 +11,9 @@
 
 namespace kissms {
 
+/**
+ * @brief Component representing the recirpocal of one single Component
+ */
 class Reciprocal : public ArgumentsOne {
 
 public:

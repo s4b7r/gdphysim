@@ -11,6 +11,9 @@
 
 namespace kissms {
 
+/**
+ * @brief Component representing the negation of a single Component
+ */
 class Negation : public ArgumentsOne {
 
 public:

@@ -79,6 +79,9 @@ public:
 	virtual bool hasChild( Component *child ) = 0;
 
 protected:
+	/**
+	 * @brief The Component's numerical value, if any
+	 */
 	double quantity;
 
 };

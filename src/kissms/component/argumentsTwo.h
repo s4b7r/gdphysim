@@ -64,13 +64,15 @@ protected:
 
 	/**
 	 * @brief Checks whether an other Component is on the Component's left side
-	 * @param variable Variable to check for
+	 * @param component Variable to check for
+	 * @return bool
 	 */
 	bool isOnLeft( Component *component );
 
 	/**
 	 * @brief Checks whether an other Component is on the Component's right side
-	 * @param variable Variable to check for
+	 * @param component Variable to check for
+	 * @return bool
 	 */
 	bool isOnRight( Component *component );
 

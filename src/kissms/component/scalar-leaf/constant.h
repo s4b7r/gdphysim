@@ -44,7 +44,7 @@ public:
 
 	/**
 	 * @brief Set the Constant's value
-	 * @param name A zero-terminated character array representing the Constant's value
+	 * @param value A zero-terminated character array representing the Constant's value
 	 */
 	void setValue( char *value );
 
