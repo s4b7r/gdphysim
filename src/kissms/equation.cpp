@@ -68,9 +68,8 @@ bool Equation::isExplicitly(Variable* variable) {
 
 	if( argumentLeft == (Component*)variable || argumentRight == (Component*)variable ) {
 		return true;
-	} else {
-		return false;
 	}
+	return false;
 
 }
 

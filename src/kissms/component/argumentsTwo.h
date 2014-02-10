@@ -63,37 +63,16 @@ protected:
 	Component *argumentRight;
 
 	/**
-	 * @brief All Variables on the Component's left side
-	 */
-	std::vector<Variable*> variablesLeft;
-
-	/**
-	 * @brief All Variables on the Component's right side
-	 */
-	std::vector<Variable*> variablesRight;
-
-	/**
 	 * @brief Checks whether a Variable is on the Equation's left side
 	 * @param variable Variable to check for
 	 */
-	bool isOnLeft( Variable *variable );
-
-	// TODO Implement isOnLeft and isOnRight for Components instead of Variables
-	// TODO Remove variablesLeft and variablesRight vectors. Instead ...
-	// ... search for the Component in each children recursively
+	bool isOnLeft( Component *component );
 
 	/**
 	 * @brief Checks whether a Variable is on the Equation's right side
 	 * @param variable Variable to check for
 	 */
-	bool isOnRight( Variable *variable );
-
-	/**
-	 * @brief Checks whether a given std::vector<Variable*> contains a given Variable
-	 * @param variable Variable to check for
-	 * @param vector std::vector<Variable*> in which variable shall be searched
-	 */
-	bool isOnVector( Variable *variable, std::vector<Variable*> vector );
+	bool isOnRight( Component *component );
 
 };
 

@@ -26,18 +26,12 @@ ArgumentsTwo::~ArgumentsTwo() {
 void ArgumentsTwo::setLeft(Component* argument) {
 
 	argumentLeft = argument;
-	if( argument->getType() == tVariable ) {
-		variablesLeft.push_back((Variable*) argument);
-	}
 
 }
 
 void ArgumentsTwo::setRight(Component* argument) {
 
 	argumentRight = argument;
-	if( argument->getType() == tVariable ) {
-		variablesRight.push_back((Variable*) argument);
-	}
 
 }
 
@@ -60,26 +54,23 @@ bool ArgumentsTwo::isQuantifiable() {
 
 }
 
-bool ArgumentsTwo::isOnLeft(Variable* variable) {
+bool ArgumentsTwo::isOnLeft(Component* component) {
 
-	return isOnVector(variable, variablesLeft);
+	if( argumentLeft == component ) {
+		return true;
+	} else if( argumentLeft->hasChild(component) ) {
+		return true;
+	}
+	return false;
 
 }
 
-bool ArgumentsTwo::isOnRight(Variable* variable) {
+bool ArgumentsTwo::isOnRight(Component* component) {
 
-	return isOnVector(variable, variablesRight);
-
-}
-
-bool ArgumentsTwo::isOnVector(Variable* variable, std::vector<Variable*> vector) {
-
-	std::vector<Variable*>::iterator it = vector.begin();
-
-	while( it != vector.end() ) {
-		if( *it == variable ) {
-			return true;
-		}
+	if( argumentRight == component ) {
+		return true;
+	} else if( argumentRight->hasChild(component) ) {
+		return true;
 	}
 	return false;
 
