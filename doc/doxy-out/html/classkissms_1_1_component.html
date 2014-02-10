@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>kissms</b></li><li class="navelem"><a class="el" href="classkissms_1_1_component.html">Component</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacekissms.html">kissms</a></li><li class="navelem"><a class="el" href="classkissms_1_1_component.html">Component</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -105,34 +105,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classkissms_1_1_component__inherit__graph.png" border="0" usemap="#kissms_1_1_component_inherit__map" alt="Inheritance graph"/></div>
 <map name="kissms_1_1_component_inherit__map" id="kissms_1_1_component_inherit__map">
-<area shape="rect" id="node3" href="classkissms_1_1_arguments_one.html" title="Representation of Components taking one argument. " alt="" coords="193,112,351,141"/><area shape="rect" id="node13" href="classkissms_1_1_arguments_two.html" title="Representation of Components taking two arguments. " alt="" coords="192,272,352,301"/><area shape="rect" id="node23" href="classkissms_1_1_constant.html" title="Component representing a single constant value. " alt="" coords="209,325,335,355"/><area shape="rect" id="node25" href="classkissms_1_1_variable.html" title="Component representing a single variable value. " alt="" coords="213,379,331,408"/><area shape="rect" id="node27" href="classkissms_1_1_vector.html" title="kissms::Vector" alt="" coords="217,432,327,461"/><area shape="rect" id="node5" href="classkissms_1_1_cosinus.html" title="kissms::Cosinus" alt="" coords="417,5,537,35"/><area shape="rect" id="node7" href="classkissms_1_1_negation.html" title="kissms::Negation" alt="" coords="416,59,539,88"/><area shape="rect" id="node9" href="classkissms_1_1_reciprocal.html" title="kissms::Reciprocal" alt="" coords="411,112,544,141"/><area shape="rect" id="node11" href="classkissms_1_1_sinus.html" title="kissms::Sinus" alt="" coords="425,165,529,195"/><area shape="rect" id="node15" href="classkissms_1_1_addition.html" title="kissms::Addition" alt="" coords="419,219,536,248"/><area shape="rect" id="node17" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. " alt="" coords="416,272,539,301"/><area shape="rect" id="node19" href="classkissms_1_1_multiplication.html" title="kissms::Multiplication" alt="" coords="404,325,551,355"/><area shape="rect" id="node21" href="classkissms_1_1_vectorproduct.html" title="kissms::Vectorproduct" alt="" coords="401,379,553,408"/></map>
+<area shape="rect" id="node3" href="classkissms_1_1_arguments_one.html" title="Representation of Components taking one argument. " alt="" coords="193,112,351,141"/><area shape="rect" id="node13" href="classkissms_1_1_arguments_two.html" title="Representation of Components taking two arguments. " alt="" coords="192,272,352,301"/><area shape="rect" id="node23" href="classkissms_1_1_constant.html" title="Component representing a single constant value. " alt="" coords="209,325,335,355"/><area shape="rect" id="node25" href="classkissms_1_1_variable.html" title="Component representing a single variable value. " alt="" coords="213,379,331,408"/><area shape="rect" id="node27" href="classkissms_1_1_vector.html" title="kissms::Vector" alt="" coords="217,432,327,461"/><area shape="rect" id="node5" href="classkissms_1_1_cosinus.html" title="kissms::Cosinus" alt="" coords="417,5,537,35"/><area shape="rect" id="node7" href="classkissms_1_1_negation.html" title="Component representing the negation of a single Component. " alt="" coords="416,59,539,88"/><area shape="rect" id="node9" href="classkissms_1_1_reciprocal.html" title="Component representing the recirpocal of one single Component. " alt="" coords="411,112,544,141"/><area shape="rect" id="node11" href="classkissms_1_1_sinus.html" title="kissms::Sinus" alt="" coords="425,165,529,195"/><area shape="rect" id="node15" href="classkissms_1_1_addition.html" title="Component representing an Addition of two Components. " alt="" coords="419,219,536,248"/><area shape="rect" id="node17" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. " alt="" coords="416,272,539,301"/><area shape="rect" id="node19" href="classkissms_1_1_multiplication.html" title="Component representing a multiplication of two Components. " alt="" coords="404,325,551,355"/><area shape="rect" id="node21" href="classkissms_1_1_vectorproduct.html" title="kissms::Vectorproduct" alt="" coords="401,379,553,408"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a256b837afb2726a85fe81a39599a35ff"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">calculate</a> ()=0</td></tr>
+<tr class="memitem:a256b837afb2726a85fe81a39599a35ff"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">calculate</a> ()=0</td></tr>
 <tr class="memdesc:a256b837afb2726a85fe81a39599a35ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value.  <a href="#a256b837afb2726a85fe81a39599a35ff">More...</a><br/></td></tr>
 <tr class="separator:a256b837afb2726a85fe81a39599a35ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba19927e39bfdfc72a31a058b24995f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaba19927e39bfdfc72a31a058b24995f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getQuantity</b> ()</td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aaba19927e39bfdfc72a31a058b24995f">getQuantity</a> ()</td></tr>
+<tr class="memdesc:aaba19927e39bfdfc72a31a058b24995f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical representation, if any. <br/></td></tr>
 <tr class="separator:aaba19927e39bfdfc72a31a058b24995f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91b32f1d444d2ca44ba3c5583fd4abda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91b32f1d444d2ca44ba3c5583fd4abda"></a>
-virtual ComponentType&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
+virtual <a class="el" href="namespacekissms.html#a9552b1b67ce8edb93cfbc71e0b1c885d">ComponentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a91b32f1d444d2ca44ba3c5583fd4abda">getType</a> ()</td></tr>
+<tr class="memdesc:a91b32f1d444d2ca44ba3c5583fd4abda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s type. <br/></td></tr>
 <tr class="separator:a91b32f1d444d2ca44ba3c5583fd4abda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2a2c5e426700dce80c0c3d2c7e7476f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2a2c5e426700dce80c0c3d2c7e7476f"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#ae2a2c5e426700dce80c0c3d2c7e7476f">hasChild</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *child)=0</td></tr>
+<tr class="memdesc:ae2a2c5e426700dce80c0c3d2c7e7476f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is a child of this <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>. <br/></td></tr>
+<tr class="separator:ae2a2c5e426700dce80c0c3d2c7e7476f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a442885b45058f07566a0e52192f13cef"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a442885b45058f07566a0e52192f13cef">isCalculable</a> ()=0</td></tr>
 <tr class="memdesc:a442885b45058f07566a0e52192f13cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is calculable.  <a href="#a442885b45058f07566a0e52192f13cef">More...</a><br/></td></tr>
 <tr class="separator:a442885b45058f07566a0e52192f13cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa919cd3999147b744975aea91c7d2928"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aa919cd3999147b744975aea91c7d2928">isQuantifiable</a> ()=0</td></tr>
 <tr class="memdesc:aa919cd3999147b744975aea91c7d2928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is representable by a numerical value.  <a href="#aa919cd3999147b744975aea91c7d2928">More...</a><br/></td></tr>
 <tr class="separator:aa919cd3999147b744975aea91c7d2928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afed1b31c97ebe0113fc0890cbd50f005"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#afed1b31c97ebe0113fc0890cbd50f005">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **placeholder)=0</td></tr>
-<tr class="memdesc:afed1b31c97ebe0113fc0890cbd50f005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Components for reformation.  <a href="#afed1b31c97ebe0113fc0890cbd50f005">More...</a><br/></td></tr>
-<tr class="separator:afed1b31c97ebe0113fc0890cbd50f005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3046846cbd7c6e1a21ad5fff10da77e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#ac3046846cbd7c6e1a21ad5fff10da77e">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide)=0</td></tr>
+<tr class="memdesc:ac3046846cbd7c6e1a21ad5fff10da77e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Components for reformation.  <a href="#ac3046846cbd7c6e1a21ad5fff10da77e">More...</a><br/></td></tr>
+<tr class="separator:ac3046846cbd7c6e1a21ad5fff10da77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aa550c0255d39b7184b3c58d462f3b8af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa550c0255d39b7184b3c58d462f3b8af"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aa550c0255d39b7184b3c58d462f3b8af">quantity</a></td></tr>
+<tr class="memdesc:aa550c0255d39b7184b3c58d462f3b8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value, if any. <br/></td></tr>
 <tr class="separator:aa550c0255d39b7184b3c58d462f3b8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -146,7 +153,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual ResultCode kissms::Component::calculate </td>
+          <td class="memname">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Component::calculate </td>
           <td>(</td>
           <td class="paramname">)</td><td></td>
           <td></td>
@@ -163,7 +170,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
 <dl class="section return"><dt>Returns</dt><dd>ResultCode</dd></dl>
 <p>Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value as far as the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s childs allow this. </p>
 
-<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#a9855db6a1fe4aede30340f61c26ce076">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#a51cebd52f8a0bba47d6c9a32c62cb4b6">kissms::Variable</a>, <a class="el" href="classkissms_1_1_equation.html#a1ce00db13b36de15d2495e6f916ddf4a">kissms::Equation</a>, <a class="el" href="classkissms_1_1_negation.html#a103dd83329dbeb55cec2186866db1cc9">kissms::Negation</a>, and <a class="el" href="classkissms_1_1_addition.html#afe27eb760ce0143414083fcf4d5ad5bd">kissms::Addition</a>.</p>
+<p>Implemented in <a class="el" href="classkissms_1_1_variable.html#a51cebd52f8a0bba47d6c9a32c62cb4b6">kissms::Variable</a>, <a class="el" href="classkissms_1_1_constant.html#a9855db6a1fe4aede30340f61c26ce076">kissms::Constant</a>, <a class="el" href="classkissms_1_1_equation.html#a1ce00db13b36de15d2495e6f916ddf4a">kissms::Equation</a>, <a class="el" href="classkissms_1_1_negation.html#a103dd83329dbeb55cec2186866db1cc9">kissms::Negation</a>, <a class="el" href="classkissms_1_1_reciprocal.html#a0df7aa7ab63fc01f162acbb6ea44fabf">kissms::Reciprocal</a>, <a class="el" href="classkissms_1_1_addition.html#afe27eb760ce0143414083fcf4d5ad5bd">kissms::Addition</a>, and <a class="el" href="classkissms_1_1_multiplication.html#a7668d7e4276e1f19786509c1dbe25d74">kissms::Multiplication</a>.</p>
 
 </div>
 </div>
@@ -199,7 +206,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
 <p>Checks all child-Components for unresolved Variables. In case of finding at least one unresolved <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is not calculable. Finding no unresolved Variables does not proove the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> as representable by a numerical value.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="classkissms_1_1_component.html#aa919cd3999147b744975aea91c7d2928" title="Checks whether the Component is representable by a numerical value. ">isQuantifiable()</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#a2d2ede1cbcfb344e471afd7bdeac8f14">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#a9633a42cf7f3bb8542f705a881106393">kissms::Variable</a>, <a class="el" href="classkissms_1_1_arguments_two.html#a9973dfc460d49f1d9f59296f2ed35426">kissms::ArgumentsTwo</a>, and <a class="el" href="classkissms_1_1_arguments_one.html#ab4a348facc8d1acae5fb8146f0af62c6">kissms::ArgumentsOne</a>.</p>
+<p>Implemented in <a class="el" href="classkissms_1_1_variable.html#a9633a42cf7f3bb8542f705a881106393">kissms::Variable</a>, <a class="el" href="classkissms_1_1_constant.html#a2d2ede1cbcfb344e471afd7bdeac8f14">kissms::Constant</a>, <a class="el" href="classkissms_1_1_arguments_two.html#a9973dfc460d49f1d9f59296f2ed35426">kissms::ArgumentsTwo</a>, and <a class="el" href="classkissms_1_1_arguments_one.html#ab4a348facc8d1acae5fb8146f0af62c6">kissms::ArgumentsOne</a>.</p>
 
 </div>
 </div>
@@ -235,11 +242,11 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
 <p>Checks all child-Components whether they are representable by numerical values.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="classkissms_1_1_component.html#a442885b45058f07566a0e52192f13cef" title="Checks whether the Component is calculable. ">isCalculable()</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#a94451fa66d467eef7fae40ccd0a75039">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#a7f12f0ed31f8ee613e50cf4c586c8fe3">kissms::Variable</a>, <a class="el" href="classkissms_1_1_arguments_two.html#af4286922473e4a87b8ba0f5b80cc455b">kissms::ArgumentsTwo</a>, and <a class="el" href="classkissms_1_1_arguments_one.html#a8547a025f36e43e3a164b7ad5faed023">kissms::ArgumentsOne</a>.</p>
+<p>Implemented in <a class="el" href="classkissms_1_1_variable.html#a7f12f0ed31f8ee613e50cf4c586c8fe3">kissms::Variable</a>, <a class="el" href="classkissms_1_1_constant.html#a94451fa66d467eef7fae40ccd0a75039">kissms::Constant</a>, <a class="el" href="classkissms_1_1_arguments_two.html#af4286922473e4a87b8ba0f5b80cc455b">kissms::ArgumentsTwo</a>, and <a class="el" href="classkissms_1_1_arguments_one.html#a8547a025f36e43e3a164b7ad5faed023">kissms::ArgumentsOne</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="afed1b31c97ebe0113fc0890cbd50f005"></a>
+<a class="anchor" id="ac3046846cbd7c6e1a21ad5fff10da77e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -247,7 +254,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual ResultCode kissms::Component::reformFor </td>
+          <td class="memname">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Component::reformFor </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classkissms_1_1_variable.html">Variable</a> *&#160;</td>
           <td class="paramname"><em>variable</em>, </td>
@@ -262,13 +269,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classkissms_1_1_component.html">Component</a> **&#160;</td>
-          <td class="paramname"><em>otherSide</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classkissms_1_1_component.html">Component</a> **&#160;</td>
-          <td class="paramname"><em>placeholder</em>&#160;</td>
+          <td class="paramname"><em>otherSide</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -289,13 +290,12 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
     <tr><td class="paramname">variable</td><td><a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> for which the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> shall reform itself </td></tr>
     <tr><td class="paramname">newSide</td><td>New <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> replacing the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> on this side of the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> </td></tr>
     <tr><td class="paramname">otherSide</td><td><a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> for reformation of the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>'s other side </td></tr>
-    <tr><td class="paramname">placeholder</td><td>Placeholder which shall be replaced by the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>'s old other side </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ResultCode </dd></dl>
 
-<p>Implemented in <a class="el" href="classkissms_1_1_constant.html#ae6193518345ba262d05fe32f93e544df">kissms::Constant</a>, <a class="el" href="classkissms_1_1_variable.html#aa0d1c72b7e3bd7ac4da98582d4806fc7">kissms::Variable</a>, <a class="el" href="classkissms_1_1_equation.html#a5231c01b6cdf190822a424bc3cfcaa42">kissms::Equation</a>, <a class="el" href="classkissms_1_1_negation.html#a6870e43766971eabe76f9266134c7c51">kissms::Negation</a>, and <a class="el" href="classkissms_1_1_addition.html#ac285ac91f5c4e84f86a3dfa41ea4bae0">kissms::Addition</a>.</p>
+<p>Implemented in <a class="el" href="classkissms_1_1_variable.html#a75d47c3d750b1a9233e1adb9f87369eb">kissms::Variable</a>, <a class="el" href="classkissms_1_1_constant.html#ab4a6c28631652789ec384c490378bbe7">kissms::Constant</a>, <a class="el" href="classkissms_1_1_equation.html#a98d85fa9fb2b90a582278c4259a8610b">kissms::Equation</a>, <a class="el" href="classkissms_1_1_negation.html#a9e3bfb5d239ca9f4a90d5ee8d75d88c6">kissms::Negation</a>, <a class="el" href="classkissms_1_1_reciprocal.html#a7fbf7f4032be9357df36b7b31bbe5ea6">kissms::Reciprocal</a>, <a class="el" href="classkissms_1_1_addition.html#a425fea0177ee28c2dc0c463badc13fc0">kissms::Addition</a>, and <a class="el" href="classkissms_1_1_multiplication.html#a6a71afa71487dc1f988e7830bcb9844c">kissms::Multiplication</a>.</p>
 
 </div>
 </div>
@@ -306,7 +306,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 6 2014 00:59:27 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 10 2014 18:00:59 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

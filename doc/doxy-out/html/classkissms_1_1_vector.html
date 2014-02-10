@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>kissms</b></li><li class="navelem"><a class="el" href="classkissms_1_1_vector.html">Vector</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacekissms.html">kissms</a></li><li class="navelem"><a class="el" href="classkissms_1_1_vector.html">Vector</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -104,27 +104,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_methods_classkissms_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classkissms_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classkissms_1_1_component.html">kissms::Component</a></td></tr>
-<tr class="memitem:a256b837afb2726a85fe81a39599a35ff inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">calculate</a> ()=0</td></tr>
+<tr class="memitem:a256b837afb2726a85fe81a39599a35ff inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">calculate</a> ()=0</td></tr>
 <tr class="memdesc:a256b837afb2726a85fe81a39599a35ff inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value.  <a href="#a256b837afb2726a85fe81a39599a35ff">More...</a><br/></td></tr>
 <tr class="separator:a256b837afb2726a85fe81a39599a35ff inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaba19927e39bfdfc72a31a058b24995f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getQuantity</b> ()</td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aaba19927e39bfdfc72a31a058b24995f">getQuantity</a> ()</td></tr>
+<tr class="memdesc:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical representation, if any. <br/></td></tr>
 <tr class="separator:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91b32f1d444d2ca44ba3c5583fd4abda inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91b32f1d444d2ca44ba3c5583fd4abda"></a>
-virtual ComponentType&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
+virtual <a class="el" href="namespacekissms.html#a9552b1b67ce8edb93cfbc71e0b1c885d">ComponentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a91b32f1d444d2ca44ba3c5583fd4abda">getType</a> ()</td></tr>
+<tr class="memdesc:a91b32f1d444d2ca44ba3c5583fd4abda inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s type. <br/></td></tr>
 <tr class="separator:a91b32f1d444d2ca44ba3c5583fd4abda inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2a2c5e426700dce80c0c3d2c7e7476f inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2a2c5e426700dce80c0c3d2c7e7476f"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#ae2a2c5e426700dce80c0c3d2c7e7476f">hasChild</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *child)=0</td></tr>
+<tr class="memdesc:ae2a2c5e426700dce80c0c3d2c7e7476f inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is a child of this <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>. <br/></td></tr>
+<tr class="separator:ae2a2c5e426700dce80c0c3d2c7e7476f inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a442885b45058f07566a0e52192f13cef inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a442885b45058f07566a0e52192f13cef">isCalculable</a> ()=0</td></tr>
 <tr class="memdesc:a442885b45058f07566a0e52192f13cef inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is calculable.  <a href="#a442885b45058f07566a0e52192f13cef">More...</a><br/></td></tr>
 <tr class="separator:a442885b45058f07566a0e52192f13cef inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa919cd3999147b744975aea91c7d2928 inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aa919cd3999147b744975aea91c7d2928">isQuantifiable</a> ()=0</td></tr>
 <tr class="memdesc:aa919cd3999147b744975aea91c7d2928 inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is representable by a numerical value.  <a href="#aa919cd3999147b744975aea91c7d2928">More...</a><br/></td></tr>
 <tr class="separator:aa919cd3999147b744975aea91c7d2928 inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afed1b31c97ebe0113fc0890cbd50f005 inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#afed1b31c97ebe0113fc0890cbd50f005">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **placeholder)=0</td></tr>
-<tr class="memdesc:afed1b31c97ebe0113fc0890cbd50f005 inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Components for reformation.  <a href="#afed1b31c97ebe0113fc0890cbd50f005">More...</a><br/></td></tr>
-<tr class="separator:afed1b31c97ebe0113fc0890cbd50f005 inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3046846cbd7c6e1a21ad5fff10da77e inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#ac3046846cbd7c6e1a21ad5fff10da77e">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide)=0</td></tr>
+<tr class="memdesc:ac3046846cbd7c6e1a21ad5fff10da77e inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Components for reformation.  <a href="#ac3046846cbd7c6e1a21ad5fff10da77e">More...</a><br/></td></tr>
+<tr class="separator:ac3046846cbd7c6e1a21ad5fff10da77e inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classkissms_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classkissms_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classkissms_1_1_component.html">kissms::Component</a></td></tr>
 <tr class="memitem:aa550c0255d39b7184b3c58d462f3b8af inherit pro_attribs_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa550c0255d39b7184b3c58d462f3b8af"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aa550c0255d39b7184b3c58d462f3b8af">quantity</a></td></tr>
+<tr class="memdesc:aa550c0255d39b7184b3c58d462f3b8af inherit pro_attribs_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value, if any. <br/></td></tr>
 <tr class="separator:aa550c0255d39b7184b3c58d462f3b8af inherit pro_attribs_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
@@ -133,7 +140,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>quantity</b></td></
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 6 2014 00:59:27 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 10 2014 18:00:59 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

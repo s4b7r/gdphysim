@@ -6,11 +6,11 @@
 <area shape="rect" id="node25" href="$classkissms_1_1_variable.html" title="Component representing a single variable value. " alt="" coords="213,379,331,408"/>
 <area shape="rect" id="node27" href="$classkissms_1_1_vector.html" title="kissms::Vector" alt="" coords="217,432,327,461"/>
 <area shape="rect" id="node5" href="$classkissms_1_1_cosinus.html" title="kissms::Cosinus" alt="" coords="417,5,537,35"/>
-<area shape="rect" id="node7" href="$classkissms_1_1_negation.html" title="kissms::Negation" alt="" coords="416,59,539,88"/>
-<area shape="rect" id="node9" href="$classkissms_1_1_reciprocal.html" title="kissms::Reciprocal" alt="" coords="411,112,544,141"/>
+<area shape="rect" id="node7" href="$classkissms_1_1_negation.html" title="Component representing the negation of a single Component. " alt="" coords="416,59,539,88"/>
+<area shape="rect" id="node9" href="$classkissms_1_1_reciprocal.html" title="Component representing the recirpocal of one single Component. " alt="" coords="411,112,544,141"/>
 <area shape="rect" id="node11" href="$classkissms_1_1_sinus.html" title="kissms::Sinus" alt="" coords="425,165,529,195"/>
-<area shape="rect" id="node15" href="$classkissms_1_1_addition.html" title="kissms::Addition" alt="" coords="419,219,536,248"/>
+<area shape="rect" id="node15" href="$classkissms_1_1_addition.html" title="Component representing an Addition of two Components. " alt="" coords="419,219,536,248"/>
 <area shape="rect" id="node17" href="$classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. " alt="" coords="416,272,539,301"/>
-<area shape="rect" id="node19" href="$classkissms_1_1_multiplication.html" title="kissms::Multiplication" alt="" coords="404,325,551,355"/>
+<area shape="rect" id="node19" href="$classkissms_1_1_multiplication.html" title="Component representing a multiplication of two Components. " alt="" coords="404,325,551,355"/>
 <area shape="rect" id="node21" href="$classkissms_1_1_vectorproduct.html" title="kissms::Vectorproduct" alt="" coords="401,379,553,408"/>
 </map>

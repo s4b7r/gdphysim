@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,16 +81,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>kissms</b></li><li class="navelem"><a class="el" href="classkissms_1_1_multiplication.html">Multiplication</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacekissms.html">kissms</a></li><li class="navelem"><a class="el" href="classkissms_1_1_multiplication.html">Multiplication</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classkissms_1_1_multiplication-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">kissms::Multiplication Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> representing a multiplication of two Components.  
+ <a href="classkissms_1_1_multiplication.html#details">More...</a></p>
+
+<p><code>#include &lt;multiplication.h&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for kissms::Multiplication:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -101,12 +107,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <area shape="rect" id="node2" href="classkissms_1_1_arguments_two.html" title="Representation of Components taking two arguments. " alt="" coords="5,83,165,112"/><area shape="rect" id="node4" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. " alt="" coords="16,5,155,35"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7668d7e4276e1f19786509c1dbe25d74"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_multiplication.html#a7668d7e4276e1f19786509c1dbe25d74">calculate</a> ()</td></tr>
+<tr class="memdesc:a7668d7e4276e1f19786509c1dbe25d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value.  <a href="#a7668d7e4276e1f19786509c1dbe25d74">More...</a><br/></td></tr>
+<tr class="separator:a7668d7e4276e1f19786509c1dbe25d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74dc06498d08d4ce8e96ac8006c2af3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74dc06498d08d4ce8e96ac8006c2af3a"></a>
+virtual <a class="el" href="namespacekissms.html#a9552b1b67ce8edb93cfbc71e0b1c885d">ComponentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_multiplication.html#a74dc06498d08d4ce8e96ac8006c2af3a">getType</a> ()</td></tr>
+<tr class="memdesc:a74dc06498d08d4ce8e96ac8006c2af3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s type. <br/></td></tr>
+<tr class="separator:a74dc06498d08d4ce8e96ac8006c2af3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a71afa71487dc1f988e7830bcb9844c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_multiplication.html#a6a71afa71487dc1f988e7830bcb9844c">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide)</td></tr>
+<tr class="memdesc:a6a71afa71487dc1f988e7830bcb9844c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Components for reformation.  <a href="#a6a71afa71487dc1f988e7830bcb9844c">More...</a><br/></td></tr>
+<tr class="separator:a6a71afa71487dc1f988e7830bcb9844c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classkissms_1_1_arguments_two"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classkissms_1_1_arguments_two')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classkissms_1_1_arguments_two.html">kissms::ArgumentsTwo</a></td></tr>
-<tr class="memitem:a200947bb9ee3a969c6e362fa44a460f6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a200947bb9ee3a969c6e362fa44a460f6"></a>
-virtual ComponentType&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
-<tr class="separator:a200947bb9ee3a969c6e362fa44a460f6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefca88fcde4d4b41d725e262a02c24e6"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#aefca88fcde4d4b41d725e262a02c24e6">hasChild</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *child)</td></tr>
+<tr class="memdesc:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is a child of this <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>. <br/></td></tr>
+<tr class="separator:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9973dfc460d49f1d9f59296f2ed35426 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a9973dfc460d49f1d9f59296f2ed35426">isCalculable</a> ()</td></tr>
 <tr class="memdesc:a9973dfc460d49f1d9f59296f2ed35426 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is calculable.  <a href="#a9973dfc460d49f1d9f59296f2ed35426">More...</a><br/></td></tr>
 <tr class="separator:a9973dfc460d49f1d9f59296f2ed35426 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,16 +139,21 @@ virtual ComponentType&#160;</td><td class="memItemRight" valign="bottom"><b>getT
 <tr class="memitem:a91446cdcdd8e907693c7e15f5f753e73 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a91446cdcdd8e907693c7e15f5f753e73">setRight</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *argument)</td></tr>
 <tr class="memdesc:a91446cdcdd8e907693c7e15f5f753e73 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s right side.  <a href="#a91446cdcdd8e907693c7e15f5f753e73">More...</a><br/></td></tr>
 <tr class="separator:a91446cdcdd8e907693c7e15f5f753e73 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classkissms_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classkissms_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classkissms_1_1_component.html">kissms::Component</a></td></tr>
+<tr class="memitem:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaba19927e39bfdfc72a31a058b24995f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aaba19927e39bfdfc72a31a058b24995f">getQuantity</a> ()</td></tr>
+<tr class="memdesc:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical representation, if any. <br/></td></tr>
+<tr class="separator:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classkissms_1_1_arguments_two"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classkissms_1_1_arguments_two')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classkissms_1_1_arguments_two.html">kissms::ArgumentsTwo</a></td></tr>
-<tr class="memitem:ae9b3e4e5a0e48c9feb23492fe662a751 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#ae9b3e4e5a0e48c9feb23492fe662a751">isOnLeft</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable)</td></tr>
-<tr class="memdesc:ae9b3e4e5a0e48c9feb23492fe662a751 inherit pro_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> is on the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>'s left side.  <a href="#ae9b3e4e5a0e48c9feb23492fe662a751">More...</a><br/></td></tr>
-<tr class="separator:ae9b3e4e5a0e48c9feb23492fe662a751 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ce1f358050ace9f40200eac348d8171 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a7ce1f358050ace9f40200eac348d8171">isOnRight</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable)</td></tr>
-<tr class="memdesc:a7ce1f358050ace9f40200eac348d8171 inherit pro_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> is on the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>'s right side.  <a href="#a7ce1f358050ace9f40200eac348d8171">More...</a><br/></td></tr>
-<tr class="separator:a7ce1f358050ace9f40200eac348d8171 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a426a9e6cb1c82d9aad9711190f2fff43 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a426a9e6cb1c82d9aad9711190f2fff43">isOnVector</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, std::vector&lt; <a class="el" href="classkissms_1_1_variable.html">Variable</a> * &gt; vector)</td></tr>
-<tr class="memdesc:a426a9e6cb1c82d9aad9711190f2fff43 inherit pro_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a given std::vector&lt;Variable*&gt; contains a given <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a>.  <a href="#a426a9e6cb1c82d9aad9711190f2fff43">More...</a><br/></td></tr>
-<tr class="separator:a426a9e6cb1c82d9aad9711190f2fff43 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77e6c8368e5af9e5d0d28cb90cdc28be inherit pro_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a77e6c8368e5af9e5d0d28cb90cdc28be">isOnLeft</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *component)</td></tr>
+<tr class="memdesc:a77e6c8368e5af9e5d0d28cb90cdc28be inherit pro_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether an other <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is on the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s left side.  <a href="#a77e6c8368e5af9e5d0d28cb90cdc28be">More...</a><br/></td></tr>
+<tr class="separator:a77e6c8368e5af9e5d0d28cb90cdc28be inherit pro_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d50f4a762e5ce3be76a7d7f68770d7 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#ac7d50f4a762e5ce3be76a7d7f68770d7">isOnRight</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *component)</td></tr>
+<tr class="memdesc:ac7d50f4a762e5ce3be76a7d7f68770d7 inherit pro_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether an other <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is on the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s right side.  <a href="#ac7d50f4a762e5ce3be76a7d7f68770d7">More...</a><br/></td></tr>
+<tr class="separator:ac7d50f4a762e5ce3be76a7d7f68770d7 inherit pro_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classkissms_1_1_arguments_two"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classkissms_1_1_arguments_two')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classkissms_1_1_arguments_two.html">kissms::ArgumentsTwo</a></td></tr>
 <tr class="memitem:a5a27c7df51322e693c141d053072f8a4 inherit pro_attribs_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a27c7df51322e693c141d053072f8a4"></a>
 <a class="el" href="classkissms_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a5a27c7df51322e693c141d053072f8a4">argumentLeft</a></td></tr>
@@ -141,22 +163,100 @@ virtual ComponentType&#160;</td><td class="memItemRight" valign="bottom"><b>getT
 <a class="el" href="classkissms_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a6479b73519bcbecb95c7f77fcdd42d48">argumentRight</a></td></tr>
 <tr class="memdesc:a6479b73519bcbecb95c7f77fcdd42d48 inherit pro_attribs_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s right side argument. <br/></td></tr>
 <tr class="separator:a6479b73519bcbecb95c7f77fcdd42d48 inherit pro_attribs_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2621cee32f9359f8624f977ae08a0db3 inherit pro_attribs_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2621cee32f9359f8624f977ae08a0db3"></a>
-std::vector&lt; <a class="el" href="classkissms_1_1_variable.html">Variable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a2621cee32f9359f8624f977ae08a0db3">variablesLeft</a></td></tr>
-<tr class="memdesc:a2621cee32f9359f8624f977ae08a0db3 inherit pro_attribs_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">All Variables on the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s left side. <br/></td></tr>
-<tr class="separator:a2621cee32f9359f8624f977ae08a0db3 inherit pro_attribs_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3627b931973334933b367e569a3c93ac inherit pro_attribs_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3627b931973334933b367e569a3c93ac"></a>
-std::vector&lt; <a class="el" href="classkissms_1_1_variable.html">Variable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a3627b931973334933b367e569a3c93ac">variablesRight</a></td></tr>
-<tr class="memdesc:a3627b931973334933b367e569a3c93ac inherit pro_attribs_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">All Variables on the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s right side. <br/></td></tr>
-<tr class="separator:a3627b931973334933b367e569a3c93ac inherit pro_attribs_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> representing a multiplication of two Components. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7668d7e4276e1f19786509c1dbe25d74"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Multiplication::calculate </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value. </p>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode</dd></dl>
+<p>Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value as far as the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s childs allow this. </p>
+
+<p>Implements <a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">kissms::Component</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a71afa71487dc1f988e7830bcb9844c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Multiplication::reformFor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_variable.html">Variable</a> *&#160;</td>
+          <td class="paramname"><em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_component.html">Component</a> **&#160;</td>
+          <td class="paramname"><em>newSide</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_component.html">Component</a> **&#160;</td>
+          <td class="paramname"><em>otherSide</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns Components for reformation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">variable</td><td><a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> for which the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> shall reform itself </td></tr>
+    <tr><td class="paramname">newSide</td><td>New <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> replacing the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> on this side of the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> </td></tr>
+    <tr><td class="paramname">otherSide</td><td><a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> for reformation of the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>'s other side </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode </dd></dl>
+
+<p>Implements <a class="el" href="classkissms_1_1_component.html#ac3046846cbd7c6e1a21ad5fff10da77e">kissms::Component</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/kissms/component/scalar-two/multiplication.h</li>
+<li>src/kissms/component/scalar-two/multiplication.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 6 2014 00:59:27 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 10 2014 18:00:59 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
