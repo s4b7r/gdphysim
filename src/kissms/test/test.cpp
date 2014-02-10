@@ -122,6 +122,60 @@ void test4() {
 
 }
 
+void test5() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Reciprocal *re = new kissms::Reciprocal();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Constant *co = new kissms::Constant();
+
+	char *na = (char*) malloc(sizeof(char) * 2);
+	na[0] = 'a';
+	na[1] = 0;
+
+	eq->setArguments(re, co);
+	re->setArgument(va);
+	va->setName(na);
+	co->setValue(0.5);
+
+	kissms::ResultCode rc = eq->calculateFor(va);
+
+	printf("%d\n", rc);
+
+	double value = -42;
+	value = va->getQuantity();
+
+	printf("%f", value);
+
+}
+
+void test6() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Negation *ne = new kissms::Negation();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Constant *co = new kissms::Constant();
+
+	char *na = (char*) malloc(sizeof(char) * 2);
+	na[0] = 'a';
+	na[1] = 0;
+
+	eq->setArguments(ne, co);
+	ne->setArgument(va);
+	va->setName(na);
+	co->setValue(0.5);
+
+	kissms::ResultCode rc = eq->calculateFor(va);
+
+	printf("%d\n", rc);
+
+	double value = -42;
+	value = va->getQuantity();
+
+	printf("%f", value);
+
+}
+
 int main(int argc, char **argv) {
 
 	test1();
@@ -131,6 +185,10 @@ int main(int argc, char **argv) {
 	test3();
 	printf("\n\n");
 	test4();
+	printf("\n\n");
+	test5();
+	printf("\n\n");
+	test6();
 
 	return 0;
 
