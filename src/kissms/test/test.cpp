@@ -203,6 +203,45 @@ void test7() {
 
 }
 
+void test8() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Sinus *sin1 = new kissms::Sinus();
+	kissms::Cosinus *cos1 = new kissms::Cosinus();
+	kissms::Sinus *sin2 = new kissms::Sinus();
+	kissms::Cosinus *cos2 = new kissms::Cosinus();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Constant *co = new kissms::Constant();
+	kissms::Multiplication *mu1 = new kissms::Multiplication();
+	kissms::Multiplication *mu2 = new kissms::Multiplication();
+	kissms::Addition *add = new kissms::Addition();
+
+	char *na = (char*) malloc(sizeof(char) * 2);
+	na[0] = 'a';
+	na[1] = 0;
+
+	eq->setArguments(add, va);
+	add->setArguments(mu1, mu2);
+	mu1->setArguments(sin1, sin2);
+	mu2->setArguments(cos1, cos2);
+	sin1->setArgument(co);
+	sin2->setArgument(co);
+	cos1->setArgument(co);
+	cos2->setArgument(co);
+	co->setValue(1);
+	va->setName(na);
+
+	kissms::ResultCode rc = eq->calculateFor(va);
+
+	printf("%d\n", rc);
+
+	double value = -42;
+	value = va->getQuantity();
+
+	printf("%f", value);
+
+}
+
 int main(int argc, char **argv) {
 
 	/*test1();
@@ -216,8 +255,10 @@ int main(int argc, char **argv) {
 	test5();
 	printf("\n");
 	test6();
-	printf("\n");*/
+	printf("\n");
 	test7();
+	printf("\n");*/
+	test8();
 
 	return 0;
 
