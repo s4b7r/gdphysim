@@ -13,7 +13,7 @@ namespace kissms {
 
 class Cosinus : public ArgumentsOne {
 
-
+// TODO Cosinus!
 
 };
 

@@ -13,7 +13,7 @@ namespace kissms {
 
 class Sinus : public ArgumentsOne {
 
-
+// TODO Sinus
 
 };
 
