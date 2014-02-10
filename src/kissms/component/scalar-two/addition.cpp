@@ -16,7 +16,7 @@ Addition::~Addition() {
 }
 
 ResultCode Addition::reformFor(Variable* variable, Component** newSide,
-		Component** otherSide, Component** placeholder) {
+		Component** otherSide) {
 
 	Addition *addi = new Addition();
 	Negation *nega = new Negation();
@@ -34,7 +34,7 @@ ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 	addi->setRight(nega);
 	addi->setLeft(cons);
 	*otherSide = addi;
-	*placeholder = cons;
+	//*placeholder = cons;
 
 	return Successful;
 

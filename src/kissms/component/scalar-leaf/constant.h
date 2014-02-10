@@ -86,8 +86,9 @@ public:
 
 	virtual bool isQuantifiable();
 
-	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
-			Component **placeholder );
+	//virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
+		//	Component **placeholder );
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
 
 	virtual ResultCode calculate();
 

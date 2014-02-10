@@ -95,9 +95,9 @@ void test3() {
 
 int main(int argc, char **argv) {
 
-	//test1();
+	test1();
 	printf("\n\n");
-	//test2();
+	test2();
 	printf("\n\n");
 	test3();
 

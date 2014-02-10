@@ -16,7 +16,7 @@ Negation::~Negation() {
 }
 
 ResultCode Negation::reformFor(Variable* variable, Component** newSide,
-		Component** otherSide, Component** placeholder) {
+		Component** otherSide) {
 
 	printf("neg::ref");
 	return NotYetImplemented;

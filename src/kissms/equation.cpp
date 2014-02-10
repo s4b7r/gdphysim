@@ -98,7 +98,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 	Component **otherSide;
 	Component **newSide = (Component**) malloc(sizeof(Component*));
 	Component **newOtherSide = (Component**) malloc(sizeof(Component*));
-	Component **placeholder = (Component**) malloc(sizeof(Component*));
+	//Component **placeholder = (Component**) malloc(sizeof(Component*));
 	ResultCode reformResult;
 
 	if( variableOnLeft ) {
@@ -109,13 +109,14 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 		otherSide = &argumentLeft;
 	}
 
-	reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide, placeholder);
+	//reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide, placeholder);
+	reformResult = (*reformComponent)->reformFor(variable, newSide, newOtherSide);
 
 	if( reformResult == Successful ) {
 		*reformComponent = *newSide;
 		// TODO Think about memory leaks
 		// Is the old Component referenced anywhere else?
-		*placeholder = *otherSide;
+		//*placeholder = *otherSide;
 		(*(ArgumentsTwo**)newOtherSide)->setLeft(*otherSide);
 		// TODO Think about memory leaks
 		// Is the placeholder referenced anywhere else?
