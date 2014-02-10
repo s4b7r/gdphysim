@@ -18,7 +18,7 @@ Multiplication::~Multiplication() {
 ResultCode Multiplication::reformFor(Variable* variable,
 		Component** newSide, Component** otherSide) {
 
-	Multiplication *multi = new Multiplication();
+	*otherSide = new Multiplication();
 	Reciprocal *reci = new Reciprocal();
 	printf("isOnLeft: %d", isOnLeft((Component*)variable));
 	if( isOnLeft((Component*)variable) ) {
@@ -30,8 +30,7 @@ ResultCode Multiplication::reformFor(Variable* variable,
 	} else {
 		return ImpossibleState;
 	}
-	multi->setRight(reci);
-	*otherSide = multi;
+	(*(Multiplication**)otherSide)->setRight(reci);
 
 	return Successful;
 
