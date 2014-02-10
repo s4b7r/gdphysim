@@ -13,7 +13,17 @@ namespace kissms {
 
 class Reciprocal : public ArgumentsOne {
 
+public:
+	Reciprocal();
+	virtual ~Reciprocal();
 
+	//virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide,
+	//	Component **placeholder );
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
+
+	virtual ResultCode calculate();
+
+	virtual ComponentType getType();
 
 };
 
