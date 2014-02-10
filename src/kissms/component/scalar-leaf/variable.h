@@ -18,9 +18,7 @@ class Variable : public Component {
 
 public:
 	/**
-	 * @brief
-	 *
-	 *
+	 * @brief Enumeration of a Variable's possible types
 	 */
 	enum Type {
 		Unspecified = 0,
@@ -29,24 +27,16 @@ public:
 		Double
 	};
 	/** @var kissms::Variable::Type kissms::Variable::Unspecified
-	 * @brief
-	 *
-	 *
+	 * @brief The Variable is not specified in any way
 	 */
 	/** @var kissms::Variable::Type kissms::Variable::NoValue
-	 * @brief
-	 *
-	 *
+	 * @brief The Variable is named, but has no numerical value assigned to it
 	 */
 	/** @var kissms::Variable::Type kissms::Variable::Integer
-	 * @brief
-	 *
-	 *
+	 * @brief The Variable has an integer value assigned to it
 	 */
 	/** @var kissms::Variable::Type kissms::Variable::Double
-	 * @brief
-	 *
-	 *
+	 * @brief The Variable has an floating point value assigned to it
 	 */
 
 	Variable();
@@ -71,16 +61,19 @@ public:
 	void setValue( double value );
 
 	/**
-	 * @brief
+	 * @brief Resets the Variable's value
+	 *
+	 * This method reset's any numerical value assigned to this Variable.
+	 * The Variable's name will be kept.
 	 */
 	void resetValue();
 
 	/**
-	 * @brief
-	 * @param value
-	 * @return
+	 * @brief Returns the numerical value assigned to the Variable, if any
+	 * @param value Pointer which will point to the Variable's value
+	 * @return The value's type
 	 */
-	Type getValue( void **value );
+	Type getValue( void *value );
 
 	virtual bool isCalculable();
 

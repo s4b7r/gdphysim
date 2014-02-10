@@ -20,6 +20,12 @@
 
 // All parts of KissMS belong to the namespace kissms
 
+/**
+ * @brief KissMS-Namespace
+ *
+ * Namespace kissms contains the KissMS-Library
+ * Keep it simple and stupid Math Solver
+ */
 namespace kissms {
 
 /**
@@ -40,7 +46,7 @@ enum ResultCode {
  *
  * On return of GeneralFailure a general failure happend during
  * the method's execution. This may be any unespected error or an
- * error which does not match one of the following ResultCodes.
+ * error which does not match one of the other ResultCodes.
  *
  */
 /** @var kissms::ResultCode kissms::NotYetImplemented
@@ -51,9 +57,10 @@ enum ResultCode {
  * be developed currently or in the future.
  */
 /** @var kissms::ResultCode kissms::NotCalculable
- * @brief
+ * @brief A calculation is not executeable
  *
- *
+ * A method which returned NotCalculable tried to calculate a
+ * expression which contained an uncalculable Component
  */
 /** @var kissms::ResultCode kissms::ImpossibleState
  * @brief The method reached an impossible state
@@ -62,7 +69,7 @@ enum ResultCode {
  */
 
 /**
- *
+ * @brief Enumeration of all Component types
  */
 enum ComponentType {
 	tUnspecified = 0,

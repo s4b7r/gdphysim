@@ -63,13 +63,13 @@ protected:
 	Component *argumentRight;
 
 	/**
-	 * @brief Checks whether a Variable is on the Equation's left side
+	 * @brief Checks whether an other Component is on the Component's left side
 	 * @param variable Variable to check for
 	 */
 	bool isOnLeft( Component *component );
 
 	/**
-	 * @brief Checks whether a Variable is on the Equation's right side
+	 * @brief Checks whether an other Component is on the Component's right side
 	 * @param variable Variable to check for
 	 */
 	bool isOnRight( Component *component );

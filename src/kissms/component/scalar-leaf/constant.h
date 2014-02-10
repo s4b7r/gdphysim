@@ -18,9 +18,7 @@ class Constant : public Component {
 
 public:
 	/**
-	 * @brief
-	 *
-	 *
+	 * @brief Enumeration of a Constant's possible types
 	 */
 	enum Type {
 		Unspecified = 0,
@@ -29,24 +27,16 @@ public:
 		Double
 	};
 	/** @var kissms::Constant::Type kissms::Constant::Unspecified
-	 * @brief
-	 *
-	 *
+	 * @brief The constant is not specified in any way
 	 */
 	/** @var kissms::Constant::Type kissms::Constant::String
-	 * @brief
-	 *
-	 *
+	 * @brief The constant is specified as a placeholder string
 	 */
 	/** @var kissms::Constant::Type kissms::Constant::Integer
-	 * @brief
-	 *
-	 *
+	 * @brief The constant is an integer value
 	 */
 	/** @var kissms::Constant::Type kissms::Constant::Double
-	 * @brief
-	 *
-	 *
+	 * @brief The constant is an floating point value
 	 */
 
 	Constant();
@@ -71,16 +61,16 @@ public:
 	void setValue( double value );
 
 	/**
-	 * @brief
+	 * @brief Resets the Constant's value
 	 */
 	void resetValue();
 
 	/**
-	 * @brief
-	 * @param value
-	 * @return
+	 * @brief Returns the Constant's value and it's type
+	 * @param value Pointer which will point to the Constant's value
+	 * @return The Constant's type
 	 */
-	Type getValue( void **value );
+	Type getValue( void *value );
 
 	virtual bool isCalculable();
 

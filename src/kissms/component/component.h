@@ -51,7 +51,6 @@ public:
 	 * @param variable Variable for which the Component shall reform itself
 	 * @param newSide New Component replacing the Component on this side of the Equation
 	 * @param otherSide Component for reformation of the Equation's other side
-	 * @param placeholder Placeholder which shall be replaced by the Equation's old other side
 	 * @return ResultCode
 	 */
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide ) = 0;
@@ -65,17 +64,17 @@ public:
 	virtual ResultCode calculate() = 0;
 
 	/**
-	 *
+	 * @brief Returns the Component's numerical representation, if any
 	 */
 	double getQuantity();
 
 	/**
-	 *
+	 * @brief Returns the Component's type
 	 */
 	virtual ComponentType getType();
 
 	/**
-	 *
+	 * @brief Checks if the given Component is a child of this Component
 	 */
 	virtual bool hasChild( Component *child ) = 0;
 

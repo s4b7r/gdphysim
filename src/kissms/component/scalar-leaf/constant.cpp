@@ -95,22 +95,22 @@ void Constant::resetValue() {
 
 }
 
-Constant::Type Constant::getValue(void** value) {
+Constant::Type Constant::getValue(void* value) {
 
 	switch ( type ) {
 	case String:
-		*value = malloc(sizeof(char) * 10);
-		strcpy((char*) *value, (char*) this->value);
+		value = malloc(sizeof(char) * 10);
+		strcpy((char*) value, (char*) this->value);
 
 		break;
 	case Integer:
-		*value = malloc(sizeof(int));
-		**(int**)value = *((int*)(this->value));
+		value = malloc(sizeof(int));
+		*(int*)value = *((int*)(this->value));
 
 		break;
 	case Double:
-		*value = malloc(sizeof(double));
-		**(double**)value = *((double*)(this->value));
+		value = malloc(sizeof(double));
+		*(double*)value = *((double*)(this->value));
 
 		break;
 	default:
