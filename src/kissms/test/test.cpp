@@ -19,9 +19,9 @@ void test1() {
 	eq->setArguments(va, co);
 	va->setName(na);
 	co->setValue(38);
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("a=38\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -49,9 +49,9 @@ void test2() {
 	co->setValue(4);
 	co2->setValue(0);
 
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("a+4=0\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -75,16 +75,15 @@ void test3() {
 
 	eq->setArguments(ad, co2);
 	ad->setArguments(va, ne);
-	//ad->setArguments(va, co);
 
 	ne->setArgument(co);
 	va->setName(na);
 	co->setValue(4);
 	co2->setValue(0);
 
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("a+(-4)=0\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -111,9 +110,9 @@ void test4() {
 	co1->setValue(7);
 	co2->setValue(42);
 
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("a*7=42\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -138,9 +137,9 @@ void test5() {
 	va->setName(na);
 	co->setValue(0.5);
 
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("1/a=0.5\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -165,9 +164,9 @@ void test6() {
 	va->setName(na);
 	co->setValue(0.5);
 
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("-a=0.5\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -192,9 +191,9 @@ void test7() {
 	va->setName(na);
 	co->setValue(1);
 
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("sin(a)=1\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -231,9 +230,9 @@ void test8() {
 	co->setValue(1);
 	va->setName(na);
 
-	kissms::ResultCode rc = eq->calculateFor(va);
+	eq->calculateFor(va);
 
-	printf("%d\n", rc);
+	printf("sin(1)*sin(1)+cos(1)*cos(1)=a\n");
 
 	double value = -42;
 	value = va->getQuantity();
@@ -244,20 +243,20 @@ void test8() {
 
 int main(int argc, char **argv) {
 
-	/*test1();
-	printf("\n");
+	test1();
+	printf("\n\n");
 	test2();
-	printf("\n");
+	printf("\n\n");
 	test3();
-	printf("\n");
+	printf("\n\n");
 	test4();
-	printf("\n");
+	printf("\n\n");
 	test5();
-	printf("\n");
+	printf("\n\n");
 	test6();
-	printf("\n");
+	printf("\n\n");
 	test7();
-	printf("\n");*/
+	printf("\n\n");
 	test8();
 
 	return 0;
