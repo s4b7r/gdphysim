@@ -54,6 +54,7 @@ void Constant::setValue(double value) {
 bool Constant::isCalculable() {
 
 	if( type != Unspecified ) {
+		printf("const is uncalculable\n");
 		return true;
 	}
 	return false;

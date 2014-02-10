@@ -44,6 +44,9 @@ void ArgumentsTwo::setArguments(Component* left, Component* right) {
 
 bool ArgumentsTwo::isCalculable() {
 
+//	printf("argu2's type: %d\n", this->getType());
+//	printf("argu2's left (type %d) iscalculable: %d", argumentLeft->getType(), argumentLeft->isCalculable());
+//	printf("argu2's right (type %d) iscalculable: %d", argumentRight->getType(), argumentRight->isCalculable());
 	return argumentLeft->isCalculable() && argumentRight->isCalculable();
 
 }

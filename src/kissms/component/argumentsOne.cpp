@@ -29,6 +29,7 @@ void ArgumentsOne::setArgument(Component* argument) {
 
 bool ArgumentsOne::isCalculable() {
 
+	printf("argu1's type: %d\n argu1's argu (type: %d) iscalc: %d", this->getType(), argument->getType(), argument->isCalculable());
 	return argument->isCalculable();
 
 }
