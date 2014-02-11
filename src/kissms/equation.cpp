@@ -57,7 +57,6 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	}
 	rc = calcComp->calculate();
 	if( rc == Successful ) {
-		// TODO What is with non-quantifiable Components?
 		// If everything is okay, set the Variable's numerical value
 		explicitVariable->setValue(calcComp->getQuantity());
 	}
@@ -165,6 +164,59 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 ResultCode Equation::getScalarEquations(Equation* equations[]) {
 
 	// TODO Equation::getScalarEquations
+
+	for( int i = 0; i < 3; i++ ) {
+		equations[i] = new Equation();
+	}
+
+	// ---
+
+	Component *next;
+	Component *last;
+	next = argumentLeft;
+	switch (next->getType()) {
+	case tVector:
+		for( int i = 0; i < 3; i++ ) {
+			equations[i]->setLeft(((Vector*)next)->getArgument(i+1));
+		}
+
+		break;
+	case tVectorproduct:
+		Vector *result;
+		result = ((Vectorproduct*)next)->getVector();
+		for( int i = 0; i < 3; i++ ) {
+			equations[i]->setLeft(((result)->getArgument(i+1));
+		}
+
+		break;
+	case tNegation:
+		for( int i = 0; i < 3; i++ ) {
+			equations[i]->setLeft(new Negation());
+		}
+
+		break;
+	case tReciprocal:
+		for( int i = 0; i < 3; i++ ) {
+			equations[i]->setLeft(new Reciprocal());
+		}
+
+		break;
+	case tAddition:
+		for( int i = 0; i < 3; i++ ) {
+			equations[i]->setLeft(new Addition());
+		}
+
+		break;
+	case tMultiplication:
+		for( int i = 0; i < 3; i++ ) {
+			equations[i]->setLeft(new Multiplication));
+		}
+
+		break;
+	default:
+		break;
+	}
+
 	return NotYetImplemented;
 
 }

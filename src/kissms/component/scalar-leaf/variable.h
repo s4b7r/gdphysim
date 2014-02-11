@@ -54,8 +54,6 @@ public:
 	 */
 	void setValue( int value );
 
-	// TODO setValue(char*) for non-quantifiable values
-
 	/**
 	 * @brief Set the Variable's value
 	 * @param value
