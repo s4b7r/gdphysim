@@ -16,7 +16,6 @@ namespace kissms {
  */
 class Vector : public Component {
 
-	// TODO Vector
 public:
 	Vector();
 	virtual ~Vector();
@@ -30,6 +29,11 @@ public:
 	 *
 	 */
 	Component* getArgument( int index );
+
+	/**
+	 *
+	 */
+	ResultCode getEquations( Equation *equations[] );
 
 	virtual bool isCalculable();
 

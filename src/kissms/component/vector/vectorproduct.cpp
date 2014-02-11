@@ -18,15 +18,20 @@ Vectorproduct::~Vectorproduct() {
 ResultCode Vectorproduct::reformFor(Variable* variable,
 		Component** newSide, Component** otherSide) {
 
-	// TODO Vectorproduct::reformFor
-	return NotYetImplemented;
+	return ImpossibleState;
 
 }
 
 ResultCode Vectorproduct::calculate() {
 
-	// TODO Vectorproduct::calculate
-	return NotYetImplemented;
+	return ImpossibleState;
+
+}
+
+Vector* Vectorproduct::getVector() {
+
+	// TODO Vectorproduct::getVector
+	return 0;
 
 }
 

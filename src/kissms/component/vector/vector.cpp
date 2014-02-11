@@ -42,15 +42,13 @@ bool Vector::isQuantifiable() {
 ResultCode Vector::reformFor(Variable* variable, Component** newSide,
 		Component** otherSide) {
 
-	// TODO Vector::reformFor
-	return NotYetImplemented;
+	return ImpossibleState;
 
 }
 
 ResultCode Vector::calculate() {
 
-	// TODO Vector::calculate
-	return NotYetImplemented;
+	return ImpossibleState;
 
 }
 
@@ -62,8 +60,26 @@ ComponentType Vector::getType() {
 
 bool Vector::hasChild(Component* child) {
 
-	// TODO Vector::hasChild
+	// This is not done in a single for-construct so that
+	// the more complex hasChild()-call is executed if needed only
+	for( int i = 0; i < 3; i++ ) {
+		if( arguments[i] == child ) {
+			return true;
+		}
+	}
+	for( int i = 0; i < 3; i++ ) {
+		if( arguments[i]->hasChild(child) ) {
+			return true;
+		}
+	}
 	return false;
+
+}
+
+ResultCode Vector::getEquations(Equation* equations[]) {
+
+	// TODO Vecotr::getEquations
+	return NotYetImplemented;
 
 }
 

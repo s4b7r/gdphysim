@@ -16,10 +16,14 @@ namespace kissms {
  */
 class Vectorproduct : public ArgumentsTwo {
 
-	// TODO Vectorproduct
 public:
 	Vectorproduct();
 	virtual ~Vectorproduct();
+
+	/**
+	 *
+	 */
+	Vector* getVector();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
 
