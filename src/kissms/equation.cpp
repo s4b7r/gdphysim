@@ -272,6 +272,7 @@ void Equation::getScalarEquations(Component* current,
 
 			break;
 		case tConstant:
+		{
 			newArgument = new Constant();
 			void *value;
 			Constant::Type type = ((Constant*)newArgument)->getValue(value);
@@ -291,28 +292,30 @@ void Equation::getScalarEquations(Component* current,
 			default:
 				break;
 			}
-
-			break;
-			case tVariable:
-				newArgument = new Variable();
-				((Variable*)newArgument)->setName(((Variable*)current)->getName());
-				switch (type) {
-
-				case Variable::Type::Integer:
-					((Variable*)newArgument)->setValue(*(int*)value);
-
-					break;
-				case Variable::Type::Double:
-					((Variable*)newArgument)->setValue(*(double*)value);
-
-					break;
-				default:
-					break;
-				}
+		}
+		break;
+		case tVariable:
+		{
+			newArgument = new Variable();
+			((Variable*)newArgument)->setName(((Variable*)current)->getName());
+			void *value;
+			Variable::Type type = ((Constant*)newArgument)->getValue(value);
+			switch (type) {
+			case Variable::Type::Integer:
+				((Variable*)newArgument)->setValue(*(int*)value);
 
 				break;
-				default:
-					break;
+			case Variable::Type::Double:
+				((Variable*)newArgument)->setValue(*(double*)value);
+
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+		default:
+			break;
 		}
 		switch (parentsArgument) {
 		case Single:
