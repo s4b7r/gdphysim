@@ -47,11 +47,6 @@ public:
 	/**
 	 *
 	 */
-	bool isVectorial();
-
-	/**
-	 *
-	 */
 	ResultCode getScalarEquations( Equation *equations[] );
 
 	virtual ResultCode calculate();

@@ -76,6 +76,12 @@ bool Vector::hasChild(Component* child) {
 
 }
 
+bool Vector::isVectorial() {
+
+	return true;
+
+}
+
 }
 
 

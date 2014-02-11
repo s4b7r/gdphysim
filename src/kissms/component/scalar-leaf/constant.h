@@ -84,6 +84,8 @@ public:
 
 	virtual bool hasChild( Component *child );
 
+	virtual bool isVectorial();
+
 private:
 	Type type;
 	void *value;

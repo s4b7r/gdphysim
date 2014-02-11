@@ -55,4 +55,12 @@ bool kissms::ArgumentsOne::hasChild(Component* child) {
 
 }
 
+bool ArgumentsOne::isVectorial() {
+
+	return argument->isVectorial();
+
 }
+
+}
+
+

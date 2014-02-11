@@ -51,6 +51,8 @@ public:
 
 	virtual bool hasChild( Component *child );
 
+	virtual bool isVectorial();
+
 protected:
 	/**
 	 * @brief The Component's left side argument

@@ -146,6 +146,12 @@ bool kissms::Variable::hasChild(Component* child) {
 
 }
 
+bool Variable::isVectorial() {
+
+	return false;
+
+}
+
 }
 
 

@@ -90,6 +90,12 @@ bool ArgumentsTwo::hasChild(Component* child) {
 
 }
 
+bool ArgumentsTwo::isVectorial() {
+
+	return argumentLeft->isVectorial() || argumentRight->isVectorial();
+
+}
+
 }
 
 

@@ -145,6 +145,12 @@ bool Constant::hasChild(Component* child) {
 
 }
 
+bool Constant::isVectorial() {
+
+	return false;
+
+}
+
 }
 
 
