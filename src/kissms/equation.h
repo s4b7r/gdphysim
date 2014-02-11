@@ -44,6 +44,16 @@ public:
 	 */
 	ResultCode calculateFor( Variable *variable );
 
+	/**
+	 *
+	 */
+	bool isVectorial();
+
+	/**
+	 *
+	 */
+	ResultCode getScalarEquations( Equation *equations[] );
+
 	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );

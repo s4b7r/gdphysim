@@ -30,11 +30,6 @@ public:
 	 */
 	Component* getArgument( int index );
 
-	/**
-	 *
-	 */
-	ResultCode getEquations( Equation *equations[] );
-
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();

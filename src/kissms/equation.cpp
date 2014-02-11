@@ -162,6 +162,20 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 
 }
 
+bool Equation::isVectorial() {
+
+	// TODO Equation::isVectorial
+	return false;
+
+}
+
+ResultCode Equation::getScalarEquations(Equation* equations[]) {
+
+	// TODO Equation::getScalarEquations
+	return NotYetImplemented;
+
+}
+
 }
 
 

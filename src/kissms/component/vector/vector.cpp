@@ -76,13 +76,6 @@ bool Vector::hasChild(Component* child) {
 
 }
 
-ResultCode Vector::getEquations(Equation* equations[]) {
-
-	// TODO Vecotr::getEquations
-	return NotYetImplemented;
-
-}
-
 }
 
 
