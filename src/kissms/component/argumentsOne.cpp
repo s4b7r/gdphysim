@@ -61,6 +61,12 @@ bool ArgumentsOne::isVectorial() {
 
 }
 
+Component* ArgumentsOne::getArgument() {
+
+	return argument;
+
+}
+
 }
 
 

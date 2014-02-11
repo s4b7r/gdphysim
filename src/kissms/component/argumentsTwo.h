@@ -43,6 +43,16 @@ public:
 	 */
 	void setArguments( Component *left, Component *right );
 
+	/**
+	 *
+	 */
+	Component* getLeft();
+
+	/**
+	 *
+	 */
+	Component* getRight();
+
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();

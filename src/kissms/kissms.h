@@ -21,6 +21,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdio.h>
+#include <stack>
 
 // All parts of KissMS belong to the namespace kissms
 

@@ -49,6 +49,11 @@ public:
 	void setName( char *name );
 
 	/**
+	 *
+	 */
+	char* getName();
+
+	/**
 	 * @brief Set the Variable's value
 	 * @param value
 	 */

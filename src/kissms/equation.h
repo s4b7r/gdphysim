@@ -56,6 +56,18 @@ public:
 	virtual ComponentType getType();
 
 private:
+	enum WhichLastArgument {
+		Single = 0,
+		Left,
+		Right
+	};
+
+	struct iteration {
+		Component *current;
+		Component *parent[3];
+		WhichLastArgument parentsArgument;
+	};
+
 	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable
 	 * @param variable Variable to check for
@@ -68,6 +80,15 @@ private:
 	 * @see solveFor( Variable *variable )
 	 */
 	ResultCode solveFor( Variable *variable, bool variableOnLeft );
+
+	/**
+	 *
+	 */
+	void getScalarEquations( Component *current,
+			Component *parent[], WhichLastArgument parentsArgument,
+			std::stack<struct iteration> todo );
+
+
 
 };
 

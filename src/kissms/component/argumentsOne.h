@@ -28,6 +28,11 @@ public:
 	 */
 	void setArgument( Component *argument );
 
+	/**
+	 *
+	 */
+	Component* getArgument();
+
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();

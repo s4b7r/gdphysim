@@ -96,6 +96,18 @@ bool ArgumentsTwo::isVectorial() {
 
 }
 
+Component* ArgumentsTwo::getLeft() {
+
+	return argumentLeft;
+
+}
+
+Component* ArgumentsTwo::getRight() {
+
+	return argumentRight;
+
+}
+
 }
 
 

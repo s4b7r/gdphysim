@@ -152,6 +152,12 @@ bool Variable::isVectorial() {
 
 }
 
+char* Variable::getName() {
+
+	return name;
+
+}
+
 }
 
 
