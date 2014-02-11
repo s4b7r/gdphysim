@@ -11,9 +11,43 @@
 
 namespace kissms {
 
+/**
+ *
+ */
 class Vector : public Component {
 
-// TODO Vector
+	// TODO Vector
+public:
+	Vector();
+	virtual ~Vector();
+
+	/**
+	 *
+	 */
+	void setArgument( int index, Component *value );
+
+	/**
+	 *
+	 */
+	Component* getArgument( int index );
+
+	virtual bool isCalculable();
+
+	virtual bool isQuantifiable();
+
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
+
+	virtual ResultCode calculate();
+
+	virtual ComponentType getType();
+
+	virtual bool hasChild( Component *child );
+
+private:
+	/**
+	 *
+	 */
+	Component *arguments[3];
 
 };
 

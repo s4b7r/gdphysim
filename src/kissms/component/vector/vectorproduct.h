@@ -11,9 +11,19 @@
 
 namespace kissms {
 
+/**
+ *
+ */
 class Vectorproduct : public ArgumentsTwo {
 
-// TODO Vectorproduct
+	// TODO Vectorproduct
+public:
+	Vectorproduct();
+	virtual ~Vectorproduct();
+
+	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
+
+	virtual ResultCode calculate();
 
 };
 
