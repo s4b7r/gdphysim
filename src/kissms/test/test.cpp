@@ -7,6 +7,8 @@
 
 #include "kissms/kissms.h"
 
+// Just testing hgweb server
+
 void test1() {
 	kissms::Equation *eq = new kissms::Equation();
 	kissms::Variable *va = new kissms::Variable();
