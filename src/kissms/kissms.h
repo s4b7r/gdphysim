@@ -14,6 +14,7 @@
 // TODO Will situations occur in which one Variable will be in one Equation for two times?
 // TODO Do not forget to test your library really good
 // TODO Recreate recursive procedures as iterative ones
+// TODO Replace Variables in other Equations
 
 // Include system libraries
 #include <stdlib.h>
