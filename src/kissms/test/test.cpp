@@ -7,8 +7,6 @@
 
 #include "kissms/kissms.h"
 
-// FIXME commented isVectorial()-calls produce memory violation
-
 void test1() {
 	kissms::Equation *eq = new kissms::Equation();
 	kissms::Variable *va = new kissms::Variable();
@@ -307,10 +305,10 @@ void test9() {
 
 	double value1 = -42;
 	value1 = var1->getQuantity();
-	printf("%f", value1);
+	printf("%f\t", value1);
 	double value2 = -42;
 	value2 = var2->getQuantity();
-	printf("%f", value2);
+	printf("%f\t", value2);
 	double value3 = -42;
 	value3 = var3->getQuantity();
 	printf("%f", value3);
@@ -335,7 +333,7 @@ int main(int argc, char **argv) {
 	printf("\n\n");
 	test8();
 	printf("\n\n");
-	//test9();
+	test9();
 
 	return 0;
 

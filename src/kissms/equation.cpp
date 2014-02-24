@@ -48,6 +48,15 @@ ResultCode Equation::solveFor(Variable* variable) {
 
 ResultCode Equation::calculateFor(Variable* variable) {
 
+	ResultCode rc;
+	Component *calcComp;
+	Variable *explicitVariable;
+
+	// First the Equation has to be solved
+	rc = solveFor(variable);
+	if( rc != Successful ) {
+		return rc;
+	}
 	if( isVectorial() ) {
 		for( int i = 0; i < 3; i++ ) {
 			if( scalarEquations[i]->hasChild(variable) ) {
@@ -56,16 +65,6 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		}
 		return NotCalculable;
 	} else {
-
-		ResultCode rc;
-		Component *calcComp;
-		Variable *explicitVariable;
-
-		// First the Equation has to be solved
-		rc = solveFor(variable);
-		if( rc != Successful ) {
-			return rc;
-		}
 		// Set the placeholder regarding the Equation's side which the Variable belongs to
 		if( isOnLeft(variable) ) {
 			calcComp = argumentRight;
@@ -85,9 +84,10 @@ ResultCode Equation::calculateFor(Variable* variable) {
 			// If everything is okay, set the Variable's numerical value
 			explicitVariable->setValue(calcComp->getQuantity());
 		}
-
-		return rc;
 	}
+
+	return rc;
+
 }
 
 bool Equation::isExplicitly(Variable* variable) {
