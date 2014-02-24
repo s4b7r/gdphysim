@@ -10,6 +10,11 @@
 namespace kissms {
 
 Equation::Equation() {
+
+	for( int i = 0; i < 3; i++ ) {
+		scalarEquations[0] = 0;
+	}
+
 }
 
 Equation::~Equation() {
@@ -18,6 +23,13 @@ Equation::~Equation() {
 ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
+
+	if( isVectorial() ) {
+		for( int i = 0; i < 3; i++ ) {
+			scalarEquations[i] = new Equation();
+		}
+		getScalarEquations(scalarEquations);
+	}
 
 	// Repeatedly try to solve the Equation for the given Variable,
 	// until the Variable is explicitly represented.
@@ -188,7 +200,9 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 	while( !todo.empty() ) {
 		it = todo.top();
 		current = it.current;
-		parent = it.parent;
+		for( int i = 0; i < 3; i++ ) {
+			parent[i] = it.parent[i];
+		}
 		parentsArgument = it.parentsArgument;
 		todo.pop();
 		switch( current->getType() ) {
@@ -274,18 +288,18 @@ void Equation::getScalarEquations(Component* current,
 		case tConstant:
 		{
 			newArgument = new Constant();
-			void *value;
+			void *value = 0;
 			Constant::Type type = ((Constant*)newArgument)->getValue(value);
 			switch (type) {
-			case Constant::Type::String:
+			case Constant::String:
 				((Constant*)newArgument)->setValue((char*)value);
 
 				break;
-			case Constant::Type::Integer:
+			case Constant::Integer:
 				((Constant*)newArgument)->setValue(*(int*)value);
 
 				break;
-			case Constant::Type::Double:
+			case Constant::Double:
 				((Constant*)newArgument)->setValue(*(double*)value);
 
 				break;
@@ -298,14 +312,14 @@ void Equation::getScalarEquations(Component* current,
 		{
 			newArgument = new Variable();
 			((Variable*)newArgument)->setName(((Variable*)current)->getName());
-			void *value;
-			Variable::Type type = ((Constant*)newArgument)->getValue(value);
+			void *value = 0;
+			Variable::Type type = ((Variable*)newArgument)->getValue(value);
 			switch (type) {
-			case Variable::Type::Integer:
+			case Variable::Integer:
 				((Variable*)newArgument)->setValue(*(int*)value);
 
 				break;
-			case Variable::Type::Double:
+			case Variable::Double:
 				((Variable*)newArgument)->setValue(*(double*)value);
 
 				break;

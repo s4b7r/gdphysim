@@ -56,17 +56,28 @@ public:
 	virtual ComponentType getType();
 
 private:
+	/**
+	 *
+	 */
 	enum WhichLastArgument {
 		Single = 0,
 		Left,
 		Right
 	};
 
+	/**
+	 *
+	 */
 	struct iteration {
 		Component *current;
 		Component *parent[3];
 		WhichLastArgument parentsArgument;
 	};
+
+	/**
+	 *
+	 */
+	Equation *scalarEquations[3];
 
 	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable
