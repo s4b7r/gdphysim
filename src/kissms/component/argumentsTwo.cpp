@@ -92,6 +92,14 @@ bool ArgumentsTwo::hasChild(Component* child) {
 
 bool ArgumentsTwo::isVectorial() {
 
+	printf("ArgumentsTwo::isVectorial()\n");
+	printf("This type: %d\n", getType());
+	printf("Left argument's type: %d\n", argumentLeft->getType());
+	argumentLeft->isVectorial();
+	printf("Left done\n");
+	printf("Right argument's type: %d\n", argumentRight->getType());
+	argumentRight->isVectorial();
+	printf("Right done\n");
 	return argumentLeft->isVectorial() || argumentRight->isVectorial();
 
 }
