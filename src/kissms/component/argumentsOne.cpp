@@ -57,11 +57,6 @@ bool kissms::ArgumentsOne::hasChild(Component* child) {
 
 bool ArgumentsOne::isVectorial() {
 
-	printf("ArgumentsOne::isVectorial()\n");
-	printf("This type: %d\n", getType());
-	printf("Argument's type: %d\n", argument->getType());
-	argument->isVectorial();
-	printf("Done\n");
 	return argument->isVectorial();
 
 }

@@ -141,6 +141,18 @@ void test5() {
 	va->setName(na);
 	co->setValue(0.5);
 
+	/*printf("Testing.. 1\n");
+	eq->getLeft();
+	printf("Testing.. 2\n");
+	eq->getLeft()->getType();
+	printf("Testing.. 3\n");
+	((kissms::ArgumentsOne*)eq->getLeft())->getArgument();
+	printf("Testing.. 4\n");
+	((kissms::ArgumentsOne*)eq->getLeft())->getArgument()->getType();
+	printf("Testing.. 5\n");
+	eq->getLeft()->isVectorial();
+	printf("Testing.. 6\n");*/
+
 	eq->calculateFor(va);
 
 	printf("1/a=0.5\n");
