@@ -7,6 +7,7 @@
 
 #include "kissms/kissms.h"
 
+// FIXME commented isVectorial()-calls produce memory violation
 
 void test1() {
 	kissms::Equation *eq = new kissms::Equation();
@@ -115,6 +116,8 @@ void test4() {
 
 	printf("a*7=42\n");
 
+	//eq->isVectorial();
+
 	double value = -42;
 	value = va->getQuantity();
 
@@ -141,6 +144,8 @@ void test5() {
 	eq->calculateFor(va);
 
 	printf("1/a=0.5\n");
+
+	//eq->isVectorial();
 
 	double value = -42;
 	value = va->getQuantity();
@@ -196,6 +201,8 @@ void test7() {
 
 	printf("sin(a)=1\n");
 
+	//eq->isVectorial();
+
 	double value = -42;
 	value = va->getQuantity();
 
@@ -234,6 +241,8 @@ void test8() {
 	eq->calculateFor(va);
 
 	printf("sin(1)*sin(1)+cos(1)*cos(1)=a\n");
+
+	//eq->isVectorial();
 
 	double value = -42;
 	value = va->getQuantity();
@@ -298,21 +307,21 @@ void test9() {
 
 int main(int argc, char **argv) {
 
-	//test1();
+	test1();
 	printf("\n\n");
-	//test2();
+	test2();
 	printf("\n\n");
-	//test3();
+	test3();
 	printf("\n\n");
-	//test4();
+	test4();
 	printf("\n\n");
 	test5();
 	printf("\n\n");
-	//test6();
+	test6();
 	printf("\n\n");
-	//test7();
+	test7();
 	printf("\n\n");
-	//test8();
+	test8();
 	printf("\n\n");
 	//test9();
 

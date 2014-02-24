@@ -23,39 +23,39 @@ Equation::~Equation() {
 ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
-
+/*
 	if( isVectorial() ) {
-	//	for( int i = 0; i < 3; i++ ) {
-	//		scalarEquations[i] = new Equation();
-	//	}
-	//	getScalarEquations(scalarEquations);
-	//	for( int i = 0; i < 3; i++ ) {
-	//		if( scalarEquations[i]->hasChild(variable) ) {
-	//			scalarEquations[i]->solveFor(variable);
-	//		}
-	//	}
-	} else {
+		for( int i = 0; i < 3; i++ ) {
+			scalarEquations[i] = new Equation();
+		}
+		getScalarEquations(scalarEquations);
+		for( int i = 0; i < 3; i++ ) {
+			if( scalarEquations[i]->hasChild(variable) ) {
+				scalarEquations[i]->solveFor(variable);
+			}
+		}
+	} else {*/
 		// Repeatedly try to solve the Equation for the given Variable,
 		// until the Variable is explicitly represented.
 		// Abort if solving process fails.
 		while( !isExplicitly(variable) && solveResult == Successful ) {
 			solveResult = solveFor(variable, isOnLeft(variable));
 		}
-	}
+	//}
 	return solveResult;
 
 }
 
 ResultCode Equation::calculateFor(Variable* variable) {
-
+/*
 	if( isVectorial() ) {
-	//	for( int i = 0; i < 3; i++ ) {
-	//		if( scalarEquations[i]->hasChild(variable) ) {
-	//			return scalarEquations[i]->calculateFor(variable);
-	//		}
-	//	}
+		for( int i = 0; i < 3; i++ ) {
+			if( scalarEquations[i]->hasChild(variable) ) {
+				return scalarEquations[i]->calculateFor(variable);
+			}
+		}
 		return NotCalculable;
-	} else {
+	} else {*/
 
 		ResultCode rc;
 		Component *calcComp;
@@ -87,7 +87,7 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		}
 
 		return rc;
-	}
+	//}
 }
 
 bool Equation::isExplicitly(Variable* variable) {
@@ -187,8 +187,6 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 }
 
 ResultCode Equation::getScalarEquations(Equation* equations[]) {
-
-	// TODO Equation::getScalarEquations
 
 	struct iteration it;
 	Component *current;
