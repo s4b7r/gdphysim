@@ -315,6 +315,33 @@ void test9() {
 
 }
 
+void test10() {
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Constant *co = new kissms::Constant();
+
+	char *na = (char*) malloc(sizeof(char) * 2);
+	na[0] = 'a';
+	na[1] = 0;
+	char *val = (char*) malloc(sizeof(char) * 2);
+	val[0] = 'x';
+	val[1] = 0;
+
+	eq->setArguments(va, co);
+	va->setName(na);
+	co->setValue(val);
+	kissms::ResultCode rc = eq->calculateFor(va);
+
+	printf("a=38\n");
+	printf("RC: %d\n", rc);
+
+	double value = -42;
+	value = va->getQuantity();
+
+	printf("%f", value);
+
+}
+
 int main(int argc, char **argv) {
 
 	test1();
@@ -334,6 +361,8 @@ int main(int argc, char **argv) {
 	test8();
 	printf("\n\n");
 	test9();
+	printf("\n\n");
+	test10();
 
 	return 0;
 
