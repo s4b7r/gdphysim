@@ -29,20 +29,28 @@ ResultCode Equation::solveFor(Variable* variable) {
 			scalarEquations[i] = new Equation();
 		}
 		getScalarEquations(scalarEquations);
+		for( int i = 0; i < 3; i++ ) {
+			if( scalarEquations[i]->hasChild(variable) ) {
+				scalarEquations[i]->solveFor(variable);
+			}
+		}
+	} else {
+		// Repeatedly try to solve the Equation for the given Variable,
+		// until the Variable is explicitly represented.
+		// Abort if solving process fails.
+		while( !isExplicitly(variable) && solveResult == Successful ) {
+			solveResult = solveFor(variable, isOnLeft(variable));
+		}
 	}
-
-	// Repeatedly try to solve the Equation for the given Variable,
-	// until the Variable is explicitly represented.
-	// Abort if solving process fails.
-	while( !isExplicitly(variable) && solveResult == Successful ) {
-		solveResult = solveFor(variable, isOnLeft(variable));
-	}
-
 	return solveResult;
 
 }
 
 ResultCode Equation::calculateFor(Variable* variable) {
+
+	if( isVectorial() ) {
+		return IsVectorial;
+	}
 
 	ResultCode rc;
 	Component *calcComp;

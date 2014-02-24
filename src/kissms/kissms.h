@@ -11,7 +11,6 @@
 // TODO Improve code and doxygen comments
 // TODO Really do a code review sometime
 // TODO Take care of non-quantifiable but calculable expressions
-// TODO Will situations occur in which one Variable will be in one Equation for two times?
 // TODO Do not forget to test your library really good
 // TODO Recreate recursive procedures as iterative ones
 // TODO Replace Variables in other Equations
@@ -42,7 +41,8 @@ enum ResultCode {
 	GeneralFailure,
 	NotYetImplemented,
 	NotCalculable,
-	ImpossibleState
+	ImpossibleState,
+	IsVectorial
 };
 /** @var kissms::ResultCode kissms::Successful
  * @brief The method successfuly returned
@@ -72,6 +72,9 @@ enum ResultCode {
  * @brief The method reached an impossible state
  *
  * The method got to some point where it should be under no circumstances.
+ */
+/** @var kissms::ResultCode kissms::IsVectorial
+ *
  */
 
 /**
