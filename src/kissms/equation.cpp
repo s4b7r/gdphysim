@@ -25,15 +25,15 @@ ResultCode Equation::solveFor(Variable* variable) {
 	ResultCode solveResult = Successful;
 
 	if( isVectorial() ) {
-		for( int i = 0; i < 3; i++ ) {
-			scalarEquations[i] = new Equation();
-		}
-		getScalarEquations(scalarEquations);
-		for( int i = 0; i < 3; i++ ) {
-			if( scalarEquations[i]->hasChild(variable) ) {
-				scalarEquations[i]->solveFor(variable);
-			}
-		}
+	//	for( int i = 0; i < 3; i++ ) {
+	//		scalarEquations[i] = new Equation();
+	//	}
+	//	getScalarEquations(scalarEquations);
+	//	for( int i = 0; i < 3; i++ ) {
+	//		if( scalarEquations[i]->hasChild(variable) ) {
+	//			scalarEquations[i]->solveFor(variable);
+	//		}
+	//	}
 	} else {
 		// Repeatedly try to solve the Equation for the given Variable,
 		// until the Variable is explicitly represented.
@@ -49,40 +49,45 @@ ResultCode Equation::solveFor(Variable* variable) {
 ResultCode Equation::calculateFor(Variable* variable) {
 
 	if( isVectorial() ) {
-		return IsVectorial;
-	}
+	//	for( int i = 0; i < 3; i++ ) {
+	//		if( scalarEquations[i]->hasChild(variable) ) {
+	//			return scalarEquations[i]->calculateFor(variable);
+	//		}
+	//	}
+		return NotCalculable;
+	} else {
 
-	ResultCode rc;
-	Component *calcComp;
-	Variable *explicitVariable;
+		ResultCode rc;
+		Component *calcComp;
+		Variable *explicitVariable;
 
-	// First the Equation has to be solved
-	rc = solveFor(variable);
-	if( rc != Successful ) {
+		// First the Equation has to be solved
+		rc = solveFor(variable);
+		if( rc != Successful ) {
+			return rc;
+		}
+		// Set the placeholder regarding the Equation's side which the Variable belongs to
+		if( isOnLeft(variable) ) {
+			calcComp = argumentRight;
+			explicitVariable = (Variable*) argumentLeft;
+		} else if( isOnRight(variable) ) {
+			calcComp = argumentLeft;
+			explicitVariable = (Variable*) argumentRight;
+		} else {
+			printf("Debug: Equation - Variable neither on left nor on right\n");
+			return ImpossibleState;
+		}
+		if( !calcComp->isCalculable() ) {
+			return NotCalculable;
+		}
+		rc = calcComp->calculate();
+		if( rc == Successful ) {
+			// If everything is okay, set the Variable's numerical value
+			explicitVariable->setValue(calcComp->getQuantity());
+		}
+
 		return rc;
 	}
-	// Set the placeholder regarding the Equation's side which the Variable belongs to
-	if( isOnLeft(variable) ) {
-		calcComp = argumentRight;
-		explicitVariable = (Variable*) argumentLeft;
-	} else if( isOnRight(variable) ) {
-		calcComp = argumentLeft;
-		explicitVariable = (Variable*) argumentRight;
-	} else {
-		printf("Debug: Equation - Variable neither on left nor on right\n");
-		return ImpossibleState;
-	}
-	if( !calcComp->isCalculable() ) {
-		return NotCalculable;
-	}
-	rc = calcComp->calculate();
-	if( rc == Successful ) {
-		// If everything is okay, set the Variable's numerical value
-		explicitVariable->setValue(calcComp->getQuantity());
-	}
-
-	return rc;
-
 }
 
 bool Equation::isExplicitly(Variable* variable) {
