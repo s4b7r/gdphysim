@@ -67,6 +67,12 @@ Component* ArgumentsOne::getArgument() {
 
 }
 
+void ArgumentsOne::getVariables(std::vector<Variable*>* variables) {
+
+	argument->getVariables(variables);
+
 }
 
+
+}
 

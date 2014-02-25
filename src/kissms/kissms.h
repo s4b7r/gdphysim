@@ -8,12 +8,12 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
-// TODO Improve code and doxygen comments
-// TODO Really do a code review sometime
-// TODO Do not forget to test your library really good
-// TODO Recreate recursive procedures as iterative ones
+// XXX Improve code and doxygen comments
+// XXX Really do a code review sometime
+// XXX Do not forget to test your library really good
+// XXX Recreate recursive procedures as iterative ones
 // TODO Replace Variables in other Equations
-// TODO Upgrade to modern C++ libraries
+// XXX Upgrade to modern C++ libraries
 
 // Include system libraries
 #include <stdlib.h>

@@ -108,6 +108,13 @@ Component* ArgumentsTwo::getRight() {
 
 }
 
+void ArgumentsTwo::getVariables(std::vector<Variable*>* variables) {
+
+	argumentLeft->getVariables(variables);
+	argumentRight->getVariables(variables);
+
+}
+
 }
 
 

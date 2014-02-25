@@ -46,6 +46,8 @@ public:
 
 	virtual std::string getQuality();
 
+	virtual void getVariables( std::vector<Variable*> *variables );
+
 private:
 	/**
 	 *

@@ -167,6 +167,9 @@ std::string Constant::getQuality() {
 
 }
 
+void Constant::getVariables(std::vector<Variable*>* variables) {
+}
+
 }
 
 

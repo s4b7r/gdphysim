@@ -88,6 +88,11 @@ public:
 	 */
 	virtual std::string getQuality() = 0;
 
+	/**
+	 *
+	 */
+	virtual void getVariables( std::vector<Variable*> *variables ) = 0;
+
 protected:
 	/**
 	 * @brief The Component's numerical value, if any

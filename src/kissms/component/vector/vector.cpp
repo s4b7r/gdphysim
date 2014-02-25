@@ -88,6 +88,12 @@ std::string Vector::getQuality() {
 		return tmp;
 }
 
+void Vector::getVariables(std::vector<Variable*>* variables) {
+
+	// XXX Check if Vector::getVariables() has to be implemented
+
+}
+
 }
 
 
