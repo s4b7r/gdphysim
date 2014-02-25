@@ -60,6 +60,7 @@ void Variable::resetValue() {
 	} else {
 		type = Unspecified;
 	}
+	quality = "";
 
 }
 
@@ -167,10 +168,21 @@ std::string Variable::getQuality() {
 		oss << getQuantity();
 		tmp = oss.str();
 	} else {
-		tmp = (char*)value;
+		if( type == Qualified ) {
+			tmp = quality;
+		} else {
+			tmp = (char*)value;
+		}
 	}
 
 	return tmp;
+
+}
+
+void Variable::setQuality(std::string quality) {
+
+	this->quality = quality;
+	type = Qualified;
 
 }
 

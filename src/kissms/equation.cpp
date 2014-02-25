@@ -82,6 +82,8 @@ ResultCode Equation::calculateFor(Variable* variable) {
 		if( rc == Successful ) {
 			// If everything is okay, set the Variable's numerical value
 			explicitVariable->setValue(calcComp->getQuantity());
+			// And it's quality
+			explicitVariable->setQuality(calcComp->getQuality());
 		}
 	}
 

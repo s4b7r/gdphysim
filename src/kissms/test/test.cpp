@@ -27,6 +27,7 @@ void test1() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -57,6 +58,7 @@ void test2() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -89,6 +91,7 @@ void test3() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -120,6 +123,7 @@ void test4() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -161,6 +165,7 @@ void test5() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -188,6 +193,7 @@ void test6() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -217,6 +223,7 @@ void test7() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -258,6 +265,7 @@ void test8() {
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
@@ -313,6 +321,8 @@ void test9() {
 	value3 = var3->getQuantity();
 	printf("%f", value3);
 
+	printf("\n%s\t%s\t%s", var1->getQuality().c_str(), var2->getQuality().c_str(), var3->getQuality().c_str());
+
 }
 
 void test10() {
@@ -332,13 +342,14 @@ void test10() {
 	co->setValue(val);
 	kissms::ResultCode rc = eq->calculateFor(va);
 
-	printf("a=38\n");
+	printf("a=x\n");
 	printf("RC: %d\n", rc);
 
 	double value = -42;
 	value = va->getQuantity();
 
 	printf("%f", value);
+	printf("\n=%s", va->getQuality().c_str());
 
 }
 
