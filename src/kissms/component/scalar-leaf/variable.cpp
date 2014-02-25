@@ -38,7 +38,8 @@ void Variable::setName(char* name) {
 
 bool Variable::isCalculable() {
 
-	return type == Qualified || isQuantifiable();
+	//return type == Qualified || isQuantifiable();
+	return isQuantifiable();
 
 }
 
@@ -171,7 +172,7 @@ std::string Variable::getQuality() {
 		if( type == Qualified ) {
 			tmp = quality;
 		} else {
-			tmp = (char*)value;
+			tmp = name;
 		}
 	}
 

@@ -12,7 +12,6 @@
 // XXX Really do a code review sometime
 // XXX Do not forget to test your library really good
 // XXX Recreate recursive procedures as iterative ones
-// TODO Replace Variables in other Equations
 // XXX Upgrade to modern C++ libraries
 
 // Include system libraries
@@ -24,6 +23,7 @@
 #include <stdio.h>
 #include <stack>
 #include <sstream>
+#include <queue>
 
 // All parts of KissMS belong to the namespace kissms
 

@@ -117,8 +117,6 @@ void test4() {
 
 	printf("a*7=42\n");
 
-	//eq->isVectorial();
-
 	double value = -42;
 	value = va->getQuantity();
 
@@ -143,23 +141,9 @@ void test5() {
 	va->setName(na);
 	co->setValue(0.5);
 
-	/*printf("Testing.. 1\n");
-	eq->getLeft();
-	printf("Testing.. 2\n");
-	eq->getLeft()->getType();
-	printf("Testing.. 3\n");
-	((kissms::ArgumentsOne*)eq->getLeft())->getArgument();
-	printf("Testing.. 4\n");
-	((kissms::ArgumentsOne*)eq->getLeft())->getArgument()->getType();
-	printf("Testing.. 5\n");
-	eq->getLeft()->isVectorial();
-	printf("Testing.. 6\n");*/
-
 	eq->calculateFor(va);
 
 	printf("1/a=0.5\n");
-
-	//eq->isVectorial();
 
 	double value = -42;
 	value = va->getQuantity();
@@ -217,8 +201,6 @@ void test7() {
 
 	printf("sin(a)=1\n");
 
-	//eq->isVectorial();
-
 	double value = -42;
 	value = va->getQuantity();
 
@@ -258,8 +240,6 @@ void test8() {
 	eq->calculateFor(va);
 
 	printf("sin(1)*sin(1)+cos(1)*cos(1)=a\n");
-
-	//eq->isVectorial();
 
 	double value = -42;
 	value = va->getQuantity();
@@ -353,6 +333,47 @@ void test10() {
 
 }
 
+void test11() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Vector *vec1 = new kissms::Vector();
+	kissms::Vector *vec2 = new kissms::Vector();
+	kissms::Variable *var1 = new kissms::Variable();
+	kissms::Variable *var2 = new kissms::Variable();
+	kissms::Constant *con1 = new kissms::Constant();
+	kissms::Constant *con0 = new kissms::Constant();
+
+	eq->setArguments(vec1, vec2);
+	vec1->setArgument(0, var1);
+	vec1->setArgument(1, var2);
+	vec1->setArgument(2, con0);
+	vec2->setArgument(0, var2);
+	vec2->setArgument(1, con1);
+	vec2->setArgument(2, con0);
+	con1->setValue(5);
+
+	char *var1n = (char*) malloc(sizeof(char) * 2);
+	var1n[0] = 'x';
+	var1n[1] = 0;
+	char *var2n = (char*) malloc(sizeof(char) * 2);
+	var2n[0] = 'y';
+	var2n[1] = 0;
+
+	var1->setName(var1n);
+	var2->setName(var2n);
+
+	printf("(x, y, _) = (y, 5, _)\n");
+
+	printf("RC 1: %d\n", eq->calculateFor(var1));
+	//printf("RC 2: %d\n", eq->calculateFor(var2));
+
+	printf("x quant= %f\n", var1->getQuantity());
+	printf("y quant= %f\n", var2->getQuantity());
+	printf("x qual = %s\n", var1->getQuality().c_str());
+	printf("y qual = %s\n", var2->getQuality().c_str());
+
+}
+
 int main(int argc, char **argv) {
 
 	test1();
@@ -374,6 +395,8 @@ int main(int argc, char **argv) {
 	test9();
 	printf("\n\n");
 	test10();
+	printf("\n\n");
+	test11();
 
 	return 0;
 
