@@ -11,31 +11,28 @@ namespace kissms {
 
 Equation::Equation() {
 
-	// TODO Replace scalarEquations-array with Equationsystem-Object
-	for( int i = 0; i < 3; i++ ) {
-		scalarEquations[0] = 0;
-	}
+	scalarEquations = new Equationsystem();
 
 }
 
 Equation::~Equation() {
+
+	free(scalarEquations);
+
 }
 
 ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
 
-	// TODO Replace scalarEquations-array with Equationsystem-Object
 	if( isVectorial() ) {
+		Equation *tmpEqs[3];
 		for( int i = 0; i < 3; i++ ) {
-			scalarEquations[i] = new Equation();
+			tmpEqs[i] = new Equation();
+			scalarEquations->addEquation(tmpEqs[i]);
 		}
-		getScalarEquations(scalarEquations);
-		for( int i = 0; i < 3; i++ ) {
-			if( scalarEquations[i]->hasChild(variable) ) {
-				scalarEquations[i]->solveFor(variable);
-			}
-		}
+		getScalarEquations(tmpEqs);
+		scalarEquations->solveFor(variable);
 	} else {
 		// Repeatedly try to solve the Equation for the given Variable,
 		// until the Variable is explicitly represented.
@@ -59,14 +56,8 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	if( rc != Successful ) {
 		return rc;
 	}
-	// TODO Replace scalarEquations-array with Equationsystem-Object
 	if( isVectorial() ) {
-		for( int i = 0; i < 3; i++ ) {
-			if( scalarEquations[i]->hasChild(variable) ) {
-				return scalarEquations[i]->calculateFor(variable);
-			}
-		}
-		return NotCalculable;
+		rc = scalarEquations->calculateFor(variable);
 	} else {
 		// Set the placeholder regarding the Equation's side which the Variable belongs to
 		if( isOnLeft(variable) ) {
@@ -192,8 +183,6 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Equation::getScalarEquations(Equation* equations[]) {
 
-	// TODO Replace scalarEquations-array with Equationsystem-Object
-
 	struct iteration it;
 	Component *current;
 	Component *parent[3];
@@ -279,8 +268,6 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 void Equation::getScalarEquations(Component* current,
 		Component* parent[], WhichLastArgument parentsArgument,
 		std::stack<struct iteration> todo) {
-
-	// TODO Replace scalarEquations-array with Equationsystem-Object
 
 	struct iteration newItLeft;
 	struct iteration newItRight;

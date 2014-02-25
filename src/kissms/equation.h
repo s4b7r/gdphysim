@@ -49,6 +49,12 @@ public:
 	 */
 	ResultCode getScalarEquations( Equation *equations[] );
 
+	/**
+	 * @brief Checks whether the Equation is explicitly representing a Variable
+	 * @param variable Variable to check for
+	 */
+	bool isExplicitly( Variable *variable );
+
 	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
@@ -79,14 +85,7 @@ private:
 	/**
 	 *
 	 */
-	Equation *scalarEquations[3];
-	// TODO Replace scalarEquations-array with Equationsystem-Object
-
-	/**
-	 * @brief Checks whether the Equation is explicitly representing a Variable
-	 * @param variable Variable to check for
-	 */
-	bool isExplicitly( Variable *variable );
+	Equationsystem *scalarEquations;
 
 	/**
 	 * @brief Does one interation of the solving process
@@ -101,7 +100,6 @@ private:
 	void getScalarEquations( Component *current,
 			Component *parent[], WhichLastArgument parentsArgument,
 			std::stack<struct iteration> todo );
-	// TODO Replace scalarEquations-array with Equationsystem-Object
 
 
 

@@ -103,6 +103,7 @@ enum ComponentType {
 
 // Forward declaration
 class Variable;
+class Equationsystem;
 
 }
 
@@ -111,8 +112,9 @@ class Variable;
 #include "kissms/component/argumentsOne.h"
 #include "kissms/component/argumentsTwo.h"
 
-// Include Equation
+// Include Equation and Equationsystem
 #include "kissms/equation.h"
+#include "kissms/equationsystem.h"
 
 // Include scalar leaf components
 #include "kissms/component/scalar-leaf/constant.h"
