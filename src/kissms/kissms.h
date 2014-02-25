@@ -10,7 +10,6 @@
 
 // TODO Improve code and doxygen comments
 // TODO Really do a code review sometime
-// TODO Take care of non-quantifiable but calculable expressions
 // TODO Do not forget to test your library really good
 // TODO Recreate recursive procedures as iterative ones
 // TODO Replace Variables in other Equations
