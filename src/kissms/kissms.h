@@ -20,9 +20,11 @@
 #include <stdlib.h>
 #include <vector>
 #include <string.h>
+#include <string>
 #include <math.h>
 #include <stdio.h>
 #include <stack>
+#include <sstream>
 
 // All parts of KissMS belong to the namespace kissms
 
