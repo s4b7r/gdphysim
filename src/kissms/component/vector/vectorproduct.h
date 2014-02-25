@@ -29,7 +29,7 @@ public:
 
 	virtual ResultCode calculate();
 
-	virtual char* getQuality();
+	virtual std::string getQuality();
 
 };
 

@@ -55,7 +55,7 @@ public:
 
 	virtual ComponentType getType();
 
-	virtual char* getQuality();
+	virtual std::string getQuality();
 
 private:
 	/**

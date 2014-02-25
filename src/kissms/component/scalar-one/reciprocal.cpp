@@ -38,14 +38,17 @@ ComponentType Reciprocal::getType() {
 
 }
 
-char* Reciprocal::getQuality() {
+std::string Reciprocal::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
+	std::ostringstream oss;
+
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		oss << getQuantity();
 	} else {
-		sprintf(tmp, "1/(%s)", argument->getQuality());
+		oss << "1/(" << argument->getQuality() << ")";
 	}
+	tmp = oss.str();
 	return tmp;
 
 }

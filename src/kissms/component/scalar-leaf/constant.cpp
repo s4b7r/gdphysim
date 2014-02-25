@@ -151,14 +151,16 @@ bool Constant::isVectorial() {
 
 }
 
-char* Constant::getQuality() {
+std::string Constant::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
 
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		std::ostringstream oss;
+		oss << getQuantity();
+		tmp = oss.str();
 	} else {
-		sprintf(tmp, "%s", (char*)value);
+		tmp = (char*)value;
 	}
 
 	return tmp;

@@ -86,7 +86,7 @@ public:
 	/**
 	 *
 	 */
-	virtual char* getQuality() = 0;
+	virtual std::string getQuality() = 0;
 
 protected:
 	/**

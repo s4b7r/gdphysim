@@ -38,14 +38,17 @@ ComponentType SinusArc::getType() {
 
 }
 
-char* SinusArc::getQuality() {
+std::string SinusArc::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
+	std::ostringstream oss;
+
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		oss << getQuantity();
 	} else {
-		sprintf(tmp, "arcsin(%s)", argument->getQuality());
+		oss << "arcsin(" << argument->getQuality() << ")";
 	}
+	tmp = oss.str();
 	return tmp;
 
 }

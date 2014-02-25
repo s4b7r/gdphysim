@@ -38,14 +38,17 @@ ComponentType CosinusArc::getType() {
 
 }
 
-char* CosinusArc::getQuality() {
+std::string CosinusArc::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
+	std::ostringstream oss;
+
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		oss << getQuantity();
 	} else {
-		sprintf(tmp, "arccos(%s)", argument->getQuality());
+		oss << "arccos(" << argument->getQuality() << ")";
 	}
+	tmp = oss.str();
 	return tmp;
 
 }

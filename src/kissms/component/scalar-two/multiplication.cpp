@@ -59,14 +59,17 @@ ComponentType Multiplication::getType() {
 
 }
 
-char* Multiplication::getQuality() {
+std::string Multiplication::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
+	std::ostringstream oss;
+
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		oss << getQuantity();
 	} else {
-		sprintf(tmp, "%s * %s", argumentLeft->getQuality(), argumentRight->getQuality());
+		oss << argumentLeft->getQuality() << "*" << argumentRight->getQuality();
 	}
+	tmp = oss.str();
 	return tmp;
 
 }

@@ -38,14 +38,17 @@ ComponentType Sinus::getType() {
 
 }
 
-char* Sinus::getQuality() {
+std::string Sinus::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
+	std::ostringstream oss;
+
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		oss << getQuantity();
 	} else {
-		sprintf(tmp, "sin(%s)", argument->getQuality());
+		oss << "sin(" << argument->getQuality() << ")";
 	}
+	tmp = oss.str();
 	return tmp;
 
 }

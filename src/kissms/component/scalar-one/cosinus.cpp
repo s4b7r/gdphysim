@@ -38,14 +38,17 @@ ComponentType Cosinus::getType() {
 
 }
 
-char* Cosinus::getQuality() {
+std::string Cosinus::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
+	std::ostringstream oss;
+
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		oss << getQuantity();
 	} else {
-		sprintf(tmp, "cos(%s)", argument->getQuality());
+		oss << "cos(" << argument->getQuality() << ")";
 	}
+	tmp = oss.str();
 	return tmp;
 
 }

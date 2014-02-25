@@ -86,7 +86,7 @@ public:
 
 	virtual bool isVectorial();
 
-	virtual char* getQuality();
+	virtual std::string getQuality();
 
 private:
 	Type type;

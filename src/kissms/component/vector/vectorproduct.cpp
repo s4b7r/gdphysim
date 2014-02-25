@@ -54,11 +54,10 @@ Vector* Vectorproduct::getVector() {
 
 }
 
-char* Vectorproduct::getQuality() {
+std::string Vectorproduct::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
-	sprintf(tmp, "ups");
-	return tmp;
+	std::string tmp = "ups";
+		return tmp;
 
 }
 

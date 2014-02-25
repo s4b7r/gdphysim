@@ -38,14 +38,17 @@ ComponentType Negation::getType() {
 
 }
 
-char* Negation::getQuality() {
+std::string Negation::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
+	std::string tmp;
+	std::ostringstream oss;
+
 	if( isQuantifiable() ) {
-		sprintf(tmp, "%8f", getQuantity());
+		oss << getQuantity();
 	} else {
-		sprintf(tmp, "-(%s)", argument->getQuality());
+		oss << "-(" << argument->getQuality() << ")";
 	}
+	tmp = oss.str();
 	return tmp;
 
 }

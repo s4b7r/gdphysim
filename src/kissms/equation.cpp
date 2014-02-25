@@ -384,10 +384,9 @@ void Equation::getScalarEquations(Component* current,
 
 }
 
-char* Equation::getQuality() {
+std::string Equation::getQuality() {
 
-	char *tmp = (char*)malloc(sizeof(char)*10);
-	sprintf(tmp, "ups");
+	std::string tmp = "ups";
 	return tmp;
 
 }
