@@ -102,7 +102,11 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 
 ResultCode Equationsystem::calculateFor(Variable* variable) {
 
-
+	ResultCode rc = solveFor(variable);
+	if( rc != Successful ) {
+		return rc;
+	}
+	// TODO Calculate the Equationsystem
 
 }
 

@@ -80,6 +80,7 @@ private:
 	 *
 	 */
 	Equation *scalarEquations[3];
+	// TODO Replace scalarEquations-array with Equationsystem-Object
 
 	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable
@@ -100,6 +101,7 @@ private:
 	void getScalarEquations( Component *current,
 			Component *parent[], WhichLastArgument parentsArgument,
 			std::stack<struct iteration> todo );
+	// TODO Replace scalarEquations-array with Equationsystem-Object
 
 
 

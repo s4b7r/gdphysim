@@ -11,6 +11,7 @@ namespace kissms {
 
 Equation::Equation() {
 
+	// TODO Replace scalarEquations-array with Equationsystem-Object
 	for( int i = 0; i < 3; i++ ) {
 		scalarEquations[0] = 0;
 	}
@@ -24,6 +25,7 @@ ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
 
+	// TODO Replace scalarEquations-array with Equationsystem-Object
 	if( isVectorial() ) {
 		for( int i = 0; i < 3; i++ ) {
 			scalarEquations[i] = new Equation();
@@ -57,6 +59,7 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	if( rc != Successful ) {
 		return rc;
 	}
+	// TODO Replace scalarEquations-array with Equationsystem-Object
 	if( isVectorial() ) {
 		for( int i = 0; i < 3; i++ ) {
 			if( scalarEquations[i]->hasChild(variable) ) {
@@ -189,6 +192,8 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Equation::getScalarEquations(Equation* equations[]) {
 
+	// TODO Replace scalarEquations-array with Equationsystem-Object
+
 	struct iteration it;
 	Component *current;
 	Component *parent[3];
@@ -274,6 +279,8 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 void Equation::getScalarEquations(Component* current,
 		Component* parent[], WhichLastArgument parentsArgument,
 		std::stack<struct iteration> todo) {
+
+	// TODO Replace scalarEquations-array with Equationsystem-Object
 
 	struct iteration newItLeft;
 	struct iteration newItRight;
