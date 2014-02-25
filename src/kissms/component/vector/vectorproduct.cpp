@@ -54,6 +54,14 @@ Vector* Vectorproduct::getVector() {
 
 }
 
+char* Vectorproduct::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	sprintf(tmp, "ups");
+	return tmp;
+
+}
+
 }
 
 

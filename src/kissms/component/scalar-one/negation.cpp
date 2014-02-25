@@ -38,6 +38,18 @@ ComponentType Negation::getType() {
 
 }
 
+char* Negation::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	if( isQuantifiable() ) {
+		sprintf(tmp, "%8f", getQuantity());
+	} else {
+		sprintf(tmp, "-(%s)", argument->getQuality());
+	}
+	return tmp;
+
+}
+
 }
 
 

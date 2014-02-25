@@ -86,6 +86,8 @@ public:
 
 	virtual bool isVectorial();
 
+	virtual char* getQuality();
+
 private:
 	Type type;
 	void *value;

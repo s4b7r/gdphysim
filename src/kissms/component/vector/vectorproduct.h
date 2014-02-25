@@ -29,6 +29,8 @@ public:
 
 	virtual ResultCode calculate();
 
+	virtual char* getQuality();
+
 };
 
 }

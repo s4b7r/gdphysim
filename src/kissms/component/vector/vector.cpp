@@ -82,6 +82,14 @@ bool Vector::isVectorial() {
 
 }
 
+char* Vector::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	sprintf(tmp, "ups");
+	return tmp;
+
+}
+
 }
 
 

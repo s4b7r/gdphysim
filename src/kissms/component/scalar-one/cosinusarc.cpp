@@ -38,6 +38,18 @@ ComponentType CosinusArc::getType() {
 
 }
 
+char* CosinusArc::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	if( isQuantifiable() ) {
+		sprintf(tmp, "%8f", getQuantity());
+	} else {
+		sprintf(tmp, "arccos(%s)", argument->getQuality());
+	}
+	return tmp;
+
+}
+
 }
 
 

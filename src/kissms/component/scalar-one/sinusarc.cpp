@@ -38,6 +38,18 @@ ComponentType SinusArc::getType() {
 
 }
 
+char* SinusArc::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	if( isQuantifiable() ) {
+		sprintf(tmp, "%8f", getQuantity());
+	} else {
+		sprintf(tmp, "arcsin(%s)", argument->getQuality());
+	}
+	return tmp;
+
+}
+
 }
 
 

@@ -73,7 +73,6 @@ ResultCode Equation::calculateFor(Variable* variable) {
 			calcComp = argumentLeft;
 			explicitVariable = (Variable*) argumentRight;
 		} else {
-			printf("Debug: Equation - Variable neither on left nor on right\n");
 			return ImpossibleState;
 		}
 		if( !calcComp->isCalculable() ) {
@@ -382,6 +381,14 @@ void Equation::getScalarEquations(Component* current,
 	default:
 		break;
 	}
+
+}
+
+char* Equation::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	sprintf(tmp, "ups");
+	return tmp;
 
 }
 

@@ -158,6 +158,18 @@ char* Variable::getName() {
 
 }
 
+char* Variable::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	if( isQuantifiable() ) {
+		sprintf(tmp, "%8f", getQuantity());
+	} else {
+		sprintf(tmp, "%s", (char*)value);
+	}
+	return tmp;
+
+}
+
 }
 
 

@@ -38,6 +38,18 @@ ComponentType Reciprocal::getType() {
 
 }
 
+char* Reciprocal::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	if( isQuantifiable() ) {
+		sprintf(tmp, "%8f", getQuantity());
+	} else {
+		sprintf(tmp, "1/(%s)", argument->getQuality());
+	}
+	return tmp;
+
+}
+
 }
 
 

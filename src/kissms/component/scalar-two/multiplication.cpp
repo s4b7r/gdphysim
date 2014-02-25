@@ -59,6 +59,18 @@ ComponentType Multiplication::getType() {
 
 }
 
+char* Multiplication::getQuality() {
+
+	char *tmp = (char*)malloc(sizeof(char)*10);
+	if( isQuantifiable() ) {
+		sprintf(tmp, "%8f", getQuantity());
+	} else {
+		sprintf(tmp, "%s * %s", argumentLeft->getQuality(), argumentRight->getQuality());
+	}
+	return tmp;
+
+}
+
 }
 
 

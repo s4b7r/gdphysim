@@ -44,6 +44,8 @@ public:
 
 	virtual bool isVectorial();
 
+	virtual char* getQuality();
+
 private:
 	/**
 	 *

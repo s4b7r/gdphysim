@@ -83,6 +83,11 @@ public:
 	 */
 	virtual bool isVectorial() = 0;
 
+	/**
+	 *
+	 */
+	virtual char* getQuality() = 0;
+
 protected:
 	/**
 	 * @brief The Component's numerical value, if any
