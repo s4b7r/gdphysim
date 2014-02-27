@@ -14,6 +14,14 @@
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
 
+#define KISSMS_DEBUG_FLAG
+#ifdef KISSMS_DEBUG_FLAG
+#define DP(x) std::cout << "DEBUG >> " << x << std::endl;
+#else
+#define DP(x)
+#endif
+
+
 // Include system libraries
 #include <stdlib.h>
 #include <vector>
@@ -24,6 +32,7 @@
 #include <stack>
 #include <sstream>
 #include <queue>
+#include <iostream>
 
 // All parts of KissMS belong to the namespace kissms
 

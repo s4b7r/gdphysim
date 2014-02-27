@@ -54,6 +54,8 @@ bool Equationsystem::containsEquation(Equation* equation) {
 
 ResultCode Equationsystem::solveFor(Variable* variable) {
 
+	DP("Equationsystem::solveFor(" << variable->getName() << ")");
+
 	Equation *mainEquation = 0;
 	std::vector<Equation*>::iterator it;
 	ResultCode rc;
@@ -119,6 +121,8 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 
 ResultCode Equationsystem::calculateFor(Variable* variable) {
 
+	DP("Equationsystem::calculateFor(" << variable->getName() << ")");
+
 	ResultCode rc;
 	std::vector<Equation*>::iterator it;
 	Component *calcComp;
@@ -128,6 +132,7 @@ ResultCode Equationsystem::calculateFor(Variable* variable) {
 	if( rc != Successful ) {
 		return rc;
 	}
+	DP("calculateFor() did it's solveFor()")
 	it = equations.begin();
 	while( it != equations.end() ) {
 		if( (*it)->hasChild(variable) && (*it)->isExplicitly(variable) ) {

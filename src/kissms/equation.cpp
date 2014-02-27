@@ -23,8 +23,9 @@ Equation::~Equation() {
 
 ResultCode Equation::solveFor(Variable* variable) {
 
-	ResultCode solveResult = Successful;
+	DP("Equation::solveFor(" << variable->getName() << ")")
 
+	ResultCode solveResult = Successful;
 	if( isVectorial() ) {
 		Equation *tmpEqs[3];
 		for( int i = 0; i < 3; i++ ) {
@@ -47,6 +48,8 @@ ResultCode Equation::solveFor(Variable* variable) {
 }
 
 ResultCode Equation::calculateFor(Variable* variable) {
+
+	DP("Equation::calculateFor(" << variable->getName() << ")")
 
 	ResultCode rc;
 	Component *calcComp;
@@ -383,7 +386,15 @@ void Equation::getScalarEquations(Component* current,
 
 std::string Equation::getQuality() {
 
-	std::string tmp = "ups";
+	std::string tmp;
+	std::ostringstream oss;
+
+	if( isQuantifiable() ) {
+		oss << getQuantity();
+	} else {
+		oss << argumentLeft->getQuality() << "=" << argumentRight->getQuality();
+	}
+	tmp = oss.str();
 	return tmp;
 
 }
