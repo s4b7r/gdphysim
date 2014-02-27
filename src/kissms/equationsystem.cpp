@@ -77,12 +77,10 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	if( !found ) {
 		return GeneralFailure;
 	}
-	printf("\nDebug 3\n");
 	rc = mainEquation->solveFor(variable);
 	if( rc != Successful ) {
 		return rc;
 	}
-	printf("\nDebug 4\n");
 	Component *mainEqsValueside = 0;
 	if( mainEquation->getLeft() == variable ) {
 		mainEqsValueside = mainEquation->getRight();
@@ -90,24 +88,19 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		mainEqsValueside = mainEquation->getLeft();
 	}
 	variable->setQuality(mainEqsValueside->getQuality());
-	printf("\nDebug 5: %s\n", variable->getQuality().c_str());
 	if( mainEqsValueside->isCalculable() ) {
 		return Successful;
 	}
-	printf("\nDebug 6\n");
 	std::vector<Variable*> varsToResolve;
 	mainEqsValueside->getVariables(&varsToResolve);
 	std::vector<Equation*> equationsLeft;
 	it = equations.begin();
 	while( it != equations.end() ) {
-		printf("\nDebug 9\n");
 		if( *it != mainEquation ) {
-			printf("\nDebug 8\n");
 			equationsLeft.push_back(*it);
 		}
 		it++;
 	}
-	printf("\nDebug 7: %d\n", (int)equationsLeft.size());
 
 	std::stack<Variable*> varsToRes;
 	std::vector<Variable*>::iterator itVar;
@@ -116,9 +109,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		varsToRes.push(*itVar);
 		itVar++;
 	}
-	printf("\nDebug 10: %d\n", (int)varsToRes.size());
 	while( !varsToRes.empty() ) {
-		printf("\nDebug 11\n");
 		solveFor(&varsToRes, &equationsLeft);
 	}
 
@@ -137,7 +128,6 @@ ResultCode Equationsystem::calculateFor(Variable* variable) {
 	if( rc != Successful ) {
 		return rc;
 	}
-printf("\nDebug 12\n");
 	it = equations.begin();
 	while( it != equations.end() ) {
 		if( (*it)->hasChild(variable) && (*it)->isExplicitly(variable) ) {
@@ -159,7 +149,6 @@ printf("\nDebug 12\n");
 					explicitVariable->setQuality(calcComp->getQuality());
 				}
 			} else {
-				printf("\nDebug AA: %s\n", explicitVariable->getName());
 				explicitVariable->setQuality(calcComp->getQuality());
 				rc = NotCalculable;
 				std::vector<Variable*> varsInCalc;

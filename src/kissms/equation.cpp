@@ -32,9 +32,7 @@ ResultCode Equation::solveFor(Variable* variable) {
 			scalarEquations->addEquation(tmpEqs[i]);
 		}
 		getScalarEquations(tmpEqs);
-		printf("\nDebug 1\n");
 		scalarEquations->solveFor(variable);
-		printf("\nDebug 2\n");
 	} else {
 		// Repeatedly try to solve the Equation for the given Variable,
 		// until the Variable is explicitly represented.
