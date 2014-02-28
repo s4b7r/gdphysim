@@ -3,17 +3,27 @@
 
 using kissms::Constant;
 
-Solid::Solid(int centerX, int centerY, int mass){
+Solid::Solid(int centerX, int centerY, int mass, int eloX, int eloY){
 	this->mass=mass;
+
+	fill3dVector(eloPoint,eloX,eloY,0);
+
 	fill3dVector(center,centerX,centerY,0);
+	forces[0].push_back(center);
+
+	if(mass!=0){
+		Vector *G=new Vector();
+		fill3dVector(*G,0,mass*GRAVITY,0);
+		forces[1].push_back(*G);
+	}
 }
 
 Solid::~Solid(){						//TODO change this when Simon builds his own Vector destructor
+	deleteVector(eloPoint);
 	deleteVector(center);
 	for(int i=0;i<2;i++){
 		if(&forces[i]!=NULL)for(unsigned int j=0;j<forces[i].size();j++){
 			deleteVector(forces[i].at(j));
-			forces[i].erase(forces[i].begin()+j);
 		}
 	}
 }

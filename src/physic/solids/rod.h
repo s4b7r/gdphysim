@@ -9,10 +9,6 @@
 #define ROD_H_
 
 class Rod : public Solid{
-
-private:
-	Vector eloPoint;
-
 public:
 	Rod(int centerX, int centerY, int eloX, int eloY);
 };

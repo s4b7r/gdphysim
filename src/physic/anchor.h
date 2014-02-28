@@ -17,7 +17,9 @@ private:
 	Anchor* link;
 public:
 	Anchor(int x, int y);
+	~Anchor();
 	//Anchor();
+
 	bool getGrounded(){return isGrounded;}
 	void setGrounded(bool state){isGrounded=state;}
 	Vector getOrigin(){return origin;}

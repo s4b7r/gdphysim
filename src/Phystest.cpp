@@ -14,7 +14,7 @@ using std::endl;
 
 int main() {
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
-	Solid test1(1,2,3);
+	Rod test1(1,2,3,5);
 	cout 		<< test1.getMass()
 				<< " "
 				<< test1.getCenter().getArgument(0)->getQuantity()
@@ -22,5 +22,6 @@ int main() {
 				<< test1.getCenter().getArgument(1)->getQuantity()
 				<< " "
 				<< test1.getCenter().getArgument(2)->getQuantity() << endl;
+
 	return 0;
 }
