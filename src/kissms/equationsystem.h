@@ -51,11 +51,6 @@ private:
 	 */
 	std::vector<Equation*> equations;
 
-	/**
-	 *
-	 */
-	ResultCode solveFor( std::stack<Variable*> *variablesToResolve, std::vector<Equation*> *equationsLeft );
-
 
 };
 

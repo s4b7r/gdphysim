@@ -23,33 +23,19 @@ Equation::~Equation() {
 
 ResultCode Equation::solveFor(Variable* variable) {
 
-	DP("Equation::solveFor(" << variable->getName() << ")")
-
 	ResultCode solveResult = Successful;
-	if( isVectorial() ) {
-		Equation *tmpEqs[3];
-		for( int i = 0; i < 3; i++ ) {
-			tmpEqs[i] = new Equation();
-			scalarEquations->addEquation(tmpEqs[i]);
-		}
-		getScalarEquations(tmpEqs);
-		scalarEquations->solveFor(variable);
-	} else {
-		// Repeatedly try to solve the Equation for the given Variable,
-		// until the Variable is explicitly represented.
-		// Abort if solving process fails.
-		while( !isExplicitly(variable) && solveResult == Successful ) {
-			solveResult = solveFor(variable, isOnLeft(variable));
-		}
-		variable->setQuality(isOnLeft(variable) ? argumentRight->getQuality() : argumentLeft->getQuality());
+	// Repeatedly try to solve the Equation for the given Variable,
+	// until the Variable is explicitly represented.
+	// Abort if solving process fails.
+	while( !isExplicitly(variable) && solveResult == Successful ) {
+		solveResult = solveFor(variable, isOnLeft(variable));
 	}
+
 	return solveResult;
 
 }
 
 ResultCode Equation::calculateFor(Variable* variable) {
-
-	DP("Equation::calculateFor(" << variable->getName() << ")")
 
 	ResultCode rc;
 	Component *calcComp;
@@ -60,30 +46,27 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	if( rc != Successful ) {
 		return rc;
 	}
-	if( isVectorial() ) {
-		rc = scalarEquations->calculateFor(variable);
+	// Set the placeholder regarding the Equation's side which the Variable belongs to
+	if( isOnLeft(variable) ) {
+		calcComp = argumentRight;
+		explicitVariable = (Variable*) argumentLeft;
+	} else if( isOnRight(variable) ) {
+		calcComp = argumentLeft;
+		explicitVariable = (Variable*) argumentRight;
 	} else {
-		// Set the placeholder regarding the Equation's side which the Variable belongs to
-		if( isOnLeft(variable) ) {
-			calcComp = argumentRight;
-			explicitVariable = (Variable*) argumentLeft;
-		} else if( isOnRight(variable) ) {
-			calcComp = argumentLeft;
-			explicitVariable = (Variable*) argumentRight;
-		} else {
-			return ImpossibleState;
-		}
-		if( !calcComp->isCalculable() ) {
-			return NotCalculable;
-		}
-		rc = calcComp->calculate();
-		if( rc == Successful ) {
-			// If everything is okay, set the Variable's numerical value
-			explicitVariable->setValue(calcComp->getQuantity());
-			// And it's quality
-			explicitVariable->setQuality(calcComp->getQuality());
-		}
+		return ImpossibleState;
 	}
+	if( !calcComp->isCalculable() ) {
+		return NotCalculable;
+	}
+	rc = calcComp->calculate();
+	if( rc == Successful ) {
+		// If everything is okay, set the Variable's numerical value
+		explicitVariable->setValue(calcComp->getQuantity());
+		// And it's quality
+		explicitVariable->setQuality(calcComp->getQuality());
+	}
+
 
 	return rc;
 
