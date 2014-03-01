@@ -24,11 +24,22 @@ Equation::~Equation() {
 ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
-	// Repeatedly try to solve the Equation for the given Variable,
-	// until the Variable is explicitly represented.
-	// Abort if solving process fails.
-	while( !isExplicitly(variable) && solveResult == Successful ) {
-		solveResult = solveFor(variable, isOnLeft(variable));
+	if( !isVectorial() ) {
+		// Repeatedly try to solve the Equation for the given Variable,
+		// until the Variable is explicitly represented.
+		// Abort if solving process fails.
+		while( !isExplicitly(variable) && solveResult == Successful ) {
+			solveResult = solveFor(variable, isOnLeft(variable));
+		}
+	} else {
+		Equation *equations[3];
+		scalarEquations = new Equationsystem();
+		for( int i = 0; i < 3; i++ ) {
+			equations[i] = new Equation();
+			scalarEquations->addEquation(equations[i]);
+		}
+		getScalarEquations(equations);
+		scalarEquations->solveFor(variable);
 	}
 
 	return solveResult;
