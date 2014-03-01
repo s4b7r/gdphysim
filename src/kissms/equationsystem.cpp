@@ -54,12 +54,10 @@ bool Equationsystem::containsEquation(Equation* equation) {
 
 ResultCode Equationsystem::solveFor(Variable* variable) {
 
-	// TODO Implement Equationsystem::solveFor(Variable*)
-	return NotYetImplemented;
-
 	std::vector<Equation*>::iterator eqIt;
 	int minVarCount;
 	Equation *solveEquation = 0;
+	ResultCode rc;
 
 	// Find Equation containing the given Variable with the least other Variables
 	eqIt = equations.begin();
@@ -72,36 +70,74 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 				solveEquation = (*eqIt);
 			}
 		}
+		eqIt++;
 	}
 
-	// Solve Equation for given Variable and get the required other Variables
-	solveEquation->solveFor(variable);
-	std::vector<Variable*> pendingVariables;
+	// Get the Equation's other side
+	Component *valueComponent;
 	if( solveEquation->getLeft() == variable ) {
-		solveEquation->getRight()->getVariables(&pendingVariables);
+		valueComponent = solveEquation->getRight();
 	} else {
-		solveEquation->getLeft()->getVariables(&pendingVariables);
+		valueComponent = solveEquation->getLeft()
 	}
 
-	// Create Equationsystem with unused Equations
-	Equationsystem equationsLeft;
-	eqIt = equations.begin();
-	while( eqIt != equations.end() ) {
-		if( *eqIt != solveEquation ) {
-			equationsLeft.addEquation(*eqIt);
+	// Solve Equation for given Variable
+	solveEquation->solveFor(variable);
+
+	// Get dependencies (Variables which have to be solved to solve this one)
+	std::vector<Variable*> otherVariables;
+	std::vector<Variable*> pendingVariables;
+	std::vector<Variable*>::iterator varIt;
+	valueComponent->getVariables(&otherVariables);
+	varIt = otherVariables.begin();
+	while( *varIt != otherVariables.end() ) {
+		if( !(*varIt)->isCalculable() ) {
+			pendingVariables.push_back(*varIt);
 		}
+		varIt++;
 	}
-	equationsLeft.setPendingVariables(pendingVariables);
-	equationsLeft.solvePending();
 
-	return NotYetImplemented;
+	// Solve and calculate
+	if( pendingVariables.size() != 0 ) {
+		// There are other Variables which have to be solved
+
+		// Create Equationsystem with unused Equations
+		Equationsystem equationsLeft;
+		eqIt = equations.begin();
+		while( eqIt != equations.end() ) {
+			if( *eqIt != solveEquation ) {
+				equationsLeft.addEquation(*eqIt);
+			}
+			eqIt++;
+		}
+		equationsLeft.setPendingVariables(pendingVariables);
+
+		// Solve next pending Variable
+		rc = equationsLeft.solvePending();
+		if( rc != Successful ) {
+			return rc;
+		}
+	} else {
+		// There are no further dependencies
+
+		// Calculate
+		rc = valueComponent->calculate();
+		if( rc != Successful ) {
+			return rc;
+		}
+		// If everything is okay, set the Variable's numerical value
+		variable->setValue(valueComponent->getQuantity());
+		// And it's quality
+		variable->setQuality(valueComponent->getQuality());
+	}
+
+	return rc;
 
 }
 
 ResultCode Equationsystem::calculateFor(Variable* variable) {
 
-	// TODO Implement Equationsystem::calculateFor(Variable*)
-	return NotYetImplemented;
+	return solveFor(variable);
 
 }
 
@@ -114,8 +150,14 @@ void Equationsystem::setPendingVariables(
 
 ResultCode Equationsystem::solvePending() {
 
-	// TODO Implement Equationsystem::solvePending()
-	return NotYetImplemented;
+	Variable *solveVariable;
+	ResultCode rc;
+
+	solveVariable = pendingVariables.back();
+	pendingVariables.pop_back();
+	rc = solveFor(solveVariable);
+
+	return rc;
 
 }
 
