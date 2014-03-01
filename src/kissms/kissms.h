@@ -13,7 +13,6 @@
 // XXX Do not forget to test your library really good
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
-// TODO Maybe rethink process of Equation solving and calculating
 
 #define KISSMS_DEBUG_FLAG
 
