@@ -32,13 +32,7 @@ ResultCode Equation::solveFor(Variable* variable) {
 			solveResult = solveFor(variable, isOnLeft(variable));
 		}
 	} else {
-		Equation *equations[3];
-		scalarEquations = new Equationsystem();
-		for( int i = 0; i < 3; i++ ) {
-			equations[i] = new Equation();
-			scalarEquations->addEquation(equations[i]);
-		}
-		getScalarEquations(equations);
+		getScalarEquations();
 		scalarEquations->solveFor(variable);
 	}
 
@@ -52,33 +46,36 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	Component *calcComp;
 	Variable *explicitVariable;
 
-	// First the Equation has to be solved
-	rc = solveFor(variable);
-	if( rc != Successful ) {
-		return rc;
-	}
-	// Set the placeholder regarding the Equation's side which the Variable belongs to
-	if( isOnLeft(variable) ) {
-		calcComp = argumentRight;
-		explicitVariable = (Variable*) argumentLeft;
-	} else if( isOnRight(variable) ) {
-		calcComp = argumentLeft;
-		explicitVariable = (Variable*) argumentRight;
+	if( !isVectorial() ) {
+		// First the Equation has to be solved
+		rc = solveFor(variable);
+		if( rc != Successful ) {
+			return rc;
+		}
+		// Set the placeholder regarding the Equation's side which the Variable belongs to
+		if( isOnLeft(variable) ) {
+			calcComp = argumentRight;
+			explicitVariable = (Variable*) argumentLeft;
+		} else if( isOnRight(variable) ) {
+			calcComp = argumentLeft;
+			explicitVariable = (Variable*) argumentRight;
+		} else {
+			return ImpossibleState;
+		}
+		if( !calcComp->isCalculable() ) {
+			return NotCalculable;
+		}
+		rc = calcComp->calculate();
+		if( rc == Successful ) {
+			// If everything is okay, set the Variable's numerical value
+			explicitVariable->setValue(calcComp->getQuantity());
+			// And it's quality
+			explicitVariable->setQuality(calcComp->getQuality());
+		}
 	} else {
-		return ImpossibleState;
+		getScalarEquations();
+		rc = scalarEquations->calculateFor(variable);
 	}
-	if( !calcComp->isCalculable() ) {
-		return NotCalculable;
-	}
-	rc = calcComp->calculate();
-	if( rc == Successful ) {
-		// If everything is okay, set the Variable's numerical value
-		explicitVariable->setValue(calcComp->getQuantity());
-		// And it's quality
-		explicitVariable->setQuality(calcComp->getQuality());
-	}
-
-
 	return rc;
 
 }
@@ -390,6 +387,18 @@ std::string Equation::getQuality() {
 	}
 	tmp = oss.str();
 	return tmp;
+
+}
+
+void Equation::getScalarEquations() {
+
+	Equation *equations[3];
+	scalarEquations = new Equationsystem();
+	for( int i = 0; i < 3; i++ ) {
+		equations[i] = new Equation();
+		scalarEquations->addEquation(equations[i]);
+	}
+	getScalarEquations(equations);
 
 }
 
