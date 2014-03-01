@@ -12,6 +12,7 @@ namespace kissms {
 Component::Component() {
 
 	quantity = NAN;
+	debugId = -1;
 
 }
 
@@ -28,6 +29,18 @@ ComponentType Component::getType() {
 
 	return tUnspecified;
 	
+}
+
+void Component::setDebugId(int dbgId) {
+
+	debugId = dbgId;
+
+}
+
+int Component::getDebugId() {
+
+	return debugId;
+
 }
 
 }

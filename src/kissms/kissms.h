@@ -17,6 +17,7 @@
 // TODO Maybe also rethink process of Equation solving and calculating
 
 #define KISSMS_DEBUG_FLAG
+
 #ifdef KISSMS_DEBUG_FLAG
 #define DP(x) std::cout << "DEBUG >> " << x << std::endl;
 #else

@@ -386,7 +386,8 @@ void test12() {
 	co = new kissms::Constant();
 	co->setValue(23);
 
-	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 4; i++ ) {
+	for( int i = 0; i < 3; i++ ) {
 		eq[i] = new kissms::Equation();
 		va[i] = new kissms::Variable();
 		vana[i] = (char*)malloc(sizeof(char)*2);
@@ -397,23 +398,75 @@ void test12() {
 		if( i > 0 ) {
 			eq[i-1]->setRight(va[i]);
 		}
-		if( i > 2 ) {
+		//if( i > 2 ) {
+		if( i > 1 ) {
 			eq[i]->setRight(co);
 		}
 		sys->addEquation(eq[i]);
 	}
-	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 4; i++ ) {
+	for( int i = 0; i < 3; i++ ) {
 		printf("%s = %s\n", eq[i]->getLeft()->getQuality().c_str(), eq[i]->getRight()->getQuality().c_str());
 	}
 	printf("\n");
 	sys->calculateFor(va[0]);
-	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 4; i++ ) {
+	for( int i = 0; i < 3; i++ ) {
 		printf("%s = %s\n", va[i]->getName(), va[i]->getQuality().c_str());
 	}
 	printf("\n");
-	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 4; i++ ) {
+	for( int i = 0; i < 3; i++ ) {
 		printf("%s = %f\n", va[i]->getName(), va[i]->getQuantity());
 	}
+
+}
+
+void test13() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Vector *vec1 = new kissms::Vector();
+	kissms::Vector *vec2 = new kissms::Vector();
+	kissms::Variable *var1 = new kissms::Variable();
+	kissms::Variable *var2 = new kissms::Variable();
+	kissms::Variable *var3 = new kissms::Variable();
+	kissms::Constant *con1 = new kissms::Constant();
+
+	eq->setArguments(vec1, vec2);
+	vec1->setArgument(0, var1);
+	vec1->setArgument(1, var2);
+	vec1->setArgument(2, var3);
+	vec2->setArgument(0, var2);
+	vec2->setArgument(1, var3);
+	vec2->setArgument(2, con1);
+	con1->setValue(23);
+
+	char *var1n = (char*) malloc(sizeof(char) * 2);
+	var1n[0] = 'a';
+	var1n[1] = 0;
+	char *var2n = (char*) malloc(sizeof(char) * 2);
+	var2n[0] = 'b';
+	var2n[1] = 0;
+	char *var3n = (char*) malloc(sizeof(char) * 2);
+	var3n[0] = 'c';
+	var3n[1] = 0;
+
+	var1->setName(var1n);
+	var2->setName(var2n);
+	var3->setName(var3n);
+
+	printf("(a, b, c) = (b, c, 23)\n");
+
+	//printf("RC 2: %d\n", eq->calculateFor(var2));
+	printf("RC 1: %d\n", eq->calculateFor(var1));
+	//printf("RC 2: %d\n", eq->calculateFor(var2));
+
+	printf("a quant= %f\n", var1->getQuantity());
+	printf("b quant= %f\n", var2->getQuantity());
+	printf("c quant= %f\n", var3->getQuantity());
+	printf("a qual = %s\n", var1->getQuality().c_str());
+	printf("b qual = %s\n", var2->getQuality().c_str());
+	printf("c qual = %s\n", var3->getQuality().c_str());
 
 }
 
@@ -442,6 +495,8 @@ int main(int argc, char **argv) {
 	test11();
 	printf("\n\n");
 	test12();
+	printf("\n\n");
+	test13();
 
 	return 0;
 

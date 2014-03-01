@@ -93,11 +93,26 @@ public:
 	 */
 	virtual void getVariables( std::vector<Variable*> *variables ) = 0;
 
+	/**
+	 *
+	 */
+	virtual void setDebugId( int dbgId );
+
+	/**
+	 *
+	 */
+	virtual int getDebugId();
+
 protected:
 	/**
 	 * @brief The Component's numerical value, if any
 	 */
 	double quantity;
+
+	/**
+	 *
+	 */
+	int debugId;
 
 };
 

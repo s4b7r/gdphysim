@@ -63,6 +63,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	unsigned int minOtherVars = 0;
 	std::vector<Variable*> tmpVarVector;
 
+	DP("Search for main Equation")
 	it = equations.begin();
 	while( it != equations.end() ) {
 		if( (*it)->hasChild(variable) ) {
@@ -76,6 +77,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		}
 		it++;
 	}
+	DP("Main Equation ID: " << mainEquation->getDebugId())
 	if( !found ) {
 		return GeneralFailure;
 	}
@@ -83,18 +85,28 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	if( rc != Successful ) {
 		return rc;
 	}
-	Component *mainEqsValueside = 0;
+	Component *mainEqsValueside;
 	if( mainEquation->getLeft() == variable ) {
 		mainEqsValueside = mainEquation->getRight();
 	} else {
 		mainEqsValueside = mainEquation->getLeft();
 	}
 	variable->setQuality(mainEqsValueside->getQuality());
+	DP("Set quality " << variable->getName() << " = " << variable->getQuality() <<
+			" = " << mainEqsValueside->getQuality())
 	if( mainEqsValueside->isCalculable() ) {
 		return Successful;
 	}
+	DP("Equationsystem::solveFor(" << variable->getName() << ") has to resolve other Variables ...")
 	std::vector<Variable*> varsToResolve;
 	mainEqsValueside->getVariables(&varsToResolve);
+	std::vector<Variable*>::iterator debugVarIt;
+	debugVarIt = varsToResolve.begin();
+	while( debugVarIt != varsToResolve.end() ) {
+		Variable *tmp = *debugVarIt;
+		DP("... has to resolve (vector): " << tmp->getName())
+		debugVarIt++;
+	}
 	std::vector<Equation*> equationsLeft;
 	it = equations.begin();
 	while( it != equations.end() ) {
@@ -103,16 +115,30 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		}
 		it++;
 	}
+	DP("... with " << equationsLeft.size() << " Equations left")
 
 	std::stack<Variable*> varsToRes;
 	std::vector<Variable*>::iterator itVar;
 	itVar = varsToResolve.begin();
 	while( itVar != varsToResolve.end() ) {
 		varsToRes.push(*itVar);
+		DP("... has to resolve (stack): " << (*itVar)->getName())
 		itVar++;
 	}
 	while( !varsToRes.empty() ) {
 		solveFor(&varsToRes, &equationsLeft);
+		std::stack<Variable*> tmpVarsToRes;
+		while( !varsToRes.empty() ) {
+			Variable *tmp = varsToRes.top();
+			DP("... has to resolve (stack): " << tmp->getName())
+			tmpVarsToRes.push(tmp);
+			varsToRes.pop();
+		}
+		while( !tmpVarsToRes.empty() ) {
+			varsToRes.push(tmpVarsToRes.top());
+			tmpVarsToRes.pop();
+		}
+		DP("... with " << equationsLeft.size() << " Equations left")
 	}
 
 	return Successful;
