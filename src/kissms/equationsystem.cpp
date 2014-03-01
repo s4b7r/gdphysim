@@ -10,6 +10,9 @@
 namespace kissms {
 
 Equationsystem::Equationsystem() {
+
+	pendingVariables = 0;
+
 }
 
 Equationsystem::~Equationsystem() {
@@ -73,6 +76,9 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		eqIt++;
 	}
 
+	// Solve Equation for given Variable
+	solveEquation->solveFor(variable); // FIXME mem viol
+
 	// Get the Equation's other side
 	Component *valueComponent;
 	if( solveEquation->getLeft() == variable ) {
@@ -81,24 +87,21 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		valueComponent = solveEquation->getLeft();
 	}
 
-	// Solve Equation for given Variable
-	solveEquation->solveFor(variable);
-
 	// Get dependencies (Variables which have to be solved to solve this one)
 	std::vector<Variable*> otherVariables;
-	std::vector<Variable*> pendingVariables;
+	std::vector<Variable*> *pendingVariables = new std::vector<Variable*>();
 	std::vector<Variable*>::iterator varIt;
-	valueComponent->getVariables(&otherVariables);
+	valueComponent->getVariables(&otherVariables); // FIXME mem viol
 	varIt = otherVariables.begin();
 	while( varIt != otherVariables.end() ) {
 		if( !(*varIt)->isCalculable() ) {
-			pendingVariables.push_back(*varIt);
+			pendingVariables->push_back(*varIt);
 		}
 		varIt++;
 	}
 
 	// Solve and calculate
-	if( pendingVariables.size() != 0 ) {
+	if( pendingVariables->size() != 0 ) {
 		// There are other Variables which have to be solved
 
 		// Create Equationsystem with unused Equations
@@ -114,6 +117,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 
 		// Solve next pending Variable
 		rc = equationsLeft.solvePending();
+
 		if( rc != Successful ) {
 			return rc;
 		}
@@ -140,7 +144,7 @@ ResultCode Equationsystem::calculateFor(Variable* variable) {
 }
 
 void Equationsystem::setPendingVariables(
-		std::vector<Variable*> pendingVariables) {
+		std::vector<Variable*> *pendingVariables) {
 
 	this->pendingVariables = pendingVariables;
 
@@ -151,8 +155,8 @@ ResultCode Equationsystem::solvePending() {
 	Variable *solveVariable;
 	ResultCode rc;
 
-	solveVariable = pendingVariables.back();
-	pendingVariables.pop_back();
+	solveVariable = pendingVariables->back();
+	pendingVariables->pop_back();
 	rc = solveFor(solveVariable);
 
 	return rc;

@@ -48,7 +48,7 @@ public:
 	/**
 	 *
 	 */
-	void setPendingVariables( std::vector<Variable*> pendingVariables );
+	void setPendingVariables( std::vector<Variable*> *pendingVariables );
 
 	/**
 	 *
@@ -64,7 +64,7 @@ private:
 	/**
 	 *
 	 */
-	std::vector<Variable*> pendingVariables;
+	std::vector<Variable*> *pendingVariables;
 
 
 };

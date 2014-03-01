@@ -511,7 +511,8 @@ void test14() {
 	va1->setName(va1n);
 	va2->setName(va2n);
 
-	eqsys->calculateFor(va1);
+	eqsys->calculateFor(va1); // FIXME mem viol
+
 	printf("= %f", va1->getQuantity());
 
 }
