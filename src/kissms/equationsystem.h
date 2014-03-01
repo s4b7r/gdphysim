@@ -45,11 +45,26 @@ public:
 	 */
 	ResultCode calculateFor( Variable *variable );
 
+	/**
+	 *
+	 */
+	void setPendingVariables( std::vector<Variable*> pendingVariables );
+
+	/**
+	 *
+	 */
+	ResultCode solvePending();
+
 private:
 	/**
 	 *
 	 */
 	std::vector<Equation*> equations;
+
+	/**
+	 *
+	 */
+	std::vector<Variable*> pendingVariables;
 
 
 };
