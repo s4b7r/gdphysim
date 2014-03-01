@@ -512,7 +512,7 @@ void test14() {
 	va2->setName(va2n);
 
 	eqsys->calculateFor(va1);
-	printf("= %d", va1->getQuantity());
+	printf("= %f", va1->getQuantity());
 
 }
 
