@@ -55,7 +55,7 @@ bool Equationsystem::containsEquation(Equation* equation) {
 ResultCode Equationsystem::solveFor(Variable* variable) {
 
 	std::vector<Equation*>::iterator eqIt;
-	int minVarCount;
+	unsigned int minVarCount;
 	Equation *solveEquation = 0;
 	ResultCode rc;
 
@@ -78,7 +78,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	if( solveEquation->getLeft() == variable ) {
 		valueComponent = solveEquation->getRight();
 	} else {
-		valueComponent = solveEquation->getLeft()
+		valueComponent = solveEquation->getLeft();
 	}
 
 	// Solve Equation for given Variable
@@ -90,7 +90,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	std::vector<Variable*>::iterator varIt;
 	valueComponent->getVariables(&otherVariables);
 	varIt = otherVariables.begin();
-	while( *varIt != otherVariables.end() ) {
+	while( varIt != otherVariables.end() ) {
 		if( !(*varIt)->isCalculable() ) {
 			pendingVariables.push_back(*varIt);
 		}
@@ -117,19 +117,17 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		if( rc != Successful ) {
 			return rc;
 		}
-	} else {
-		// There are no further dependencies
-
-		// Calculate
-		rc = valueComponent->calculate();
-		if( rc != Successful ) {
-			return rc;
-		}
-		// If everything is okay, set the Variable's numerical value
-		variable->setValue(valueComponent->getQuantity());
-		// And it's quality
-		variable->setQuality(valueComponent->getQuality());
 	}
+
+	// Calculate
+	rc = valueComponent->calculate();
+	if( rc != Successful ) {
+		return rc;
+	}
+	// If everything is okay, set the Variable's numerical value
+	variable->setValue(valueComponent->getQuantity());
+	// And it's quality
+	variable->setQuality(valueComponent->getQuality());
 
 	return rc;
 
