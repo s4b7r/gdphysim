@@ -365,7 +365,6 @@ void test11() {
 	printf("(x, y, _) = (y, 5, _)\n");
 
 	printf("RC 1: %d\n", eq->calculateFor(var1));
-	//printf("RC 2: %d\n", eq->calculateFor(var2));
 
 	printf("x quant= %f\n", var1->getQuantity());
 	printf("y quant= %f\n", var2->getQuantity());
@@ -386,8 +385,8 @@ void test12() {
 	co = new kissms::Constant();
 	co->setValue(23);
 
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 3; i++ ) {
 		eq[i] = new kissms::Equation();
 		va[i] = new kissms::Variable();
 		vana[i] = (char*)malloc(sizeof(char)*2);
@@ -398,25 +397,25 @@ void test12() {
 		if( i > 0 ) {
 			eq[i-1]->setRight(va[i]);
 		}
-		//if( i > 2 ) {
-		if( i > 1 ) {
+		if( i > 2 ) {
+		//if( i > 1 ) {
 			eq[i]->setRight(co);
 		}
 		sys->addEquation(eq[i]);
 	}
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 3; i++ ) {
 		printf("%s = %s\n", eq[i]->getLeft()->getQuality().c_str(), eq[i]->getRight()->getQuality().c_str());
 	}
 	printf("\n");
 	sys->calculateFor(va[0]);
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 3; i++ ) {
 		printf("%s = %s\n", va[i]->getName(), va[i]->getQuality().c_str());
 	}
 	printf("\n");
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < 4; i++ ) {
+	//for( int i = 0; i < 3; i++ ) {
 		printf("%s = %f\n", va[i]->getName(), va[i]->getQuantity());
 	}
 
@@ -457,9 +456,7 @@ void test13() {
 
 	printf("(a, b, c) = (b, c, 23)\n");
 
-	//printf("RC 2: %d\n", eq->calculateFor(var2));
 	printf("RC 1: %d\n", eq->calculateFor(var1));
-	//printf("RC 2: %d\n", eq->calculateFor(var2));
 
 	printf("a quant= %f\n", var1->getQuantity());
 	printf("b quant= %f\n", var2->getQuantity());
@@ -467,6 +464,24 @@ void test13() {
 	printf("a qual = %s\n", var1->getQuality().c_str());
 	printf("b qual = %s\n", var2->getQuality().c_str());
 	printf("c qual = %s\n", var3->getQuality().c_str());
+
+}
+
+void test14() {
+
+	kissms::Equationsystem *eqsys = new kissms::Equationsystem();
+	kissms::Equation *eq1 = new kissms::Equation();
+	kissms::Equation *eq2 = new kissms::Equation();
+	kissms::Variable *va1 = new kissms::Variable();
+	kissms::Variable *va2 = new kissms::Variable();
+	kissms::Constant *co1 = new kissms::Constant();
+	kissms::Constant *co2 = new kissms::Constant();
+	kissms::Addition *ad1 = new kissms::Addition();
+	kissms::Addition *ad2 = new kissms::Addition();
+	kissms::Negation *neg = new kissms::Negation();
+	kissms::Multiplication *mu1 = new kissms::Multiplication();
+	kissms::Multiplication *mu2 = new kissms::Multiplication();
+	kissms::Reciprocal *re1 = new kissms::
 
 }
 
@@ -497,6 +512,8 @@ int main(int argc, char **argv) {
 	test12();
 	printf("\n\n");
 	test13();
+	printf("\n\n");
+	test14();
 
 	return 0;
 
