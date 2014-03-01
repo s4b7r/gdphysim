@@ -386,7 +386,7 @@ void test12() {
 	co->setValue(23);
 
 	for( int i = 0; i < 4; i++ ) {
-	//for( int i = 0; i < 3; i++ ) {
+		//for( int i = 0; i < 3; i++ ) {
 		eq[i] = new kissms::Equation();
 		va[i] = new kissms::Variable();
 		vana[i] = (char*)malloc(sizeof(char)*2);
@@ -398,24 +398,24 @@ void test12() {
 			eq[i-1]->setRight(va[i]);
 		}
 		if( i > 2 ) {
-		//if( i > 1 ) {
+			//if( i > 1 ) {
 			eq[i]->setRight(co);
 		}
 		sys->addEquation(eq[i]);
 	}
 	for( int i = 0; i < 4; i++ ) {
-	//for( int i = 0; i < 3; i++ ) {
+		//for( int i = 0; i < 3; i++ ) {
 		printf("%s = %s\n", eq[i]->getLeft()->getQuality().c_str(), eq[i]->getRight()->getQuality().c_str());
 	}
 	printf("\n");
 	sys->calculateFor(va[0]);
 	for( int i = 0; i < 4; i++ ) {
-	//for( int i = 0; i < 3; i++ ) {
+		//for( int i = 0; i < 3; i++ ) {
 		printf("%s = %s\n", va[i]->getName(), va[i]->getQuality().c_str());
 	}
 	printf("\n");
 	for( int i = 0; i < 4; i++ ) {
-	//for( int i = 0; i < 3; i++ ) {
+		//for( int i = 0; i < 3; i++ ) {
 		printf("%s = %f\n", va[i]->getName(), va[i]->getQuantity());
 	}
 
@@ -481,7 +481,38 @@ void test14() {
 	kissms::Negation *neg = new kissms::Negation();
 	kissms::Multiplication *mu1 = new kissms::Multiplication();
 	kissms::Multiplication *mu2 = new kissms::Multiplication();
-	kissms::Reciprocal *re1 = new kissms::
+	kissms::Reciprocal *re1 = new kissms::Reciprocal();
+	kissms::Reciprocal *re2 = new kissms::Reciprocal();
+
+	eqsys->addEquation(eq1);
+	eqsys->addEquation(eq2);
+
+	eq1->setArguments(ad1, mu1);
+	ad1->setArguments(va1, neg);
+	mu1->setArguments(va2, re1);
+	neg->setArgument(co1);
+	re1->setArgument(co2);
+
+	eq2->setArguments(ad2, mu2);
+	ad2->setArguments(va1, co1);
+	mu2->setArguments(va2, re2);
+	re2->setArgument(co1);
+
+	co1->setValue(2);
+	co2->setValue(4);
+
+	char *va1n = (char*) malloc(sizeof(char) * 2);
+	va1n[0] = 'x';
+	va1n[1] = 0;
+	char *va2n = (char*) malloc(sizeof(char) * 2);
+	va2n[0] = 'y';
+	va2n[1] = 0;
+
+	va1->setName(va1n);
+	va2->setName(va2n);
+
+	eqsys->calculateFor(va1);
+	printf("= %d", va1->getQuantity());
 
 }
 
