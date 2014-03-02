@@ -13,6 +13,7 @@
 // XXX Do not forget to test your library really good
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
+// XXX Search for memory leaks
 
 #define KISSMS_DEBUG_FLAG
 

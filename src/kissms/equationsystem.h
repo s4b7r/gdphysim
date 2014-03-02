@@ -55,6 +55,11 @@ public:
 	 */
 	ResultCode solvePending();
 
+	/**
+	 *
+	 */
+	void setTraceVariables( std::vector<Variable*> *traceVariables );
+
 private:
 	/**
 	 *
@@ -65,6 +70,11 @@ private:
 	 *
 	 */
 	std::vector<Variable*> *pendingVariables;
+
+	/**
+	 *
+	 */
+	std::vector<Variable*> *traceVariables;
 
 
 };

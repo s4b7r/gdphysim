@@ -11,7 +11,8 @@ namespace kissms {
 
 Equationsystem::Equationsystem() {
 
-	pendingVariables = 0;
+	pendingVariables = new std::vector<Variable*>();
+	traceVariables = new std::vector<Variable*>();
 
 }
 
@@ -62,6 +63,8 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	Equation *solveEquation = 0;
 	ResultCode rc;
 
+	DP("Eqsys with " << equations.size() << " Eqs left");
+
 	// Find Equation containing the given Variable with the least other Variables
 	eqIt = equations.begin();
 	while( eqIt != equations.end() ) {
@@ -77,7 +80,10 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	}
 
 	// Solve Equation for given Variable
-	solveEquation->solveFor(variable); // FIXME mem viol
+	solveEquation->solveFor(variable);
+
+	// Save Variable to check for circular dependencies
+	traceVariables->push_back(variable);
 
 	// Get the Equation's other side
 	Component *valueComponent;
@@ -89,13 +95,25 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 
 	// Get dependencies (Variables which have to be solved to solve this one)
 	std::vector<Variable*> otherVariables;
-	std::vector<Variable*> *pendingVariables = new std::vector<Variable*>();
 	std::vector<Variable*>::iterator varIt;
-	valueComponent->getVariables(&otherVariables); // FIXME mem viol
+	valueComponent->getVariables(&otherVariables);
 	varIt = otherVariables.begin();
 	while( varIt != otherVariables.end() ) {
 		if( !(*varIt)->isCalculable() ) {
 			pendingVariables->push_back(*varIt);
+
+			// Check for circular dependencies
+			std::vector<Variable*>::iterator traceIt;
+			traceIt = traceVariables->begin();
+			while( traceIt != traceVariables->end() ) {
+				if( *varIt == *traceIt ) {
+					// Circular dependency detected
+					DP("Circular dependency detected");
+					// TODO Handle circular dependencies
+					return GeneralFailure;
+				}
+				traceIt++;
+			}
 		}
 		varIt++;
 	}
@@ -114,6 +132,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 			eqIt++;
 		}
 		equationsLeft.setPendingVariables(pendingVariables);
+		equationsLeft.setTraceVariables(traceVariables);
 
 		// Solve next pending Variable
 		rc = equationsLeft.solvePending();
@@ -146,6 +165,7 @@ ResultCode Equationsystem::calculateFor(Variable* variable) {
 void Equationsystem::setPendingVariables(
 		std::vector<Variable*> *pendingVariables) {
 
+	free(this->pendingVariables);
 	this->pendingVariables = pendingVariables;
 
 }
@@ -160,6 +180,13 @@ ResultCode Equationsystem::solvePending() {
 	rc = solveFor(solveVariable);
 
 	return rc;
+
+}
+
+void Equationsystem::setTraceVariables(std::vector<Variable*>* traceVariables) {
+
+	free(this->traceVariables);
+	this->traceVariables = traceVariables;
 
 }
 
