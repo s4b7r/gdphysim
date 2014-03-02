@@ -113,13 +113,30 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 					// Circular dependency detected
 					DP("Circular dependency detected");
 					// TODO Handle circular dependencies
-					return GeneralFailure;
+					//return GeneralFailure;
 
 
 
-
-
-
+					// Create Equation with two Equations value sides representing one Variable
+					Equation *circEquation = new Equation();
+					circEquation->setLeft(valueComponent);
+					std::vector<struct trace>::iterator traceItB;
+					Component *valueComponentB = 0;
+					traceItB = traceVariables->begin();
+					while( traceItB != traceVariables->end() && valueComponentB == 0 ) {
+						if( (*traceItB).variable == *varIt ) {
+							(*traceItB).equation->solveFor(variable); // XXX Maybe a problem
+							if( (*traceItB).equation->getLeft() == *varIt ) {
+								valueComponentB = (*traceItB).equation->getRight();
+							} else {
+								valueComponentB = (*traceItB).equation->getLeft();
+							}
+							circEquation->setRight(valueComponentB);
+						}
+						traceItB++;
+					}
+					DP("circEq: " << circEquation->getQuality());
+					// TODO Solve Equation containing the same Variable twice
 
 
 				}
