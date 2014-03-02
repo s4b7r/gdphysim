@@ -12,7 +12,7 @@ namespace kissms {
 Equationsystem::Equationsystem() {
 
 	pendingVariables = new std::vector<Variable*>();
-	traceVariables = new std::vector<Variable*>();
+	traceVariables = new std::vector<struct trace>();
 
 }
 
@@ -83,7 +83,10 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	solveEquation->solveFor(variable);
 
 	// Save Variable to check for circular dependencies
-	traceVariables->push_back(variable);
+	struct trace newTrace;
+	newTrace.variable = variable;
+	newTrace.equation = solveEquation;
+	traceVariables->push_back(newTrace);
 
 	// Get the Equation's other side
 	Component *valueComponent;
@@ -103,14 +106,22 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 			pendingVariables->push_back(*varIt);
 
 			// Check for circular dependencies
-			std::vector<Variable*>::iterator traceIt;
+			std::vector<struct trace>::iterator traceIt;
 			traceIt = traceVariables->begin();
 			while( traceIt != traceVariables->end() ) {
-				if( *varIt == *traceIt ) {
+				if( *varIt == (*traceIt).variable ) {
 					// Circular dependency detected
 					DP("Circular dependency detected");
 					// TODO Handle circular dependencies
 					return GeneralFailure;
+
+
+
+
+
+
+
+
 				}
 				traceIt++;
 			}
@@ -183,7 +194,7 @@ ResultCode Equationsystem::solvePending() {
 
 }
 
-void Equationsystem::setTraceVariables(std::vector<Variable*>* traceVariables) {
+void Equationsystem::setTraceVariables(std::vector<struct trace>* traceVariables) {
 
 	free(this->traceVariables);
 	this->traceVariables = traceVariables;
