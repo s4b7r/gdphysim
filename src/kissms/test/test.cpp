@@ -375,18 +375,19 @@ void test11() {
 
 void test12() {
 
+	int max = 26;
+
 	kissms::Equationsystem *sys;
-	kissms::Equation *eq[4];
-	kissms::Variable *va[4];
+	kissms::Equation *eq[max];
+	kissms::Variable *va[max];
 	kissms::Constant *co;
-	char *vana[4];
+	char *vana[max];
 
 	sys = new kissms::Equationsystem();
 	co = new kissms::Constant();
 	co->setValue(23);
 
-	for( int i = 0; i < 4; i++ ) {
-		//for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		eq[i] = new kissms::Equation();
 		va[i] = new kissms::Variable();
 		vana[i] = (char*)malloc(sizeof(char)*2);
@@ -397,25 +398,21 @@ void test12() {
 		if( i > 0 ) {
 			eq[i-1]->setRight(va[i]);
 		}
-		if( i > 2 ) {
-			//if( i > 1 ) {
+		if( i == max-1 ) {
 			eq[i]->setRight(co);
 		}
 		sys->addEquation(eq[i]);
 	}
-	for( int i = 0; i < 4; i++ ) {
-		//for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		printf("%s = %s\n", eq[i]->getLeft()->getQuality().c_str(), eq[i]->getRight()->getQuality().c_str());
 	}
 	printf("\n");
 	sys->calculateFor(va[0]);
-	for( int i = 0; i < 4; i++ ) {
-		//for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		printf("%s = %s\n", va[i]->getName(), va[i]->getQuality().c_str());
 	}
 	printf("\n");
-	for( int i = 0; i < 4; i++ ) {
-		//for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		printf("%s = %f\n", va[i]->getName(), va[i]->getQuantity());
 	}
 
