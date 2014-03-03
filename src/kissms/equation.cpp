@@ -25,11 +25,21 @@ ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
 	if( !isVectorial() ) {
-		// Repeatedly try to solve the Equation for the given Variable,
-		// until the Variable is explicitly represented.
-		// Abort if solving process fails.
-		while( !isExplicitly(variable) && solveResult == Successful ) {
-			solveResult = solveFor(variable, isOnLeft(variable));
+		Variable *twiceVariable = 0;
+		if( !hasSameVariableTwice(&twiceVariable) ) {
+			// Repeatedly try to solve the Equation for the given Variable,
+			// until the Variable is explicitly represented.
+			// Abort if solving process fails.
+			while( !isExplicitly(variable) && solveResult == Successful ) {
+				solveResult = solveFor(variable, isOnLeft(variable));
+			}
+		} else {
+			if( twiceVariable == variable ) {
+				standardizeLinear(twiceVariable);
+				solveResult = solveFor(variable);
+			} else {
+				solveResult = GeneralFailure;
+			}
 		}
 	} else {
 		getScalarEquations();
@@ -399,6 +409,79 @@ void Equation::getScalarEquations() {
 		scalarEquations->addEquation(equations[i]);
 	}
 	getScalarEquations(equations);
+
+}
+
+ResultCode Equation::standardizeLinear(Variable *variable) {
+
+	// TODO Check for conditions to standardize to linear Equation
+
+	ResultCode rc = Successful;
+	Negation *negation = new Negation();
+	Addition *addition = new Addition();
+	double b = 0;
+	double m = 0;
+
+	negation->setArgument(argumentRight);
+	addition->setArguments(argumentLeft, negation);
+
+	variable->setValue(0);
+	rc = addition->calculate();
+	if( rc != Successful ) {
+		return rc;
+	}
+	b = addition->getQuantity();
+
+	variable->setValue(1);
+	rc = addition->calculate();
+	if( rc != Successful ) {
+		return rc;
+	}
+	m = addition->getQuantity() - b;
+
+	variable->resetValue();
+
+	Constant *zero = new Constant();
+	Constant *constB = new Constant();
+	Constant *constM = new Constant();
+	Multiplication *mu = new Multiplication();
+	Addition *ad = new Addition();
+
+	zero->setValue(0);
+	constB->setValue(b);
+	constM->setValue(m);
+	ad->setArguments(mu, constB);
+	mu->setArguments(constM, variable);
+
+	argumentLeft = zero;
+	argumentRight = ad;
+
+	return rc;
+
+}
+
+bool Equation::hasSameVariableTwice(Variable** variable) {
+
+	std::vector<Variable*> foundVariables;
+	std::vector<Variable*>::iterator varItA;
+	std::vector<Variable*>::iterator varItB;
+
+	getVariables(&foundVariables);
+
+	varItA = foundVariables.begin();
+	while( varItA != foundVariables.end() ) {
+		varItB = foundVariables.begin();
+		while( varItB != foundVariables.end() ) {
+			if( *varItA == *varItB && varItA != varItB ) {
+				*variable = *varItA;
+				return true;
+			}
+			varItB++;
+		}
+		varItA++;
+	}
+	variable = 0;
+	return false;
 
 }
 

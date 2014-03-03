@@ -60,6 +60,16 @@ public:
 	 */
 	void getScalarEquations();
 
+	/**
+	 *
+	 */
+	ResultCode standardizeLinear( Variable *variable );
+
+	/**
+	 *
+	 */
+	bool hasSameVariableTwice( Variable **variable );
+
 	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );

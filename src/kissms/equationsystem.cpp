@@ -112,14 +112,39 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 				if( *varIt == (*traceIt).variable ) {
 					// Circular dependency detected
 					DP("Circular dependency detected");
-					// TODO Handle circular dependencies
-					return GeneralFailure;
+					//return GeneralFailure;
 
 
 
+					// Create Equation with two Equations value sides representing one Variable
+					Equation *circEquation = new Equation();
+					circEquation->setLeft(valueComponent);
+					std::vector<struct trace>::iterator traceItB;
+					Component *valueComponentB = 0;
+					traceItB = traceVariables->begin();
+					while( traceItB != traceVariables->end() && valueComponentB == 0 ) {
+						if( (*traceItB).variable == *varIt ) {
+							(*traceItB).equation->solveFor(variable); // XXX Maybe a problem
+							if( (*traceItB).equation->getLeft() == *varIt ) {
+								valueComponentB = (*traceItB).equation->getRight();
+							} else {
+								valueComponentB = (*traceItB).equation->getLeft();
+							}
+							circEquation->setRight(valueComponentB);
+						}
+						traceItB++;
+					}
+					DP("circEq containing nan values is legal");
+					DP("circEq: " << circEquation->getQuality());
 
+					circEquation->standardizeLinear(*varIt);
+					DP("circEq standardized: " << circEquation->getQuality());
 
-
+					circEquation->solveFor(*varIt);
+					pendingVariables->pop_back();
+					circEquation->getLeft()->calculate();
+					(*varIt)->setValue(circEquation->getLeft()->getQuantity());
+					(*varIt)->setQuality(circEquation->getLeft()->getQuality());
 
 
 				}
@@ -153,15 +178,17 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		}
 	}
 
-	// Calculate
-	rc = valueComponent->calculate();
-	if( rc != Successful ) {
-		return rc;
+	if( !variable->isQuantifiable() ) {
+		// Calculate
+		rc = valueComponent->calculate();
+		if( rc != Successful ) {
+			return rc;
+		}
+		// If everything is okay, set the Variable's numerical value
+		variable->setValue(valueComponent->getQuantity());
+		// And it's quality
+		variable->setQuality(valueComponent->getQuality());
 	}
-	// If everything is okay, set the Variable's numerical value
-	variable->setValue(valueComponent->getQuantity());
-	// And it's quality
-	variable->setQuality(valueComponent->getQuality());
 
 	return rc;
 

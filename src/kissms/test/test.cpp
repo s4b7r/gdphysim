@@ -508,9 +508,46 @@ void test14() {
 	va1->setName(va1n);
 	va2->setName(va2n);
 
+	printf("x + - 2 = y * 1/ 4\n");
+	printf("x + 2 = y * 1/ 2\n");
+
 	eqsys->calculateFor(va1);
 
 	printf("= %f", va1->getQuantity());
+
+}
+
+void test15() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Addition *ad1 = new kissms::Addition();
+	kissms::Addition *ad2 = new kissms::Addition();
+	kissms::Multiplication *mu1 = new kissms::Multiplication();
+	kissms::Multiplication *mu2 = new kissms::Multiplication();
+	kissms::Negation *ne = new kissms::Negation();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Constant *co1 = new kissms::Constant();
+	kissms::Constant *co2 = new kissms::Constant();
+
+	eq->setArguments(mu1, mu2);
+	mu1->setArguments(ad1, co1);
+	mu2->setArguments(ad2, co2);
+	ad1->setArguments(va, co1);
+	ad2->setArguments(va, ne);
+	ne->setArgument(co1);
+	co1->setValue(2);
+	co2->setValue(4);
+
+	char *var1n = (char*) malloc(sizeof(char) * 2);
+	var1n[0] = 'x';
+	var1n[1] = 0;
+	va->setName(var1n);
+
+	printf("( x + 2 ) * 2 = ( x + - 2 ) * 4\n");
+
+	eq->calculateFor(va);
+
+	printf("x= %f\n", va->getQuantity());
 
 }
 
@@ -543,6 +580,8 @@ int main(int argc, char **argv) {
 	test13();
 	printf("\n\n");
 	test14();
+	printf("\n\n");
+	test15();
 
 	return 0;
 
