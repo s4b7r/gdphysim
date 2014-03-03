@@ -60,6 +60,11 @@ public:
 	 */
 	void getScalarEquations();
 
+	/**
+	 *
+	 */
+	void standardizeLinear();
+
 	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );

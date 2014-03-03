@@ -402,6 +402,12 @@ void Equation::getScalarEquations() {
 
 }
 
+void Equation::standardizeLinear() {
+
+	// TODO Solve Equation containing the same Variable twice
+
+}
+
 }
 
 
