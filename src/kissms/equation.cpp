@@ -25,11 +25,22 @@ ResultCode Equation::solveFor(Variable* variable) {
 
 	ResultCode solveResult = Successful;
 	if( !isVectorial() ) {
-		// Repeatedly try to solve the Equation for the given Variable,
-		// until the Variable is explicitly represented.
-		// Abort if solving process fails.
-		while( !isExplicitly(variable) && solveResult == Successful ) {
-			solveResult = solveFor(variable, isOnLeft(variable));
+		Variable *twiceVariable = 0;
+		if( !hasSameVariableTwice(&twiceVariable) ) {
+			// Repeatedly try to solve the Equation for the given Variable,
+			// until the Variable is explicitly represented.
+			// Abort if solving process fails.
+			while( !isExplicitly(variable) && solveResult == Successful ) {
+				solveResult = solveFor(variable, isOnLeft(variable));
+			}
+		} else {
+			if( twiceVariable == variable ) {
+				DP("Checkpoint C");
+				standardizeLinear(twiceVariable);
+				solveResult = solveFor(variable);
+			} else {
+				solveResult = GeneralFailure;
+			}
 		}
 	} else {
 		getScalarEquations();
@@ -447,6 +458,31 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	argumentRight = ad;
 
 	return rc;
+
+}
+
+bool Equation::hasSameVariableTwice(Variable** variable) {
+
+	std::vector<Variable*> foundVariables;
+	std::vector<Variable*>::iterator varItA;
+	std::vector<Variable*>::iterator varItB;
+
+	getVariables(&foundVariables);
+
+	varItA = foundVariables.begin();
+	while( varItA != foundVariables.end() ) {
+		varItB = foundVariables.begin();
+		while( varItB != foundVariables.end() ) {
+			if( *varItA == *varItB && varItA != varItB ) {
+				*variable = *varItA;
+				return true;
+			}
+			varItB++;
+		}
+		varItA++;
+	}
+	variable = 0;
+	return false;
 
 }
 
