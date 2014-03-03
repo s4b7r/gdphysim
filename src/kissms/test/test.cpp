@@ -551,6 +551,81 @@ void test15() {
 
 }
 
+void test16() {
+
+	kissms::Equationsystem *sys = new kissms::Equationsystem();
+	kissms::Equation *eq1 = new kissms::Equation();
+	kissms::Equation *eq2 = new kissms::Equation();
+	kissms::Equation *eq3 = new kissms::Equation();
+	kissms::Addition *ad1a = new kissms::Addition();
+	kissms::Addition *ad1b = new kissms::Addition();
+	kissms::Addition *ad2a = new kissms::Addition();
+	kissms::Addition *ad2b = new kissms::Addition();
+	kissms::Addition *ad3a = new kissms::Addition();
+	kissms::Addition *ad3b = new kissms::Addition();
+	kissms::Negation *ne2a = new kissms::Negation();
+	kissms::Negation *ne2b = new kissms::Negation();
+	kissms::Variable *varX = new kissms::Variable();
+	kissms::Variable *varY = new kissms::Variable();
+	kissms::Variable *varZ = new kissms::Variable();
+	kissms::Constant *co00 = new kissms::Constant();
+	kissms::Constant *co12 = new kissms::Constant();
+
+	sys->addEquation(eq1);
+	eq1->setArguments(ad1a, ad1b);
+	ad1a->setArguments(varX, varY);
+	ad1b->setArguments(varZ, co12);
+
+
+	sys->addEquation(eq2);
+	eq2->setArguments(ad2a, ad2b);
+	ad2a->setArguments(varX, ne2a);
+	ad2b->setArguments(varZ, ne2b);
+	ne2a->setArgument(varY);
+	ne2b->setArgument(co12);
+
+
+	sys->addEquation(eq3);
+	eq3->setArguments(ad3a, co00);
+	ad3a->setArguments(varX, ad3b);
+	ad3b->setArguments(varY, varZ);
+
+
+	char *varXn = (char*) malloc(sizeof(char) * 2);
+	varXn[0] = 'x';
+	varXn[1] = 0;
+	varX->setName(varXn);
+
+	char *varYn = (char*) malloc(sizeof(char) * 2);
+	varYn[0] = 'y';
+	varYn[1] = 0;
+	varY->setName(varYn);
+
+	char *varZn = (char*) malloc(sizeof(char) * 2);
+	varZn[0] = 'z';
+	varZn[1] = 0;
+	varZ->setName(varZn);
+
+	co00->setValue(0);
+	co12->setValue(12);
+
+	sys->calculateFor(varX);
+	sys->calculateFor(varY);
+	sys->calculateFor(varZ);
+
+	printf("x= %f\n", varX->getQuantity());
+	printf("x= %f\n", varY->getQuantity());
+	printf("x= %f\n", varZ->getQuantity());
+
+
+}
+
+void test17() {
+
+	// TODO Implement test17
+
+}
+
 int main(int argc, char **argv) {
 
 	test1();
@@ -582,6 +657,10 @@ int main(int argc, char **argv) {
 	test14();
 	printf("\n\n");
 	test15();
+	printf("\n\n");
+	test16();
+	printf("\n\n");
+	//test17();
 
 	return 0;
 
