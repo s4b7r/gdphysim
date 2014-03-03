@@ -65,8 +65,6 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 
 	DP("Eqsys with " << equations.size() << " Eqs left");
 
-	DP("__ variable: " << variable->getName());
-
 	// Find Equation containing the given Variable with the least other Variables
 	eqIt = equations.begin();
 	while( eqIt != equations.end() ) {
@@ -136,6 +134,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 						}
 						traceItB++;
 					}
+					DP("circEq containing nan values is legal");
 					DP("circEq: " << circEquation->getQuality());
 
 					circEquation->standardizeLinear(*varIt);
@@ -143,17 +142,10 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 
 					circEquation->solveFor(*varIt);
 					pendingVariables->pop_back();
-					DP("Checkpoint A");
 					circEquation->getLeft()->calculate();
 					(*varIt)->setValue(circEquation->getLeft()->getQuantity());
 					(*varIt)->setQuality(circEquation->getLeft()->getQuality());
-					DP("Checkpoint B");
-					/*circEquation->getLeft()->calculate();
-					circEquation->getRight()->calculate();
-					DP("circEq solved: " << circEquation->getQuality());
-					DP("circEq left: " << circEquation->getLeft()->getType());*/
 
-					// TODO Process the variable ...
 
 				}
 				traceIt++;
