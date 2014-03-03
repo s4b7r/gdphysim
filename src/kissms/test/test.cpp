@@ -508,6 +508,9 @@ void test14() {
 	va1->setName(va1n);
 	va2->setName(va2n);
 
+	printf("x + - 2 = y * 1/ 4\n");
+	printf("x + 2 = y * 1/ 2\n");
+
 	eqsys->calculateFor(va1);
 
 	printf("= %f", va1->getQuantity());
