@@ -413,7 +413,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	double m = 0;
 
 	negation->setArgument(argumentRight);
-	addition->setArguments(argumentLeft, negation));
+	addition->setArguments(argumentLeft, negation);
 
 	variable->setValue(0);
 	rc = addition->calculate();
@@ -437,6 +437,9 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	Multiplication *mu = new Multiplication();
 	Addition *ad = new Addition();
 
+	zero->setValue(0);
+	constB->setValue(b);
+	constM->setValue(m);
 	ad->setArguments(mu, constB);
 	mu->setArguments(constM, variable);
 
