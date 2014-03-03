@@ -49,19 +49,33 @@ public:
 	 */
 	ResultCode getScalarEquations( Equation *equations[] );
 
+	/**
+	 * @brief Checks whether the Equation is explicitly representing a Variable
+	 * @param variable Variable to check for
+	 */
+	bool isExplicitly( Variable *variable );
+
 	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
 
 	virtual ComponentType getType();
 
+	virtual std::string getQuality();
+
 private:
+	/**
+	 *
+	 */
 	enum WhichLastArgument {
 		Single = 0,
 		Left,
 		Right
 	};
 
+	/**
+	 *
+	 */
 	struct iteration {
 		Component *current;
 		Component *parent[3];
@@ -69,10 +83,9 @@ private:
 	};
 
 	/**
-	 * @brief Checks whether the Equation is explicitly representing a Variable
-	 * @param variable Variable to check for
+	 *
 	 */
-	bool isExplicitly( Variable *variable );
+	Equationsystem *scalarEquations;
 
 	/**
 	 * @brief Does one interation of the solving process

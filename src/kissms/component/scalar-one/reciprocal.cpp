@@ -38,6 +38,21 @@ ComponentType Reciprocal::getType() {
 
 }
 
+std::string Reciprocal::getQuality() {
+
+	std::string tmp;
+	std::ostringstream oss;
+
+	if( isQuantifiable() ) {
+		oss << getQuantity();
+	} else {
+		oss << "1/(" << argument->getQuality() << ")";
+	}
+	tmp = oss.str();
+	return tmp;
+
+}
+
 }
 
 

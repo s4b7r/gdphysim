@@ -59,6 +59,21 @@ ComponentType Addition::getType() {
 
 }
 
+std::string Addition::getQuality() {
+
+	std::string tmp;
+	std::ostringstream oss;
+
+	if( isQuantifiable() ) {
+		oss << getQuantity();
+	} else {
+		oss << argumentLeft->getQuality() << "+" << argumentRight->getQuality();
+	}
+	tmp = oss.str();
+	return tmp;
+
+}
+
 }
 
 

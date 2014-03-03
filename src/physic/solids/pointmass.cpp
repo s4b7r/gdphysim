@@ -5,10 +5,10 @@
  *      Author: kevin
  */
 
-#include "physic/physic.h"
-#include "kissms/kissms.h"
+#include "physic/solids/pointmass.h"
+#include "physic/anchor.h"
 
-Pointmass::Pointmass(int centerX, int centerY, int mass) : Solid(centerX,centerY,mass,centerX,centerY){
+Pointmass::Pointmass(int centerX, int centerY) : Solid(centerX,centerY,centerX,centerY){
 	anchors.push_back(*(new Anchor(centerX,centerY)));
 }
 

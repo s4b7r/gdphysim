@@ -23,6 +23,7 @@ public:
 
 	virtual ComponentType getType();
 
+	virtual std::string getQuality();
 
 };
 

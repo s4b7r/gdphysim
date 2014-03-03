@@ -24,7 +24,8 @@ public:
 		Unspecified = 0,
 		NoValue,
 		Integer,
-		Double
+		Double,
+		Qualified
 	};
 	/** @var kissms::Variable::Type kissms::Variable::Unspecified
 	 * @brief The Variable is not specified in any way
@@ -37,6 +38,9 @@ public:
 	 */
 	/** @var kissms::Variable::Type kissms::Variable::Double
 	 * @brief The Variable has an floating point value assigned to it
+	 */
+	/** @var kissms::Variable::Type kissms::Variable::Qualified
+	 *
 	 */
 
 	Variable();
@@ -80,6 +84,11 @@ public:
 	 */
 	Type getValue( void *value );
 
+	/**
+	 *
+	 */
+	void setQuality( std::string quality );
+
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();
@@ -94,10 +103,15 @@ public:
 
 	virtual bool isVectorial();
 
+	virtual std::string getQuality();
+
+	virtual void getVariables( std::vector<Variable*> *variables );
+
 private:
 	Type type;
 	char *name;
 	void *value;
+	std::string quality;
 
 };
 

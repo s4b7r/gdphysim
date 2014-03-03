@@ -5,21 +5,29 @@
  *      Author: kevin
  */
 
-#include "physic/physic.h"
-#include "kissms/kissms.h"
-
-using std::cout;
-using std::endl;
+#include "physic/anchor.h"
+#include <iostream>
+//#include <stdio.h>
 
 Anchor::Anchor(int x, int y){
+//	printf("%d\n", x);
 	isGrounded=false;
-	Solid::fill3dVector(origin,x,y,0);
+	origin[0]=x;
+	origin[1]=y;
+	origin[2]=0;
 	link=NULL;
 }
 
-Anchor::~Anchor(){
-	Solid::deleteVector(origin);
-	//cout << "Anchor destroyed" << endl;
+int* Anchor::getOrigin(){
+	int *f=new int[3];
+	for(int i=0;i<3;i++){
+		f[i]=origin[i];
+	}
+	return f;
 }
+
+
+
+
 
 

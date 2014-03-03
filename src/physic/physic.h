@@ -8,8 +8,6 @@
 #ifndef PHYSIC_H_
 #define PHYSIC_H_
 
-#define GRAVITY 9.81
-
 #include <stdlib.h>
 #include <vector>
 #include <string.h>

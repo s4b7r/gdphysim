@@ -38,6 +38,7 @@ void Variable::setName(char* name) {
 
 bool Variable::isCalculable() {
 
+	//return type == Qualified || isQuantifiable();
 	return isQuantifiable();
 
 }
@@ -60,6 +61,7 @@ void Variable::resetValue() {
 	} else {
 		type = Unspecified;
 	}
+	quality = "";
 
 }
 
@@ -158,6 +160,39 @@ char* Variable::getName() {
 
 }
 
+std::string Variable::getQuality() {
+
+	std::string tmp;
+
+	if( isQuantifiable() ) {
+		std::ostringstream oss;
+		oss << getQuantity();
+		tmp = oss.str();
+	} else {
+		if( type == Qualified ) {
+			tmp = quality;
+		} else {
+			tmp = name;
+		}
+	}
+
+	return tmp;
+
 }
 
+void Variable::setQuality(std::string quality) {
+
+	this->quality = quality;
+	type = Qualified;
+
+}
+
+void Variable::getVariables(std::vector<Variable*>* variables) {
+
+	variables->push_back(this);
+
+}
+
+
+}
 

@@ -8,9 +8,12 @@
 #ifndef ROD_H_
 #define ROD_H_
 
+#include "physic/solids/solid.h"
+
 class Rod : public Solid{
 public:
 	Rod(int centerX, int centerY, int eloX, int eloY);
+	void setMass(){;}
 };
 
 #endif /* ROD_H_ */

@@ -10,27 +10,46 @@
 namespace kissms {
 
 Equation::Equation() {
+
+	scalarEquations = new Equationsystem();
+
 }
 
 Equation::~Equation() {
+
+	free(scalarEquations);
+
 }
 
 ResultCode Equation::solveFor(Variable* variable) {
 
+	DP("Equation::solveFor(" << variable->getName() << ")")
+
 	ResultCode solveResult = Successful;
-
-	// Repeatedly try to solve the Equation for the given Variable,
-	// until the Variable is explicitly represented.
-	// Abort if solving process fails.
-	while( !isExplicitly(variable) && solveResult == Successful ) {
-		solveResult = solveFor(variable, isOnLeft(variable));
+	if( isVectorial() ) {
+		Equation *tmpEqs[3];
+		for( int i = 0; i < 3; i++ ) {
+			tmpEqs[i] = new Equation();
+			scalarEquations->addEquation(tmpEqs[i]);
+		}
+		getScalarEquations(tmpEqs);
+		scalarEquations->solveFor(variable);
+	} else {
+		// Repeatedly try to solve the Equation for the given Variable,
+		// until the Variable is explicitly represented.
+		// Abort if solving process fails.
+		while( !isExplicitly(variable) && solveResult == Successful ) {
+			solveResult = solveFor(variable, isOnLeft(variable));
+		}
+		variable->setQuality(isOnLeft(variable) ? argumentRight->getQuality() : argumentLeft->getQuality());
 	}
-
 	return solveResult;
 
 }
 
 ResultCode Equation::calculateFor(Variable* variable) {
+
+	DP("Equation::calculateFor(" << variable->getName() << ")")
 
 	ResultCode rc;
 	Component *calcComp;
@@ -41,24 +60,29 @@ ResultCode Equation::calculateFor(Variable* variable) {
 	if( rc != Successful ) {
 		return rc;
 	}
-	// Set the placeholder regarding the Equation's side which the Variable belongs to
-	if( isOnLeft(variable) ) {
-		calcComp = argumentRight;
-		explicitVariable = (Variable*) argumentLeft;
-	} else if( isOnRight(variable) ) {
-		calcComp = argumentLeft;
-		explicitVariable = (Variable*) argumentRight;
+	if( isVectorial() ) {
+		rc = scalarEquations->calculateFor(variable);
 	} else {
-		printf("Debug: Equation - Variable neither on left nor on right\n");
-		return ImpossibleState;
-	}
-	if( !calcComp->isCalculable() ) {
-		return NotCalculable;
-	}
-	rc = calcComp->calculate();
-	if( rc == Successful ) {
-		// If everything is okay, set the Variable's numerical value
-		explicitVariable->setValue(calcComp->getQuantity());
+		// Set the placeholder regarding the Equation's side which the Variable belongs to
+		if( isOnLeft(variable) ) {
+			calcComp = argumentRight;
+			explicitVariable = (Variable*) argumentLeft;
+		} else if( isOnRight(variable) ) {
+			calcComp = argumentLeft;
+			explicitVariable = (Variable*) argumentRight;
+		} else {
+			return ImpossibleState;
+		}
+		if( !calcComp->isCalculable() ) {
+			return NotCalculable;
+		}
+		rc = calcComp->calculate();
+		if( rc == Successful ) {
+			// If everything is okay, set the Variable's numerical value
+			explicitVariable->setValue(calcComp->getQuantity());
+			// And it's quality
+			explicitVariable->setQuality(calcComp->getQuality());
+		}
 	}
 
 	return rc;
@@ -163,8 +187,6 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Equation::getScalarEquations(Equation* equations[]) {
 
-	// TODO Equation::getScalarEquations
-
 	struct iteration it;
 	Component *current;
 	Component *parent[3];
@@ -188,7 +210,9 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 	while( !todo.empty() ) {
 		it = todo.top();
 		current = it.current;
-//		parent = it.parent;
+		for( int i = 0; i < 3; i++ ) {
+			parent[i] = it.parent[i];
+		}
 		parentsArgument = it.parentsArgument;
 		todo.pop();
 		switch( current->getType() ) {
@@ -274,44 +298,44 @@ void Equation::getScalarEquations(Component* current,
 		case tConstant:
 		{
 			newArgument = new Constant();
-			void *value;
+			void *value = 0;
 			Constant::Type type = ((Constant*)newArgument)->getValue(value);
-			/*switch (type) {
-			case Constant::Type::String:
+			switch (type) {
+			case Constant::String:
 				((Constant*)newArgument)->setValue((char*)value);
 
 				break;
-			case Constant::Type::Integer:
+			case Constant::Integer:
 				((Constant*)newArgument)->setValue(*(int*)value);
 
 				break;
-			case Constant::Type::Double:
+			case Constant::Double:
 				((Constant*)newArgument)->setValue(*(double*)value);
 
 				break;
 			default:
 				break;
-			}*/
+			}
 		}
 		break;
 		case tVariable:
 		{
 			newArgument = new Variable();
 			((Variable*)newArgument)->setName(((Variable*)current)->getName());
-			void *value;
-			//Variable::Type type = ((Constant*)newArgument)->getValue(value);
-			/*switch (type) {
-			case Variable::Type::Integer:
+			void *value = 0;
+			Variable::Type type = ((Variable*)newArgument)->getValue(value);
+			switch (type) {
+			case Variable::Integer:
 				((Variable*)newArgument)->setValue(*(int*)value);
 
 				break;
-			case Variable::Type::Double:
+			case Variable::Double:
 				((Variable*)newArgument)->setValue(*(double*)value);
 
 				break;
 			default:
 				break;
-			}*/
+			}
 		}
 		break;
 		default:
@@ -357,6 +381,21 @@ void Equation::getScalarEquations(Component* current,
 	default:
 		break;
 	}
+
+}
+
+std::string Equation::getQuality() {
+
+	std::string tmp;
+	std::ostringstream oss;
+
+	if( isQuantifiable() ) {
+		oss << getQuantity();
+	} else {
+		oss << argumentLeft->getQuality() << "=" << argumentRight->getQuality();
+	}
+	tmp = oss.str();
+	return tmp;
 
 }
 

@@ -38,6 +38,21 @@ ComponentType SinusArc::getType() {
 
 }
 
+std::string SinusArc::getQuality() {
+
+	std::string tmp;
+	std::ostringstream oss;
+
+	if( isQuantifiable() ) {
+		oss << getQuantity();
+	} else {
+		oss << "arcsin(" << argument->getQuality() << ")";
+	}
+	tmp = oss.str();
+	return tmp;
+
+}
+
 }
 
 

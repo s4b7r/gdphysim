@@ -54,6 +54,13 @@ Vector* Vectorproduct::getVector() {
 
 }
 
+std::string Vectorproduct::getQuality() {
+
+	std::string tmp = "ups";
+		return tmp;
+
+}
+
 }
 
 

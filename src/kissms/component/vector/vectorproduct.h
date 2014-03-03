@@ -8,7 +8,6 @@
 #ifndef VECTORPRODUCT_H_
 #define VECTORPRODUCT_H_
 
-
 namespace kissms {
 
 /**
@@ -28,6 +27,8 @@ public:
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
 
 	virtual ResultCode calculate();
+
+	virtual std::string getQuality();
 
 };
 

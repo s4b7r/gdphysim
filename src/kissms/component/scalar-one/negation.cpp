@@ -38,6 +38,21 @@ ComponentType Negation::getType() {
 
 }
 
+std::string Negation::getQuality() {
+
+	std::string tmp;
+	std::ostringstream oss;
+
+	if( isQuantifiable() ) {
+		oss << getQuantity();
+	} else {
+		oss << "-(" << argument->getQuality() << ")";
+	}
+	tmp = oss.str();
+	return tmp;
+
+}
+
 }
 
 

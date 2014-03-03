@@ -8,20 +8,34 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
-// TODO Improve code and doxygen comments
-// TODO Really do a code review sometime
-// TODO Take care of non-quantifiable but calculable expressions
-// TODO Will situations occur in which one Variable will be in one Equation for two times?
-// TODO Do not forget to test your library really good
-// TODO Recreate recursive procedures as iterative ones
+// XXX Improve code and doxygen comments
+// XXX Really do a code review sometime
+// XXX Do not forget to test your library really good
+// XXX Recreate recursive procedures as iterative ones
+// XXX Upgrade to modern C++ libraries
+// TODO Rethink process of Equationsystem solving and calculating
+// TODO Maybe also rethink process of Equation solving and calculating
+
+#define KISSMS_DEBUG_FLAG
+
+#ifdef KISSMS_DEBUG_FLAG
+#define DP(x) std::cout << "DEBUG >> " << x << std::endl;
+#else
+#define DP(x)
+#endif
+
 
 // Include system libraries
 #include <stdlib.h>
 #include <vector>
 #include <string.h>
+#include <string>
 #include <math.h>
 #include <stdio.h>
 #include <stack>
+#include <sstream>
+#include <queue>
+#include <iostream>
 
 // All parts of KissMS belong to the namespace kissms
 
@@ -41,7 +55,8 @@ enum ResultCode {
 	GeneralFailure,
 	NotYetImplemented,
 	NotCalculable,
-	ImpossibleState
+	ImpossibleState,
+	IsVectorial
 };
 /** @var kissms::ResultCode kissms::Successful
  * @brief The method successfuly returned
@@ -72,6 +87,9 @@ enum ResultCode {
  *
  * The method got to some point where it should be under no circumstances.
  */
+/** @var kissms::ResultCode kissms::IsVectorial
+ *
+ */
 
 /**
  * @brief Enumeration of all Component types
@@ -97,6 +115,7 @@ enum ComponentType {
 
 // Forward declaration
 class Variable;
+class Equationsystem;
 
 }
 
@@ -105,8 +124,9 @@ class Variable;
 #include "kissms/component/argumentsOne.h"
 #include "kissms/component/argumentsTwo.h"
 
-// Include Equation
+// Include Equation and Equationsystem
 #include "kissms/equation.h"
+#include "kissms/equationsystem.h"
 
 // Include scalar leaf components
 #include "kissms/component/scalar-leaf/constant.h"

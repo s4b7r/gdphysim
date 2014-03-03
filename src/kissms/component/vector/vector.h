@@ -8,7 +8,6 @@
 #ifndef VECTOR_H_
 #define VECTOR_H_
 
-
 namespace kissms {
 
 /**
@@ -43,6 +42,10 @@ public:
 	virtual bool hasChild( Component *child );
 
 	virtual bool isVectorial();
+
+	virtual std::string getQuality();
+
+	virtual void getVariables( std::vector<Variable*> *variables );
 
 private:
 	/**

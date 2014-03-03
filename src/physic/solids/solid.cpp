@@ -1,24 +1,42 @@
-#include "physic/physic.h"
-#include "kissms/kissms.h"
+#include "physic/solids/solid.h"
 
-using kissms::Constant;
+Solid::Solid(int centerX, int centerY, int eloX, int eloY){
+	mass=0;
 
-Solid::Solid(int centerX, int centerY, int mass, int eloX, int eloY){
-	this->mass=mass;
+	eloPoint[0]=eloX;
+	eloPoint[1]=eloY;
+	eloPoint[2]=0;
 
-	fill3dVector(eloPoint,eloX,eloY,0);
+	center[0]=centerX;
+	center[1]=centerY;
+	center[2]=0;
+}
 
-	fill3dVector(center,centerX,centerY,0);
-	forces[0].push_back(center);
-
-	if(mass!=0){
-		Vector *G=new Vector();
-		fill3dVector(*G,0,mass*GRAVITY,0);
-		forces[1].push_back(*G);
+void Solid::setMass(int m){
+	mass=m;
+	if(mass!=0){						//TODO testen
+		forces[0].push_back(center);
+		int* G= new int[3];
+		G[0]=0;
+		G[1]=mass*GRAVITY;
+		G[2]=0;
+		forces[1].push_back(G);
 	}
 }
 
-Solid::~Solid(){						//TODO change this when Simon builds his own Vector destructor
+int Solid::getCenter(dimension p){
+	return center[p];
+}
+
+vector<Anchor> Solid::getAnchors(){
+	return vector<Anchor>(anchors);
+}
+
+/*vector<int*> Solid::getForces(vecType v){
+	return forces[v];
+}*/
+
+/*Solid::~Solid(){						//TODO change this when Simon builds his own Vector destructor
 	deleteVector(eloPoint);
 	deleteVector(center);
 	for(int i=0;i<2;i++){
@@ -43,4 +61,4 @@ void Solid::deleteVector(Vector &del){		//TODO erase this when Simon builds his 
 	for(int i=0;i<3;i++){
 		if(del.getArgument(i)!=NULL)free(del.getArgument(i));
 	}
-}
+}*/

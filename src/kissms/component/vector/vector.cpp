@@ -82,6 +82,18 @@ bool Vector::isVectorial() {
 
 }
 
+std::string Vector::getQuality() {
+
+	std::string tmp = "ups";
+		return tmp;
+}
+
+void Vector::getVariables(std::vector<Variable*>* variables) {
+
+	// XXX Check if Vector::getVariables() has to be implemented
+
+}
+
 }
 
 

@@ -59,6 +59,21 @@ ComponentType Multiplication::getType() {
 
 }
 
+std::string Multiplication::getQuality() {
+
+	std::string tmp;
+	std::ostringstream oss;
+
+	if( isQuantifiable() ) {
+		oss << getQuantity();
+	} else {
+		oss << argumentLeft->getQuality() << "*" << argumentRight->getQuality();
+	}
+	tmp = oss.str();
+	return tmp;
+
+}
+
 }
 
 

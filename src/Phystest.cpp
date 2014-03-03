@@ -6,22 +6,31 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
+#include "gui/Framework.hpp"
+#include <iostream>
 #include "physic/physic.h"
-#include "kissms/kissms.h"
 
 using std::cout;
 using std::endl;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
-	Rod test1(1,2,3,5);
+	/*Pointmass test1(1,2);
+	test1.setMass(35);
 	cout 		<< test1.getMass()
 				<< " "
-				<< test1.getCenter().getArgument(0)->getQuantity()
+				<< test1.getCenter(X)
 				<< " "
-				<< test1.getCenter().getArgument(1)->getQuantity()
+				<< test1.getCenter(Y)
 				<< " "
-				<< test1.getCenter().getArgument(2)->getQuantity() << endl;
+				<< test1.getCenter(Z)
+				<< " "
+				<< test1.getForces(fValue).at(0)[1] << endl;*/
+
+	int appWidth = 1024;
+	int appHeight = 768;
+	FRAMEWORK->init(appWidth,appHeight);
+	FRAMEWORK->eventProc();
+	FRAMEWORK->quit();
 
 	return 0;
 }

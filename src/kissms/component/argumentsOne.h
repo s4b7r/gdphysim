@@ -43,6 +43,8 @@ public:
 
 	virtual bool isVectorial();
 
+	virtual void getVariables( std::vector<Variable*> *variables );
+
 protected:
 	/**
 	 * @brief The Component's argument

@@ -151,6 +151,25 @@ bool Constant::isVectorial() {
 
 }
 
+std::string Constant::getQuality() {
+
+	std::string tmp;
+
+	if( isQuantifiable() ) {
+		std::ostringstream oss;
+		oss << getQuantity();
+		tmp = oss.str();
+	} else {
+		tmp = (char*)value;
+	}
+
+	return tmp;
+
+}
+
+void Constant::getVariables(std::vector<Variable*>* variables) {
+}
+
 }
 
 
