@@ -365,7 +365,6 @@ void test11() {
 	printf("(x, y, _) = (y, 5, _)\n");
 
 	printf("RC 1: %d\n", eq->calculateFor(var1));
-	//printf("RC 2: %d\n", eq->calculateFor(var2));
 
 	printf("x quant= %f\n", var1->getQuantity());
 	printf("y quant= %f\n", var2->getQuantity());
@@ -376,18 +375,19 @@ void test11() {
 
 void test12() {
 
+	int max = 26;
+
 	kissms::Equationsystem *sys;
-	kissms::Equation *eq[4];
-	kissms::Variable *va[4];
+	kissms::Equation *eq[max];
+	kissms::Variable *va[max];
 	kissms::Constant *co;
-	char *vana[4];
+	char *vana[max];
 
 	sys = new kissms::Equationsystem();
 	co = new kissms::Constant();
 	co->setValue(23);
 
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		eq[i] = new kissms::Equation();
 		va[i] = new kissms::Variable();
 		vana[i] = (char*)malloc(sizeof(char)*2);
@@ -398,25 +398,21 @@ void test12() {
 		if( i > 0 ) {
 			eq[i-1]->setRight(va[i]);
 		}
-		//if( i > 2 ) {
-		if( i > 1 ) {
+		if( i == max-1 ) {
 			eq[i]->setRight(co);
 		}
 		sys->addEquation(eq[i]);
 	}
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		printf("%s = %s\n", eq[i]->getLeft()->getQuality().c_str(), eq[i]->getRight()->getQuality().c_str());
 	}
 	printf("\n");
 	sys->calculateFor(va[0]);
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		printf("%s = %s\n", va[i]->getName(), va[i]->getQuality().c_str());
 	}
 	printf("\n");
-	//for( int i = 0; i < 4; i++ ) {
-	for( int i = 0; i < 3; i++ ) {
+	for( int i = 0; i < max; i++ ) {
 		printf("%s = %f\n", va[i]->getName(), va[i]->getQuantity());
 	}
 
@@ -457,9 +453,7 @@ void test13() {
 
 	printf("(a, b, c) = (b, c, 23)\n");
 
-	//printf("RC 2: %d\n", eq->calculateFor(var2));
 	printf("RC 1: %d\n", eq->calculateFor(var1));
-	//printf("RC 2: %d\n", eq->calculateFor(var2));
 
 	printf("a quant= %f\n", var1->getQuantity());
 	printf("b quant= %f\n", var2->getQuantity());
@@ -467,6 +461,56 @@ void test13() {
 	printf("a qual = %s\n", var1->getQuality().c_str());
 	printf("b qual = %s\n", var2->getQuality().c_str());
 	printf("c qual = %s\n", var3->getQuality().c_str());
+
+}
+
+void test14() {
+
+	kissms::Equationsystem *eqsys = new kissms::Equationsystem();
+	kissms::Equation *eq1 = new kissms::Equation();
+	kissms::Equation *eq2 = new kissms::Equation();
+	kissms::Variable *va1 = new kissms::Variable();
+	kissms::Variable *va2 = new kissms::Variable();
+	kissms::Constant *co1 = new kissms::Constant();
+	kissms::Constant *co2 = new kissms::Constant();
+	kissms::Addition *ad1 = new kissms::Addition();
+	kissms::Addition *ad2 = new kissms::Addition();
+	kissms::Negation *neg = new kissms::Negation();
+	kissms::Multiplication *mu1 = new kissms::Multiplication();
+	kissms::Multiplication *mu2 = new kissms::Multiplication();
+	kissms::Reciprocal *re1 = new kissms::Reciprocal();
+	kissms::Reciprocal *re2 = new kissms::Reciprocal();
+
+	eqsys->addEquation(eq1);
+	eqsys->addEquation(eq2);
+
+	eq1->setArguments(ad1, mu1);
+	ad1->setArguments(va1, neg);
+	mu1->setArguments(va2, re1);
+	neg->setArgument(co1);
+	re1->setArgument(co2);
+
+	eq2->setArguments(ad2, mu2);
+	ad2->setArguments(va1, co1);
+	mu2->setArguments(va2, re2);
+	re2->setArgument(co1);
+
+	co1->setValue(2);
+	co2->setValue(4);
+
+	char *va1n = (char*) malloc(sizeof(char) * 2);
+	va1n[0] = 'x';
+	va1n[1] = 0;
+	char *va2n = (char*) malloc(sizeof(char) * 2);
+	va2n[0] = 'y';
+	va2n[1] = 0;
+
+	va1->setName(va1n);
+	va2->setName(va2n);
+
+	eqsys->calculateFor(va1);
+
+	printf("= %f", va1->getQuantity());
 
 }
 
@@ -497,6 +541,8 @@ int main(int argc, char **argv) {
 	test12();
 	printf("\n\n");
 	test13();
+	printf("\n\n");
+	test14();
 
 	return 0;
 

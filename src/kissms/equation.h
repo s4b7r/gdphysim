@@ -55,6 +55,11 @@ public:
 	 */
 	bool isExplicitly( Variable *variable );
 
+	/**
+	 *
+	 */
+	void getScalarEquations();
+
 	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );

@@ -23,46 +23,35 @@ Equation::~Equation() {
 
 ResultCode Equation::solveFor(Variable* variable) {
 
-	DP("Equation::solveFor(" << variable->getName() << ")")
-
 	ResultCode solveResult = Successful;
-	if( isVectorial() ) {
-		Equation *tmpEqs[3];
-		for( int i = 0; i < 3; i++ ) {
-			tmpEqs[i] = new Equation();
-			scalarEquations->addEquation(tmpEqs[i]);
-		}
-		getScalarEquations(tmpEqs);
-		scalarEquations->solveFor(variable);
-	} else {
+	if( !isVectorial() ) {
 		// Repeatedly try to solve the Equation for the given Variable,
 		// until the Variable is explicitly represented.
 		// Abort if solving process fails.
 		while( !isExplicitly(variable) && solveResult == Successful ) {
 			solveResult = solveFor(variable, isOnLeft(variable));
 		}
-		variable->setQuality(isOnLeft(variable) ? argumentRight->getQuality() : argumentLeft->getQuality());
+	} else {
+		getScalarEquations();
+		scalarEquations->solveFor(variable);
 	}
+
 	return solveResult;
 
 }
 
 ResultCode Equation::calculateFor(Variable* variable) {
 
-	DP("Equation::calculateFor(" << variable->getName() << ")")
-
 	ResultCode rc;
 	Component *calcComp;
 	Variable *explicitVariable;
 
-	// First the Equation has to be solved
-	rc = solveFor(variable);
-	if( rc != Successful ) {
-		return rc;
-	}
-	if( isVectorial() ) {
-		rc = scalarEquations->calculateFor(variable);
-	} else {
+	if( !isVectorial() ) {
+		// First the Equation has to be solved
+		rc = solveFor(variable);
+		if( rc != Successful ) {
+			return rc;
+		}
 		// Set the placeholder regarding the Equation's side which the Variable belongs to
 		if( isOnLeft(variable) ) {
 			calcComp = argumentRight;
@@ -83,8 +72,10 @@ ResultCode Equation::calculateFor(Variable* variable) {
 			// And it's quality
 			explicitVariable->setQuality(calcComp->getQuality());
 		}
+	} else {
+		getScalarEquations();
+		rc = scalarEquations->calculateFor(variable);
 	}
-
 	return rc;
 
 }
@@ -396,6 +387,18 @@ std::string Equation::getQuality() {
 	}
 	tmp = oss.str();
 	return tmp;
+
+}
+
+void Equation::getScalarEquations() {
+
+	Equation *equations[3];
+	scalarEquations = new Equationsystem();
+	for( int i = 0; i < 3; i++ ) {
+		equations[i] = new Equation();
+		scalarEquations->addEquation(equations[i]);
+	}
+	getScalarEquations(equations);
 
 }
 

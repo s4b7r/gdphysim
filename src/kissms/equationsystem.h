@@ -17,6 +17,14 @@ namespace kissms {
 class Equationsystem {
 
 public:
+	/**
+	 *
+	 */
+	struct trace {
+		Variable *variable;
+		Equation *equation;
+	};
+
 	Equationsystem();
 	virtual ~Equationsystem();
 
@@ -45,6 +53,21 @@ public:
 	 */
 	ResultCode calculateFor( Variable *variable );
 
+	/**
+	 *
+	 */
+	void setPendingVariables( std::vector<Variable*> *pendingVariables );
+
+	/**
+	 *
+	 */
+	ResultCode solvePending();
+
+	/**
+	 *
+	 */
+	void setTraceVariables( std::vector<struct trace> *traceVariables );
+
 private:
 	/**
 	 *
@@ -54,7 +77,12 @@ private:
 	/**
 	 *
 	 */
-	ResultCode solveFor( std::stack<Variable*> *variablesToResolve, std::vector<Equation*> *equationsLeft );
+	std::vector<Variable*> *pendingVariables;
+
+	/**
+	 *
+	 */
+	std::vector<struct trace> *traceVariables;
 
 
 };

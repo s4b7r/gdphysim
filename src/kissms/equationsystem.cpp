@@ -10,6 +10,10 @@
 namespace kissms {
 
 Equationsystem::Equationsystem() {
+
+	pendingVariables = new std::vector<Variable*>();
+	traceVariables = new std::vector<struct trace>();
+
 }
 
 Equationsystem::~Equationsystem() {
@@ -54,223 +58,146 @@ bool Equationsystem::containsEquation(Equation* equation) {
 
 ResultCode Equationsystem::solveFor(Variable* variable) {
 
-	DP("Equationsystem::solveFor(" << variable->getName() << ")");
-
-	Equation *mainEquation = 0;
-	std::vector<Equation*>::iterator it;
+	std::vector<Equation*>::iterator eqIt;
+	unsigned int minVarCount;
+	Equation *solveEquation = 0;
 	ResultCode rc;
-	bool found = false;
-	unsigned int minOtherVars = 0;
-	std::vector<Variable*> tmpVarVector;
 
-	DP("Search for main Equation")
-	it = equations.begin();
-	while( it != equations.end() ) {
-		if( (*it)->hasChild(variable) ) {
-			tmpVarVector.clear();
-			(*it)->getVariables(&tmpVarVector);
-			if( !found || minOtherVars > tmpVarVector.size() ) {
-				mainEquation = *it;
-				minOtherVars = tmpVarVector.size();
-				found = true;
+	DP("Eqsys with " << equations.size() << " Eqs left");
+
+	// Find Equation containing the given Variable with the least other Variables
+	eqIt = equations.begin();
+	while( eqIt != equations.end() ) {
+		if( (*eqIt)->hasChild(variable) ) {
+			std::vector<Variable*> eqVariables;
+			(*eqIt)->getVariables(&eqVariables);
+			if( minVarCount > eqVariables.size() || solveEquation == 0 ) {
+				minVarCount = eqVariables.size();
+				solveEquation = (*eqIt);
 			}
 		}
-		it++;
+		eqIt++;
 	}
-	DP("Main Equation ID: " << mainEquation->getDebugId())
-	if( !found ) {
-		return GeneralFailure;
+
+	// Solve Equation for given Variable
+	solveEquation->solveFor(variable);
+
+	// Save Variable to check for circular dependencies
+	struct trace newTrace;
+	newTrace.variable = variable;
+	newTrace.equation = solveEquation;
+	traceVariables->push_back(newTrace);
+
+	// Get the Equation's other side
+	Component *valueComponent;
+	if( solveEquation->getLeft() == variable ) {
+		valueComponent = solveEquation->getRight();
+	} else {
+		valueComponent = solveEquation->getLeft();
 	}
-	rc = mainEquation->solveFor(variable);
+
+	// Get dependencies (Variables which have to be solved to solve this one)
+	std::vector<Variable*> otherVariables;
+	std::vector<Variable*>::iterator varIt;
+	valueComponent->getVariables(&otherVariables);
+	varIt = otherVariables.begin();
+	while( varIt != otherVariables.end() ) {
+		if( !(*varIt)->isCalculable() ) {
+			pendingVariables->push_back(*varIt);
+
+			// Check for circular dependencies
+			std::vector<struct trace>::iterator traceIt;
+			traceIt = traceVariables->begin();
+			while( traceIt != traceVariables->end() ) {
+				if( *varIt == (*traceIt).variable ) {
+					// Circular dependency detected
+					DP("Circular dependency detected");
+					// TODO Handle circular dependencies
+					return GeneralFailure;
+
+
+
+
+
+
+
+
+				}
+				traceIt++;
+			}
+		}
+		varIt++;
+	}
+
+	// Solve and calculate
+	if( pendingVariables->size() != 0 ) {
+		// There are other Variables which have to be solved
+
+		// Create Equationsystem with unused Equations
+		Equationsystem equationsLeft;
+		eqIt = equations.begin();
+		while( eqIt != equations.end() ) {
+			if( *eqIt != solveEquation ) {
+				equationsLeft.addEquation(*eqIt);
+			}
+			eqIt++;
+		}
+		equationsLeft.setPendingVariables(pendingVariables);
+		equationsLeft.setTraceVariables(traceVariables);
+
+		// Solve next pending Variable
+		rc = equationsLeft.solvePending();
+
+		if( rc != Successful ) {
+			return rc;
+		}
+	}
+
+	// Calculate
+	rc = valueComponent->calculate();
 	if( rc != Successful ) {
 		return rc;
 	}
-	Component *mainEqsValueside;
-	if( mainEquation->getLeft() == variable ) {
-		mainEqsValueside = mainEquation->getRight();
-	} else {
-		mainEqsValueside = mainEquation->getLeft();
-	}
-	variable->setQuality(mainEqsValueside->getQuality());
-	DP("Set quality " << variable->getName() << " = " << variable->getQuality() <<
-			" = " << mainEqsValueside->getQuality())
-	if( mainEqsValueside->isCalculable() ) {
-		return Successful;
-	}
-	DP("Equationsystem::solveFor(" << variable->getName() << ") has to resolve other Variables ...")
-	std::vector<Variable*> varsToResolve;
-	mainEqsValueside->getVariables(&varsToResolve);
-	std::vector<Variable*>::iterator debugVarIt;
-	debugVarIt = varsToResolve.begin();
-	while( debugVarIt != varsToResolve.end() ) {
-		Variable *tmp = *debugVarIt;
-		DP("... has to resolve (vector): " << tmp->getName())
-		debugVarIt++;
-	}
-	std::vector<Equation*> equationsLeft;
-	it = equations.begin();
-	while( it != equations.end() ) {
-		if( *it != mainEquation ) {
-			equationsLeft.push_back(*it);
-		}
-		it++;
-	}
-	DP("... with " << equationsLeft.size() << " Equations left")
+	// If everything is okay, set the Variable's numerical value
+	variable->setValue(valueComponent->getQuantity());
+	// And it's quality
+	variable->setQuality(valueComponent->getQuality());
 
-	std::stack<Variable*> varsToRes;
-	std::vector<Variable*>::iterator itVar;
-	itVar = varsToResolve.begin();
-	while( itVar != varsToResolve.end() ) {
-		varsToRes.push(*itVar);
-		DP("... has to resolve (stack): " << (*itVar)->getName())
-		itVar++;
-	}
-	while( !varsToRes.empty() ) {
-		solveFor(&varsToRes, &equationsLeft);
-		std::stack<Variable*> tmpVarsToRes;
-		while( !varsToRes.empty() ) {
-			Variable *tmp = varsToRes.top();
-			DP("... has to resolve (stack): " << tmp->getName())
-			tmpVarsToRes.push(tmp);
-			varsToRes.pop();
-		}
-		while( !tmpVarsToRes.empty() ) {
-			varsToRes.push(tmpVarsToRes.top());
-			tmpVarsToRes.pop();
-		}
-		DP("... with " << equationsLeft.size() << " Equations left")
-	}
-
-	return Successful;
+	return rc;
 
 }
 
 ResultCode Equationsystem::calculateFor(Variable* variable) {
 
-	DP("Equationsystem::calculateFor(" << variable->getName() << ")");
+	return solveFor(variable);
 
+}
+
+void Equationsystem::setPendingVariables(
+		std::vector<Variable*> *pendingVariables) {
+
+	free(this->pendingVariables);
+	this->pendingVariables = pendingVariables;
+
+}
+
+ResultCode Equationsystem::solvePending() {
+
+	Variable *solveVariable;
 	ResultCode rc;
-	std::vector<Equation*>::iterator it;
-	Component *calcComp;
-	Variable *explicitVariable;
 
-	rc = solveFor(variable);
-	if( rc != Successful ) {
-		return rc;
-	}
-	DP("calculateFor() did it's solveFor()")
-	it = equations.begin();
-	while( it != equations.end() ) {
-		if( (*it)->hasChild(variable) && (*it)->isExplicitly(variable) ) {
-			if( (*it)->getLeft() == variable ) {
-				calcComp = (*it)->getRight();
-				explicitVariable = (Variable*) (*it)->getLeft();
-			} else if( (*it)->getRight() == variable ) {
-				calcComp = (*it)->getLeft();
-				explicitVariable = (Variable*) (*it)->getRight();
-			} else {
-				return ImpossibleState;
-			}
-			if( calcComp->isCalculable() ) {
-				rc = calcComp->calculate();
-				if( rc == Successful ) {
-					// If everything is okay, set the Variable's numerical value
-					explicitVariable->setValue(calcComp->getQuantity());
-					// And it's quality
-					explicitVariable->setQuality(calcComp->getQuality());
-				}
-			} else {
-				explicitVariable->setQuality(calcComp->getQuality());
-				rc = NotCalculable;
-				std::vector<Variable*> varsInCalc;
-				calcComp->getVariables(&varsInCalc);
-				std::vector<Variable*>::iterator varIt;
-				varIt = varsInCalc.begin();
-				std::vector<Equation*>::iterator eqIt;
-				while( varIt != varsInCalc.end() ) {
-					eqIt = equations.begin();
-					while( eqIt != equations.end() ) {
-						if( (*eqIt)->isExplicitly(*varIt) ) {
-							if( (*eqIt)->getLeft() == *varIt ) {
-								(*varIt)->setValue((*eqIt)->getRight()->getQuantity());
-							} else if( (*eqIt)->getRight() == *varIt ) {
-								(*varIt)->setValue((*eqIt)->getLeft()->getQuantity());
-							}
-						}
-						eqIt++;
-					}
-					varIt++;
-				}
-				rc = calculateFor(variable);
-			}
-		}
-		it++;
-	}
+	solveVariable = pendingVariables->back();
+	pendingVariables->pop_back();
+	rc = solveFor(solveVariable);
+
 	return rc;
 
 }
 
-ResultCode Equationsystem::solveFor(
-		std::stack<Variable*> *variablesToResolve,
-		std::vector<Equation*> *equationsLeft) {
+void Equationsystem::setTraceVariables(std::vector<struct trace>* traceVariables) {
 
-	Variable *variable = variablesToResolve->top();
-	variablesToResolve->pop();
-	Equation *mainEquation = 0;
-	std::vector<Equation*>::iterator it;
-	ResultCode rc;
-	bool found = false;
-	unsigned int minOtherVars = 0;
-	std::vector<Variable*> tmpVarVector;
-
-	it = equationsLeft->begin();
-	while( it != equationsLeft->end() ) {
-		if( (*it)->hasChild(variable) ) {
-			tmpVarVector.clear();
-			(*it)->getVariables(&tmpVarVector);
-			if( !found || minOtherVars > tmpVarVector.size() ) {
-				mainEquation = *it;
-				minOtherVars = tmpVarVector.size();
-				found = true;
-			}
-		}
-		it++;
-	}
-	if( !found ) {
-		return GeneralFailure;
-	}
-	rc = mainEquation->solveFor(variable);
-	if( rc != Successful ) {
-		return rc;
-	}
-	Component *mainEqsValueside = 0;
-	if( mainEquation->getLeft() == variable ) {
-		mainEqsValueside = mainEquation->getRight();
-	} else {
-		mainEqsValueside = mainEquation->getLeft();
-	}
-	if( mainEqsValueside->isCalculable() ) {
-		return Successful;
-	}
-	std::vector<Variable*> varsToResolve;
-	mainEqsValueside->getVariables(&varsToResolve);
-	it = equationsLeft->begin();
-	found = false;
-	while( !found && it != equationsLeft->end() ) {
-		if( *it == mainEquation ) {
-			equationsLeft->erase(it);
-		}
-		it++;
-	}
-
-	std::vector<Variable*>::iterator itVar;
-	itVar = varsToResolve.begin();
-	while( itVar != varsToResolve.end() ) {
-		variablesToResolve->push(*itVar);
-		itVar++;
-	}
-
-	return Successful;
+	free(this->traceVariables);
+	this->traceVariables = traceVariables;
 
 }
 
