@@ -63,7 +63,7 @@ public:
 	/**
 	 *
 	 */
-	void standardizeLinear();
+	ResultCode standardizeLinear( Variable *variable );
 
 	virtual ResultCode calculate();
 
