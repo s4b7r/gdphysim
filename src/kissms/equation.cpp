@@ -35,7 +35,6 @@ ResultCode Equation::solveFor(Variable* variable) {
 			}
 		} else {
 			if( twiceVariable == variable ) {
-				DP("Checkpoint C");
 				standardizeLinear(twiceVariable);
 				solveResult = solveFor(variable);
 			} else {
