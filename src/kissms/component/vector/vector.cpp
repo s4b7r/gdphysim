@@ -94,6 +94,18 @@ void Vector::getVariables(std::vector<Variable*>* variables) {
 
 }
 
+void Vector::replace(Component* search, Component* replace) {
+
+	for( int i = 0; i < 3; i++ ) {
+		if( arguments[i] == search ) {
+			arguments[i] = replace;
+		} else {
+			arguments[i]->replace(search, replace);
+		}
+	}
+
+}
+
 }
 
 

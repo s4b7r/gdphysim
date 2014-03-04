@@ -53,6 +53,8 @@ public:
 	 */
 	Component* getRight();
 
+	virtual void replace( Component *search, Component *replace );
+
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();

@@ -115,6 +115,21 @@ void ArgumentsTwo::getVariables(std::vector<Variable*>* variables) {
 
 }
 
+void ArgumentsTwo::replace(Component* search, Component* replace) {
+
+	if( argumentLeft == search ) {
+		argumentLeft = replace;
+	} else {
+		argumentLeft->replace(search, replace);
+	}
+	if( argumentRight == search ) {
+		argumentRight = replace;
+	} else {
+		argumentRight->replace(search, replace);
+	}
+
+}
+
 }
 
 

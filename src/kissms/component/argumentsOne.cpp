@@ -73,6 +73,16 @@ void ArgumentsOne::getVariables(std::vector<Variable*>* variables) {
 
 }
 
+void ArgumentsOne::replace(Component* search, Component* replace) {
+
+	if( argument == search ) {
+		argument = replace;
+	} else {
+		argument->replace(search, replace);
+	}
 
 }
+
+}
+
 

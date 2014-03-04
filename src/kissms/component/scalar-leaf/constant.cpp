@@ -170,6 +170,9 @@ std::string Constant::getQuality() {
 void Constant::getVariables(std::vector<Variable*>* variables) {
 }
 
+void Constant::replace(Component* search, Component* replace) {
+}
+
 }
 
 

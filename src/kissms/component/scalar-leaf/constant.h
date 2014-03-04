@@ -72,6 +72,8 @@ public:
 	 */
 	Type getValue( void *value );
 
+	virtual void replace( Component *search, Component *replace );
+
 	virtual bool isCalculable();
 
 	virtual bool isQuantifiable();

@@ -193,6 +193,9 @@ void Variable::getVariables(std::vector<Variable*>* variables) {
 
 }
 
+void Variable::replace(Component* search, Component* replace) {
+}
 
 }
+
 

@@ -103,6 +103,11 @@ public:
 	 */
 	virtual int getDebugId();
 
+	/**
+	 *
+	 */
+	virtual void replace( Component *search, Component *replace ) = 0;
+
 protected:
 	/**
 	 * @brief The Component's numerical value, if any
