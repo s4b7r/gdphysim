@@ -416,6 +416,8 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 	// TODO Check for conditions to standardize to linear Equation
 
+	// TODO Implement Equation::standardizeLinear()'s capability to process symbols
+
 	ResultCode rc = Successful;
 	Negation *negation = new Negation();
 	Addition *addition = new Addition();
