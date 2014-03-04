@@ -622,7 +622,30 @@ void test16() {
 
 void test17() {
 
-	// TODO Implement test17
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Addition *ad = new kissms::Addition();
+	kissms::Multiplication *mu = new kissms::Multiplication();
+	kissms::Constant *co1 = new kissms::Constant();
+	kissms::Variable *va1 = new kissms::Variable();
+	kissms::Constant *co2 = new kissms::Constant();
+	kissms::Negation *ne = new kissms::Negation();
+	kissms::Constant *co3 = new kissms::Constant();
+
+	eq->setArguments(ad, mu);
+	ad->setArguments(co1, va1);
+	mu->setArguments(ne, co2);
+	ne->setArgument(co3);
+	co1->setValue(12);
+	co2->setValue(4);
+	co3->setValue(42);
+
+	char *van = (char*) malloc(sizeof(char) * 2);
+	van[0] = 'x';
+	van[1] = 0;
+	va1->setName(van);
+
+	eq->calculateFor(va1);
+	printf("x= %f\n", va1->getQuantity());
 
 }
 
