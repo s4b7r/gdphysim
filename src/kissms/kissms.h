@@ -14,6 +14,7 @@
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
 // XXX Search for memory leaks
+// TODO Implement Component::clone()
 
 #define KISSMS_DEBUG_FLAG
 
