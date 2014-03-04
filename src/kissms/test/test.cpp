@@ -647,6 +647,25 @@ void test17() {
 	eq->calculateFor(va1);
 	printf("x= %f\n", va1->getQuantity());
 
+	kissms::Constant *coR1 = new kissms::Constant();
+	coR1->setValue(32);
+	eq->replace(co1, coR1);
+
+	eq->calculateFor(va1);
+	printf("x= %f\n", va1->getQuantity());
+
+	eq->replace(co3, coR1);
+
+	eq->calculateFor(va1);
+	printf("x= %f\n", va1->getQuantity());
+
+	kissms::Constant *coR2 = new kissms::Constant();
+	coR2->setValue(2);
+	eq->replace(coR1, coR2);
+
+	eq->calculateFor(va1);
+	printf("x= %f\n", va1->getQuantity());
+
 }
 
 int main(int argc, char **argv) {
@@ -681,9 +700,9 @@ int main(int argc, char **argv) {
 	printf("\n\n");
 	test15();
 	printf("\n\n");
-	test16();
+	//test16();
 	printf("\n\n");
-	//test17();
+	test17();
 
 	return 0;
 
