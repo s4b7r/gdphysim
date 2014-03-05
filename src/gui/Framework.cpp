@@ -71,12 +71,16 @@ void Framework::eventProc(){
 	while(run){
 		while(SDL_PollEvent(&event)){
 			//printf("%d\n",event.type);
-			//printf("%d\n",event.button.state);
+//			printf("%d\n",event.motion.state);
 			switch(event.type){
 
 			case SDL_MOUSEBUTTONDOWN:
 				if(event.button.button==SDL_BUTTON_LEFT){
 					buttonPressing(TOOLS,event);
+					if(TOOLS->isXy(event.motion.x,event.motion.y)){
+						SDL_BlitSurface(SCREEN,NULL,BRUSH->getSurfHover(),NULL);
+						SDL_BlitSurface(SCREEN,NULL,BRUSH->getSurfInitPressed(),NULL);
+					}
 					if(AREA->isXy(event.motion.x,event.motion.y)){
 						BRUSH->paint(event.motion.x,event.motion.y,false,true,false,true);
 					}
@@ -86,7 +90,7 @@ void Framework::eventProc(){
 				if(event.motion.state==SDL_PRESSED && AREA->isXy(event.motion.x,event.motion.y)){
 					BRUSH->paint(event.motion.x,event.motion.y,true,false,false,true);
 				}
-				if(event.motion.state!=SDL_PRESSED && AREA->isXy(event.motion.x,event.motion.y)){
+				if(event.motion.state==0 && AREA->isXy(event.motion.x,event.motion.y)){
 					BRUSH->paint(event.motion.x,event.motion.y,true,false,false,false);
 				}
 				break;

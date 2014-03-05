@@ -21,11 +21,13 @@ private:
 	unsigned char *color;
 	int IDMethod;
 	Uint32 color24;
-	SDL_Surface *surfTemp;
-	SDL_Surface *surfTemp2;
+	SDL_Surface *surfaceInitPressed;
+	SDL_Surface *surfaceHover;
+	SDL_Surface *surfaceArea;
 	Uint16 xTemp;
 	Uint16 yTemp;
 
+	void renewElements();
 	int* checkAnchorHover(int x, int y);
 
 public:
@@ -33,7 +35,10 @@ public:
 	void setColor(unsigned char color[3]){this->color=color;}
 	void setIDMethod(int id){this->IDMethod=id;}
 	void getStats();
-	void paint(int x,int y, bool move, bool initiallyPressed, bool released, bool pressed);
+	void paint(int x,int y, bool move, bool initiallyLeftPressed, bool released, bool pressed);
+	SDL_Surface* getSurfHover(){return surfaceHover;}
+	SDL_Surface* getSurfInitPressed(){return surfaceInitPressed;}
+	SDL_Surface* getSurfArea(){return surfaceArea;}
 };
 
 

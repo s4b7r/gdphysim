@@ -9,13 +9,14 @@
 #include <iostream>
 //#include <stdio.h>
 
-Anchor::Anchor(int x, int y){
+Anchor::Anchor(int x, int y,Solid* p){
 //	printf("%d\n", x);
 	isGrounded=false;
 	origin[0]=x;
 	origin[1]=y;
 	origin[2]=0;
 	link=NULL;
+	pLink=p;
 }
 
 int* Anchor::getOrigin(){

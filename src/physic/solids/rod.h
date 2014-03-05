@@ -14,6 +14,7 @@ class Rod : public Solid{
 public:
 	Rod(int centerX, int centerY, int eloX, int eloY);
 	void setMass(){;}
+	void draft();
 };
 
 #endif /* ROD_H_ */

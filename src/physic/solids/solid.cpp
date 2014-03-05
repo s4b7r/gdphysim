@@ -1,4 +1,8 @@
 #include "physic/solids/solid.h"
+#include "gui/Area.hpp"
+#include "gui/Brush.hpp"
+#include "gui/Framework.hpp"
+#include <iostream>
 
 Solid::Solid(int centerX, int centerY, int eloX, int eloY){
 	mass=0;
@@ -10,6 +14,31 @@ Solid::Solid(int centerX, int centerY, int eloX, int eloY){
 	center[0]=centerX;
 	center[1]=centerY;
 	center[2]=0;
+}
+
+Solid::~Solid(){
+
+}
+
+void Solid::draft(){
+for(unsigned int i=0;i<anchors.size();i++){
+	if(anchors.at(i).getLink()!=NULL){
+		circleRGBA(SCREEN,anchors.at(i).getOrigin()[0],anchors.at(i).getOrigin()[1],3,0,0,0,255);
+	}
+	if(anchors.at(i).getGrounded()){
+		lineRGBA(SCREEN,anchors.at(i).getOrigin()[0]-4,anchors.at(i).getOrigin()[1]-4,anchors.at(i).getOrigin()[0]+4,anchors.at(i).getOrigin()[1]+4,0,0,0,255);
+		lineRGBA(SCREEN,anchors.at(i).getOrigin()[0]-4,anchors.at(i).getOrigin()[1]+4,anchors.at(i).getOrigin()[0]+4,anchors.at(i).getOrigin()[1]-4,0,0,0,255);
+	}
+}
+//	printf("Parentdraft\n");
+}
+
+void Solid::setAnchorGrounded(int num, bool s){
+	anchors.at(num).setGrounded(s);
+}
+
+Anchor* Solid::getAnchorAddr(int num){
+	return &(anchors.at(num));
 }
 
 void Solid::setMass(int m){
@@ -30,6 +59,10 @@ int Solid::getCenter(dimension p){
 
 vector<Anchor> Solid::getAnchors(){
 	return vector<Anchor>(anchors);
+}
+
+void Solid::setAnchorLink(int num, Anchor* l){
+	anchors.at(num).setLink(l);
 }
 
 /*vector<int*> Solid::getForces(vecType v){

@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "physic/anchor.h"
+#include "stdio.h"
 
 using std::vector;
 
@@ -21,6 +22,8 @@ protected:
 
 public:
 	Solid(int centerX, int centerY, int eloX, int eloY);
+	virtual ~Solid();
+	virtual void draft();
 
 	/*static void deleteVector(Vector &del);
 	static void fill3dVector(Vector &vec, int x, int y, int z);*/
@@ -28,8 +31,10 @@ public:
 	int getMass(){return mass;}
 	int getCenter(dimension p);
 	vector<Anchor> getAnchors();
+	void setAnchorLink(int num, Anchor* l);
+	void setAnchorGrounded(int num, bool s);
+	Anchor* getAnchorAddr(int num);
 	//vector<int*> getForces(vecType v);
-
 };
 
 #endif

@@ -13,6 +13,7 @@
 class Rigidrect : public Solid{
 public:
 	Rigidrect(int centerX, int centerY, int eloX, int eloY);
+	void draft();
 };
 
 #endif /* RIGIDRECT_H_ */

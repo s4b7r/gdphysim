@@ -32,5 +32,8 @@ int main() {
 	FRAMEWORK->eventProc();
 	FRAMEWORK->quit();
 
+//	vector<Solid*> f;
+//	f.push_back((new Rigidrect(1,2,3,4)));
+//	f.at(0)->draft();
 	return 0;
 }

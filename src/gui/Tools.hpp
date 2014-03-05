@@ -12,7 +12,7 @@
 #include "gui/Button.hpp"
 #include "gui/ButtonFrame.hpp"
 #define TOOLS Tools::Get()
-#define COUNTT 3
+#define COUNTT 6
 
 class Tools : public TSingleton<Tools>, public ButtonFrame{
 public:
@@ -20,7 +20,7 @@ public:
 	void build(){
 		Frame::build();
 		computeButtonCoords();
-		String filenames[]={"res/rect.bmp","res/stdButton.bmp","res/stdButton.bmp"};
+		String filenames[]={"res/pointmass.bmp","res/rod.bmp","res/rect.bmp","res/delete.bmp","res/link.bmp","res/ground.bmp"};
 		ButtonFrame::buildButtons(filenames);
 	}
 };
