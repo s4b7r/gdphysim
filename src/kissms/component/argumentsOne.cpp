@@ -83,6 +83,49 @@ void ArgumentsOne::replace(Component* search, Component* replace) {
 
 }
 
+Component* ArgumentsOne::clone() {
+
+	Component *cloned = 0;
+	switch (this->getType()) {
+	case tCosinus:
+		cloned = new Cosinus();
+
+		break;
+	case tCosinusArc:
+		cloned = new CosinusArc();
+
+		break;
+	case tNegation:
+		cloned = new Negation();
+
+		break;
+	case tReciprocal:
+		cloned = new Reciprocal;
+
+		break;
+	case tSinus:
+		cloned = new Sinus();
+
+		break;
+	case tSinusArc:
+		cloned = new SinusArc();
+
+		break;
+	default:
+		break;
+	}
+	clone(this, cloned);
+	return cloned;
+
+}
+
+void ArgumentsOne::clone(Component* source, Component* destination) {
+
+	Component::clone(source, destination);
+	((ArgumentsOne*)destination)->setArgument(((ArgumentsOne*)source)->getArgument());
+
+}
+
 }
 
 

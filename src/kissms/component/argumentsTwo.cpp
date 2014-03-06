@@ -130,6 +130,38 @@ void ArgumentsTwo::replace(Component* search, Component* replace) {
 
 }
 
+void ArgumentsTwo::clone(Component* source, Component* destination) {
+
+	Component::clone(source, destination);
+	((ArgumentsTwo*)destination)->setLeft(((ArgumentsTwo*)source)->getLeft());
+	((ArgumentsTwo*)destination)->setRight(((ArgumentsTwo*)source)->getRight());
+
+}
+
+Component* ArgumentsTwo::clone() {
+
+	Component *cloned = 0;
+	switch (this->getType()) {
+	case tAddition:
+		cloned = new Addition();
+
+		break;
+	case tMultiplication:
+		cloned = new Multiplication();
+
+		break;
+	case tVectorproduct:
+		cloned = Vectorproduct;
+
+		break;
+	default:
+		break;
+	}
+	clone(this, cloned);
+	return cloned;
+
+}
+
 }
 
 

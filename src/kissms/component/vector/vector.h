@@ -50,6 +50,8 @@ public:
 
 	virtual void getVariables( std::vector<Variable*> *variables );
 
+	virtual Component* clone();
+
 private:
 	/**
 	 *

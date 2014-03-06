@@ -55,4 +55,3 @@ std::string Cosinus::getQuality() {
 
 }
 
-

@@ -108,6 +108,21 @@ public:
 	 */
 	virtual void replace( Component *search, Component *replace ) = 0;
 
+	/**
+	 *
+	 */
+	virtual Component* clone() = 0;
+
+	/**
+	 *
+	 */
+	virtual void clone( Component *source, Component *destination );
+
+	/**
+	 *
+	 */
+	void setQuantity( double quantity );
+
 protected:
 	/**
 	 * @brief The Component's numerical value, if any

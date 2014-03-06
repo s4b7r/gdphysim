@@ -47,6 +47,10 @@ public:
 
 	virtual void getVariables( std::vector<Variable*> *variables );
 
+	virtual Component* clone();
+
+	virtual void clone( Component *source, Component *destination );
+
 protected:
 	/**
 	 * @brief The Component's argument

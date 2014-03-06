@@ -168,9 +168,42 @@ std::string Constant::getQuality() {
 }
 
 void Constant::getVariables(std::vector<Variable*>* variables) {
+
+	// This method is intentionally left blank
+	// There are no Variables in a Constant
+
 }
 
 void Constant::replace(Component* search, Component* replace) {
+
+	// This method is intentionally left blank
+	// There are no Components in a Constant
+
+}
+
+Component* Constant::clone() {
+
+	Constant *cloned = new Constant();
+	void *sourceValue = 0;
+	Type sourceType = getValue(sourceValue);
+	switch (sourceType) {
+	case String:
+		cloned->setValue((char*)sourceValue);
+
+		break;
+	case Integer:
+		cloned->setValue(*((int*)sourceValue));
+
+		break;
+	case Double:
+		cloned->setValue(*((double*)sourceValue));
+
+		break;
+	default:
+		break;
+	}
+	return cloned;
+
 }
 
 }

@@ -70,6 +70,11 @@ public:
 	 */
 	bool hasSameVariableTwice( Variable **variable );
 
+	/**
+	 *
+	 */
+	void setScalarEquations( Equationsystem *scalarEquations );
+
 	virtual ResultCode calculate();
 
 	virtual ResultCode reformFor( Variable *variable, Component **newSide, Component **otherSide );
@@ -77,6 +82,8 @@ public:
 	virtual ComponentType getType();
 
 	virtual std::string getQuality();
+
+	virtual Component* clone();
 
 private:
 	/**

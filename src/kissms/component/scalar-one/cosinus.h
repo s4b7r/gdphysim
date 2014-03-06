@@ -25,7 +25,6 @@ public:
 
 	virtual std::string getQuality();
 
-
 };
 
 }

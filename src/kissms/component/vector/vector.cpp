@@ -106,6 +106,16 @@ void Vector::replace(Component* search, Component* replace) {
 
 }
 
+Component* kissms::Vector::clone() {
+
+	Vector *cloned = new Vector();
+	for( int i = 0; i < 3; i++ ) {
+		cloned->setArgument(i, this->getArgument(i)->clone());
+	}
+	return cloned;
+
+}
+
 }
 
 

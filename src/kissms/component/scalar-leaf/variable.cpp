@@ -196,6 +196,28 @@ void Variable::getVariables(std::vector<Variable*>* variables) {
 void Variable::replace(Component* search, Component* replace) {
 }
 
+Component* Variable::clone() {
+
+	Variable *cloned = new Variable();
+	cloned->setName(this->getName());
+	void *sourceValue = 0;
+	Type sourceType = getValue(sourceValue);
+	switch (sourceType) {
+	case Integer:
+		cloned->setValue(*((int*)sourceValue));
+
+		break;
+	case Double:
+		cloned->setValue(*((double*)sourceValue));
+
+		break;
+	default:
+		break;
+	}
+	return cloned;
+
+}
+
 }
 
 

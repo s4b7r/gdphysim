@@ -43,6 +43,18 @@ int Component::getDebugId() {
 
 }
 
+void Component::clone(Component* source, Component* destination) {
+
+	destination->setQuantity(source->getQuantity());
+
+}
+
+void Component::setQuantity(double quantity) {
+
+	this->quantity = quantity;
+
+}
+
 }
 
 
