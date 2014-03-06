@@ -164,17 +164,17 @@ std::string Variable::getQuality() {
 
 	std::string tmp;
 
-	if( isQuantifiable() ) {
-		std::ostringstream oss;
-		oss << getQuantity();
-		tmp = oss.str();
-	} else {
+	//if( isQuantifiable() ) {
+	//	std::ostringstream oss;
+	//	oss << getQuantity();
+	//	tmp = oss.str();
+	//} else {
 		if( type == Qualified ) {
 			tmp = quality;
 		} else {
 			tmp = name;
 		}
-	}
+	//}
 
 	return tmp;
 

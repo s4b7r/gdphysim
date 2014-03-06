@@ -157,6 +157,7 @@ Component* ArgumentsTwo::clone() {
 	case tEquation:
 		cloned = new Equation();
 
+		break;
 	default:
 		break;
 	}

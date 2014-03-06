@@ -390,11 +390,11 @@ std::string Equation::getQuality() {
 	std::string tmp;
 	std::ostringstream oss;
 
-	if( isQuantifiable() ) {
-		oss << getQuantity();
-	} else {
+	//if( isQuantifiable() ) {
+	//	oss << getQuantity();
+	//} else {
 		oss << argumentLeft->getQuality() << "=" << argumentRight->getQuality();
-	}
+	//}
 	tmp = oss.str();
 	return tmp;
 
@@ -413,10 +413,67 @@ void Equation::getScalarEquations() {
 }
 
 ResultCode Equation::standardizeLinear(Variable *variable) {
+	// This is the symbolic method
 
 	// TODO Check for conditions to standardize to linear Equation
 
-	// TODO Implement Equation::standardizeLinear()'s capability to process symbols
+	// TODO Fix Equation::standardizeLinear()'s symbolic version
+
+	ResultCode rc = Successful;
+
+	Negation *negationB1 = new Negation();
+	Addition *b = new Addition();
+	Constant *constantB1 = new Constant();
+
+	negationB1->setArgument(argumentRight);
+	b->setArguments(argumentLeft, negationB1);
+	constantB1->setValue(0);
+	b->replace(variable, constantB1);
+	rc = b->calculate();
+	if( rc != Successful ) {
+		return rc;
+	}
+
+	Negation *negationM1 = new Negation();
+	Addition *additionM1 = new Addition();
+	Constant *constantM1 = new Constant();
+	Negation *negationM2 = new Negation();
+	Addition *m = new Addition();
+
+	negationM1->setArgument(argumentRight);
+	additionM1->setArguments(argumentLeft, negationM1);
+	constantM1->setValue(1);
+	additionM1->replace(variable, constantM1);
+	rc = additionM1->calculate();
+	if( rc != Successful ) {
+		return rc;
+	}
+	negationM2->setArgument(b);
+	m->setArguments(additionM1, negationM2);
+
+	Constant *constant00 = new Constant();
+	Multiplication *mult = new Multiplication();
+	Addition *addition00 = new Addition();
+
+	constant00->setValue(0);
+	mult->setArguments(m, variable);
+	addition00->setArguments(mult, b);
+	rc = addition00->calculate();
+	if( rc != Successful ) {
+		return rc;
+	}
+
+	argumentLeft = constant00;
+	argumentRight = addition00;
+
+	return rc;
+
+}
+
+/*ResultCode Equation::standardizeLinear(Variable *variable) {
+	// This is the numeric version
+
+	// TODO Check for conditions to standardize to linear Equation
 
 	ResultCode rc = Successful;
 	Negation *negation = new Negation();
@@ -460,7 +517,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 	return rc;
 
-}
+}*/
 
 bool Equation::hasSameVariableTwice(Variable** variable) {
 
