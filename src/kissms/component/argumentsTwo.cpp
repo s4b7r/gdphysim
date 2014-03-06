@@ -151,9 +151,12 @@ Component* ArgumentsTwo::clone() {
 
 		break;
 	case tVectorproduct:
-		cloned = Vectorproduct;
+		cloned = new Vectorproduct();
 
 		break;
+	case tEquation:
+		cloned = new Equation();
+
 	default:
 		break;
 	}

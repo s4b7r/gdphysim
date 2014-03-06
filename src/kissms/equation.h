@@ -83,8 +83,6 @@ public:
 
 	virtual std::string getQuality();
 
-	virtual Component* clone();
-
 private:
 	/**
 	 *

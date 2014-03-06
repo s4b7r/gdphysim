@@ -270,15 +270,6 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 
 }
 
-Component* Equation::clone() {
-
-	Equation *cloned = new Equation();
-	ArgumentsTwo::clone(this, cloned);
-	cloned->setScalarEquations(this->scalarEquations->clone());
-	return cloned;
-
-}
-
 void Equation::getScalarEquations(Component* current,
 		Component* parent[], WhichLastArgument parentsArgument,
 		std::stack<struct iteration> todo) {
