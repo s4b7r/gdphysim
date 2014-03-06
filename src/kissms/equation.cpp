@@ -393,7 +393,7 @@ std::string Equation::getQuality() {
 	//if( isQuantifiable() ) {
 	//	oss << getQuantity();
 	//} else {
-		oss << argumentLeft->getQuality() << "=" << argumentRight->getQuality();
+	oss << argumentLeft->getQuality() << "=" << argumentRight->getQuality();
 	//}
 	tmp = oss.str();
 	return tmp;
@@ -412,12 +412,14 @@ void Equation::getScalarEquations() {
 
 }
 
-ResultCode Equation::standardizeLinear(Variable *variable) {
+/*ResultCode Equation::standardizeLinear(Variable *variable) {
 	// This is the symbolic method
 
 	// TODO Check for conditions to standardize to linear Equation
 
 	// TODO Fix Equation::standardizeLinear()'s symbolic version
+
+	DP("Equation::standardizeLinear(" << variable->getName() << ")");
 
 	ResultCode rc = Successful;
 
@@ -430,9 +432,9 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	constantB1->setValue(0);
 	b->replace(variable, constantB1);
 	rc = b->calculate();
-	if( rc != Successful ) {
-		return rc;
-	}
+	//if( rc != Successful ) {
+	//	return rc;
+	//}
 
 	Negation *negationM1 = new Negation();
 	Addition *additionM1 = new Addition();
@@ -445,9 +447,9 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	constantM1->setValue(1);
 	additionM1->replace(variable, constantM1);
 	rc = additionM1->calculate();
-	if( rc != Successful ) {
-		return rc;
-	}
+	//if( rc != Successful ) {
+	//	return rc;
+	//}
 	negationM2->setArgument(b);
 	m->setArguments(additionM1, negationM2);
 
@@ -459,18 +461,20 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	mult->setArguments(m, variable);
 	addition00->setArguments(mult, b);
 	rc = addition00->calculate();
-	if( rc != Successful ) {
-		return rc;
-	}
+	//if( rc != Successful ) {
+	//	return rc;
+	//}
 
 	argumentLeft = constant00;
 	argumentRight = addition00;
 
+	DP("Equation: " << getQuality());
+
 	return rc;
 
-}
+}*/
 
-/*ResultCode Equation::standardizeLinear(Variable *variable) {
+ResultCode Equation::standardizeLinear(Variable *variable) {
 	// This is the numeric version
 
 	// TODO Check for conditions to standardize to linear Equation
@@ -517,7 +521,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 	return rc;
 
-}*/
+}
 
 bool Equation::hasSameVariableTwice(Variable** variable) {
 
