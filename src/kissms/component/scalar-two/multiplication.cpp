@@ -46,6 +46,7 @@ ResultCode Multiplication::calculate() {
 		quantity = argumentLeft->getQuantity() * argumentRight->getQuantity();
 		return Successful;
 	} else {
+		DP("NotYetImplemented:: Multiplication::calculate()");
 		return NotYetImplemented;
 	}
 

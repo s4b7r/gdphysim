@@ -668,9 +668,72 @@ void test17() {
 
 }
 
+void testKevin() {
+
+	kissms::Equationsystem *sys = new kissms::Equationsystem();
+	kissms::Variable *f1 = new kissms::Variable();
+	f1->setName("F1");
+	kissms::Variable *frx = new kissms::Variable();
+	frx->setName("Frx");
+	kissms::Constant *co45 = new kissms::Constant();
+	co45->setValue(45.0/180.0*3.141592);
+	kissms::Sinus *sinu = new kissms::Sinus();
+	sinu->setArgument(co45);
+	kissms::Cosinus *cosi = new kissms::Cosinus();
+	cosi->setArgument(co45);
+	kissms::Constant *co0 = new kissms::Constant();
+	co0->setValue(0);
+	kissms::Constant *co2 = new kissms::Constant();
+	co2->setValue(2);
+	kissms::Constant *cog = new kissms::Constant();
+	cog->setValue("G");
+	kissms::Negation *ne21 = new kissms::Negation();
+	ne21->setArgument(cog);
+	kissms::Variable *fry = new kissms::Variable();
+	fry->setName("Fry");
+	kissms::Multiplication *mu11 = new kissms::Multiplication();
+	mu11->setArguments(f1, cosi);
+	kissms::Multiplication *mu21 = new kissms::Multiplication();
+	mu21->setArguments(f1, sinu);
+	kissms::Multiplication *mu31 = new kissms::Multiplication();
+	mu31->setArguments(co2, frx);
+	kissms::Negation *ne32 = new kissms::Negation();
+	ne32->setArgument(mu31);
+	kissms::Addition *ad22 = new kissms::Addition();
+	ad22->setArguments(mu21, ne21);
+	kissms::Addition *ad21 = new kissms::Addition();
+	ad21->setArguments(ad22, fry);
+	kissms::Addition *ad12 = new kissms::Addition();
+	ad12->setArguments(mu11, co0);
+	kissms::Addition *ad11 = new kissms::Addition();
+	ad11->setArguments(ad12, frx);
+	kissms::Negation *ne31 = new kissms::Negation();
+	ne31->setArgument(cog);
+	kissms::Addition *ad32 = new kissms::Addition();
+	ad32->setArguments(co0, ne31);
+	kissms::Addition *ad31 = new kissms::Addition();
+	ad31->setArguments(ad32, ne32);
+	kissms::Equation *eq1 = new kissms::Equation();
+	eq1->setArguments(ad11, co0);
+	kissms::Equation *eq2 = new kissms::Equation();
+	eq2->setArguments(ad21, co0);
+	kissms::Equation *eq3 = new kissms::Equation();
+	eq3->setArguments(ad31, co0);
+	sys->addEquation(eq1);
+	sys->addEquation(eq2);
+	sys->addEquation(eq3);
+
+
+	printf("checkpoint 1\n");
+	printf("%d\n", sys->calculateFor(f1));
+	printf("%f\n", f1->getQuantity());
+	printf("%s\n", f1->getQuality().c_str());
+
+}
+
 int main(int argc, char **argv) {
 
-	test1();
+	/*test1();
 	printf("\n\n");
 	test2();
 	printf("\n\n");
@@ -702,7 +765,9 @@ int main(int argc, char **argv) {
 	printf("\n\n");
 	//test16();
 	printf("\n\n");
-	//test17();
+	//test17();*/
+
+	testKevin();
 
 	return 0;
 

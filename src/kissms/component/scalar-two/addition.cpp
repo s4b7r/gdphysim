@@ -46,6 +46,7 @@ ResultCode Addition::calculate() {
 		quantity = argumentLeft->getQuantity() + argumentRight->getQuantity();
 		return Successful;
 	} else {
+		DP("NotYetImplemented: Addition::calculate()");
 		return NotYetImplemented;
 	}
 

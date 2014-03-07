@@ -266,7 +266,7 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 		}
 	}
 
-	return NotYetImplemented;
+	return Successful;
 
 }
 
