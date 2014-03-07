@@ -8,6 +8,8 @@
 #ifndef ANCHOR_H_
 #define ANCHOR_H_
 
+//#include "kissms/kissms.h"
+
 class Solid;
 
 class Anchor{

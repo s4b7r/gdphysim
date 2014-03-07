@@ -3,6 +3,7 @@
 #include "gui/Brush.hpp"
 #include "gui/Framework.hpp"
 #include <iostream>
+#include <stdlib.h>
 
 Solid::Solid(int centerX, int centerY, int eloX, int eloY){
 	mass=0;
@@ -20,17 +21,120 @@ Solid::~Solid(){
 
 }
 
-void Solid::draft(){
-for(unsigned int i=0;i<anchors.size();i++){
-	if(anchors.at(i).getLink()!=NULL){
-		circleRGBA(SCREEN,anchors.at(i).getOrigin()[0],anchors.at(i).getOrigin()[1],3,0,0,0,255);
+void Solid::drawVector(int rx, int ry, double x, double y, int r, int g, int b){
+	if(x==0 && y==0)return;
+
+	int a=8;	//Arrow blade length
+	String file="res/numbers.bmp";
+	SDL_Surface* numbersImage=SDL_LoadBMP(file.c_str());
+	vector<int> vec;
+	SDL_Rect numberRect;
+	SDL_Rect drect;
+
+	numberRect.h=9;
+	numberRect.w=6;
+	drect.h=numberRect.h;
+	drect.w=numberRect.w;
+
+	int abs=sqrt((x*x)+(y*y));
+	if(abs>250){
+		y=y/abs*100;
+		x=x/abs*100;
+	}else{
+		y=y*0.4;
+		x=x*0.4;
 	}
-	if(anchors.at(i).getGrounded()){
-		lineRGBA(SCREEN,anchors.at(i).getOrigin()[0]-4,anchors.at(i).getOrigin()[1]-4,anchors.at(i).getOrigin()[0]+4,anchors.at(i).getOrigin()[1]+4,0,0,0,255);
-		lineRGBA(SCREEN,anchors.at(i).getOrigin()[0]-4,anchors.at(i).getOrigin()[1]+4,anchors.at(i).getOrigin()[0]+4,anchors.at(i).getOrigin()[1]-4,0,0,0,255);
+
+	drect.x=1+rx+x/2;
+	drect.y=1+ry+y/2;
+
+	lineRGBA(SCREEN,rx,ry,rx+x,ry+y,r,g,b,255);
+	double alpha;
+	alpha=atan(y/x);
+	if(x<0){
+		lineRGBA(SCREEN,rx+x,ry+y,rx+x+a*-cos(alpha+0.75*PI),ry+y+a*-sin(alpha+0.75*PI),r,g,b,255);
+		lineRGBA(SCREEN,rx+x,ry+y,rx+x+a*-cos(alpha+1.25*PI),ry+y+a*-sin(alpha+1.25*PI),r,g,b,255);
+	}else{
+		lineRGBA(SCREEN,rx+x,ry+y,rx+x+a*cos(alpha+0.75*PI),ry+y+a*sin(alpha+0.75*PI),r,g,b,255);
+		lineRGBA(SCREEN,rx+x,ry+y,rx+x+a*cos(alpha+1.25*PI),ry+y+a*sin(alpha+1.25*PI),r,g,b,255);
 	}
+
+
+	for(int j=abs;j>0;){
+		vec.insert(vec.begin(),j%10);
+		j/=10;
+	}
+	for(unsigned int i=0;i<vec.size();i++){
+		switch(vec.at(i)){
+		case 0:
+			numberRect.x=147;
+			numberRect.y=0;
+			break;
+		case 1:
+			numberRect.x=3;
+			numberRect.y=0;
+			break;
+		case 2:
+			numberRect.x=19;
+			numberRect.y=0;
+			break;
+		case 3:
+			numberRect.x=35;
+			numberRect.y=0;
+			break;
+		case 4:
+			numberRect.x=51;
+			numberRect.y=0;
+			break;
+		case 5:
+			numberRect.x=67;
+			numberRect.y=0;
+			break;
+		case 6:
+			numberRect.x=83;
+			numberRect.y=0;
+			break;
+		case 7:
+			numberRect.x=99;
+			numberRect.y=0;
+			break;
+		case 8:
+			numberRect.x=115;
+			numberRect.y=0;
+			break;
+		case 9:
+			numberRect.x=131;
+			numberRect.y=0;
+			break;
+		}
+		SDL_BlitSurface(numbersImage, &numberRect, SCREEN, &drect);
+		drect.x=drect.x+6;
+	}
+	printf("\n");
+	SDL_Flip(SCREEN);
 }
-//	printf("Parentdraft\n");
+
+void Solid::draft(){
+	for(unsigned int i=0;i<forces[0].size();i++){
+		drawVector(forces[0].at(i)[X],forces[0].at(i)[Y],forces[1].at(i)[X],forces[1].at(i)[Y],255,0,0);
+	}
+
+//	for(int j=-1;j<2;j++){
+//		for(int k=-1;k<2;k++){
+//			drawVector(500,400,j*548,k*387,0,0,0);
+//		}
+//	}
+
+	for(unsigned int i=0;i<anchors.size();i++){
+		if(anchors.at(i).getLink()!=NULL){
+			circleRGBA(SCREEN,anchors.at(i).getOrigin()[0],anchors.at(i).getOrigin()[1],3,0,0,0,255);
+		}
+		if(anchors.at(i).getGrounded()){
+			lineRGBA(SCREEN,anchors.at(i).getOrigin()[0]-4,anchors.at(i).getOrigin()[1]-4,anchors.at(i).getOrigin()[0]+4,anchors.at(i).getOrigin()[1]+4,0,0,0,255);
+			lineRGBA(SCREEN,anchors.at(i).getOrigin()[0]-4,anchors.at(i).getOrigin()[1]+4,anchors.at(i).getOrigin()[0]+4,anchors.at(i).getOrigin()[1]-4,0,0,0,255);
+		}
+	}
+	//	printf("Parentdraft\n");
 }
 
 void Solid::setAnchorGrounded(int num, bool s){

@@ -9,17 +9,19 @@
 #define PHYSICCORE_H_
 #define PHYSICCORE Physiccore::Get()
 
-#include <vector>
+#include "kissms/kissms.h"
 #include "gui/TSingleton.cpp"
 #include "physic/solids/solid.h"
-#include "stdlib.h"
 
+using kissms::Equation;
 using std::vector;
 
 class Physiccore : public TSingleton<Physiccore>{
 private:
 	vector<Solid*> elements;
 	vector<int*> anchorPositions;
+	vector<Equation> forceEquations;
+	vector<Equation> torqueEquations;
 
 	void setAnchorsPosition();
 

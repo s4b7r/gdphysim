@@ -19,7 +19,7 @@ using namespace std;
 class Button : public Frame{
 
 public:
-	Button(){};
+//	Button(){};
 	Button(int xy[4],String filename,unsigned char bbcolor[3]);
 	Button(int xy[4], unsigned char bgcolor[3],unsigned char bbcolor[3]);
 	bool getPressed(){return pressed;}

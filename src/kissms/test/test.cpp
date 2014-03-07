@@ -731,47 +731,47 @@ void testKevin() {
 
 }
 
-int main(int argc, char **argv) {
-
-	/*test1();
-	printf("\n\n");
-	test2();
-	printf("\n\n");
-	test3();
-	printf("\n\n");
-	test4();
-	printf("\n\n");
-	test5();
-	printf("\n\n");
-	test6();
-	printf("\n\n");
-	test7();
-	printf("\n\n");
-	test8();
-	printf("\n\n");
-	test9();
-	printf("\n\n");
-	test10();
-	printf("\n\n");
-	test11();
-	printf("\n\n");
-	test12();
-	printf("\n\n");
-	test13();
-	printf("\n\n");
-	test14();
-	printf("\n\n");
-	test15();
-	printf("\n\n");
-	//test16();
-	printf("\n\n");
-	//test17();*/
-
-	testKevin();
-
-	return 0;
-
-}
+//int main(int argc, char **argv) {
+//
+//	/*test1();
+//	printf("\n\n");
+//	test2();
+//	printf("\n\n");
+//	test3();
+//	printf("\n\n");
+//	test4();
+//	printf("\n\n");
+//	test5();
+//	printf("\n\n");
+//	test6();
+//	printf("\n\n");
+//	test7();
+//	printf("\n\n");
+//	test8();
+//	printf("\n\n");
+//	test9();
+//	printf("\n\n");
+//	test10();
+//	printf("\n\n");
+//	test11();
+//	printf("\n\n");
+//	test12();
+//	printf("\n\n");
+//	test13();
+//	printf("\n\n");
+//	test14();
+//	printf("\n\n");
+//	test15();
+//	printf("\n\n");
+//	//test16();
+//	printf("\n\n");
+//	//test17();*/
+//
+//	testKevin();
+//
+//	return 0;
+//
+//}
 
 
 

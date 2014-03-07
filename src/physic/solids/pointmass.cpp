@@ -8,9 +8,18 @@
 #include "physic/solids/pointmass.h"
 #include "physic/anchor.h"
 #include "gui/Framework.hpp"
+#include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 Pointmass::Pointmass(int centerX, int centerY) : Solid(centerX,centerY,centerX,centerY){
 	anchors.push_back(*(new Anchor(centerX,centerY,this)));
+	int temp;
+	cout << "Please enter mass for pointmass: (Kilogram) "<< endl;
+	cin >> temp;
+	Solid::setMass(temp);
 }
 
 void Pointmass::draft(){
