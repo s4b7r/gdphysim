@@ -675,6 +675,7 @@ void testKevin() {
 	f1->setName("F1");
 	kissms::Variable *frx = new kissms::Variable();
 	frx->setName("Frx");
+	frx->setValue(12);
 	kissms::Constant *co45 = new kissms::Constant();
 	co45->setValue(45.0/180.0*3.141592);
 	kissms::Sinus *sinu = new kissms::Sinus();
@@ -686,7 +687,8 @@ void testKevin() {
 	kissms::Constant *co2 = new kissms::Constant();
 	co2->setValue(2);
 	kissms::Constant *cog = new kissms::Constant();
-	cog->setValue("G");
+	//cog->setValue("G");
+	cog->setValue(9.81);
 	kissms::Negation *ne21 = new kissms::Negation();
 	ne21->setArgument(cog);
 	kissms::Variable *fry = new kissms::Variable();
@@ -723,6 +725,8 @@ void testKevin() {
 	sys->addEquation(eq2);
 	sys->addEquation(eq3);
 
+
+	printf("%s\n", eq1->getQuality().c_str());
 
 	printf("checkpoint 1\n");
 	printf("%d\n", sys->calculateFor(f1));

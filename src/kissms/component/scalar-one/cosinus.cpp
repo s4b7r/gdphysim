@@ -43,11 +43,11 @@ std::string Cosinus::getQuality() {
 	std::string tmp;
 	std::ostringstream oss;
 
-	if( isQuantifiable() ) {
-		oss << getQuantity();
-	} else {
+	//if( isQuantifiable() ) {
+	//	oss << getQuantity();
+	//} else {
 		oss << "cos(" << argument->getQuality() << ")";
-	}
+	//}
 	tmp = oss.str();
 	return tmp;
 
