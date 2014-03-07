@@ -23,6 +23,7 @@ Equation::~Equation() {
 
 ResultCode Equation::solveFor(Variable* variable) {
 
+	DP("Equation::solveFor(" << variable->getName() << ")");
 	ResultCode solveResult = Successful;
 	if( !isVectorial() ) {
 		Variable *twiceVariable = 0;
@@ -46,6 +47,7 @@ ResultCode Equation::solveFor(Variable* variable) {
 		scalarEquations->solveFor(variable);
 	}
 
+	DP("... will return " << solveResult);
 	return solveResult;
 
 }

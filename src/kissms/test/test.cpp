@@ -675,7 +675,7 @@ void testKevin() {
 	f1->setName("F1");
 	kissms::Variable *frx = new kissms::Variable();
 	frx->setName("Frx");
-	frx->setValue(12);
+	//frx->setValue(12);
 	kissms::Constant *co45 = new kissms::Constant();
 	co45->setValue(45.0/180.0*3.141592);
 	kissms::Sinus *sinu = new kissms::Sinus();
@@ -727,11 +727,14 @@ void testKevin() {
 
 
 	printf("%s\n", eq1->getQuality().c_str());
+	printf("%s\n", eq2->getQuality().c_str());
+	printf("%s\n", eq3->getQuality().c_str());
 
-	printf("checkpoint 1\n");
-	printf("%d\n", sys->calculateFor(f1));
-	printf("%f\n", f1->getQuantity());
-	printf("%s\n", f1->getQuality().c_str());
+
+	printf("RC:%d\n", sys->calculateFor(f1));
+	printf("F1=%f\n", f1->getQuantity());
+	printf("F1=%s\n", f1->getQuality().c_str());
+	printf("FRx=%f\n", frx->getQuantity());
 
 }
 

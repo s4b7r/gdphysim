@@ -63,6 +63,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	Equation *solveEquation = 0;
 	ResultCode rc;
 
+	DP("Eqsys::solveFor(" << variable->getName() << ")");
 	DP("Eqsys with " << equations.size() << " Eqs left");
 
 	// Find Equation containing the given Variable with the least other Variables
@@ -80,7 +81,9 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	}
 
 	// Solve Equation for given Variable
-	solveEquation->solveFor(variable);
+	DP("Eqsys: Solve " << solveEquation->getQuality());
+	rc = solveEquation->solveFor(variable);
+	DP("Eqsys: Solve returned " << rc);
 
 	// Save Variable to check for circular dependencies
 	struct trace newTrace;
@@ -102,7 +105,9 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	valueComponent->getVariables(&otherVariables);
 	varIt = otherVariables.begin();
 	while( varIt != otherVariables.end() ) {
+		DP("Eqsys: Need " << (*varIt)->getName());
 		if( !(*varIt)->isCalculable() ) {
+			DP(".. and it's pending");
 			pendingVariables->push_back(*varIt);
 
 			// Check for circular dependencies
@@ -171,6 +176,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		equationsLeft.setTraceVariables(traceVariables);
 
 		// Solve next pending Variable
+		DP("Eqsys: Solve pending " << pendingVariables->size() << " Variables");
 		rc = equationsLeft.solvePending();
 
 		if( rc != Successful ) {
@@ -178,17 +184,24 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		}
 	}
 
+	DP(variable->getName() << " is already quantifiable: " << variable->isQuantifiable());
 	if( !variable->isQuantifiable() ) {
 		// Calculate
+		DP("Eqsys calculates " << valueComponent->getQuality());
 		rc = valueComponent->calculate();
 		if( rc != Successful ) {
+			DP("Eqsys' calculating returned " << rc);
 			return rc;
 		}
 		// If everything is okay, set the Variable's numerical value
 		variable->setValue(valueComponent->getQuantity());
+		DP("Eqsys set " << variable->getName() << " 's quantity = " << valueComponent->getQuantity());
 		// And it's quality
 		variable->setQuality(valueComponent->getQuality());
+		DP("Eqsys set " << variable->getName() << " 's quality = " << valueComponent->getQuality());
 	}
+	DP("Eqsys: " << variable->getName() << " is now calculable: " << variable->isCalculable());
+	DP(".. and quantifiable: " << variable->isQuantifiable());
 
 	return rc;
 
