@@ -734,9 +734,9 @@ void testKevin() {
 	printf("%s\n", eq3->getQuality().c_str());
 
 
-	printf("RC:%d\n", sys->calculateFor(fry));
-	printf("FRy=%f\n", fry->getQuantity());
-	//printf("RC:%d\n", sys->calculateFor(f1));
+	//printf("RC:%d\n", sys->calculateFor(fry));
+	//printf("FRy=%f\n", fry->getQuantity());
+	printf("RC:%d\n", sys->calculateFor(f1));
 	printf("F1=%f\n", f1->getQuantity());
 	printf("F1=%s\n", f1->getQuality().c_str());
 	printf("FRx=%f\n", frx->getQuantity());
@@ -770,16 +770,16 @@ int main(int argc, char **argv) {
 	test12();
 	printf("\n\n");
 	test13();
-	printf("\n\n");
+	printf("\n\n");*/
 	test14();
 	printf("\n\n");
 	test15();
 	printf("\n\n");
 	//test16();
 	printf("\n\n");
-	//test17();*/
-
-	testKevin();
+	//test17();
+	printf("\n\n");
+	//testKevin();
 
 	return 0;
 

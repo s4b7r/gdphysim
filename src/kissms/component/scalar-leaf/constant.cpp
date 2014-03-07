@@ -53,12 +53,12 @@ void Constant::setValue(double value) {
 
 bool Constant::isCalculable() {
 
-	DP("Constant " << this->getQuality() << " is calculable: ");
+	//DP("Constant " << this->getQuality() << " is calculable: ");
 	if( type != Unspecified ) {
-		DP(".. yes");
+		//DP(".. yes");
 		return true;
 	}
-	DP(".. no");
+	//DP(".. no");
 	return false;
 
 }

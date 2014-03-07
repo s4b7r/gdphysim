@@ -184,7 +184,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		}
 	}
 
-	DP(variable->getName() << " is already quantifiable: " << variable->isQuantifiable());
+	DP("Eqsys: " << variable->getName() << " is already quantifiable: " << variable->isQuantifiable());
 	if( !variable->isQuantifiable() ) {
 		// Calculate
 		DP("Eqsys calculates " << valueComponent->getQuality());

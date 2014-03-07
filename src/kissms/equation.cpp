@@ -414,7 +414,7 @@ void Equation::getScalarEquations() {
 
 }
 
-/*ResultCode Equation::standardizeLinear(Variable *variable) {
+ResultCode Equation::standardizeLinear(Variable *variable) {
 	// This is the symbolic method
 
 	// TODO Check for conditions to standardize to linear Equation
@@ -426,21 +426,30 @@ void Equation::getScalarEquations() {
 	ResultCode rc = Successful;
 
 	Negation *negationB1 = new Negation();
-	Addition *b = new Addition();
+	Addition *additionB1 = new Addition();
 	Constant *constantB1 = new Constant();
+	Addition *b = 0;
+
+	// TODO Equation::standardizeLinear() clone problem
+	// TODO Check clone algorithm
 
 	negationB1->setArgument(argumentRight);
-	b->setArguments(argumentLeft, negationB1);
+	additionB1->setArguments(argumentLeft, negationB1);
 	constantB1->setValue(0);
-	b->replace(variable, constantB1);
+	additionB1->replace(variable, constantB1);
+	b = (Addition*)(additionB1->clone());
+	additionB1->replace(constantB1, variable);
 	rc = b->calculate();
+	DP("Eq::standardize : Calculate b returns " << rc);
 	//if( rc != Successful ) {
 	//	return rc;
 	//}
+	DP("Eq::standardize : b = " << b->getQuality());
 
 	Negation *negationM1 = new Negation();
 	Addition *additionM1 = new Addition();
 	Constant *constantM1 = new Constant();
+	Addition *additionM1b = 0;
 	Negation *negationM2 = new Negation();
 	Addition *m = new Addition();
 
@@ -448,12 +457,18 @@ void Equation::getScalarEquations() {
 	additionM1->setArguments(argumentLeft, negationM1);
 	constantM1->setValue(1);
 	additionM1->replace(variable, constantM1);
-	rc = additionM1->calculate();
+	additionM1b = (Addition*)(additionM1->clone());
+	additionM1->replace(constantM1, variable);
+	rc = additionM1b->calculate();
+	DP("Eq::standardize : Calculate addM1 returns " << rc);
 	//if( rc != Successful ) {
 	//	return rc;
 	//}
 	negationM2->setArgument(b);
-	m->setArguments(additionM1, negationM2);
+	m->setArguments(additionM1b, negationM2);
+	DP("Eq::standardize : m = " << m->getQuality());
+	m->calculate();
+	DP("Eq::standardize : m = " << m->getQuantity());
 
 	Constant *constant00 = new Constant();
 	Multiplication *mult = new Multiplication();
@@ -462,7 +477,9 @@ void Equation::getScalarEquations() {
 	constant00->setValue(0);
 	mult->setArguments(m, variable);
 	addition00->setArguments(mult, b);
+	DP("Eq::standardize : final add = " << addition00->getQuality());
 	rc = addition00->calculate();
+	DP("Eq::standardize : Calculate final add returns " << rc);
 	//if( rc != Successful ) {
 	//	return rc;
 	//}
@@ -470,13 +487,14 @@ void Equation::getScalarEquations() {
 	argumentLeft = constant00;
 	argumentRight = addition00;
 
-	DP("Equation: " << getQuality());
+	DP("Eq::standardize Equation: " << getQuality());
 
+	exit(0);
 	return rc;
 
-}*/
+}
 
-ResultCode Equation::standardizeLinear(Variable *variable) {
+/*ResultCode Equation::standardizeLinear(Variable *variable) {
 	// This is the numeric version
 
 	// TODO Check for conditions to standardize to linear Equation
@@ -523,7 +541,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 	return rc;
 
-}
+}*/
 
 bool Equation::hasSameVariableTwice(Variable** variable) {
 
