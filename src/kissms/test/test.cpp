@@ -672,10 +672,11 @@ void testKevin() {
 
 	kissms::Equationsystem *sys = new kissms::Equationsystem();
 	kissms::Variable *f1 = new kissms::Variable();
-	f1->setName("F1");
+	std::string f1name = "F1";
+	f1->setName((char*)(f1name.c_str()));
 	kissms::Variable *frx = new kissms::Variable();
-	frx->setName("Frx");
-	//frx->setValue(12);
+	std::string frxname = "FRx";
+	frx->setName((char*)(frxname.c_str()));
 	kissms::Constant *co45 = new kissms::Constant();
 	co45->setValue(45.0/180.0*3.141592);
 	kissms::Sinus *sinu = new kissms::Sinus();
@@ -687,12 +688,14 @@ void testKevin() {
 	kissms::Constant *co2 = new kissms::Constant();
 	co2->setValue(2);
 	kissms::Constant *cog = new kissms::Constant();
-	//cog->setValue("G");
+	std::string cogstr = "G";
+	cog->setValue((char*)(cogstr.c_str()));
 	cog->setValue(9.81);
 	kissms::Negation *ne21 = new kissms::Negation();
 	ne21->setArgument(cog);
 	kissms::Variable *fry = new kissms::Variable();
-	fry->setName("Fry");
+	std::string fryname = "FRy";
+	fry->setName((char*)(fryname.c_str()));
 	kissms::Multiplication *mu11 = new kissms::Multiplication();
 	mu11->setArguments(f1, cosi);
 	kissms::Multiplication *mu21 = new kissms::Multiplication();
@@ -731,7 +734,9 @@ void testKevin() {
 	printf("%s\n", eq3->getQuality().c_str());
 
 
-	printf("RC:%d\n", sys->calculateFor(f1));
+	printf("RC:%d\n", sys->calculateFor(fry));
+	printf("FRy=%f\n", fry->getQuantity());
+	//printf("RC:%d\n", sys->calculateFor(f1));
 	printf("F1=%f\n", f1->getQuantity());
 	printf("F1=%s\n", f1->getQuality().c_str());
 	printf("FRx=%f\n", frx->getQuantity());
