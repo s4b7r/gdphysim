@@ -186,26 +186,7 @@ void Constant::replace(Component* search, Component* replace) {
 
 Component* Constant::clone() {
 
-	Constant *cloned = new Constant();
-	void *sourceValue = 0;
-	Type sourceType = getValue(sourceValue);
-	switch (sourceType) {
-	case String:
-		cloned->setValue((char*)sourceValue);
-
-		break;
-	case Integer:
-		cloned->setValue(*((int*)sourceValue));
-
-		break;
-	case Double:
-		cloned->setValue(*((double*)sourceValue));
-
-		break;
-	default:
-		break;
-	}
-	return cloned;
+	// TODO Constant::clone()
 
 }
 
