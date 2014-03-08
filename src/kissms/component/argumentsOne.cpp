@@ -122,7 +122,7 @@ Component* ArgumentsOne::clone() {
 void ArgumentsOne::clone(Component* source, Component* destination) {
 
 	Component::clone(source, destination);
-	((ArgumentsOne*)destination)->setArgument(((ArgumentsOne*)source)->getArgument());
+	((ArgumentsOne*)destination)->setArgument(((ArgumentsOne*)source)->getArgument()->clone());
 
 }
 

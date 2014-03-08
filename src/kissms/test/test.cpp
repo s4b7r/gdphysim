@@ -513,7 +513,7 @@ void test14() {
 
 	eqsys->calculateFor(va1);
 
-	printf("= %f", va1->getQuantity());
+	printf("= %f\n", va1->getQuantity());
 
 }
 
@@ -743,6 +743,33 @@ void testKevin() {
 
 }
 
+void test18() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Addition *ad = new kissms::Addition();
+	kissms::Constant *co = new kissms::Constant();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Negation *ne = new kissms::Negation();
+	kissms::Constant *co2 = new kissms::Constant();
+	kissms::Constant *co3 = new kissms::Constant();
+	kissms::Reciprocal *re = new kissms::Reciprocal();
+	kissms::Multiplication *mu = new kissms::Multiplication();
+
+	eq->setArguments(ad, mu);
+	ad->setArguments(co, ne);
+	mu->setArguments(va, co2);
+	ne->setArgument(re);
+	re->setArgument(co3);
+	va->setName("y");
+	co->setValue(3);
+	co2->setValue("x");
+	co3->setValue(2.5);
+
+	printf("\t%s\n", eq->getQuality().c_str());
+	printf("\t%s\n", eq->clone()->getQuality().c_str());
+
+}
+
 int main(int argc, char **argv) {
 
 	/*test1();
@@ -771,15 +798,17 @@ int main(int argc, char **argv) {
 	printf("\n\n");
 	test13();
 	printf("\n\n");*/
-	test14();
+	/*test14();
 	printf("\n\n");
 	test15();
+	printf("\n\n");*/
+	/*test16();
 	printf("\n\n");
-	//test16();
+	test17();
 	printf("\n\n");
-	//test17();
+	testKevin();*/
 	printf("\n\n");
-	//testKevin();
+	test18();
 
 	return 0;
 
