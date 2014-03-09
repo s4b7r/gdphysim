@@ -119,7 +119,7 @@ private:
 	 */
 	void getScalarEquations( Component *current,
 			Component *parent[], WhichLastArgument parentsArgument,
-			std::stack<struct iteration> todo );
+			std::stack<struct iteration> *todo );
 
 
 
