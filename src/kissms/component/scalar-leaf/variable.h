@@ -82,7 +82,7 @@ public:
 	 * @param value Pointer which will point to the Variable's value
 	 * @return The value's type
 	 */
-	Type getValue( void *value );
+	Type getValue( void **value );
 
 	/**
 	 *

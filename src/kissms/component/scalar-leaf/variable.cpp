@@ -103,17 +103,17 @@ void Variable::setValue(double value) {
 
 }
 
-Variable::Type Variable::getValue(void* value) {
+Variable::Type Variable::getValue(void** value) {
 
 	switch ( type ) {
 	case Integer:
-		value = malloc(sizeof(int));
-		*(int*)value = *((int*)(this->value));
+		*value = malloc(sizeof(int));
+		**((int**)value) = *((int*)(this->value));
 
 		break;
 	case Double:
-		value = malloc(sizeof(double));
-		*(double*)value = *((double*)(this->value));
+		*value = malloc(sizeof(double));
+		**((double**)value) = *((double*)(this->value));
 
 		break;
 	default:
@@ -169,11 +169,11 @@ std::string Variable::getQuality() {
 	//	oss << getQuantity();
 	//	tmp = oss.str();
 	//} else {
-		if( type == Qualified ) {
-			tmp = quality;
-		} else {
-			tmp = name;
-		}
+	if( type == Qualified ) {
+		tmp = quality;
+	} else {
+		tmp = name;
+	}
 	//}
 
 	return tmp;
@@ -200,7 +200,26 @@ void Variable::replace(Component* search, Component* replace) {
 
 Component* Variable::clone() {
 
-	// TODO Variable::clone()
+	Variable *cloned = new Variable();
+
+	cloned->setName(this->getName());
+	void **value = (void**)malloc(sizeof(void*));
+	Variable::Type type = this->getValue(value);
+	switch (type) {
+	case Variable::Integer:
+		cloned->setValue(**((int**)value));
+
+		break;
+	case Variable::Double:
+		cloned->setValue(**((double**)value));
+
+		break;
+	default:
+		break;
+	}
+	cloned->setQuality(this->getQuality());
+
+	return cloned;
 
 }
 

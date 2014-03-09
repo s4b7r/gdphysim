@@ -70,7 +70,7 @@ public:
 	 * @param value Pointer which will point to the Constant's value
 	 * @return The Constant's type
 	 */
-	Type getValue( void *value );
+	Type getValue( void **value );
 
 	virtual void replace( Component *search, Component *replace );
 
