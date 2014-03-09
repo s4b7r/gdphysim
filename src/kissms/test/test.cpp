@@ -690,7 +690,7 @@ void testKevin() {
 	kissms::Constant *cog = new kissms::Constant();
 	std::string cogstr = "G";
 	cog->setValue((char*)(cogstr.c_str()));
-	cog->setValue(9.81); // TODO Symbolic!!
+	cog->setValue(9.81); // TODO Symbolic failure in testKevin()
 	kissms::Negation *ne21 = new kissms::Negation();
 	ne21->setArgument(cog);
 	kissms::Variable *fry = new kissms::Variable();
@@ -818,45 +818,45 @@ void test19() {
 
 int main(int argc, char **argv) {
 
-	/*test1();
-	printf("\n\n");
-	test2();
-	printf("\n\n");
-	test3();
-	printf("\n\n");
-	test4();
-	printf("\n\n");
-	test5();
-	printf("\n\n");
-	test6();
-	printf("\n\n");
-	test7();
-	printf("\n\n");
-	test8();
-	printf("\n\n");
-	test9();
-	printf("\n\n");
-	test10();
-	printf("\n\n");*/
-	//test11();
-	/*printf("\n\n");
-	test12();
-	printf("\n\n");
-	test13();
-	printf("\n\n");*/
-	//test14();
+	//test1(); // okay
 	//printf("\n\n");
-	//test15();
+	//test2(); // okay
 	//printf("\n\n");
-	//test16();
+	//test3(); // okay
 	//printf("\n\n");
-	//test17();
+	//test4(); // okay
 	//printf("\n\n");
-	//testKevin();
+	//test5(); // okay
 	//printf("\n\n");
-	//test18();
+	//test6(); // okay
 	//printf("\n\n");
-	//test19();
+	//test7(); // okay
+	//printf("\n\n");
+	//test8(); // okay
+	//printf("\n\n");
+	//test9(); // okay
+	//printf("\n\n");
+	//test10(); // okay
+	//printf("\n\n");
+	//test11(); // okay
+	//printf("\n\n");
+	//test12(); // okay
+	//printf("\n\n");
+	//test13(); // okay
+	//printf("\n\n");
+	//test14(); // okay
+	//printf("\n\n");
+	//test15(); // okay
+	//printf("\n\n");
+	//test16(); // TODO Failure in test16()
+	//printf("\n\n");
+	//test17(); // okay
+	//printf("\n\n");
+	//testKevin(); // see testKevin()
+	//printf("\n\n");
+	//test18(); // okay
+	//printf("\n\n");
+	//test19(); // okay
 
 	return 0;
 

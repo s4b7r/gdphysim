@@ -418,8 +418,6 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 	// TODO Check for conditions to standardize to linear Equation
 
-	// TODO Fix Equation::standardizeLinear()'s symbolic version
-
 	DP("Equation::standardizeLinear(" << variable->getName() << ")");
 
 	ResultCode rc = Successful;
@@ -428,9 +426,6 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	Addition *additionB1 = new Addition();
 	Constant *constantB1 = new Constant();
 	Addition *b = 0;
-
-	// TODO Equation::standardizeLinear() clone problem
-	// TODO Check clone algorithm
 
 	negationB1->setArgument(argumentRight);
 	additionB1->setArguments(argumentLeft, negationB1);
@@ -495,8 +490,6 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 /*ResultCode Equation::standardizeLinear(Variable *variable) {
 	// This is the numeric version
-
-	// TODO Check for conditions to standardize to linear Equation
 
 	ResultCode rc = Successful;
 	Negation *negation = new Negation();
