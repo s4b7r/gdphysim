@@ -690,7 +690,13 @@ void testKevin() {
 	kissms::Constant *cog = new kissms::Constant();
 	std::string cogstr = "G";
 	cog->setValue((char*)(cogstr.c_str()));
-	cog->setValue(9.81); // TODO Symbolic failure in testKevin()
+
+
+
+	//cog->setValue(9.81); // TODO Symbolic failure in testKevin()
+
+
+
 	kissms::Negation *ne21 = new kissms::Negation();
 	ne21->setArgument(cog);
 	kissms::Variable *fry = new kissms::Variable();
@@ -852,7 +858,7 @@ int main(int argc, char **argv) {
 	//printf("\n\n");
 	//test17(); // okay
 	//printf("\n\n");
-	//testKevin(); // see testKevin()
+	testKevin(); // see testKevin()
 	//printf("\n\n");
 	//test18(); // okay
 	//printf("\n\n");
