@@ -183,7 +183,9 @@ std::string Variable::getQuality() {
 void Variable::setQuality(std::string quality) {
 
 	this->quality = quality;
-	type = Qualified;
+	if( type <= NoValue ) {
+		type = Qualified;
+	}
 
 }
 

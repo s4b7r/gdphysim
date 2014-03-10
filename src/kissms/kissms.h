@@ -55,7 +55,8 @@ enum ResultCode {
 	NotYetImplemented,
 	NotCalculable,
 	ImpossibleState,
-	IsVectorial
+	IsVectorial,
+	DevelopersResult
 };
 /** @var kissms::ResultCode kissms::Successful
  * @brief The method successfuly returned
@@ -87,6 +88,9 @@ enum ResultCode {
  * The method got to some point where it should be under no circumstances.
  */
 /** @var kissms::ResultCode kissms::IsVectorial
+ *
+ */
+/** @var kissms::ResultCode kissms::DevelopersResult
  *
  */
 
