@@ -9,11 +9,15 @@ Aufbauend auf dieser Superklasse sind die Klassen ArgumentsOne und ArgumentsTwo 
 Ebenfalls von Component erbend sind die Klassen Variable, Constant und Vector definiert, welche keiner der beiden Gruppen zuortenbar sind. Vielmehr stellen diese drei Klassen die tiefste Ebene eines mathematischen Ausdrucks dar, wie er vom Modul verarbeitet wird. Eine Erklärung dazu folgt an späterer Stelle.
 An tiefster Stelle der Klassenhierarchie finden sich, erbend von ArgumentsOne bzw. ArgumentsTwo, verschiedene mathematische Komponenten, welche hier nicht weiter erläutert werden.
 Die bereits genannte Klasse Equation representiert eine einzelne mathematische Gleichung und implementiert die Lösungsalgorithmen für eben solche. Da eine Gleichung prinzipiell, ähnlich anderen Komponenten, ebenfalls zwei Komponenten als Argumente für ihre linke und rechte Seite entgegen nimmt, spezialisiert diese ebenfalls die Klasse ArgumentsTwo.
-Neben der Hierarchie der Komponentenklassen existiert zusätlich die Klasse Equationsystem, welche ein System von Gleichungen representiert und die Lösungsalgorithmen eines Gleichungssystems implementiert.
+Neben der Hierarchie der Komponentenklassen existiert zusätlich die Klasse Equationsystem, welche ein System von Gleichungen representiert und die Lösungsalgorithmen für ein solches implementiert.
 
 _Gleichungshierarchie_
 
+Mathematische Ausdrücke werden mit den oben aufgeführten Komponentenklassen in einer Baumstruktur abgebildet, dessen Wurzel in der Regel ein Objekt vom Typ Equation ist. Ausgehend von diesem verzweigt sich der Ausdruck, entsprechend der Zugehörigkeit zu ArgumentsOne oder ArgumentsTwo, entweder ein- oder zweimal pro Komponente in die nächste Ebene oder endet in einem der mögliche "Blattkomponenten" Variable oder Constant. Die Klasse Vector stellt einen Sonderfall dar, welcher an späterer Stelle Beachtung findet.
+
 _Lösung einer skalaren Gleichung_
+
+
 
 _Lösung einer vektoriellen Gleichung_
 
