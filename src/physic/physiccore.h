@@ -16,12 +16,16 @@
 using kissms::Equation;
 using std::vector;
 
+struct SystemEquations{
+	vector<Equation> forceEquations;
+	vector<Equation> torqueEquations;
+};
+
 class Physiccore : public TSingleton<Physiccore>{
 private:
 	vector<Solid*> elements;
 	vector<int*> anchorPositions;
-	vector<Equation> forceEquations;
-	vector<Equation> torqueEquations;
+	vector<SystemEquations> systemEquations;
 
 	void setAnchorsPosition();
 
@@ -31,7 +35,7 @@ public:
 		elements.push_back(element);
 		setAnchorsPosition();
 	}
-//	vector<Solid*> getElements(){return elements;}
+	//	vector<Solid*> getElements(){return elements;}
 	void deleteHoveredElements(int x, int y);
 	void linkHoveredAnchors(int x, int y);
 	vector<int*> getAnchorsPosition();

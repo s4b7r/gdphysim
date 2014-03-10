@@ -119,11 +119,11 @@ void Solid::draft(){
 		drawVector(forces[0].at(i)[X],forces[0].at(i)[Y],forces[1].at(i)[X],forces[1].at(i)[Y],255,0,0);
 	}
 
-//	for(int j=-1;j<2;j++){
-//		for(int k=-1;k<2;k++){
-//			drawVector(500,400,j*548,k*387,0,0,0);
-//		}
-//	}
+	for(int j=-1;j<2;j++){
+		for(int k=-1;k<2;k++){
+			drawVector(500,400,j*548,k*387,0,0,0);
+		}
+	}
 
 	for(unsigned int i=0;i<anchors.size();i++){
 		if(anchors.at(i).getLink()!=NULL){
