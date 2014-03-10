@@ -12,16 +12,22 @@
 namespace kissms {
 
 /**
- *
+ * @brief An Equationsystem containing multiplce Equations
  */
 class Equationsystem {
 
 public:
 	/**
-	 *
+	 * @brief Enumeration type for Equationsystem's Variable-trace
 	 */
 	struct trace {
+		/**
+		 * @brief Variable which has been solved
+		 */
 		Variable *variable;
+		/**
+		 * @brief Equation which solved the Variable
+		 */
 		Equation *equation;
 	};
 

@@ -47,12 +47,15 @@ public:
 	/**
 	 * @brief Processes this vectorial Equation into three scalar Equations
 	 * @param equations Array with three Equations in which the scalar Equations will be stored
+	 * @return ResultCode
 	 */
 	ResultCode getScalarEquations( Equation *equations[] );
 
 	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable
 	 * @param variable Variable to check for
+	 * @retval true The Equation explicitly represents the given Variable
+	 * @retval false The Equation does not explicitly represent the given Variable
 	 */
 	bool isExplicitly( Variable *variable );
 
@@ -65,6 +68,8 @@ public:
 
 	/**
 	 * @brief Processes this Equation into a standardized linear format
+	 * @param variable Variable which shall be the variable in the standardized linear format
+	 * @return ResultCode
 	 * @todo Describe the process of standardizing an Equation
 	 */
 	ResultCode standardizeLinear( Variable *variable );

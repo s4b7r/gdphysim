@@ -12,7 +12,7 @@
 namespace kissms {
 
 /**
- *
+ * @brief Component representing a vector
  */
 class Vector : public Component {
 

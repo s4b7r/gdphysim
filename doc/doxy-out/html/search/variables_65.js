@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['equations',['equations',['../classkissms_1_1_equationsystem.html#a84e12e4806c18478c261b449fdf6b0e6',1,'kissms::Equationsystem']]]
+  ['equation',['equation',['../structkissms_1_1_equationsystem_1_1trace.html#a4083750dd766b0805b30cfd62af25af4',1,'kissms::Equationsystem::trace']]]
 ];

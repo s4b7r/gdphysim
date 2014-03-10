@@ -12,7 +12,7 @@
 namespace kissms {
 
 /**
- *
+ * @brief Component representing the vectorproduct of two Vectors
  */
 class Vectorproduct : public ArgumentsTwo {
 

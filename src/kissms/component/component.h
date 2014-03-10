@@ -108,6 +108,7 @@ public:
 
 	/**
 	 * @brief Sets a numerical debug identification number
+	 * @param dbgId Debug identification which shall be set
 	 *
 	 * Used for debug purposes only.
 	 */

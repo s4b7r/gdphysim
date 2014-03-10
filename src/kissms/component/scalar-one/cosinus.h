@@ -11,6 +11,9 @@
 
 namespace kissms {
 
+/**
+ * @brief Component representing the mathematical cosinus-function
+ */
 class Cosinus : public ArgumentsOne {
 
 public:
