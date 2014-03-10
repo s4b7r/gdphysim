@@ -1,0 +1,12 @@
+_Struktur_
+
+Die Mathematikbibliothek besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für alle Klassen definiert. (Hinweis auf Namespace kissms?)
+
+(Klassendiagramm)
+
+Als grundlegende, eine einzelne, abstrakte, mathematische Komponente darstellende Klasse, ist die Klasse Component Superklasse aller mathematischer Komponenten, sowie der Klasse Equation.
+Aufbauend auf dieser Superklasse sind die Klassen ArgumentsOne und ArgumentsTwo definiert, welche Komponenten mit einem respektive zwei Argumenten representieren.
+Ebenfalls von Component erbend sind die Klassen Variable, Constant und Vector definiert, welche keiner der beiden Gruppen zuortenbar sind. Vielmehr stellen diese drei Klassen die tiefste Ebene eines mathematischen Ausdrucks dar, wie er vom Modul verarbeitet wird. Eine Erklärung dazu folgt an späterer Stelle.
+An tiefster Stelle der Klassenhierarchie finden sich, erbend von ArgumentsOne bzw. ArgumentsTwo, verschiedene mathematische Komponenten, welche hier nicht weiter erläutert werden.
+Die bereits genannte Klasse Equation representiert eine einzelne mathematische Gleichung und implementiert die Lösungsalgorithmen für eben solche. Da eine Gleichung prinzipiell, ähnlich anderen Komponenten, ebenfalls zwei Komponenten als Argumente für ihre linke und rechte Seite entgegen nimmt, spezialisiert diese ebenfalls die Klasse ArgumentsTwo.
+Neben der Hierarchie der Komponentenklassen existiert zusätlich die Klasse Equationsystem, welche ein System von Gleichungen representiert und die Lösungsalgorithmen eines Gleichungssystems implementiert.
