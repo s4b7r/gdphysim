@@ -1,7 +1,8 @@
+Im Folgenden wird das Mathematikmodul der Anwendung erläutert. Dabei werden zuerst die Klassenhierarchie und die logische Hierarchie innerhalb einer Gleichungsstruktur beschrieben. Anschließend finden sich Darstellungen verschiedener Lösungsalgorithmen des Moduls. Zum Ende wird ein Einblick in bestehende Unzulänglichkeiten und Herausforderungen, sowie mögliche Lösungs- bzw. Verbesserungsansätze gegeben.
+
 _Klassenhierarchie_
 
-Die Mathematikbibliothek besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für alle Klassen definiert. (Hinweis auf Namespace kissms?)
-(Aufteilung der Dokumentation zum Mathematikmodul)
+Die Mathematikbibliothek besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für die entsprechenden Klassen definiert. Um Namenskonflikten innerhalb der eigenen Anwendungen und mit C++ Standardbibliotheken vorzubeugen, gehören alle Klassen des Mathematikmoduls dem Namespace kissms an.
 
 (Klassendiagramm)
 
