@@ -32,6 +32,15 @@ In diesem Fall wird die Gleichung in ein Gleichungssystem mit drei Gleichungen z
 
 _Lösung eines einfachen Gleichungssystems_
 
+Anmerkung: "Einfaches" Gleichungssystem meint an dieser Stelle ein Gleichungssystem welches keine rekursiven Abhängigkeiten der vorhandenen Variablen aufweist.
+Zur Lösung eines Gleichungssystems nach einer gegebenen Variablen wird die Gleichung des Systems herangezogen welche die geringste Anzahl an anderen Variablen enthält. Im ersten Schritt wird der Lösungsalgorithmus skalarer Gleichungen auf diese angewendet. Sind in der vorhandenen Gleichung keine weiteren Variablen vorhanden, ist damit die Auflösung der Variablen bereits abgeschlossen. Andernfalls werden die verbleibenden Gleichungen des Systems genutzt, um die weiteren Abhängigkeiten der ersten Gleichung aufzulösen. Dieser Vorgang wird rekursiv fortgesetzt, bis alle benötigten Abhängigkeiten aufgelöst wurden, um die ursprünglich geforderte Variable aufzulösen.
+
 _Lösung eines rekursiven Gleichungssystems_
 
 _Zukünftige Herausforderungen / Verbesserungen_
+
+(Notizen zu Herausforderungen/Verbesserungen)
+.. Variable nur einmal in Gleichung
+.. Vektorielle Gleichungen möglicherweise in einzelnen Fällen nicht mathematisch korrekt in skalare Gleichungen umgewandelt
+.. Keine Speicherverwaltung (C++11: Smart Pointers ?)
+.. Unübersichtlicher Source / schlechte Wartbarkeit
