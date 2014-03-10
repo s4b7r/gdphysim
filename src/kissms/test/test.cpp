@@ -854,11 +854,11 @@ int main(int argc, char **argv) {
 	//printf("\n\n");
 	//test15(); // okay
 	//printf("\n\n");
-	//test16(); // TODO Failure in test16()
+	test16(); // TODO Failure in test16()
 	//printf("\n\n");
 	//test17(); // okay
 	//printf("\n\n");
-	testKevin(); // see testKevin()
+	//testKevin(); // see testKevin()
 	//printf("\n\n");
 	//test18(); // okay
 	//printf("\n\n");

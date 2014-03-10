@@ -14,6 +14,9 @@
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
 // XXX Search for memory leaks
+// TODO Implement calculation of symbolic expressions
+// .... will solve failure in testKevin()
+// TODO Check processing of result codes
 
 #define KISSMS_DEBUG_FLAG
 
