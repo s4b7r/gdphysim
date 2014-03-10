@@ -1,6 +1,7 @@
 _Klassenhierarchie_
 
 Die Mathematikbibliothek besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für alle Klassen definiert. (Hinweis auf Namespace kissms?)
+(Aufteilung der Dokumentation zum Mathematikmodul)
 
 (Klassendiagramm)
 
@@ -13,13 +14,21 @@ Neben der Hierarchie der Komponentenklassen existiert zusätlich die Klasse Equa
 
 _Gleichungshierarchie_
 
-Mathematische Ausdrücke werden mit den oben aufgeführten Komponentenklassen in einer Baumstruktur abgebildet, dessen Wurzel in der Regel ein Objekt vom Typ Equation ist. Ausgehend von diesem verzweigt sich der Ausdruck, entsprechend der Zugehörigkeit zu ArgumentsOne oder ArgumentsTwo, entweder ein- oder zweimal pro Komponente in die nächste Ebene oder endet in einem der mögliche "Blattkomponenten" Variable oder Constant. Die Klasse Vector stellt einen Sonderfall dar, welcher an späterer Stelle Beachtung findet.
+Mathematische Ausdrücke werden mit den oben aufgeführten Komponentenklassen in einer Baumstruktur abgebildet, dessen Wurzel in der Regel ein Objekt vom Typ Equation ist. Ausgehend von diesem verzweigt sich der Ausdruck, entsprechend der Zugehörigkeit zu ArgumentsOne oder ArgumentsTwo, entweder ein- oder zweimal pro Komponente in die nächste Ebene oder endet in einem der mögliche "Blattkomponenten" Variable oder Constant. Die Klasse Vector stellt in diesem Zusammenhang einen Sonderfall dar, welcher an späterer Stelle Beachtung findet.
+
+(Beispielhafte Darstellung einer Gleichung samt ihrer Baumstruktur)
 
 _Lösung einer skalaren Gleichung_
 
+Die Lösung einer skalaren Gleichung erfolgt durch schrittweise Äquivalenzumformungen der jeweils obersten Argumente des Gleichungsobjekts. Dafür erzeugt die Komponente, welche die explizit darzustellende Variable umhüllt, eine neue Komponente die die entsprechende Umformung der anderen Gleichungsseite darstellt. Die umhüllende Komponente wird anschließend entfernt, wodurch der ihr anhängende Teil der Baumstruktur eine Ebene näher an die Gleichung heranrückt. Umgekehrt wird die Baumstruktur auf der anderen Gleichungsseite an die neue, umformende Komponente angehängt. Dieser Vorgang wird Schritt für Schritt durchgeführt, bis die gegebene Variable explizit durch die Gleichung representiert wird.
+Um diesen Algorithmus verständlicher zu erläutern, wird dieser im Folgenden auf die oben gezeigte Beispielgleichung angewendet.
 
+(Beispielhafte Darstellung des Lösungsalgorithmus)
 
 _Lösung einer vektoriellen Gleichung_
+
+Tritt an mindestens einer Stelle der Gleichungsstruktur eine vektorielle Komponente auf, ist die Gleichung durch den oben erläuterten Algorithmus nicht zu lösen. Dieser Fall tritt auf, wenn die Gleichung entweder eine Komponente vom Typ Vector oder Vectorproduct enthält.
+In diesem Fall wird die Gleichung in ein Gleichungssystem mit drei Gleichungen zerlegt, dessen Gleichungen den Komponenten der in der Ausgangsgleichung auftretenden Vektoren entsprechen. Die Lösung der Gleichung erfolgt anschließend durch das erzeugte Gleichungssystem.
 
 _Lösung eines einfachen Gleichungssystems_
 
