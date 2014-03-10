@@ -11,6 +11,9 @@
 
 namespace kissms {
 
+/**
+ * @brief Component representing the mathematical arcus-cosinus-function
+ */
 class CosinusArc : public ArgumentsOne {
 
 public:

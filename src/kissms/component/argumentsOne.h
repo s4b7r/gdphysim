@@ -29,7 +29,8 @@ public:
 	void setArgument( Component *argument );
 
 	/**
-	 *
+	 * @brief Returns the Component's argument
+	 * @return Component's argument
 	 */
 	Component* getArgument();
 

@@ -66,6 +66,11 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	DP("Eqsys::solveFor(" << variable->getName() << ")");
 	DP("Eqsys with " << equations.size() << " Eqs left");
 
+	if( equations.size() <= 0 ) {
+		DP("Equationsystem has no Equations for solving!");
+		return GeneralFailure;
+	}
+
 	// Find Equation containing the given Variable with the least other Variables
 	eqIt = equations.begin();
 	while( eqIt != equations.end() ) {

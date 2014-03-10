@@ -23,7 +23,6 @@ Equation::~Equation() {
 
 ResultCode Equation::solveFor(Variable* variable) {
 
-	DP("Equation::solveFor(" << variable->getName() << ")");
 	ResultCode solveResult = Successful;
 	if( !isVectorial() ) {
 		Variable *twiceVariable = 0;
@@ -47,7 +46,6 @@ ResultCode Equation::solveFor(Variable* variable) {
 		scalarEquations->solveFor(variable);
 	}
 
-	DP("... will return " << solveResult);
 	return solveResult;
 
 }
@@ -260,7 +258,7 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 		case tReciprocal:
 		case tConstant:
 		case tVariable:
-			getScalarEquations(current, parent, parentsArgument, todo);
+			getScalarEquations(current, parent, parentsArgument, &todo);
 
 			break;
 		default:
@@ -274,7 +272,8 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 
 void Equation::getScalarEquations(Component* current,
 		Component* parent[], WhichLastArgument parentsArgument,
-		std::stack<struct iteration> todo) {
+		std::stack<struct iteration>* todo_stack) {
+
 
 	struct iteration newItLeft;
 	struct iteration newItRight;
@@ -301,19 +300,19 @@ void Equation::getScalarEquations(Component* current,
 		case tConstant:
 		{
 			newArgument = new Constant();
-			void *value = 0;
-			Constant::Type type = ((Constant*)newArgument)->getValue(value);
+			void **value = (void**)malloc(sizeof(void*));
+			Constant::Type type = ((Constant*)current)->getValue(value);
 			switch (type) {
 			case Constant::String:
-				((Constant*)newArgument)->setValue((char*)value);
+				((Constant*)newArgument)->setValue(*((char**)value));
 
 				break;
 			case Constant::Integer:
-				((Constant*)newArgument)->setValue(*(int*)value);
+				((Constant*)newArgument)->setValue(**((int**)value));
 
 				break;
 			case Constant::Double:
-				((Constant*)newArgument)->setValue(*(double*)value);
+				((Constant*)newArgument)->setValue(**((double**)value));
 
 				break;
 			default:
@@ -325,15 +324,15 @@ void Equation::getScalarEquations(Component* current,
 		{
 			newArgument = new Variable();
 			((Variable*)newArgument)->setName(((Variable*)current)->getName());
-			void *value = 0;
+			void **value = (void**)malloc(sizeof(void*));
 			Variable::Type type = ((Variable*)newArgument)->getValue(value);
 			switch (type) {
 			case Variable::Integer:
-				((Variable*)newArgument)->setValue(*(int*)value);
+				((Variable*)newArgument)->setValue(**((int**)value));
 
 				break;
 			case Variable::Double:
-				((Variable*)newArgument)->setValue(*(double*)value);
+				((Variable*)newArgument)->setValue(**((double**)value));
 
 				break;
 			default:
@@ -370,15 +369,15 @@ void Equation::getScalarEquations(Component* current,
 		newItRight.current = ((ArgumentsTwo*)current)->getRight();
 		newItLeft.parentsArgument = Left;
 		newItRight.parentsArgument = Right;
-		todo.push(newItLeft);
-		todo.push(newItRight);
+		todo_stack->push(newItLeft);
+		todo_stack->push(newItRight);
 
 		break;
 	case tNegation:
 	case tReciprocal:
 		newItLeft.current = ((ArgumentsOne*)current)->getArgument();
 		newItLeft.parentsArgument = Single;
-		todo.push(newItLeft);
+		todo_stack->push(newItLeft);
 
 		break;
 	default:
@@ -419,8 +418,6 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 	// TODO Check for conditions to standardize to linear Equation
 
-	// TODO Fix Equation::standardizeLinear()'s symbolic version
-
 	DP("Equation::standardizeLinear(" << variable->getName() << ")");
 
 	ResultCode rc = Successful;
@@ -429,9 +426,6 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	Addition *additionB1 = new Addition();
 	Constant *constantB1 = new Constant();
 	Addition *b = 0;
-
-	// TODO Equation::standardizeLinear() clone problem
-	// TODO Check clone algorithm
 
 	negationB1->setArgument(argumentRight);
 	additionB1->setArguments(argumentLeft, negationB1);
@@ -489,15 +483,13 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 
 	DP("Eq::standardize Equation: " << getQuality());
 
-	exit(0);
+	//exit(0);
 	return rc;
 
 }
 
 /*ResultCode Equation::standardizeLinear(Variable *variable) {
 	// This is the numeric version
-
-	// TODO Check for conditions to standardize to linear Equation
 
 	ResultCode rc = Successful;
 	Negation *negation = new Negation();

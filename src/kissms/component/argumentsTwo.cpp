@@ -133,8 +133,8 @@ void ArgumentsTwo::replace(Component* search, Component* replace) {
 void ArgumentsTwo::clone(Component* source, Component* destination) {
 
 	Component::clone(source, destination);
-	((ArgumentsTwo*)destination)->setLeft(((ArgumentsTwo*)source)->getLeft());
-	((ArgumentsTwo*)destination)->setRight(((ArgumentsTwo*)source)->getRight());
+	((ArgumentsTwo*)destination)->setLeft(((ArgumentsTwo*)source)->getLeft()->clone());
+	((ArgumentsTwo*)destination)->setRight(((ArgumentsTwo*)source)->getRight()->clone());
 
 }
 

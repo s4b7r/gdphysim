@@ -12,7 +12,7 @@
 namespace kissms {
 
 /**
- *
+ * @brief Component representing a vector
  */
 class Vector : public Component {
 
@@ -21,12 +21,16 @@ public:
 	virtual ~Vector();
 
 	/**
-	 *
+	 * @brief Sets the given argument of the vector
+	 * @param index Index, in the range from 0 to 2, of the argument which shall be set
+	 * @param value The Component which shall be set as the argument
 	 */
 	void setArgument( int index, Component *value );
 
 	/**
-	 *
+	 * @brief Return the given argument
+	 * @param index Index, in the range from 0 to 2, which argument shall be returned
+	 * @return The argument from the given index
 	 */
 	Component* getArgument( int index );
 
@@ -54,7 +58,7 @@ public:
 
 private:
 	/**
-	 *
+	 * @brief The Vector's three arguments
 	 */
 	Component *arguments[3];
 
