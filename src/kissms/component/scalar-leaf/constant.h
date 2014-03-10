@@ -20,12 +20,7 @@ public:
 	/**
 	 * @brief Enumeration of a Constant's possible types
 	 */
-	enum Type {
-		Unspecified = 0,
-		String,
-		Integer,
-		Double
-	};
+	enum Type {Unspecified = 0,String,Integer,Double};
 	/** @var kissms::Constant::Type kissms::Constant::Unspecified
 	 * @brief The constant is not specified in any way
 	 */

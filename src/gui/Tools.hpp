@@ -20,7 +20,7 @@ public:
 	void build(){
 		Frame::build();
 		computeButtonCoords();
-		String filenames[]={"res/pointmass.bmp","res/rod.bmp","res/rect.bmp","res/delete.bmp","res/link.bmp","res/ground.bmp"};
+		string filenames[]={"res/pointmass.bmp","res/rod.bmp","res/rect.bmp","res/delete.bmp","res/link.bmp","res/ground.bmp"};
 		ButtonFrame::buildButtons(filenames);
 	}
 };

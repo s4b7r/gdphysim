@@ -7,7 +7,7 @@
 
 #include "gui/Button.hpp"
 
-Button::Button(int xy[4],String filename,unsigned char bbcolor[3]) : Frame(xy){
+Button::Button(int xy[4],string filename,unsigned char bbcolor[3]) : Frame(xy){
 	this->filename=filename;
 	isColored=false;
 	for(int i=0;i<3;i++){

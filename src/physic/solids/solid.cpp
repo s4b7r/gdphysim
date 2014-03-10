@@ -25,7 +25,7 @@ void Solid::drawVector(int rx, int ry, double x, double y, int r, int g, int b){
 	if(x==0 && y==0)return;
 
 	int a=8;	//Arrow blade length
-	String file="res/numbers.bmp";
+	string file="res/numbers.bmp";
 	SDL_Surface* numbersImage=SDL_LoadBMP(file.c_str());
 	vector<int> vec;
 	SDL_Rect numberRect;
