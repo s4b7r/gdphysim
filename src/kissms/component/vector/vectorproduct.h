@@ -21,7 +21,8 @@ public:
 	virtual ~Vectorproduct();
 
 	/**
-	 *
+	 * @brief Returns the resulting Vector
+	 * @return The Vector mathematically representing this Vectorproduct
 	 */
 	Vector* getVector();
 

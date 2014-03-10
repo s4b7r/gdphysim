@@ -272,7 +272,7 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 
 void Equation::getScalarEquations(Component* current,
 		Component* parent[], WhichLastArgument parentsArgument,
-		std::stack<struct iteration>* todo) {
+		std::stack<struct iteration>* todo_stack) {
 
 
 	struct iteration newItLeft;
@@ -369,15 +369,15 @@ void Equation::getScalarEquations(Component* current,
 		newItRight.current = ((ArgumentsTwo*)current)->getRight();
 		newItLeft.parentsArgument = Left;
 		newItRight.parentsArgument = Right;
-		todo->push(newItLeft);
-		todo->push(newItRight);
+		todo_stack->push(newItLeft);
+		todo_stack->push(newItRight);
 
 		break;
 	case tNegation:
 	case tReciprocal:
 		newItLeft.current = ((ArgumentsOne*)current)->getArgument();
 		newItLeft.parentsArgument = Single;
-		todo->push(newItLeft);
+		todo_stack->push(newItLeft);
 
 		break;
 	default:

@@ -40,7 +40,7 @@ public:
 	 * @brief The Variable has an floating point value assigned to it
 	 */
 	/** @var kissms::Variable::Type kissms::Variable::Qualified
-	 *
+	 * @brief The Variable's quality is set
 	 */
 
 	Variable();
@@ -53,7 +53,8 @@ public:
 	void setName( char *name );
 
 	/**
-	 *
+	 * @brief Returns the Variable's name
+	 * @return A zero-terminated character array representing the Variable's name
 	 */
 	char* getName();
 
@@ -73,19 +74,20 @@ public:
 	 * @brief Resets the Variable's value
 	 *
 	 * This method reset's any numerical value assigned to this Variable.
-	 * The Variable's name will be kept.
+	 * Furthermore the quality will be cleared. The Variable's name will be kept.
 	 */
 	void resetValue();
 
 	/**
 	 * @brief Returns the numerical value assigned to the Variable, if any
-	 * @param value Pointer which will point to the Variable's value
+	 * @param value Value-pointer
 	 * @return The value's type
 	 */
 	Type getValue( void **value );
 
 	/**
-	 *
+	 * @brief Sets the Variable's quality
+	 * @param quality A C++ string class representing the Variable's quality
 	 */
 	void setQuality( std::string quality );
 
@@ -112,9 +114,24 @@ public:
 	virtual Component* clone();
 
 private:
+	/**
+	 * @brief Variable's type as specified by enumeration type Variable::Type
+	 */
 	Type type;
+
+	/**
+	 * @brief The Variable's name as a zero-terminated character array
+	 */
 	char *name;
+
+	/**
+	 * @brief The Variable's value-pointer
+	 */
 	void *value;
+
+	/**
+	 * @brief The Variable's quality-string
+	 */
 	std::string quality;
 
 };
