@@ -37,6 +37,10 @@ Zur Lösung eines Gleichungssystems nach einer gegebenen Variablen wird die Glei
 
 _Lösung eines rekursiven Gleichungssystems_
 
+Die Lösung eines Gleichungssystems mit rekursiven Abhängigkeiten erfolgt bis zu dem Punkt an dem die Rekursion einmal vollständig durchlaufen ist wie bei der Lösung einfacher Gleichungssysteme, lediglich bei der Auflösung der rekursiven Abhängigkeit unterscheidet sich dieser Algorithmus vom Vorherigen. Aus Gründen der Verständlichkeit wird die Rekursionsauflösung im Folgenden an einem Beispiel demonstriert.
+
+(Beispiel zur Auflösung rekursiver Abhängigkeiten)
+
 _Zukünftige Herausforderungen / Verbesserungen_
 
 (Notizen zu Herausforderungen/Verbesserungen)
