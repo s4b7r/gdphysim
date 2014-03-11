@@ -1,10 +1,8 @@
-(Bibliothek = Modul)
-
 Im Folgenden wird das Mathematikmodul der Anwendung erläutert. Dabei werden zuerst die Klassenhierarchie und die logische Hierarchie innerhalb einer Gleichungsstruktur beschrieben. Anschließend finden sich Darstellungen verschiedener Lösungsalgorithmen des Moduls. Zum Ende wird ein Einblick in bestehende Unzulänglichkeiten und Herausforderungen, sowie mögliche Lösungs- bzw. Verbesserungsansätze gegeben.
 
 _Klassenhierarchie_
 
-Die Mathematikbibliothek besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für die entsprechenden Klassen definiert. Um Namenskonflikten innerhalb der eigenen Anwendungen und mit C++ Standardbibliotheken vorzubeugen, gehören alle Klassen des Mathematikmoduls dem Namespace kissms an.
+Das Mathematikmodul besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für die entsprechenden Klassen definiert. Um Namenskonflikten innerhalb der eigenen Anwendungen und mit C++ Standardbibliotheken vorzubeugen, gehören alle Klassen des Mathematikmoduls dem Namespace kissms an.
 
 (Klassendiagramm)
 
@@ -46,12 +44,10 @@ Die Lösung eines Gleichungssystems mit rekursiven Abhängigkeiten erfolgt bis z
 
 _Herausforderungen / Verbesserungen_
 
-(Notizen zu Herausforderungen/Verbesserungen)
-.. Variable nur einmal in Gleichung
-.. Vektorielle Gleichungen möglicherweise in einzelnen Fällen nicht mathematisch korrekt in skalare Gleichungen umgewandelt
-
-An dieser Stelle sollen nun Problematiken der Mathematikbibliothek, sowie Fehler, welche während der Entwicklung begangen und bisher noch nicht behoben wurden, aufgezeigt und mögliche Lösungsansätze dargestellt werden.
-Aufgrund der ausgiebigen Nutzung von Zeigern zum Aufbau und zur Verarbeitung der genutzten Strukturen an diversen Stellen außerhalb und innerhalb der Strukturen selbst, existiert bisher keine Speicherverwaltung, was in einer fehlenden Wieder-Freigabe der belegten Speicherbereiche resultiert. Die tatsächliche Menge der auftretenden Speicherlecks ist bisher noch nicht überprüft, allerdings sind Probleme bei längerer, kontinuierlicher Nutzung der Bibliothek zu erwarten. Um Speicherlecks in Zukunft entgegenzuwirken sollten die bisher genutzten Standard-Zeiger durch Smart Pointer der C++-Standardbibliotheken oder, wenn nötig, Eigenimplementationen mit Referenzzählern ersetzt werden.
+An dieser Stelle sollen nun Problematiken es Mathematikmoduls, sowie Fehler, welche während der Entwicklung begangen und bisher noch nicht behoben wurden, aufgezeigt und mögliche Lösungsansätze dargestellt werden.
+Aufgrund der ausgiebigen Nutzung von Zeigern zum Aufbau und zur Verarbeitung der genutzten Strukturen an diversen Stellen außerhalb und innerhalb der Strukturen selbst, existiert bisher keine Speicherverwaltung, was in einer fehlenden Wieder-Freigabe der belegten Speicherbereiche resultiert. Die tatsächliche Menge der auftretenden Speicherlecks ist bisher noch nicht überprüft, allerdings sind Probleme bei längerer, kontinuierlicher Nutzung des Moduls zu erwarten. Um Speicherlecks in Zukunft entgegenzuwirken sollten die bisher genutzten Standard-Zeiger durch Smart Pointer der C++-Standardbibliotheken oder, wenn nötig, Eigenimplementationen mit Referenzzählern ersetzt werden.
 Des weiteren sind aus Zeitgründen Teile des Moduls ohne große, vorherige Planung durch einen Kreislauf von Implementieren, Testen und Verbessern entstanden. Durch diesen Anpassungsprozess sind verschiedene Bereiche des Codes komplexer als nötig und damit auch teilweise ineffizient, sowie schwer les- und wartbar. Dies betrifft nicht ausschließlich, aber besonders den Algorithmus zur Lösung von Gleichungssystemen, welcher durch die nachträglich implementierte Behandlug von rekursiven Abhängigkeiten sehr komplex und unübersichtlich ist.
 Neben den genannten technischen Herausforderungen existieren noch weitere Herausforderungen an die fachliche Funktionalität des Moduls, die zum Teil bereits gelöst wurden.
-Hierbei handelt es sich unter anderem um die Lösung von Gleichungen, welche ein und die selbe Variable mehrmals enthalten. Aufgrund der Vorgehensweise zur Lösung von Gleichungen mittels simpler Umformungen der Gleichungen, ist es dem Algorithmus nicht möglich eine Gleichung zu lösen in welcher die selbe Variable mehr als einmal enthalten ist. In diesem Fall würde der Algorithmus die Gleichung so umformen, dass eine einzelne Instanz der Variable durch die Gleichung explizit dargestellt wird, die anderen Instanzen jedoch noch auf der anderen Gleichungsseite existieren. Für mathematische Ausdrücke welche sich bezüglich der aufzulösenden Variablen linear verhalten wurde ein Lösungsalgorithmus implementiert, welcher den Ausdruck 
+Hierbei handelt es sich unter anderem um die Lösung von Gleichungen, welche ein und die selbe Variable mehrmals enthalten. Aufgrund der Vorgehensweise zur Lösung von Gleichungen mittels simpler Umformungen der Gleichungen, ist es dem Algorithmus nicht möglich eine Gleichung zu lösen in welcher die selbe Variable mehr als einmal enthalten ist. In diesem Fall würde der Algorithmus die Gleichung so umformen, dass eine einzelne Instanz der Variable durch die Gleichung explizit dargestellt wird, die anderen Instanzen jedoch noch auf der anderen Gleichungsseite existieren. Für mathematische Ausdrücke welche sich bezüglich der aufzulösenden Variablen linear verhalten wurde ein Lösungsalgorithmus implementiert, welcher den Ausdruck in eine einfache, lineare Funktion überführt.
+
+(Darstellung eines Beispiels zur Standartisierung in lineare Form)
