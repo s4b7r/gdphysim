@@ -1,0 +1,14 @@
+_Module_
+
+Die Software ist in drei Module aufgeteilt welche jeweils einen einzelnen Aspekt der Zielstellung behandeln.
+
+1. Grafikmodul
+Das Grafikmodul stellt das Front-End der Anwendung dar und dient damit als Schnittstelle zum Benutzer. Hier werden mit Hilfe der SDL-Bibliothek alle Angelegenheiten der grafischen Darstellung bearbeitet.
+
+2. Physikmodul
+Das Physikmodul bildet das grafisch eingegebene Szenario objektorientiert ab und hält alle für die Physik relevanten Daten. Hier werden die physikalischen Gesetzmäßigkeiten implementiert und in entsprechende mathematische Gleichungen umgesetzt.
+
+3. Mathematikmodul
+Das Mathematikmodul stellt eine Bibliothek von verschiedenen mathematischen Komponenten, sowie die Lösungsmöglichkeit für mathematische Zusammenhänge zur Verfügung. Mit Hilfe dieser Komponenten wird das physikalische Modell des Physikmoduls mathematisch dargestellt und je nach Anforderungen gelöst.
+
+Diese Module werden im Folgenden kurz beschrieben und besonders markante Anforderungen, sowie mögliche weitere Herausforderungen und Lösungs- bzw. Verbesserungsansätze erläutert.
