@@ -749,6 +749,47 @@ void testKevin() {
 
 }
 
+//int main(int argc, char **argv) {
+//
+//	/*test1();
+//	printf("\n\n");
+//	test2();
+//	printf("\n\n");
+//	test3();
+//	printf("\n\n");
+//	test4();
+//	printf("\n\n");
+//	test5();
+//	printf("\n\n");
+//	test6();
+//	printf("\n\n");
+//	test7();
+//	printf("\n\n");
+//	test8();
+//	printf("\n\n");
+//	test9();
+//	printf("\n\n");
+//	test10();
+//	printf("\n\n");
+//	test11();
+//	printf("\n\n");
+//	test12();
+//	printf("\n\n");
+//	test13();
+//	printf("\n\n");*/
+//	test14();
+//	printf("\n\n");
+//	test15();
+//	printf("\n\n");
+//	//test16();
+//	printf("\n\n");
+//	//test17();
+//	printf("\n\n");
+//	//testKevin();
+//
+//	return 0;
+//
+//}
 void test18() {
 
 	kissms::Equation *eq = new kissms::Equation();
@@ -822,51 +863,6 @@ void test19() {
 
 }
 
-int main(int argc, char **argv) {
-
-	//test1(); // okay
-	//printf("\n\n");
-	//test2(); // okay
-	//printf("\n\n");
-	//test3(); // okay
-	//printf("\n\n");
-	//test4(); // okay
-	//printf("\n\n");
-	//test5(); // okay
-	//printf("\n\n");
-	//test6(); // okay
-	//printf("\n\n");
-	//test7(); // okay
-	//printf("\n\n");
-	//test8(); // okay
-	//printf("\n\n");
-	//test9(); // okay
-	//printf("\n\n");
-	//test10(); // okay
-	//printf("\n\n");
-	//test11(); // okay
-	//printf("\n\n");
-	//test12(); // okay
-	//printf("\n\n");
-	//test13(); // okay
-	//printf("\n\n");
-	//test14(); // okay
-	//printf("\n\n");
-	//test15(); // okay
-	//printf("\n\n");
-	test16(); // TODO Failure in test16()
-	//printf("\n\n");
-	//test17(); // okay
-	//printf("\n\n");
-	//testKevin(); // see testKevin()
-	//printf("\n\n");
-	//test18(); // okay
-	//printf("\n\n");
-	//test19(); // okay
-
-	return 0;
-
-}
 
 
 

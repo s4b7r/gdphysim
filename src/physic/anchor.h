@@ -14,6 +14,8 @@ class Solid;
 
 class Anchor{
 private:
+	bool hasForce;
+	int id;
 	bool isGrounded;
 	int origin[3];
 	Anchor* link;
@@ -25,8 +27,13 @@ public:
 	void setGrounded(bool state){isGrounded=state;}
 	int* getOrigin();
 	Anchor* getLink(){return link;}
+	void setId(int i){id=i;}
+	int getId(){return id;}
+	void setHasForce(bool s){hasForce = s;}
+	bool getHasForce(){return hasForce;}
 	void setLink(Anchor* l){link = l;}
 	void setPlink(Solid* l){pLink = l;}
+	Solid* getPlink(){return pLink;}
 };
 
 

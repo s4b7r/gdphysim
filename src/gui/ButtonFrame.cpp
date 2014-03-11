@@ -19,7 +19,7 @@ ButtonFrame::ButtonFrame(int count) : Frame(){
 	buttonSize = 50;
 }
 
-void ButtonFrame::buildButtons(String filenames[]){
+void ButtonFrame::buildButtons(string filenames[]){
 	for(int i=0;i<count;i++){
 		buttons[i] = new Button(buttonCoords[i],filenames[i],this->bgcolor);
 	}

@@ -12,15 +12,14 @@
 #include <string>
 #include <stdlib.h>
 #include "gui/Frame.hpp"
-#define String std::string
 
-using namespace std;
+using std::string;
 
 class Button : public Frame{
 
 public:
 //	Button(){};
-	Button(int xy[4],String filename,unsigned char bbcolor[3]);
+	Button(int xy[4],string filename,unsigned char bbcolor[3]);
 	Button(int xy[4], unsigned char bgcolor[3],unsigned char bbcolor[3]);
 	bool getPressed(){return pressed;}
 	void setPressed(bool pressed);
@@ -29,7 +28,7 @@ public:
 private:
 	bool pressed;
 	bool isColored;
-	String filename;
+	string filename;
 	unsigned char bbcolor[3];
 };
 

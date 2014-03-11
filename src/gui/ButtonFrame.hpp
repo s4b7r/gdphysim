@@ -23,7 +23,7 @@ public:
 	Button** getButtons(){return buttons;}
 	int getCount(){return count;}
 	void computeButtonCoords();
-	void buildButtons(String filenames[]);
+	void buildButtons(string filenames[]);
 	void buildButtons(unsigned char bgcolor[][3]);
 };
 

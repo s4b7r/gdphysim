@@ -97,6 +97,11 @@ void Brush::paint(int x, int y, bool moved, bool initiallyLeftPressed, bool rele
 	}
 
 	switch(IDMethod){
+	case 6:
+		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
+			PHYSICCORE->solve();
+		}
+		break;
 	case 5:		//Ground
 		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
 			PHYSICCORE->groundHoveredAnchors(x,y);

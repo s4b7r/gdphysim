@@ -17,6 +17,8 @@ Anchor::Anchor(int x, int y,Solid* p){
 	origin[2]=0;
 	link=NULL;
 	pLink=p;
+	hasForce=false;
+	id=-1;
 }
 
 int* Anchor::getOrigin(){
