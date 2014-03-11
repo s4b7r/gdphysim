@@ -86,14 +86,14 @@ Variable** Physiccore::addInteractiveForceVarFromSolidToRodOfAnchor(Anchor a){
 		Equation *ex=new Equation();
 		Multiplication *mx= new Multiplication();
 		Constant *cx= new Constant();
-		cx->setValue((double)(a.getPlink()->getCenter(X)-a.getOrigin()[X])/(sqrt(pow((double)(a.getPlink()->getCenter(X)-a.getOrigin()[X]),2)+pow((double)(a.getPlink()->getCenter(Y)-a.getOrigin()[Y]),2))));
+		cx->setValue((double)(a.getPlink()->getCenter(X)-a.getOrigin()[X])/(sqrt(pow((double)(a.getPlink()->getCenter(X)-a.getOrigin()[X]),2)+pow((double)(-a.getPlink()->getCenter(Y)+a.getOrigin()[Y]),2))));
 		mx->setArguments(f,cx);
 		ex->setArguments(fx,mx);
 
 		Equation *ey=new Equation();
 		Multiplication *my= new Multiplication();
 		Constant *cy= new Constant();
-		cy->setValue((double)(a.getPlink()->getCenter(Y)-a.getOrigin()[Y])/(sqrt(pow((double)(a.getPlink()->getCenter(X)-a.getOrigin()[X]),2)+pow((double)(a.getPlink()->getCenter(Y)-a.getOrigin()[Y]),2))));
+		cy->setValue((double)(-a.getPlink()->getCenter(Y)+a.getOrigin()[Y])/(sqrt(pow((double)(a.getPlink()->getCenter(X)-a.getOrigin()[X]),2)+pow((double)(-a.getPlink()->getCenter(Y)+a.getOrigin()[Y]),2))));
 		my->setArguments(f,cy);
 		ey->setArguments(fy,my);
 
@@ -243,7 +243,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy1=new Constant();
 
 				cx1->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
-				cy1->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,1,Y));
+				cy1->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
 
 				tempMu11->setArguments(cx1,systemEquationsPerElement.at(i)->yVariables.at(0));
 				tempMu12->setArguments(cy1,systemEquationsPerElement.at(i)->xVariables.at(0));
@@ -263,7 +263,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy21=new Constant();
 
 				cx21->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
-				cy21->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,1,Y));
+				cy21->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
 
 				tempMu211->setArguments(cx21,systemEquationsPerElement.at(i)->yVariables.at(0));
 				tempMu221->setArguments(cy21,systemEquationsPerElement.at(i)->xVariables.at(0));
@@ -277,7 +277,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy22=new Constant();
 
 				cx22->setValue(elements.at(i)->getForces(fOrigin,2,X)-elements.at(i)->getCenter(X));
-				cy22->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,2,Y));
+				cy22->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,2,Y));
 
 				tempMu212->setArguments(cx22,systemEquationsPerElement.at(i)->yVariables.at(1));
 				tempMu222->setArguments(cy22,systemEquationsPerElement.at(i)->xVariables.at(1));
@@ -305,7 +305,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy31=new Constant();
 
 				cx31->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
-				cy31->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,1,Y));
+				cy31->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
 
 				tempMu311->setArguments(cx31,systemEquationsPerElement.at(i)->yVariables.at(0));
 				tempMu321->setArguments(cy31,systemEquationsPerElement.at(i)->xVariables.at(0));
@@ -319,7 +319,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy32=new Constant();
 
 				cx32->setValue(elements.at(i)->getForces(fOrigin,2,X)-elements.at(i)->getCenter(X));
-				cy32->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,2,Y));
+				cy32->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,2,Y));
 
 				tempMu312->setArguments(cx32,systemEquationsPerElement.at(i)->yVariables.at(1));
 				tempMu322->setArguments(cy32,systemEquationsPerElement.at(i)->xVariables.at(1));
@@ -333,7 +333,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy33=new Constant();
 
 				cx33->setValue(elements.at(i)->getForces(fOrigin,3,X)-elements.at(i)->getCenter(X));
-				cy33->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,3,Y));
+				cy33->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,3,Y));
 
 				tempMu313->setArguments(cx33,systemEquationsPerElement.at(i)->yVariables.at(2));
 				tempMu323->setArguments(cy33,systemEquationsPerElement.at(i)->xVariables.at(2));
@@ -368,7 +368,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy41=new Constant();
 
 				cx41->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
-				cy41->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,1,Y));
+				cy41->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
 
 				tempMu411->setArguments(cx41,systemEquationsPerElement.at(i)->yVariables.at(0));
 				tempMu421->setArguments(cy41,systemEquationsPerElement.at(i)->xVariables.at(0));
@@ -382,7 +382,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy42=new Constant();
 
 				cx42->setValue(elements.at(i)->getForces(fOrigin,2,X)-elements.at(i)->getCenter(X));
-				cy42->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,2,Y));
+				cy42->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,2,Y));
 
 				tempMu412->setArguments(cx42,systemEquationsPerElement.at(i)->yVariables.at(1));
 				tempMu422->setArguments(cy42,systemEquationsPerElement.at(i)->xVariables.at(1));
@@ -396,7 +396,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy43=new Constant();
 
 				cx43->setValue(elements.at(i)->getForces(fOrigin,3,X)-elements.at(i)->getCenter(X));
-				cy43->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,3,Y));
+				cy43->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,3,Y));
 
 				tempMu413->setArguments(cx43,systemEquationsPerElement.at(i)->yVariables.at(2));
 				tempMu423->setArguments(cy43,systemEquationsPerElement.at(i)->xVariables.at(2));
@@ -410,7 +410,7 @@ int Physiccore::fillEquationSystem(){
 				Constant *cy44=new Constant();
 
 				cx44->setValue(elements.at(i)->getForces(fOrigin,4,X)-elements.at(i)->getCenter(X));
-				cy44->setValue(elements.at(i)->getCenter(Y)-elements.at(i)->getForces(fOrigin,4,Y));
+				cy44->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,4,Y));
 
 				tempMu414->setArguments(cx44,systemEquationsPerElement.at(i)->yVariables.at(3));
 				tempMu424->setArguments(cy44,systemEquationsPerElement.at(i)->xVariables.at(3));
@@ -495,6 +495,8 @@ void Physiccore::solve(){
 			equationSystem.calculateFor(systemEquationsPerElement.at(i)->xVariables.at(j));
 			equationSystem.calculateFor(systemEquationsPerElement.at(i)->yVariables.at(j));
 			elements.at(i)->addForces(fValue,systemEquationsPerElement.at(i)->xVariables.at(j)->getQuantity(),-(systemEquationsPerElement.at(i)->yVariables.at(j)->getQuantity()),0);
+			printf("\n%s : %f\n",systemEquationsPerElement.at(i)->xVariables.at(j)->getName(),systemEquationsPerElement.at(i)->xVariables.at(j)->getQuantity());
+			printf("\n%s : %f",systemEquationsPerElement.at(i)->yVariables.at(j)->getName(),systemEquationsPerElement.at(i)->yVariables.at(j)->getQuantity());
 		}
 	}
 
