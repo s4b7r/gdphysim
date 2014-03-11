@@ -47,6 +47,11 @@ public:
 	void removeEquation( Equation *equation );
 
 	/**
+	 * @brief Remove all Equations from the Equationsystem
+	 */
+	void clearSystem();
+
+	/**
 	 * @brief Checks wether the Equationsystem contains an Equation
 	 * @param equation Equation to check for
 	 * @retval true The Equationsystem contains the given Equation
