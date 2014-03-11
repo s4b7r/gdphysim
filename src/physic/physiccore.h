@@ -14,33 +14,41 @@
 #include "physic/solids/solid.h"
 
 using kissms::Equation;
+using kissms::Equationsystem;
+using kissms::Variable;
 using std::vector;
 
 struct SystemEquations{
-	vector<Equation> forceEquations;
-	vector<Equation> torqueEquations;
+//	vector<Equation> forceEquations;
+//	vector<Equation> torqueEquations;
+	vector<Variable*> xVariables;
+	vector<Variable*> yVariables;
 };
 
 class Physiccore : public TSingleton<Physiccore>{
 private:
 	vector<Solid*> elements;
 	vector<int*> anchorPositions;
-	vector<SystemEquations> systemEquations;
+	vector<SystemEquations*> systemEquationsPerElement;
+	Equationsystem equationSystem;
 
 	void setAnchorsPosition();
+	Variable** addInteractiveForceVarFromSolidToRodOfAnchor(Anchor a);
+	int fillEquationSystem();
 
 public:
 	template<class T>
 	void addElement(T *element){
 		elements.push_back(element);
+		elements.at(elements.size()-1)->setId(elements.size()-1);
 		setAnchorsPosition();
 	}
+	void solve();
 	//	vector<Solid*> getElements(){return elements;}
 	void deleteHoveredElements(int x, int y);
 	void linkHoveredAnchors(int x, int y);
 	vector<int*> getAnchorsPosition();
 	void draftElements();
-	void computeInteractiveForces();
 	void groundHoveredAnchors(int x, int y);
 };
 

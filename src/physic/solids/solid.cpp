@@ -7,6 +7,7 @@
 
 Solid::Solid(int centerX, int centerY, int eloX, int eloY){
 	mass=0;
+	type=RAW;
 
 	eloPoint[0]=eloX;
 	eloPoint[1]=eloY;
@@ -15,6 +16,8 @@ Solid::Solid(int centerX, int centerY, int eloX, int eloY){
 	center[0]=centerX;
 	center[1]=centerY;
 	center[2]=0;
+
+	id=-1;
 }
 
 Solid::~Solid(){
@@ -110,7 +113,7 @@ void Solid::drawVector(int rx, int ry, double x, double y, int r, int g, int b){
 		SDL_BlitSurface(numbersImage, &numberRect, SCREEN, &drect);
 		drect.x=drect.x+6;
 	}
-	printf("\n");
+//	printf("\n");
 	SDL_Flip(SCREEN);
 }
 
@@ -119,11 +122,11 @@ void Solid::draft(){
 		drawVector(forces[0].at(i)[X],forces[0].at(i)[Y],forces[1].at(i)[X],forces[1].at(i)[Y],255,0,0);
 	}
 
-	for(int j=-1;j<2;j++){
-		for(int k=-1;k<2;k++){
-			drawVector(500,400,j*548,k*387,0,0,0);
-		}
-	}
+//	for(int j=-1;j<2;j++){
+//		for(int k=-1;k<2;k++){
+//			drawVector(500,400,j*548,k*387,0,0,0);
+//		}
+//	}
 
 	for(unsigned int i=0;i<anchors.size();i++){
 		if(anchors.at(i).getLink()!=NULL){
@@ -147,7 +150,7 @@ Anchor* Solid::getAnchorAddr(int num){
 
 void Solid::setMass(int m){
 	mass=m;
-	if(mass!=0){						//TODO testen
+	if(mass!=0){
 		forces[0].push_back(center);
 		int* G= new int[3];
 		G[0]=0;
@@ -157,6 +160,18 @@ void Solid::setMass(int m){
 	}
 }
 
+int Solid::getForces(vecType i, int num, dimension p){
+	return forces[i].at(num)[p];
+}
+
+void Solid::addForces(vecType i,int x, int y, int z){
+	int *force=new int[3];
+	force[0]=x;
+	force[1]=y;
+	force[2]=z;
+	forces[i].push_back(force);
+}
+
 int Solid::getCenter(dimension p){
 	return center[p];
 }
@@ -164,6 +179,10 @@ int Solid::getCenter(dimension p){
 vector<Anchor> Solid::getAnchors(){
 	return vector<Anchor>(anchors);
 }
+
+//vector<Anchor> Solid::getAnchors(){
+//	return anchors;
+//}
 
 void Solid::setAnchorLink(int num, Anchor* l){
 	anchors.at(num).setLink(l);
