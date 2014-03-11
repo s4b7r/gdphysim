@@ -239,6 +239,14 @@ ResultCode Equationsystem::solvePending() {
 
 }
 
+void Equationsystem::clearSystem() {
+
+	equations.clear();
+	pendingVariables->clear();
+	traceVariables->clear();
+
+}
+
 void Equationsystem::setTraceVariables(std::vector<struct trace>* traceVariables) {
 
 	free(this->traceVariables);
