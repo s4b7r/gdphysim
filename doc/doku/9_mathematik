@@ -23,7 +23,7 @@ Mathematische Ausdrücke werden mit den oben aufgeführten Komponentenklassen in
 
 _Lösung einer skalaren Gleichung_
 
-Die Lösung einer skalaren Gleichung erfolgt durch schrittweise Äquivalenzumformungen der jeweils obersten Argumente des Gleichungsobjekts. Dafür erzeugt die Komponente, welche die explizit darzustellende Variable umhüllt, eine neue Komponente die die entsprechende Umformung der anderen Gleichungsseite darstellt. Die umhüllende Komponente wird anschließend entfernt, wodurch der ihr anhängende Teil der Baumstruktur eine Ebene näher an die Gleichung heranrückt. Umgekehrt wird die Baumstruktur auf der anderen Gleichungsseite an die neue, umformende Komponente angehängt. Dieser Vorgang wird Schritt für Schritt durchgeführt, bis die gegebene Variable explizit durch die Gleichung representiert wird.
+Die Lösung einer skalaren Gleichung erfolgt durch schrittweise Äquivalenzumformungen der jeweils obersten Argumente des Gleichungsobjekts. Dafür erzeugt die Komponente, welche die explizit darzustellende Variable umhüllt, eine neue Komponente die die entsprechende Umformung der anderen Gleichungsseite darstellt. Die umhüllende Komponente wird anschließend entfernt, wodurch der ihr anhängende, nicht umgeformte Teil der Baumstruktur eine Ebene näher an die Gleichung heranrückt. Umgekehrt wird die Baumstruktur auf der anderen Gleichungsseite an die neue, umformende Komponente angehängt. Dieser Vorgang wird Schritt für Schritt durchgeführt, bis die gegebene Variable explizit durch die Gleichung representiert wird.
 Um diesen Algorithmus verständlicher zu erläutern, wird dieser im Folgenden auf die oben gezeigte Beispielgleichung angewendet.
 
 (Beispielhafte Darstellung des Lösungsalgorithmus)
@@ -43,6 +43,51 @@ _Lösung eines rekursiven Gleichungssystems_
 Die Lösung eines Gleichungssystems mit rekursiven Abhängigkeiten erfolgt bis zu dem Punkt an dem die Rekursion einmal vollständig durchlaufen ist wie bei der Lösung einfacher Gleichungssysteme, lediglich bei der Auflösung der rekursiven Abhängigkeit unterscheidet sich dieser Algorithmus vom Vorherigen. Aus Gründen der Verständlichkeit wird die Rekursionsauflösung im Folgenden an einem Beispiel demonstriert.
 
 (Beispiel zur Auflösung rekursiver Abhängigkeiten)
+1.
+A: x+2=y*1/2
+B: x-2=y*1/4
+
+2.
+Gleichungssystem nach x auflösen
+Dafür A nach x auflösen
+A: x=y*1/2-2
+y wird benötigt
+
+3.
+B nach y auflösen
+B: (x-2)*4=y
+x wird benötigt
+
+4.
+Rekursive Abhängigkeit auflösen
+Dafür A nach y auflösen
+A: (x+2)*2=y
+
+5.
+Neue Gleichung aufstellen
+(x+2)*2=(x-2)*4
+
+6.
+Gleichung umstellen
+0=(x+2)*2-(x-2)*4
+
+7.
+Ausdruck in lineare Funktion umwandeln
+->Dafür x=0 setzen
+  (0+2)*2-(0-2)*4
+  =12
+  =b
+->Dafür x=1 setzen
+  (1+2)*2-(1-2)*4
+  =10
+  =m+b
+  => m=-2
+=> 0=-2*x+12
+
+8.
+Gleichung auflösen
+-12/-2=x
+=> x=6
 
 _Herausforderungen / Verbesserungen_
 
@@ -50,6 +95,4 @@ An dieser Stelle sollen nun Problematiken es Mathematikmoduls, sowie Fehler, wel
 Aufgrund der ausgiebigen Nutzung von Zeigern zum Aufbau und zur Verarbeitung der genutzten Strukturen an diversen Stellen außerhalb und innerhalb der Strukturen selbst, existiert bisher keine Speicherverwaltung, was in einer fehlenden Wieder-Freigabe der belegten Speicherbereiche resultiert. Die tatsächliche Menge der auftretenden Speicherlecks ist bisher noch nicht überprüft, allerdings sind Probleme bei längerer, kontinuierlicher Nutzung des Moduls zu erwarten. Um Speicherlecks in Zukunft entgegenzuwirken sollten die bisher genutzten Standard-Zeiger durch Smart Pointer der C++-Standardbibliotheken oder, wenn nötig, Eigenimplementationen mit Referenzzählern ersetzt werden.
 Des weiteren sind aus Zeitgründen Teile des Moduls ohne große, vorherige Planung durch einen Kreislauf von Implementieren, Testen und Verbessern entstanden. Durch diesen Anpassungsprozess sind verschiedene Bereiche des Codes komplexer als nötig und damit auch teilweise ineffizient, sowie schwer les- und wartbar. Dies betrifft nicht ausschließlich, aber besonders den Algorithmus zur Lösung von Gleichungssystemen, welcher durch die nachträglich implementierte Behandlug von rekursiven Abhängigkeiten sehr komplex und unübersichtlich ist.
 Neben den genannten technischen Herausforderungen existieren noch weitere Herausforderungen an die fachliche Funktionalität des Moduls, die zum Teil bereits gelöst wurden.
-Hierbei handelt es sich unter anderem um die Lösung von Gleichungen, welche ein und die selbe Variable mehrmals enthalten. Aufgrund der Vorgehensweise zur Lösung von Gleichungen mittels simpler Umformungen der Gleichungen, ist es dem Algorithmus nicht möglich eine Gleichung zu lösen in welcher die selbe Variable mehr als einmal enthalten ist. In diesem Fall würde der Algorithmus die Gleichung so umformen, dass eine einzelne Instanz der Variable durch die Gleichung explizit dargestellt wird, die anderen Instanzen jedoch noch auf der anderen Gleichungsseite existieren. Für mathematische Ausdrücke welche sich bezüglich der aufzulösenden Variablen linear verhalten wurde ein Lösungsalgorithmus implementiert, welcher den Ausdruck in eine einfache, lineare Funktion überführt.
-
-(Darstellung eines Beispiels zur Standartisierung in lineare Form)
+Hierbei handelt es sich unter anderem um die Lösung von Gleichungen, welche ein und die selbe Variable mehrmals enthalten. Aufgrund der Vorgehensweise zur Lösung von Gleichungen mittels simpler Umformungen der Gleichungen, ist es dem Algorithmus nicht möglich eine Gleichung zu lösen in welcher die selbe Variable mehr als einmal enthalten ist. In diesem Fall würde der Algorithmus die Gleichung so umformen, dass eine einzelne Instanz der Variable durch die Gleichung explizit dargestellt wird, die anderen Instanzen jedoch noch auf der anderen Gleichungsseite existieren. Für mathematische Ausdrücke welche sich bezüglich der aufzulösenden Variablen linear verhalten wurde ein Lösungsalgorithmus implementiert, welcher den Ausdruck in eine einfache, lineare Funktion überführt. Dieser Algorithmus ist im Abschnitt _Lösung eines rekursiven Gleichungssystems_ in den Punkten 5 bis 7 des Beispiels zu sehen.
