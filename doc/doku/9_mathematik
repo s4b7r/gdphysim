@@ -1,0 +1,98 @@
+Das Mathematikmodul dient der Auflösung der vom Physikmodul erzeugten Gleichungen. Dabei ist es Ziel dieses Moduls sowohl ausschließlich numerisch, sowie auch teilweise symbolisch dargestellte mathematische Ausdrücke und Gleichungen auflösen zu können. Daher ist es nicht möglich auf bekannte, bereits implementierte, numerische Lösungsverfahren der Mathematik, wie zum Beispiel das Gaußsche Eliminationsverfahren, zurück zu greifen. Auch die Suche nach, sowie die Nutzung einer externen Mathematikbibliothek wurde nach anfänglicher Recherche aus Zeitgründen verworfen und die Entwicklung eines eigenen Mathematikmoduls bevorzugt. Wiederum aus Zeit- und Gründen der Einfacheit, ist es nicht das Ziel dieses Moduls eine möglichst umfassende Lösungsmöglichkeit für verschiedenste numerische oder symbolische Ausdrücke zur Verfügung zu stellen, sondern vielmehr auf die konkreten Anforderungen durch das gegebene Projektziel einzugehen und die dafür benötigten mathematischen Ausdrücke darstellen und lösen zu können.
+
+Im Folgenden wir dieses eigens entwickelte Mathematikmodul erläutert. Dabei werden zuerst die Klassenhierarchie und die logische Hierarchie innerhalb einer Gleichungsstruktur beschrieben. Anschließend finden sich Darstellungen verschiedener Lösungsalgorithmen des Moduls. Zum Ende wird ein Einblick in bestehende Unzulänglichkeiten und Herausforderungen, sowie mögliche Lösungs- bzw. Verbesserungsansätze gegeben.
+
+_Klassenhierarchie_
+
+Das Mathematikmodul besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für die entsprechenden Klassen definiert. Um Namenskonflikten innerhalb der eigenen Anwendungen und mit C++-Standardbibliotheken vorzubeugen, gehören alle Klassen des Mathematikmoduls dem Namespace kissms an.
+
+(kissms_klassendiagramm_final.png)
+
+Als grundlegende, eine einzelne, abstrakte, mathematische Komponente darstellende Klasse, ist die Klasse Component Superklasse aller mathematischer Komponenten, sowie der Klasse Equation.
+Aufbauend auf dieser Superklasse sind die Klassen ArgumentsOne und ArgumentsTwo definiert, welche Komponenten mit einem respektive zwei Argumenten representieren.
+Ebenfalls von Component erbend sind die Klassen Variable, Constant und Vector definiert, welche keiner der beiden Gruppen zuortenbar sind. Vielmehr stellen diese drei Klassen die tiefste Ebene eines mathematischen Ausdrucks dar, wie er vom Modul verarbeitet wird. Eine Erklärung dazu folgt an späterer Stelle.
+An tiefster Stelle der Klassenhierarchie finden sich, erbend von ArgumentsOne bzw. ArgumentsTwo, verschiedene mathematische Komponenten, welche hier nicht weiter erläutert werden.
+Die bereits genannte Klasse Equation representiert eine einzelne mathematische Gleichung und implementiert die Lösungsalgorithmen für eben solche. Da eine Gleichung prinzipiell, ähnlich anderen Komponenten, ebenfalls zwei Komponenten als Argumente für ihre linke und rechte Seite entgegen nimmt, spezialisiert diese ebenfalls die Klasse ArgumentsTwo.
+Neben der Hierarchie der Komponentenklassen existiert zusätlich die Klasse Equationsystem, welche ein System von Gleichungen representiert und die Lösungsalgorithmen für ein solches implementiert.
+
+_Gleichungshierarchie_
+
+Mathematische Ausdrücke werden mit den oben aufgeführten Komponentenklassen in einer Baumstruktur abgebildet, dessen Wurzel in der Regel ein Objekt vom Typ Equation ist. Ausgehend von diesem verzweigt sich der Ausdruck, entsprechend der Zugehörigkeit zu ArgumentsOne oder ArgumentsTwo, entweder ein- oder zweimal pro Komponente in die nächste Ebene oder endet in einem der mögliche "Blattkomponenten" Variable oder Constant. Die Klasse Vector stellt in diesem Zusammenhang einen Sonderfall dar, welcher an späterer Stelle Beachtung findet.
+
+(Beispielhafte Darstellung einer Gleichung samt ihrer Baumstruktur)
+
+_Lösung einer skalaren Gleichung_
+
+Die Lösung einer skalaren Gleichung erfolgt durch schrittweise Äquivalenzumformungen der jeweils obersten Argumente des Gleichungsobjekts. Dafür erzeugt die Komponente, welche die explizit darzustellende Variable umhüllt, eine neue Komponente die die entsprechende Umformung der anderen Gleichungsseite darstellt. Die umhüllende Komponente wird anschließend entfernt, wodurch der ihr anhängende, nicht umgeformte Teil der Baumstruktur eine Ebene näher an die Gleichung heranrückt. Umgekehrt wird die Baumstruktur auf der anderen Gleichungsseite an die neue, umformende Komponente angehängt. Dieser Vorgang wird Schritt für Schritt durchgeführt, bis die gegebene Variable explizit durch die Gleichung representiert wird.
+Um diesen Algorithmus verständlicher zu erläutern, wird dieser im Folgenden auf die oben gezeigte Beispielgleichung angewendet.
+
+(Beispielhafte Darstellung des Lösungsalgorithmus)
+
+_Lösung einer vektoriellen Gleichung_
+
+Tritt an mindestens einer Stelle der Gleichungsstruktur eine vektorielle Komponente auf, ist die Gleichung durch den oben erläuterten Algorithmus nicht zu lösen. Dieser Fall tritt auf, wenn die Gleichung entweder eine Komponente vom Typ Vector oder Vectorproduct enthält.
+In diesem Fall wird die Gleichung in ein Gleichungssystem mit drei Gleichungen zerlegt, dessen Gleichungen den Komponenten der in der Ausgangsgleichung auftretenden Vektoren entsprechen. Die Lösung der Gleichung erfolgt anschließend durch das erzeugte Gleichungssystem.
+
+_Lösung eines einfachen Gleichungssystems_
+
+Anmerkung: "Einfaches" Gleichungssystem meint an dieser Stelle ein Gleichungssystem welches keine rekursiven Abhängigkeiten der vorhandenen Variablen aufweist.
+Zur Lösung eines Gleichungssystems nach einer gegebenen Variablen wird die Gleichung des Systems herangezogen welche die geringste Anzahl an anderen Variablen enthält. Im ersten Schritt wird der Lösungsalgorithmus skalarer Gleichungen auf diese angewendet. Sind in der vorhandenen Gleichung keine weiteren Variablen vorhanden, ist damit die Auflösung der Variablen bereits abgeschlossen. Andernfalls werden die verbleibenden Gleichungen des Systems genutzt, um die weiteren Abhängigkeiten der ersten Gleichung aufzulösen. Dieser Vorgang wird rekursiv fortgesetzt, bis alle benötigten Abhängigkeiten aufgelöst wurden, um die ursprünglich geforderte Variable aufzulösen.
+
+_Lösung eines rekursiven Gleichungssystems_
+
+Die Lösung eines Gleichungssystems mit rekursiven Abhängigkeiten erfolgt bis zu dem Punkt an dem die Rekursion einmal vollständig durchlaufen ist wie bei der Lösung einfacher Gleichungssysteme, lediglich bei der Auflösung der rekursiven Abhängigkeit unterscheidet sich dieser Algorithmus vom Vorherigen. Aus Gründen der Verständlichkeit wird die Rekursionsauflösung im Folgenden an einem Beispiel demonstriert.
+
+(Beispiel zur Auflösung rekursiver Abhängigkeiten)
+1.
+A: x+2=y*1/2
+B: x-2=y*1/4
+
+2.
+Gleichungssystem nach x auflösen
+Dafür A nach x auflösen
+A: x=y*1/2-2
+y wird benötigt
+
+3.
+B nach y auflösen
+B: (x-2)*4=y
+x wird benötigt
+
+4.
+Rekursive Abhängigkeit auflösen
+Dafür A nach y auflösen
+A: (x+2)*2=y
+
+5.
+Neue Gleichung aufstellen
+(x+2)*2=(x-2)*4
+
+6.
+Gleichung umstellen
+0=(x+2)*2-(x-2)*4
+
+7.
+Ausdruck in lineare Funktion umwandeln
+->Dafür x=0 setzen
+  (0+2)*2-(0-2)*4
+  =12
+  =b
+->Dafür x=1 setzen
+  (1+2)*2-(1-2)*4
+  =10
+  =m+b
+  => m=-2
+=> 0=-2*x+12
+
+8.
+Gleichung auflösen
+-12/-2=x
+=> x=6
+
+_Herausforderungen / Verbesserungen_
+
+An dieser Stelle sollen nun Problematiken es Mathematikmoduls, sowie Fehler, welche während der Entwicklung begangen und bisher noch nicht behoben wurden, aufgezeigt und mögliche Lösungsansätze dargestellt werden.
+Aufgrund der ausgiebigen Nutzung von Zeigern zum Aufbau und zur Verarbeitung der genutzten Strukturen an diversen Stellen außerhalb und innerhalb der Strukturen selbst, existiert bisher keine Speicherverwaltung, was in einer fehlenden Wieder-Freigabe der belegten Speicherbereiche resultiert. Die tatsächliche Menge der auftretenden Speicherlecks ist bisher noch nicht überprüft, allerdings sind Probleme bei längerer, kontinuierlicher Nutzung des Moduls zu erwarten. Um Speicherlecks in Zukunft entgegenzuwirken sollten die bisher genutzten Standard-Zeiger durch Smart Pointer der C++-Standardbibliotheken oder, wenn nötig, Eigenimplementationen mit Referenzzählern ersetzt werden.
+Des weiteren sind aus Zeitgründen Teile des Moduls ohne große, vorherige Planung durch einen Kreislauf von Implementieren, Testen und Verbessern entstanden. Durch diesen Anpassungsprozess sind verschiedene Bereiche des Codes komplexer als nötig und damit auch teilweise ineffizient, sowie schwer les- und wartbar. Dies betrifft nicht ausschließlich, aber besonders den Algorithmus zur Lösung von Gleichungssystemen, welcher durch die nachträglich implementierte Behandlug von rekursiven Abhängigkeiten sehr komplex und unübersichtlich ist.
+Neben den genannten technischen Herausforderungen existieren noch weitere Herausforderungen an die fachliche Funktionalität des Moduls, die zum Teil bereits gelöst wurden.
+Hierbei handelt es sich unter anderem um die Lösung von Gleichungen, welche ein und die selbe Variable mehrmals enthalten. Aufgrund der Vorgehensweise zur Lösung von Gleichungen mittels simpler Umformungen der Gleichungen, ist es dem Algorithmus nicht möglich eine Gleichung zu lösen in welcher die selbe Variable mehr als einmal enthalten ist. In diesem Fall würde der Algorithmus die Gleichung so umformen, dass eine einzelne Instanz der Variable durch die Gleichung explizit dargestellt wird, die anderen Instanzen jedoch noch auf der anderen Gleichungsseite existieren. Für mathematische Ausdrücke welche sich bezüglich der aufzulösenden Variablen linear verhalten wurde ein Lösungsalgorithmus implementiert, welcher den Ausdruck in eine einfache, lineare Funktion überführt. Dieser Algorithmus ist im Abschnitt _Lösung eines rekursiven Gleichungssystems_ in den Punkten 5 bis 7 des Beispiels zu sehen.
