@@ -41,6 +41,7 @@ public:
 	int getCenter(dimension p);
 	void addForces(vecType i,int x, int y, int z);
 	int getForces(vecType i, int num, dimension p);
+	void clearSolid();
 	vector<Anchor> getAnchors();
 	void setAnchorLink(int num, Anchor* l);
 	void setAnchorGrounded(int num, bool s);

@@ -24,6 +24,12 @@ Solid::~Solid(){
 
 }
 
+void Solid::clearSolid(){
+	forces[fOrigin].clear();
+	forces[fValue].clear();
+	setMass(mass);
+}
+
 void Solid::drawVector(int rx, int ry, double x, double y, int r, int g, int b){
 	if(x==0 && y==0)return;
 
