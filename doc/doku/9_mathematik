@@ -6,7 +6,7 @@ _Klassenhierarchie_
 
 Das Mathematikmodul besteht aus einer Anzahl Klassen welche verschiedene mathematisch Komponenten representieren. Dabei sind grundlegende Felder und Funktionen welche alle Komponenten bzw. eine bestimmte Gruppe von Komponenten gemein haben generalisiert für die entsprechenden Klassen definiert. Um Namenskonflikten innerhalb der eigenen Anwendungen und mit C++-Standardbibliotheken vorzubeugen, gehören alle Klassen des Mathematikmoduls dem Namespace kissms an.
 
-(Klassendiagramm)
+(kissms_klassendiagramm_final.png)
 
 Als grundlegende, eine einzelne, abstrakte, mathematische Komponente darstellende Klasse, ist die Klasse Component Superklasse aller mathematischer Komponenten, sowie der Klasse Equation.
 Aufbauend auf dieser Superklasse sind die Klassen ArgumentsOne und ArgumentsTwo definiert, welche Komponenten mit einem respektive zwei Argumenten representieren.
