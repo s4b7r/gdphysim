@@ -513,7 +513,7 @@ void test14() {
 
 	eqsys->calculateFor(va1);
 
-	printf("= %f", va1->getQuantity());
+	printf("= %f\n", va1->getQuantity());
 
 }
 
@@ -690,7 +690,13 @@ void testKevin() {
 	kissms::Constant *cog = new kissms::Constant();
 	std::string cogstr = "G";
 	cog->setValue((char*)(cogstr.c_str()));
-	cog->setValue(9.81);
+
+
+
+	//cog->setValue(9.81); // TODO Symbolic failure in testKevin()
+
+
+
 	kissms::Negation *ne21 = new kissms::Negation();
 	ne21->setArgument(cog);
 	kissms::Variable *fry = new kissms::Variable();
@@ -784,6 +790,79 @@ void testKevin() {
 //	return 0;
 //
 //}
+void test18() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Addition *ad = new kissms::Addition();
+	kissms::Constant *co = new kissms::Constant();
+	kissms::Variable *va = new kissms::Variable();
+	kissms::Negation *ne = new kissms::Negation();
+	kissms::Constant *co2 = new kissms::Constant();
+	kissms::Constant *co3 = new kissms::Constant();
+	kissms::Reciprocal *re = new kissms::Reciprocal();
+	kissms::Multiplication *mu = new kissms::Multiplication();
+
+	eq->setArguments(ad, mu);
+	ad->setArguments(co, ne);
+	mu->setArguments(va, co2);
+	ne->setArgument(re);
+	re->setArgument(co3);
+	std::string vaStr = "y";
+	va->setName((char*)vaStr.c_str());
+	co->setValue(3);
+	std::string co2Str = "x";
+	co2->setValue((char*)co2Str.c_str());
+	co3->setValue(2.5);
+
+	printf("\t%s\n", eq->getQuality().c_str());
+	printf("\t%s\n", eq->clone()->getQuality().c_str());
+
+}
+
+void test19() {
+
+	kissms::Equation *eq = new kissms::Equation();
+	kissms::Vector *vec1 = new kissms::Vector();
+	kissms::Vector *vec2 = new kissms::Vector();
+	kissms::Variable *var1 = new kissms::Variable();
+	kissms::Variable *var2 = new kissms::Variable();
+	kissms::Constant *con1 = new kissms::Constant();
+	kissms::Constant *con0 = new kissms::Constant();
+	kissms::Constant *con2 = new kissms::Constant();
+	kissms::Multiplication *mu = new kissms::Multiplication();
+
+	eq->setArguments(vec1, mu);
+	vec1->setArgument(0, var1);
+	vec1->setArgument(1, var2);
+	vec1->setArgument(2, con0);
+	vec2->setArgument(0, var2);
+	vec2->setArgument(1, con1);
+	vec2->setArgument(2, con0);
+	con1->setValue(5);
+	con2->setValue(2);
+	mu->setArguments(con2, vec2);
+
+	char *var1n = (char*) malloc(sizeof(char) * 2);
+	var1n[0] = 'x';
+	var1n[1] = 0;
+	char *var2n = (char*) malloc(sizeof(char) * 2);
+	var2n[0] = 'y';
+	var2n[1] = 0;
+
+	var1->setName(var1n);
+	var2->setName(var2n);
+
+	printf("(x, y, _) = 2 * (y, 5, _)\n");
+
+	printf("RC 1: %d\n", eq->calculateFor(var1));
+
+	printf("x quant= %f\n", var1->getQuantity());
+	printf("y quant= %f\n", var2->getQuantity());
+	printf("x qual = %s\n", var1->getQuality().c_str());
+	printf("y qual = %s\n", var2->getQuality().c_str());
+
+}
+
 
 
 

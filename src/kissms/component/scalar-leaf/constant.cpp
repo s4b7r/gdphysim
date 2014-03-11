@@ -98,22 +98,22 @@ void Constant::resetValue() {
 
 }
 
-Constant::Type Constant::getValue(void* value) {
+Constant::Type Constant::getValue(void** value) {
 
 	switch ( type ) {
 	case String:
-		value = malloc(sizeof(char) * 10);
-		strcpy((char*) value, (char*) this->value);
+		*value = malloc(sizeof(char) * 10);
+		strcpy(*((char**)value), (char*) this->value);
 
 		break;
 	case Integer:
-		value = malloc(sizeof(int));
-		*(int*)value = *((int*)(this->value));
+		*value = malloc(sizeof(int));
+		**((int**)value) = *((int*)(this->value));
 
 		break;
 	case Double:
-		value = malloc(sizeof(double));
-		*(double*)value = *((double*)(this->value));
+		*value = malloc(sizeof(double));
+		**((double**)value) = *((double*)(this->value));
 
 		break;
 	default:
@@ -187,24 +187,26 @@ void Constant::replace(Component* search, Component* replace) {
 Component* Constant::clone() {
 
 	Constant *cloned = new Constant();
-	void *sourceValue = 0;
-	Type sourceType = getValue(sourceValue);
-	switch (sourceType) {
-	case String:
-		cloned->setValue((char*)sourceValue);
+
+	void **value = (void**)malloc(sizeof(void*));
+	Constant::Type type = this->getValue(value);
+	switch (type) {
+	case Constant::String:
+		cloned->setValue(*((char**)value));
 
 		break;
-	case Integer:
-		cloned->setValue(*((int*)sourceValue));
+	case Constant::Integer:
+		cloned->setValue(**((int**)value));
 
 		break;
-	case Double:
-		cloned->setValue(*((double*)sourceValue));
+	case Constant::Double:
+		cloned->setValue(**((double**)value));
 
 		break;
 	default:
 		break;
 	}
+
 	return cloned;
 
 }

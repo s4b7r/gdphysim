@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -116,29 +117,54 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a72474be0471c6190f8cc3d6f5016b115"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a72474be0471c6190f8cc3d6f5016b115">calculateFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable)</td></tr>
 <tr class="memdesc:a72474be0471c6190f8cc3d6f5016b115"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves and calculates the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>.  <a href="#a72474be0471c6190f8cc3d6f5016b115">More...</a><br/></td></tr>
 <tr class="separator:a72474be0471c6190f8cc3d6f5016b115"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaae93102e00017782e05d1304b98f252"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaae93102e00017782e05d1304b98f252"></a>
-<a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getScalarEquations</b> (<a class="el" href="classkissms_1_1_equation.html">Equation</a> *equations[])</td></tr>
+<tr class="memitem:a54ea362dc7dbcbb5a5168c8c3adaa397"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a54ea362dc7dbcbb5a5168c8c3adaa397">getQuality</a> ()</td></tr>
+<tr class="memdesc:a54ea362dc7dbcbb5a5168c8c3adaa397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s qualitative representation.  <a href="#a54ea362dc7dbcbb5a5168c8c3adaa397">More...</a><br/></td></tr>
+<tr class="separator:a54ea362dc7dbcbb5a5168c8c3adaa397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaae93102e00017782e05d1304b98f252"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#aaae93102e00017782e05d1304b98f252">getScalarEquations</a> (<a class="el" href="classkissms_1_1_equation.html">Equation</a> *equations[])</td></tr>
+<tr class="memdesc:aaae93102e00017782e05d1304b98f252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes this vectorial <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> into three scalar Equations.  <a href="#aaae93102e00017782e05d1304b98f252">More...</a><br/></td></tr>
 <tr class="separator:aaae93102e00017782e05d1304b98f252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdaa2eed8f63516ea88ec376aa6acfb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acdaa2eed8f63516ea88ec376aa6acfb4"></a>
-virtual <a class="el" href="namespacekissms.html#a9552b1b67ce8edb93cfbc71e0b1c885d">ComponentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#acdaa2eed8f63516ea88ec376aa6acfb4">getType</a> ()</td></tr>
-<tr class="memdesc:acdaa2eed8f63516ea88ec376aa6acfb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s type. <br/></td></tr>
+<tr class="memitem:a5ace3a43f98c5ca0804dac8888324ce4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a5ace3a43f98c5ca0804dac8888324ce4">getScalarEquations</a> ()</td></tr>
+<tr class="memdesc:a5ace3a43f98c5ca0804dac8888324ce4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes this vectorial <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> into three scalar Equations.  <a href="#a5ace3a43f98c5ca0804dac8888324ce4">More...</a><br/></td></tr>
+<tr class="separator:a5ace3a43f98c5ca0804dac8888324ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdaa2eed8f63516ea88ec376aa6acfb4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a9552b1b67ce8edb93cfbc71e0b1c885d">ComponentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#acdaa2eed8f63516ea88ec376aa6acfb4">getType</a> ()</td></tr>
+<tr class="memdesc:acdaa2eed8f63516ea88ec376aa6acfb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s type.  <a href="#acdaa2eed8f63516ea88ec376aa6acfb4">More...</a><br/></td></tr>
 <tr class="separator:acdaa2eed8f63516ea88ec376aa6acfb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74bee89916e28d4c393bb1782bca8b3d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a74bee89916e28d4c393bb1782bca8b3d">hasSameVariableTwice</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> **variable)</td></tr>
+<tr class="memdesc:a74bee89916e28d4c393bb1782bca8b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks wether this <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> contains the same <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> at least two times.  <a href="#a74bee89916e28d4c393bb1782bca8b3d">More...</a><br/></td></tr>
+<tr class="separator:a74bee89916e28d4c393bb1782bca8b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aa6b17ba1655c694af7a3d48d44aad8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a5aa6b17ba1655c694af7a3d48d44aad8">isExplicitly</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable)</td></tr>
+<tr class="memdesc:a5aa6b17ba1655c694af7a3d48d44aad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> is explicitly representing a <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a>.  <a href="#a5aa6b17ba1655c694af7a3d48d44aad8">More...</a><br/></td></tr>
+<tr class="separator:a5aa6b17ba1655c694af7a3d48d44aad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98d85fa9fb2b90a582278c4259a8610b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a98d85fa9fb2b90a582278c4259a8610b">reformFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable, <a class="el" href="classkissms_1_1_component.html">Component</a> **newSide, <a class="el" href="classkissms_1_1_component.html">Component</a> **otherSide)</td></tr>
 <tr class="memdesc:a98d85fa9fb2b90a582278c4259a8610b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Components for reformation.  <a href="#a98d85fa9fb2b90a582278c4259a8610b">More...</a><br/></td></tr>
 <tr class="separator:a98d85fa9fb2b90a582278c4259a8610b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4182df3ae0e3f4e7e42dd5b58b8b0612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a4182df3ae0e3f4e7e42dd5b58b8b0612">setScalarEquations</a> (<a class="el" href="classkissms_1_1_equationsystem.html">Equationsystem</a> *scalarEquations)</td></tr>
+<tr class="memdesc:a4182df3ae0e3f4e7e42dd5b58b8b0612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets this (vectorial) Equations three scalar representations.  <a href="#a4182df3ae0e3f4e7e42dd5b58b8b0612">More...</a><br/></td></tr>
+<tr class="separator:a4182df3ae0e3f4e7e42dd5b58b8b0612"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a8ce5aff621d4e19b5042fcedf04de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#ad2a8ce5aff621d4e19b5042fcedf04de">solveFor</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable)</td></tr>
 <tr class="memdesc:ad2a8ce5aff621d4e19b5042fcedf04de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>.  <a href="#ad2a8ce5aff621d4e19b5042fcedf04de">More...</a><br/></td></tr>
 <tr class="separator:ad2a8ce5aff621d4e19b5042fcedf04de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e5c96a531fc75bd6451983a8435aa00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_equation.html#a4e5c96a531fc75bd6451983a8435aa00">standardizeLinear</a> (<a class="el" href="classkissms_1_1_variable.html">Variable</a> *variable)</td></tr>
+<tr class="memdesc:a4e5c96a531fc75bd6451983a8435aa00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes this <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> into a standardized linear format.  <a href="#a4e5c96a531fc75bd6451983a8435aa00">More...</a><br/></td></tr>
+<tr class="separator:a4e5c96a531fc75bd6451983a8435aa00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classkissms_1_1_arguments_two"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classkissms_1_1_arguments_two')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classkissms_1_1_arguments_two.html">kissms::ArgumentsTwo</a></td></tr>
-<tr class="memitem:adcbbfb1fecb25c9099bcb97d4cfe6103 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcbbfb1fecb25c9099bcb97d4cfe6103"></a>
-<a class="el" href="classkissms_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getLeft</b> ()</td></tr>
+<tr class="memitem:a99cdb02fd7e4b54d7b300f8d500ba09a inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classkissms_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a99cdb02fd7e4b54d7b300f8d500ba09a">clone</a> ()</td></tr>
+<tr class="memdesc:a99cdb02fd7e4b54d7b300f8d500ba09a inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a clone of the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>.  <a href="#a99cdb02fd7e4b54d7b300f8d500ba09a">More...</a><br/></td></tr>
+<tr class="separator:a99cdb02fd7e4b54d7b300f8d500ba09a inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c411b76c60f527b1ac6201b3bc492d inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a36c411b76c60f527b1ac6201b3bc492d">clone</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *source, <a class="el" href="classkissms_1_1_component.html">Component</a> *destination)</td></tr>
+<tr class="memdesc:a36c411b76c60f527b1ac6201b3bc492d inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the object's members for the <a class="el" href="classkissms_1_1_arguments_two.html#a99cdb02fd7e4b54d7b300f8d500ba09a" title="Returns a clone of the Component. ">clone()</a> method.  <a href="#a36c411b76c60f527b1ac6201b3bc492d">More...</a><br/></td></tr>
+<tr class="separator:a36c411b76c60f527b1ac6201b3bc492d inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcbbfb1fecb25c9099bcb97d4cfe6103 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkissms_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#adcbbfb1fecb25c9099bcb97d4cfe6103">getLeft</a> ()</td></tr>
+<tr class="memdesc:adcbbfb1fecb25c9099bcb97d4cfe6103 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s left argument.  <a href="#adcbbfb1fecb25c9099bcb97d4cfe6103">More...</a><br/></td></tr>
 <tr class="separator:adcbbfb1fecb25c9099bcb97d4cfe6103 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a911d5c0468f9ba0aef58d214cb7fab5c inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a911d5c0468f9ba0aef58d214cb7fab5c"></a>
-<a class="el" href="classkissms_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getRight</b> ()</td></tr>
+<tr class="memitem:a911d5c0468f9ba0aef58d214cb7fab5c inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkissms_1_1_component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a911d5c0468f9ba0aef58d214cb7fab5c">getRight</a> ()</td></tr>
+<tr class="memdesc:a911d5c0468f9ba0aef58d214cb7fab5c inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s right argument.  <a href="#a911d5c0468f9ba0aef58d214cb7fab5c">More...</a><br/></td></tr>
 <tr class="separator:a911d5c0468f9ba0aef58d214cb7fab5c inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefca88fcde4d4b41d725e262a02c24e6"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#aefca88fcde4d4b41d725e262a02c24e6">hasChild</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *child)</td></tr>
-<tr class="memdesc:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is a child of this <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>. <br/></td></tr>
+<tr class="memitem:afb2260b8bb85287e01146d225ebcd9a9 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#afb2260b8bb85287e01146d225ebcd9a9">getVariables</a> (std::vector&lt; <a class="el" href="classkissms_1_1_variable.html">Variable</a> * &gt; *variables)</td></tr>
+<tr class="memdesc:afb2260b8bb85287e01146d225ebcd9a9 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all Variables contained in this <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>.  <a href="#afb2260b8bb85287e01146d225ebcd9a9">More...</a><br/></td></tr>
+<tr class="separator:afb2260b8bb85287e01146d225ebcd9a9 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#aefca88fcde4d4b41d725e262a02c24e6">hasChild</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *child)</td></tr>
+<tr class="memdesc:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is a child of this <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>.  <a href="#aefca88fcde4d4b41d725e262a02c24e6">More...</a><br/></td></tr>
 <tr class="separator:aefca88fcde4d4b41d725e262a02c24e6 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9973dfc460d49f1d9f59296f2ed35426 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a9973dfc460d49f1d9f59296f2ed35426">isCalculable</a> ()</td></tr>
 <tr class="memdesc:a9973dfc460d49f1d9f59296f2ed35426 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is calculable.  <a href="#a9973dfc460d49f1d9f59296f2ed35426">More...</a><br/></td></tr>
@@ -146,9 +172,12 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:af4286922473e4a87b8ba0f5b80cc455b inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#af4286922473e4a87b8ba0f5b80cc455b">isQuantifiable</a> ()</td></tr>
 <tr class="memdesc:af4286922473e4a87b8ba0f5b80cc455b inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is representable by a numerical value.  <a href="#af4286922473e4a87b8ba0f5b80cc455b">More...</a><br/></td></tr>
 <tr class="separator:af4286922473e4a87b8ba0f5b80cc455b inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a922b42c0a2eeb698d75faec05fada397 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a922b42c0a2eeb698d75faec05fada397"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isVectorial</b> ()</td></tr>
+<tr class="memitem:a922b42c0a2eeb698d75faec05fada397 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#a922b42c0a2eeb698d75faec05fada397">isVectorial</a> ()</td></tr>
+<tr class="memdesc:a922b42c0a2eeb698d75faec05fada397 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns wether the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> is representing a vectorial expression.  <a href="#a922b42c0a2eeb698d75faec05fada397">More...</a><br/></td></tr>
 <tr class="separator:a922b42c0a2eeb698d75faec05fada397 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f5081b8b74a54c303bb120fbc4b764 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#ae4f5081b8b74a54c303bb120fbc4b764">replace</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *search, <a class="el" href="classkissms_1_1_component.html">Component</a> *replace)</td></tr>
+<tr class="memdesc:ae4f5081b8b74a54c303bb120fbc4b764 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces one <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a> in the whole Component-tree.  <a href="#ae4f5081b8b74a54c303bb120fbc4b764">More...</a><br/></td></tr>
+<tr class="separator:ae4f5081b8b74a54c303bb120fbc4b764 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0e32475b1be1f5912da9af37346654e inherit pub_methods_classkissms_1_1_arguments_two"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_arguments_two.html#ac0e32475b1be1f5912da9af37346654e">setArguments</a> (<a class="el" href="classkissms_1_1_component.html">Component</a> *left, <a class="el" href="classkissms_1_1_component.html">Component</a> *right)</td></tr>
 <tr class="memdesc:ac0e32475b1be1f5912da9af37346654e inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s arguments.  <a href="#ac0e32475b1be1f5912da9af37346654e">More...</a><br/></td></tr>
 <tr class="separator:ac0e32475b1be1f5912da9af37346654e inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,10 +188,18 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isVectorial</
 <tr class="memdesc:a91446cdcdd8e907693c7e15f5f753e73 inherit pub_methods_classkissms_1_1_arguments_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s right side.  <a href="#a91446cdcdd8e907693c7e15f5f753e73">More...</a><br/></td></tr>
 <tr class="separator:a91446cdcdd8e907693c7e15f5f753e73 inherit pub_methods_classkissms_1_1_arguments_two"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classkissms_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classkissms_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classkissms_1_1_component.html">kissms::Component</a></td></tr>
-<tr class="memitem:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaba19927e39bfdfc72a31a058b24995f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aaba19927e39bfdfc72a31a058b24995f">getQuantity</a> ()</td></tr>
-<tr class="memdesc:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical representation, if any. <br/></td></tr>
+<tr class="memitem:a9cd71c1ffb02d271ae8882b767ba1af8 inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a9cd71c1ffb02d271ae8882b767ba1af8">getDebugId</a> ()</td></tr>
+<tr class="memdesc:a9cd71c1ffb02d271ae8882b767ba1af8 inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s debug ID.  <a href="#a9cd71c1ffb02d271ae8882b767ba1af8">More...</a><br/></td></tr>
+<tr class="separator:a9cd71c1ffb02d271ae8882b767ba1af8 inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#aaba19927e39bfdfc72a31a058b24995f">getQuantity</a> ()</td></tr>
+<tr class="memdesc:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical representation, if any.  <a href="#aaba19927e39bfdfc72a31a058b24995f">More...</a><br/></td></tr>
 <tr class="separator:aaba19927e39bfdfc72a31a058b24995f inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae37b346a390c5455cfbe6bfc83fff12e inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#ae37b346a390c5455cfbe6bfc83fff12e">setDebugId</a> (int dbgId)</td></tr>
+<tr class="memdesc:ae37b346a390c5455cfbe6bfc83fff12e inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a numerical debug identification number.  <a href="#ae37b346a390c5455cfbe6bfc83fff12e">More...</a><br/></td></tr>
+<tr class="separator:ae37b346a390c5455cfbe6bfc83fff12e inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d828ff69afec19c046acfca9aa136eb inherit pub_methods_classkissms_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkissms_1_1_component.html#a3d828ff69afec19c046acfca9aa136eb">setQuantity</a> (double <a class="el" href="classkissms_1_1_component.html#aa550c0255d39b7184b3c58d462f3b8af">quantity</a>)</td></tr>
+<tr class="memdesc:a3d828ff69afec19c046acfca9aa136eb inherit pub_methods_classkissms_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical representation.  <a href="#a3d828ff69afec19c046acfca9aa136eb">More...</a><br/></td></tr>
+<tr class="separator:a3d828ff69afec19c046acfca9aa136eb inherit pub_methods_classkissms_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -208,7 +245,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value. </p>
-<dl class="section return"><dt>Returns</dt><dd>ResultCode</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Implement calculation of symbolic expressions</dd></dl>
 <p>Calculates the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s numerical value as far as the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s childs allow this. </p>
 
 <p>Implements <a class="el" href="classkissms_1_1_component.html#a256b837afb2726a85fe81a39599a35ff">kissms::Component</a>.</p>
@@ -239,6 +277,167 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>ResultCode</dd></dl>
 <p>The <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> is solved using <a class="el" href="classkissms_1_1_equation.html#ad2a8ce5aff621d4e19b5042fcedf04de" title="Solves the Equation. ">solveFor()</a> and afterwards the <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a>'s value will be calculated, as far as the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>'s other side allows it.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="classkissms_1_1_equation.html#ad2a8ce5aff621d4e19b5042fcedf04de" title="Solves the Equation. ">solveFor( Variable *variable )</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a54ea362dc7dbcbb5a5168c8c3adaa397"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string kissms::Equation::getQuality </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s qualitative representation. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s quality as C++ string class </dd></dl>
+
+<p>Implements <a class="el" href="classkissms_1_1_component.html#ab75716e7610a746c5eab3a13d62fa195">kissms::Component</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaae93102e00017782e05d1304b98f252"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Equation::getScalarEquations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_equation.html">Equation</a> *&#160;</td>
+          <td class="paramname"><em>equations</em>[])</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processes this vectorial <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> into three scalar Equations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">equations</td><td>Array with three Equations in which the scalar Equations will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5ace3a43f98c5ca0804dac8888324ce4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kissms::Equation::getScalarEquations </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processes this vectorial <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> into three scalar Equations. </p>
+<p>The three resulting scalar Equations will be stored in the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a>'s member scalarEquations. </p>
+
+</div>
+</div>
+<a class="anchor" id="acdaa2eed8f63516ea88ec376aa6acfb4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacekissms.html#a9552b1b67ce8edb93cfbc71e0b1c885d">ComponentType</a> kissms::Equation::getType </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the <a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s type. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. ">Component</a>'s type as enumeration type ComponentType </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classkissms_1_1_arguments_two.html#a200947bb9ee3a969c6e362fa44a460f6">kissms::ArgumentsTwo</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a74bee89916e28d4c393bb1782bca8b3d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kissms::Equation::hasSameVariableTwice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_variable.html">Variable</a> **&#160;</td>
+          <td class="paramname"><em>variable</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks wether this <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> contains the same <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> at least two times. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">variable</td><td><a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> to check for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td><a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> contains the same <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> at least two times </td></tr>
+    <tr><td class="paramname">false</td><td><a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> contains the <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> only once </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5aa6b17ba1655c694af7a3d48d44aad8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kissms::Equation::isExplicitly </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_variable.html">Variable</a> *&#160;</td>
+          <td class="paramname"><em>variable</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks whether the <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> is explicitly representing a <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">variable</td><td><a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> to check for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>The <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> explicitly represents the given <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> </td></tr>
+    <tr><td class="paramname">false</td><td>The <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> does not explicitly represent the given <a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -295,6 +494,30 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4182df3ae0e3f4e7e42dd5b58b8b0612"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kissms::Equation::setScalarEquations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_equationsystem.html">Equationsystem</a> *&#160;</td>
+          <td class="paramname"><em>scalarEquations</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets this (vectorial) Equations three scalar representations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scalarEquations</td><td><a class="el" href="classkissms_1_1_equationsystem.html" title="An Equationsystem containing multiplce Equations. ">Equationsystem</a> to store as the three scalar representations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ad2a8ce5aff621d4e19b5042fcedf04de"></a>
 <div class="memitem">
 <div class="memproto">
@@ -322,6 +545,32 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4e5c96a531fc75bd6451983a8435aa00"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacekissms.html#a006cc132ffcae81e38527977e0846e0e">ResultCode</a> kissms::Equation::standardizeLinear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkissms_1_1_variable.html">Variable</a> *&#160;</td>
+          <td class="paramname"><em>variable</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processes this <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> into a standardized linear format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">variable</td><td><a class="el" href="classkissms_1_1_variable.html" title="Component representing a single variable value. ">Variable</a> which shall be the variable in the standardized linear format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Describe the process of standardizing an <a class="el" href="classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. ">Equation</a> </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/kissms/equation.h</li>
 <li>src/kissms/equation.cpp</li>
@@ -329,7 +578,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Feb 24 2014 18:24:46 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 10 2014 12:29:39 for GD_PhySim by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

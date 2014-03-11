@@ -14,9 +14,14 @@
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
 // XXX Search for memory leaks
+// TODO Implement calculation of symbolic expressions
+// .... will solve failure in testKevin()
+// TODO Check processing of result codes
 
+// Set debug flag to enable debug output
 #define KISSMS_DEBUG_FLAG
 
+// Set debug output macro
 #ifdef KISSMS_DEBUG_FLAG
 #define DP(x) std::cout << "DEBUG >> " << x << std::endl;
 #else
@@ -88,10 +93,12 @@ enum ResultCode {
  * The method got to some point where it should be under no circumstances.
  */
 /** @var kissms::ResultCode kissms::IsVectorial
- *
+ * @deprecated This result code is deprecated and will not be returned anywhere.
  */
 /** @var kissms::ResultCode kissms::DevelopersResult
+ * @brief Result code for developing reasons
  *
+ * This result code is used by developers and should not occure in standard applications.
  */
 
 /**

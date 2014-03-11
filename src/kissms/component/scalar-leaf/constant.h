@@ -20,7 +20,12 @@ public:
 	/**
 	 * @brief Enumeration of a Constant's possible types
 	 */
-	enum Type {Unspecified = 0,String,Integer,Double};
+	enum Type {
+		Unspecified = 0,
+		String,
+		Integer,
+		Double
+	};
 	/** @var kissms::Constant::Type kissms::Constant::Unspecified
 	 * @brief The constant is not specified in any way
 	 */
@@ -57,15 +62,17 @@ public:
 
 	/**
 	 * @brief Resets the Constant's value
+	 *
+	 * Resets the Constant's value, type and quantity
 	 */
 	void resetValue();
 
 	/**
 	 * @brief Returns the Constant's value and it's type
-	 * @param value Pointer which will point to the Constant's value
+	 * @param value Value-pointer
 	 * @return The Constant's type
 	 */
-	Type getValue( void *value );
+	Type getValue( void **value );
 
 	virtual void replace( Component *search, Component *replace );
 
@@ -90,7 +97,14 @@ public:
 	virtual Component* clone();
 
 private:
+	/**
+	 * @brief The Constant's type as specified by enumeration type Constant::Type
+	 */
 	Type type;
+
+	/**
+	 * @brief The Constant's value-pointer
+	 */
 	void *value;
 
 };

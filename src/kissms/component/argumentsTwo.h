@@ -44,12 +44,14 @@ public:
 	void setArguments( Component *left, Component *right );
 
 	/**
-	 *
+	 * @brief Returns the Component's left argument
+	 * @return Component's left-side argument
 	 */
 	Component* getLeft();
 
 	/**
-	 *
+	 * @brief Returns the Component's right argument
+	 * @return Component's right-side arguments
 	 */
 	Component* getRight();
 

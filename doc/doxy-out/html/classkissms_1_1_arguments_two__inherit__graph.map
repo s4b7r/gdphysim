@@ -2,6 +2,6 @@
 <area shape="rect" id="node5" href="$classkissms_1_1_addition.html" title="Component representing an Addition of two Components. " alt="" coords="5,160,123,189"/>
 <area shape="rect" id="node7" href="$classkissms_1_1_equation.html" title="Component representing a whole mathematical equation. " alt="" coords="147,160,269,189"/>
 <area shape="rect" id="node9" href="$classkissms_1_1_multiplication.html" title="Component representing a multiplication of two Components. " alt="" coords="293,160,440,189"/>
-<area shape="rect" id="node11" href="$classkissms_1_1_vectorproduct.html" title="kissms::Vectorproduct" alt="" coords="464,160,616,189"/>
+<area shape="rect" id="node11" href="$classkissms_1_1_vectorproduct.html" title="Component representing the vectorproduct of two Vectors. " alt="" coords="464,160,616,189"/>
 <area shape="rect" id="node2" href="$classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. " alt="" coords="217,5,356,35"/>
 </map>

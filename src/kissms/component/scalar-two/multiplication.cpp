@@ -68,7 +68,11 @@ std::string Multiplication::getQuality() {
 	//if( isQuantifiable() ) {
 	//	oss << getQuantity();
 	//} else {
-		oss << "(" << argumentLeft->getQuality() << ")*(" << argumentRight->getQuality() << ")";
+	Component *argLeft = argumentLeft;
+	Component *argRight = argumentRight;
+	std::string argLQual = argLeft->getQuality();
+	std::string argRQual = argRight->getQuality();
+	oss << "(" << argumentLeft->getQuality() << ")*(" << argumentRight->getQuality() << ")";
 	//}
 	tmp = oss.str();
 	return tmp;

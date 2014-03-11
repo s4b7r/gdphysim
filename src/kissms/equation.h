@@ -45,33 +45,46 @@ public:
 	ResultCode calculateFor( Variable *variable );
 
 	/**
-	 *
+	 * @brief Processes this vectorial Equation into three scalar Equations
+	 * @param equations Array with three Equations in which the scalar Equations will be stored
+	 * @return ResultCode
 	 */
 	ResultCode getScalarEquations( Equation *equations[] );
 
 	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable
 	 * @param variable Variable to check for
+	 * @retval true The Equation explicitly represents the given Variable
+	 * @retval false The Equation does not explicitly represent the given Variable
 	 */
 	bool isExplicitly( Variable *variable );
 
 	/**
+	 * @brief Processes this vectorial Equation into three scalar Equations
 	 *
+	 * The three resulting scalar Equations will be stored in the Equation's member scalarEquations.
 	 */
 	void getScalarEquations();
 
 	/**
-	 *
+	 * @brief Processes this Equation into a standardized linear format
+	 * @param variable Variable which shall be the variable in the standardized linear format
+	 * @return ResultCode
+	 * @todo Describe the process of standardizing an Equation
 	 */
 	ResultCode standardizeLinear( Variable *variable );
 
 	/**
-	 *
+	 * @brief Checks wether this Equation contains the same Variable at least two times
+	 * @param variable Variable to check for
+	 * @retval true Equation contains the same Variable at least two times
+	 * @retval false Equation contains the Variable only once
 	 */
 	bool hasSameVariableTwice( Variable **variable );
 
 	/**
-	 *
+	 * @brief Sets this (vectorial) Equations three scalar representations
+	 * @param scalarEquations Equationsystem to store as the three scalar representations
 	 */
 	void setScalarEquations( Equationsystem *scalarEquations );
 
@@ -85,7 +98,11 @@ public:
 
 private:
 	/**
-	 *
+	 * @brief Enumeration type used in getScalarEquations-process
+	 * @see getScalarEquations()
+	 * @see getScalarEquations( Equation *equations[] )
+	 * @see getScalarEquations( Component *current, Component *parent[], WhichLastArgument parentsArgument, std::stack<struct iteration> *todo_stack )
+	 * @todo Add doxygen comments for Equation::WhichLastArgument's values
 	 */
 	enum WhichLastArgument {
 		Single = 0,
@@ -94,7 +111,11 @@ private:
 	};
 
 	/**
-	 *
+	 * @brief Struct type used in getScalarEquations-process
+	 * @see getScalarEquations()
+	 * @see getScalarEquations( Equation *equations[] )
+	 * @see getScalarEquations( Component *current, Component *parent[], WhichLastArgument parentsArgument, std::stack<struct iteration> *todo_stack )
+	 * @todo Add doxygen comments for Equation::struct iteration's fields
 	 */
 	struct iteration {
 		Component *current;
@@ -103,7 +124,7 @@ private:
 	};
 
 	/**
-	 *
+	 * @brief Equationsystem representing this vectorial Equation's three scalar representations
 	 */
 	Equationsystem *scalarEquations;
 
@@ -115,11 +136,15 @@ private:
 	ResultCode solveFor( Variable *variable, bool variableOnLeft );
 
 	/**
-	 *
+	 * @brief Processes this vectorial Equation into three scalar Equations
+	 * @param current Current Component which has to be scalarized
+	 * @param parent Current Component's parent Components
+	 * @param parentsArgument Information about which of the parent's arguments has to be set
+	 * @param todo_stack The whole stack of Components which still have to be scalarized
 	 */
 	void getScalarEquations( Component *current,
 			Component *parent[], WhichLastArgument parentsArgument,
-			std::stack<struct iteration> todo );
+			std::stack<struct iteration> *todo_stack );
 
 
 
