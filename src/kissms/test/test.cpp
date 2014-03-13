@@ -823,7 +823,7 @@ void test19() {
 
 }
 
-int main(int argc, char **argv) {
+/*int main(int argc, char **argv) {
 
 	//test1(); // okay
 	//printf("\n\n");
@@ -867,7 +867,7 @@ int main(int argc, char **argv) {
 
 	return 0;
 
-}
+}*/
 
 
 

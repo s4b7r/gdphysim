@@ -1,0 +1,6 @@
+//Beschreiben
+Das Physikmodul besteht zum einen aus den Körperklassen, welche alle von der Klasse <Solid erben, und zum anderen aus der Klasse <Physiccore. Die Klasse <Solid speichert die Ankerpunkte, den Typ, die Masse, die Koordinaten und die angreifenden Kräfte des Körpers. Außerdem wird jeder Körper mit einer ID versehen, welche auch in der Klasse Solid gespeichert wird. In der Funktion <draft() dieser Klasse wird auch beschrieben wie der Körper und die angreifenden Kräfte gezeichnet werden. Diese Funktion wird in den erbenden Klassen überschrieben. Die Klasse <Anchor enthält Informationen über den Ort des Ankerpunktes und den Erdungszustand. Außerdem enthält sie einen Pointer auf den zugehörigen Körper und den verknüpften Körper.
+
+//markante Anforderungen erläutern
+
+//weitere herausforderungen lösungen verbesserungsansätze erläutern
