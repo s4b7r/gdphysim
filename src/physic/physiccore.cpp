@@ -217,6 +217,21 @@ int Physiccore::fillEquationSystem(){
 			//			}
 			//			}
 
+		}else if(elements.at(i)->getType()==POINTMASS){
+			if(elements.at(i)->getAnchors().at(0).getGrounded()){
+				Variable *fx2=new Variable();
+				stringstream fx2Name;
+				Variable *fy2=new Variable();
+				stringstream fy2Name;
+				fx2Name << i << "toGroundX";
+				fy2Name << i << "toGroundY";
+				fx2->setName((char*)fx2Name.str().c_str());
+				fy2->setName((char*)fy2Name.str().c_str());
+				systemEquationsPerElement.at(i)->xVariables.push_back(fx2);
+				systemEquationsPerElement.at(i)->yVariables.push_back(fy2);
+				elements.at(i)->addForces(fOrigin,elements.at(i)->getAnchors().at(0).getOrigin()[X],elements.at(i)->getAnchors().at(0).getOrigin()[Y],0);
+				elements.at(i)->getAnchorAddr(0)->setHasForce(true);
+			}
 		}
 	}
 
@@ -481,22 +496,22 @@ void Physiccore::linkHoveredAnchors(int x, int y){
 
 void Physiccore::solve(){
 	fillEquationSystem();
-//	for(unsigned int i=0;i<systemEquationsPerElement.size();i++){
-//		printf("%d:\n",i);
-//		for(unsigned int j=0;j<systemEquationsPerElement.at(i)->xVariables.size();j++){
-//			printf("%s\n",systemEquationsPerElement.at(i)->xVariables.at(j)->getName());
-//			printf("%s\n",systemEquationsPerElement.at(i)->yVariables.at(j)->getName());
-//		}
-//		printf("\n");
-//	}
+	//	for(unsigned int i=0;i<systemEquationsPerElement.size();i++){
+	//		printf("%d:\n",i);
+	//		for(unsigned int j=0;j<systemEquationsPerElement.at(i)->xVariables.size();j++){
+	//			printf("%s\n",systemEquationsPerElement.at(i)->xVariables.at(j)->getName());
+	//			printf("%s\n",systemEquationsPerElement.at(i)->yVariables.at(j)->getName());
+	//		}
+	//		printf("\n");
+	//	}
 
 	for(unsigned int i=0;i<elements.size();i++){
 		for(unsigned int j=0;j<systemEquationsPerElement.at(i)->xVariables.size();j++){
 			equationSystem.calculateFor(systemEquationsPerElement.at(i)->xVariables.at(j));
 			equationSystem.calculateFor(systemEquationsPerElement.at(i)->yVariables.at(j));
 			elements.at(i)->addForces(fValue,systemEquationsPerElement.at(i)->xVariables.at(j)->getQuantity(),-(systemEquationsPerElement.at(i)->yVariables.at(j)->getQuantity()),0);
-//			printf("\n%s : %f\n",systemEquationsPerElement.at(i)->xVariables.at(j)->getName(),systemEquationsPerElement.at(i)->xVariables.at(j)->getQuantity());
-//			printf("\n%s : %f",systemEquationsPerElement.at(i)->yVariables.at(j)->getName(),systemEquationsPerElement.at(i)->yVariables.at(j)->getQuantity());
+			//			printf("\n%s : %f\n",systemEquationsPerElement.at(i)->xVariables.at(j)->getName(),systemEquationsPerElement.at(i)->xVariables.at(j)->getQuantity());
+			//			printf("\n%s : %f",systemEquationsPerElement.at(i)->yVariables.at(j)->getName(),systemEquationsPerElement.at(i)->yVariables.at(j)->getQuantity());
 		}
 	}
 	draftElements();
