@@ -37,14 +37,21 @@ ResultCode Addition::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Addition::calculate() {
 
+	ResultCode rc = Successful;
 	if( !isCalculable() ) {
 		return NotCalculable;
 	}
 	if( isQuantifiable() ) {
-		argumentLeft->calculate();
-		argumentRight->calculate();
+		rc = argumentLeft->calculate();
+		if( rc != Successful ) {
+			return rc;
+		}
+		rc = argumentRight->calculate();
+		if( rc != Successful ) {
+			return rc;
+		}
 		quantity = argumentLeft->getQuantity() + argumentRight->getQuantity();
-		return Successful;
+		return rc;
 	} else {
 		DP("NotYetImplemented: Addition::calculate()");
 		return NotYetImplemented;

@@ -47,9 +47,8 @@ public:
 	/**
 	 * @brief Processes this vectorial Equation into three scalar Equations
 	 * @param equations Array with three Equations in which the scalar Equations will be stored
-	 * @return ResultCode
 	 */
-	ResultCode getScalarEquations( Equation *equations[] );
+	void getScalarEquations( Equation *equations[] );
 
 	/**
 	 * @brief Checks whether the Equation is explicitly representing a Variable

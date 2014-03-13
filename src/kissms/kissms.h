@@ -13,7 +13,6 @@
 // XXX Upgrade to modern C++ libraries
 // TODO Implement calculation of symbolic expressions
 // .... will solve failure in testKevin()
-// TODO Check processing of result codes
 
 // Set debug flag to enable debug output
 #define KISSMS_DEBUG_FLAG

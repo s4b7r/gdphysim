@@ -26,9 +26,10 @@ ResultCode SinusArc::reformFor(Variable* variable, Component** newSide,
 
 ResultCode SinusArc::calculate() {
 
-	argument->calculate();
+	ResultCode rc = Successful;
+	rc = argument->calculate();
 	quantity = asin(argument->getQuantity());
-	return Successful;
+	return rc;
 
 }
 

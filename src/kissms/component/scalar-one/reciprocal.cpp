@@ -26,9 +26,10 @@ ResultCode Reciprocal::reformFor(Variable* variable,
 
 ResultCode Reciprocal::calculate() {
 
-	argument->calculate();
+	ResultCode rc = Successful;
+	rc = argument->calculate();
 	quantity = 1.0 / argument->getQuantity();
-	return Successful;
+	return rc;
 
 }
 
