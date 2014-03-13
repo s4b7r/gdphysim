@@ -823,6 +823,53 @@ void test19() {
 
 }
 
+void test20() {
+
+	kissms::Variable *vaA = new kissms::Variable();
+	std::string naA = "a";
+	vaA->setName((char*)naA.c_str());
+	kissms::Variable *vaB = new kissms::Variable();
+	std::string naB = "b";
+	vaB->setName((char*)naB.c_str());
+	kissms::Variable *vaC = new kissms::Variable();
+	std::string naC = "c";
+	vaC->setName((char*)naC.c_str());
+	kissms::Constant *co2 = new kissms::Constant();
+	co2->setValue(2);
+	kissms::Constant *co4 = new kissms::Constant();
+	co4->setValue(4);
+	kissms::Constant *co8 = new kissms::Constant();
+	co8->setValue(8);
+	kissms::Multiplication *mu1 = new kissms::Multiplication();
+	mu1->setArguments(vaB, co2);
+	kissms::Multiplication *mu2 = new kissms::Multiplication();
+	mu2->setArguments(vaC, vaA);
+	kissms::Addition *ad1 = new kissms::Addition();
+	ad1->setArguments(co2, vaC);
+	kissms::Negation *neg = new kissms::Negation();
+	neg->setArgument(vaA);
+	kissms::Addition *ad2 = new kissms::Addition();
+	ad2->setArguments(co8, neg);
+	kissms::Equation *eq1 = new kissms::Equation();
+	eq1->setArguments(vaA, mu1);
+	kissms::Equation *eq2 = new kissms::Equation();
+	eq2->setArguments(ad1, co4);
+	kissms::Equation *eq3 = new kissms::Equation();
+	eq3->setArguments(mu2, ad2);
+	kissms::Equationsystem *sys = new kissms::Equationsystem();
+	sys->addEquation(eq1);
+	sys->addEquation(eq2);
+	sys->addEquation(eq3);
+
+
+	sys->solve();
+
+	printf("\na=%f\n", vaA->getQuantity());
+	printf("\nb=%f\n", vaB->getQuantity());
+	printf("\nc=%f\n", vaC->getQuantity());
+
+}
+
 /*int main(int argc, char **argv) {
 
 	//test1(); // okay
@@ -864,6 +911,8 @@ void test19() {
 	//test18(); // okay
 	//printf("\n\n");
 	//test19(); // okay
+	printf("\n\n");
+	test20();
 
 	return 0;
 
