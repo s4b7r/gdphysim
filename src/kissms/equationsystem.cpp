@@ -277,6 +277,98 @@ void Equationsystem::setTraceVariables(std::vector<struct trace>* traceVariables
 
 }
 
+ResultCode Equationsystem::solve() {
+
+	DP("Eqsys::solve()");
+
+	ResultCode rc = Successful;
+
+	std::vector<Equation*>::iterator sourceEquation;
+	std::vector<Variable*> srcEqVariables;
+	Variable *sourceVariable = 0;
+	std::vector<Equation*>::iterator destinationEquation;
+	Component *sourceComponent = 0;
+	std::stack<Equation*> eqStack;
+	Equation *solveEquation = 0;
+	std::vector<Variable*> slvEqVariables;
+	std::vector<Variable*>::iterator solveVariable;
+
+	sourceEquation = equations.begin();
+	while( sourceEquation != equations.end() ) {
+		DP("Eqsys::slv: srcEq = " << (*sourceEquation)->getQuality());
+		srcEqVariables.clear();
+		(*sourceEquation)->getVariables(&srcEqVariables);
+		DP("Eqsys::slv: " << srcEqVariables.size() << " srcEqVars");
+		sourceVariable = 0;
+		sourceVariable = srcEqVariables.front();
+		DP("Eqsys::slv: srcVar = " << sourceVariable->getName());
+		/*rc = (*sourceEquation)->standardizeLinear(sourceVariable);
+		if( rc != Successful ) {
+			DP("Eqsys::slv: srcEq.std1 returns " << rc);
+			return rc;
+		}*/
+		rc = (*sourceEquation)->solveFor(sourceVariable);
+		if( rc != Successful ) {
+			DP("Eqsys::slv: srcEq.slv1 returns " << rc);
+			return rc;
+		}
+		eqStack.push((Equation*)(*sourceEquation)->clone());
+		if( (*sourceEquation)->getLeft() == sourceVariable ) {
+			sourceComponent = (*sourceEquation)->getRight();
+		} else if( (*sourceEquation)->getRight() == sourceVariable ) {
+			sourceComponent = (*sourceEquation)->getLeft();
+		} else {
+			return ImpossibleState;
+		}
+		destinationEquation = sourceEquation + 1;
+		DP("Eqsys::slv: Replace " << sourceVariable->getName() << " with " << sourceComponent->getQuality());
+		while( destinationEquation != equations.end() ) {
+			DP(".. in " << (*destinationEquation)->getQuality());
+			(*destinationEquation)->replace(sourceVariable, sourceComponent);
+			eqStack.push((Equation*)(*destinationEquation)->clone());
+			DP(".. \\-> " << eqStack.top()->getQuality());
+			destinationEquation++;
+		}
+		sourceEquation++;
+	}
+
+	while( !eqStack.empty() ) {
+		solveEquation = eqStack.top();
+		DP("Eqsys::slv: Solve " << solveEquation->getQuality());
+		slvEqVariables.clear();
+		solveEquation->getVariables(&slvEqVariables);
+		solveVariable = slvEqVariables.begin();
+		while( solveVariable != slvEqVariables.end() ) {
+			DP(".. test " << (*solveVariable)->getName());
+			if( !(*solveVariable)->isCalculable() ) {
+				DP("Eqsys::slv: Solve for " << (*solveVariable)->getName());
+				/*rc = solveEquation->standardizeLinear(*solveVariable);
+				if( rc != Successful ) {
+					DP("Eqsys::slv: srcEq.std2 returns " << rc);
+					return rc;
+				}*/
+				rc = solveEquation->solveFor(*solveVariable);
+				if( rc != Successful ) {
+					DP("Eqsys::slv: srcEq.slv2 returns " << rc);
+					return rc;
+				}
+				rc = solveEquation->calculateFor(*solveVariable);
+				if( rc != Successful ) {
+					DP("Eqsys::slv: srcEq.calc returns " << rc);
+					return rc;
+				}
+			}
+			solveVariable++;
+		}
+		eqStack.pop();
+	}
+
+	/*	DP("Okay");
+	exit(0);*/
+	return rc;
+
+}
+
 }
 
 

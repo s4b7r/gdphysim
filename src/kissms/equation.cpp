@@ -26,7 +26,7 @@ ResultCode Equation::solveFor(Variable* variable) {
 	ResultCode solveResult = Successful;
 	if( !isVectorial() ) {
 		Variable *twiceVariable = 0;
-		if( !hasSameVariableTwice(&twiceVariable) ) {
+		if( !hasSameVariableTwice(&twiceVariable) || variable != twiceVariable ) {
 			// Repeatedly try to solve the Equation for the given Variable,
 			// until the Variable is explicitly represented.
 			// Abort if solving process fails.
@@ -437,7 +437,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	rc = b->calculate();
 	if( rc != Successful ) {
 		DP("Eq::standardize : Calculate b returns " << rc);
-		return rc;
+		//return rc;
 	}
 	DP("Eq::standardize : b = " << b->getQuality());
 
@@ -457,7 +457,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	rc = additionM1b->calculate();
 	if( rc != Successful ) {
 		DP("Eq::standardize : Calculate addM1 returns " << rc);
-		return rc;
+		//return rc;
 	}
 	negationM2->setArgument(b);
 	m->setArguments(additionM1b, negationM2);
@@ -465,7 +465,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	rc = m->calculate();
 	if( rc != Successful ) {
 		DP("Eq::standardize Calculate m returns " << rc);
-		return rc;
+		//return rc;
 	}
 	DP("Eq::standardize : m = " << m->getQuantity());
 
@@ -480,7 +480,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	rc = addition00->calculate();
 	if( rc != NotCalculable ) {
 		DP("Eq::standardize : Calculate final add returns " << rc);
-		return rc;
+		//return rc;
 	}
 
 	argumentLeft = constant00;

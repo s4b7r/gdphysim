@@ -95,6 +95,12 @@ public:
 	 */
 	void setTraceVariables( std::vector<struct trace> *traceVariables );
 
+	/**
+	 * @brief Solves the Equationsystem for all Variables
+	 * @return ResultCode
+	 */
+	ResultCode solve();
+
 private:
 	/**
 	 * @brief The System's single Equations
