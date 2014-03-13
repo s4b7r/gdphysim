@@ -70,7 +70,6 @@ public:
 	 * @brief Processes this Equation into a standardized linear format
 	 * @param variable Variable which shall be the variable in the standardized linear format
 	 * @return ResultCode
-	 * @todo Describe the process of standardizing an Equation
 	 */
 	ResultCode standardizeLinear( Variable *variable );
 
@@ -102,7 +101,6 @@ private:
 	 * @see getScalarEquations()
 	 * @see getScalarEquations( Equation *equations[] )
 	 * @see getScalarEquations( Component *current, Component *parent[], WhichLastArgument parentsArgument, std::stack<struct iteration> *todo_stack )
-	 * @todo Add doxygen comments for Equation::WhichLastArgument's values
 	 */
 	enum WhichLastArgument {
 		Single = 0,
@@ -115,7 +113,6 @@ private:
 	 * @see getScalarEquations()
 	 * @see getScalarEquations( Equation *equations[] )
 	 * @see getScalarEquations( Component *current, Component *parent[], WhichLastArgument parentsArgument, std::stack<struct iteration> *todo_stack )
-	 * @todo Add doxygen comments for Equation::struct iteration's fields
 	 */
 	struct iteration {
 		Component *current;
