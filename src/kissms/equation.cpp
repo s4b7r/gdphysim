@@ -478,7 +478,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	addition00->setArguments(mult, b);
 	DP("Eq::standardize : final add = " << addition00->getQuality());
 	rc = addition00->calculate();
-	if( rc != Successful ) {
+	if( rc != NotCalculable ) {
 		DP("Eq::standardize : Calculate final add returns " << rc);
 		return rc;
 	}
@@ -489,7 +489,7 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	DP("Eq::standardize Equation: " << getQuality());
 
 	//exit(0);
-	return rc;
+	return Successful;
 
 }
 

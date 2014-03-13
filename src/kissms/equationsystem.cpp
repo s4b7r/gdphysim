@@ -118,16 +118,13 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 			DP(".. and it's pending");
 			pendingVariables->push_back(*varIt);
 
-			// Check for circular dependencies
+			// Check for recursive dependencies
 			std::vector<struct trace>::iterator traceIt;
 			traceIt = traceVariables->begin();
 			while( traceIt != traceVariables->end() ) {
 				if( *varIt == (*traceIt).variable ) {
-					// Circular dependency detected
-					DP("Circular dependency detected");
-					//return GeneralFailure;
-
-
+					// Recursive dependency detected
+					DP("Recursive dependency detected with " << variable->getName() << " and " << (*varIt)->getName());
 
 					// Create Equation with two Equations value sides representing one Variable
 					Equation *circEquation = new Equation();
@@ -136,16 +133,22 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 					Component *valueComponentB = 0;
 					traceItB = traceVariables->begin();
 					while( traceItB != traceVariables->end() && valueComponentB == 0 ) {
+						// TODO Simplify: *traceItB equals *traceIt
 						if( (*traceItB).variable == *varIt ) {
+							DP("Eq1 to solve rec.dep. with: " << solveEquation->getQuality());
+							DP("Eq2 to solve rec.dep. with: " << (*traceItB).equation->getQuality());
+							DP("Variable to be eliminated: " << variable->getName());
 							rc = (*traceItB).equation->solveFor(variable); // XXX Maybe a problem
 							if( rc != Successful ) {
 								DP("Eqsys: Rec.Dep. solve 1 returns " << rc);
 								return rc;
 							}
-							if( (*traceItB).equation->getLeft() == *varIt ) {
+							if( (*traceItB).equation->getLeft() == variable ) {
 								valueComponentB = (*traceItB).equation->getRight();
-							} else {
+							} else if( (*traceItB).equation->getRight() == variable ) {
 								valueComponentB = (*traceItB).equation->getLeft();
+							} else {
+								return ImpossibleState;
 							}
 							circEquation->setRight(valueComponentB);
 						}
