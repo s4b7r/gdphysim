@@ -8,11 +8,8 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
-// XXX Do not forget to test your library really good
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
-// TODO Implement calculation of symbolic expressions
-// .... will solve failure in testKevin()
 
 // Set debug flag to enable debug output
 #define KISSMS_DEBUG_FLAG

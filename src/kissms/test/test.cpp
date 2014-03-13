@@ -610,12 +610,12 @@ void test16() {
 	co12->setValue(12);
 
 	sys->calculateFor(varX);
-	sys->calculateFor(varY);
-	sys->calculateFor(varZ);
+	//sys->calculateFor(varY);
+	//sys->calculateFor(varZ);
 
 	printf("x= %f\n", varX->getQuantity());
-	printf("x= %f\n", varY->getQuantity());
-	printf("x= %f\n", varZ->getQuantity());
+	printf("y= %f\n", varY->getQuantity());
+	printf("z= %f\n", varZ->getQuantity());
 
 
 }
@@ -693,8 +693,9 @@ void testKevin() {
 
 
 
-	cog->setValue(9.81); // TODO Symbolic failure in testKevin()
-
+	cog->setValue(9.81);
+	// Symbolic failure in testKevin()
+	// Won't be solved in first version
 
 
 	kissms::Negation *ne21 = new kissms::Negation();
@@ -854,11 +855,11 @@ int main(int argc, char **argv) {
 	//printf("\n\n");
 	//test15(); // okay
 	//printf("\n\n");
-	//test16(); // TODO Failure in test16()
+	test16(); // TODO Failure in test16()
 	//printf("\n\n");
 	//test17(); // okay
 	//printf("\n\n");
-	testKevin(); // see testKevin()
+	//testKevin(); // see testKevin()
 	//printf("\n\n");
 	//test18(); // okay
 	//printf("\n\n");
