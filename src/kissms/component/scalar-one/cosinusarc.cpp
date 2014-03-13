@@ -26,9 +26,10 @@ ResultCode CosinusArc::reformFor(Variable* variable,
 
 ResultCode CosinusArc::calculate() {
 
-	argument->calculate();
+	ResultCode rc = Successful;
+	rc = argument->calculate();
 	quantity = acos(argument->getQuantity());
-	return Successful;
+	return rc;
 
 }
 

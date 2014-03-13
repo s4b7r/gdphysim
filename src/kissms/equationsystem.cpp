@@ -88,7 +88,10 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 	// Solve Equation for given Variable
 	DP("Eqsys: Solve " << solveEquation->getQuality());
 	rc = solveEquation->solveFor(variable);
-	DP("Eqsys: Solve returned " << rc);
+	if( rc != Successful ) {
+		DP("Eqsys: Solve returned " << rc);
+		return rc;
+	}
 
 	// Save Variable to check for circular dependencies
 	struct trace newTrace;
@@ -134,7 +137,11 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 					traceItB = traceVariables->begin();
 					while( traceItB != traceVariables->end() && valueComponentB == 0 ) {
 						if( (*traceItB).variable == *varIt ) {
-							(*traceItB).equation->solveFor(variable); // XXX Maybe a problem
+							rc = (*traceItB).equation->solveFor(variable); // XXX Maybe a problem
+							if( rc != Successful ) {
+								DP("Eqsys: Rec.Dep. solve 1 returns " << rc);
+								return rc;
+							}
 							if( (*traceItB).equation->getLeft() == *varIt ) {
 								valueComponentB = (*traceItB).equation->getRight();
 							} else {
@@ -147,12 +154,24 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 					DP("circEq containing nan values is legal");
 					DP("circEq: " << circEquation->getQuality());
 
-					circEquation->standardizeLinear(*varIt);
+					rc = circEquation->standardizeLinear(*varIt);
+					if( rc != Successful ) {
+						DP("Eqsys: Rec.Dep. standardize returns " << rc);
+						return rc;
+					}
 					DP("circEq standardized: " << circEquation->getQuality());
 
-					circEquation->solveFor(*varIt);
+					rc = circEquation->solveFor(*varIt);
+					if( rc != Successful ) {
+						DP("Eqsys: Rec.Dep. solve 2 returns " << rc);
+						return rc;
+					}
 					pendingVariables->pop_back();
-					circEquation->getLeft()->calculate();
+					rc = circEquation->getLeft()->calculate();
+					if( rc != Successful ) {
+						DP("Eqsys: Rec.Dep. calc returns " << rc);
+						return rc;
+					}
 					(*varIt)->setValue(circEquation->getLeft()->getQuantity());
 					(*varIt)->setQuality(circEquation->getLeft()->getQuality());
 
@@ -185,6 +204,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		rc = equationsLeft.solvePending();
 
 		if( rc != Successful ) {
+			DP("Eqsys: Solve pending returns " << rc);
 			return rc;
 		}
 	}
@@ -195,7 +215,7 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 		DP("Eqsys calculates " << valueComponent->getQuality());
 		rc = valueComponent->calculate();
 		if( rc != Successful ) {
-			DP("Eqsys' calculating returned " << rc);
+			DP("Eqsys: Final calc returns " << rc);
 			return rc;
 		}
 		// If everything is okay, set the Variable's numerical value

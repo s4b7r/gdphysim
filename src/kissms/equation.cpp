@@ -35,7 +35,10 @@ ResultCode Equation::solveFor(Variable* variable) {
 			}
 		} else {
 			if( twiceVariable == variable ) {
-				standardizeLinear(twiceVariable);
+				solveResult = standardizeLinear(twiceVariable);
+				if( solveResult != Successful ) {
+					return solveResult;
+				}
 				solveResult = solveFor(variable);
 			} else {
 				solveResult = GeneralFailure;
@@ -43,7 +46,7 @@ ResultCode Equation::solveFor(Variable* variable) {
 		}
 	} else {
 		getScalarEquations();
-		scalarEquations->solveFor(variable);
+		solveResult = scalarEquations->solveFor(variable);
 	}
 
 	return solveResult;
@@ -173,7 +176,7 @@ ResultCode Equation::solveFor(Variable* variable, bool variableOnLeft) {
 		// Replace other side
 		*otherSide = *newOtherSide;
 
-		return Successful;
+		return reformResult;
 	}
 	return reformResult;
 
@@ -186,7 +189,7 @@ ResultCode Equation::reformFor(Variable* variable, Component** newSide,
 
 }
 
-ResultCode Equation::getScalarEquations(Equation* equations[]) {
+void Equation::getScalarEquations(Equation* equations[]) {
 
 	struct iteration it;
 	Component *current;
@@ -265,8 +268,6 @@ ResultCode Equation::getScalarEquations(Equation* equations[]) {
 			break;
 		}
 	}
-
-	return Successful;
 
 }
 
@@ -434,10 +435,10 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	b = (Addition*)(additionB1->clone());
 	additionB1->replace(constantB1, variable);
 	rc = b->calculate();
-	DP("Eq::standardize : Calculate b returns " << rc);
-	//if( rc != Successful ) {
-	//	return rc;
-	//}
+	if( rc != Successful ) {
+		DP("Eq::standardize : Calculate b returns " << rc);
+		return rc;
+	}
 	DP("Eq::standardize : b = " << b->getQuality());
 
 	Negation *negationM1 = new Negation();
@@ -454,14 +455,18 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	additionM1b = (Addition*)(additionM1->clone());
 	additionM1->replace(constantM1, variable);
 	rc = additionM1b->calculate();
-	DP("Eq::standardize : Calculate addM1 returns " << rc);
-	//if( rc != Successful ) {
-	//	return rc;
-	//}
+	if( rc != Successful ) {
+		DP("Eq::standardize : Calculate addM1 returns " << rc);
+		return rc;
+	}
 	negationM2->setArgument(b);
 	m->setArguments(additionM1b, negationM2);
 	DP("Eq::standardize : m = " << m->getQuality());
-	m->calculate();
+	rc = m->calculate();
+	if( rc != Successful ) {
+		DP("Eq::standardize Calculate m returns " << rc);
+		return rc;
+	}
 	DP("Eq::standardize : m = " << m->getQuantity());
 
 	Constant *constant00 = new Constant();
@@ -473,10 +478,10 @@ ResultCode Equation::standardizeLinear(Variable *variable) {
 	addition00->setArguments(mult, b);
 	DP("Eq::standardize : final add = " << addition00->getQuality());
 	rc = addition00->calculate();
-	DP("Eq::standardize : Calculate final add returns " << rc);
-	//if( rc != Successful ) {
-	//	return rc;
-	//}
+	if( rc != Successful ) {
+		DP("Eq::standardize : Calculate final add returns " << rc);
+		return rc;
+	}
 
 	argumentLeft = constant00;
 	argumentRight = addition00;

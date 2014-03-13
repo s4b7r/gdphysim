@@ -58,7 +58,6 @@ public:
 	/**
 	 * @brief Calculates the Component's numerical value
 	 * @return ResultCode
-	 * @todo Implement calculation of symbolic expressions
 	 *
 	 * Calculates the Component's numerical value as far as the Component's childs allow this.
 	 */

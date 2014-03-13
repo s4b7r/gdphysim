@@ -26,9 +26,10 @@ ResultCode Sinus::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Sinus::calculate() {
 
-	argument->calculate();
+	ResultCode rc = Successful;
+	rc = argument->calculate();
 	quantity = sin(argument->getQuantity());
-	return Successful;
+	return rc;
 
 }
 

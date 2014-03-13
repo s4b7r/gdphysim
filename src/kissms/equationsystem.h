@@ -103,13 +103,11 @@ private:
 
 	/**
 	 * @brief The System's pending Variables
-	 * @todo Further describe Equationsystem::pendingVariables
 	 */
 	std::vector<Variable*> *pendingVariables;
 
 	/**
 	 * @brief The System's Variable-trace
-	 * @todo Further describe Equationsystem::traceVariables
 	 */
 	std::vector<struct trace> *traceVariables;
 
