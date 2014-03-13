@@ -8,7 +8,6 @@
 
 #include "gui/Framework.hpp"
 #include <iostream>
-#include "physic/physic.h"
 
 using std::cout;
 using std::endl;
