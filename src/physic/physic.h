@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stack>
 #include <iostream>
-#include "/usr/include/c++/4.6.3/vector"
+//#include "/usr/include/c++/4.6.3/vector"
 
 #include "physic/solids/solid.h"
 
