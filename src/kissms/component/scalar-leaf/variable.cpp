@@ -200,7 +200,9 @@ void Variable::replace(Component* search, Component* replace) {
 
 Component* Variable::clone() {
 
-	Variable *cloned = new Variable();
+	return this;
+
+	/*Variable *cloned = new Variable();
 
 	cloned->setName(this->getName());
 	void **value = (void**)malloc(sizeof(void*));
@@ -219,7 +221,7 @@ Component* Variable::clone() {
 	}
 	cloned->setQuality(this->getQuality());
 
-	return cloned;
+	return cloned;*/
 
 }
 
