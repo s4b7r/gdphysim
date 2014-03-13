@@ -26,9 +26,10 @@ ResultCode Cosinus::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Cosinus::calculate() {
 
-	argument->calculate();
+	ResultCode rc = Successful;
+	rc = argument->calculate();
 	quantity = cos(argument->getQuantity());
-	return Successful;
+	return rc;
 
 }
 

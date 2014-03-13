@@ -8,15 +8,8 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
-// XXX Improve code and doxygen comments
-// XXX Really do a code review sometime
-// XXX Do not forget to test your library really good
 // XXX Recreate recursive procedures as iterative ones
 // XXX Upgrade to modern C++ libraries
-// XXX Search for memory leaks
-// TODO Implement calculation of symbolic expressions
-// .... will solve failure in testKevin()
-// TODO Check processing of result codes
 
 // Set debug flag to enable debug output
 #define KISSMS_DEBUG_FLAG

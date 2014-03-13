@@ -26,9 +26,10 @@ ResultCode Negation::reformFor(Variable* variable, Component** newSide,
 
 ResultCode Negation::calculate() {
 
-	argument->calculate();
+	ResultCode rc = Successful;
+	rc = argument->calculate();
 	quantity = argument->getQuantity() * -1.0;
-	return Successful;
+	return rc;
 
 }
 
