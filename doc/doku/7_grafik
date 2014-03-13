@@ -1,0 +1,19 @@
+//Beschreiben
+Die grafische Oberfläche fußt auf der Singleton-Klasse <TSingleton, und auf der Klasse <Frame. Alle anderen Klassen erben von mindestens einer dieser Klassen.
+Die Klasse <Frame hält die Daten über die Koordinaten des Frames und die Hintergrundfarbe. Neben Konstruktor, Get- und Set-Methoden gibt es auch eine Funktion, welche eine übergebene Koordinate mit den Koordinaten des Frames vergleicht. Ist die Koordinate innerhalb des Frames wird <true, ist sie außerhalb wird <false zurück gegeben.
+Die Klasse <Button erbt von Frame und enthält zusätzlich noch Informationen zum Zustand des Buttons und den Pfad zur Datei des Hintergrundbildes vom Button.
+Die Klasse <ButtonFrame erbt von Frame und hält <Button-Objekte in einem Array. Außerdem enthält sie die Anzahl, die Größe und die Koordinaten der Buttons. Es werden bei der Konstruktion des <ButtonFrames die Koordinaten der Buttons in Abhängigkeit von der Buttongröße, der Anzahl der Buttons und der Größe des <ButtonFrames berechnet. Das gewährleistet eine stets symetrische Anordnung. Außerdem erfordert das Hinzufügen eines neuen Buttons nicht die erneute Ausrichtung aller Buttons.
+Die Klasse <Area, welche eigentlich typischerweise als <Canvas oder Leinwand bezeichnet wird, erbt von den Klassen <TSingleton und <Frame. 
+Die Klasse Tools erbt von den Klassen <ButtonFrame und <TSingleton.
+Die Klasse <Framework hält das <SDL_Surface auf dem hauptsächlich gezeichnet wird, die Programmfensterhöhe und -breite. Hier werden alle <SDL_Events verarbeitet, außerdem läuft hier die Hauptschleife des Programms ab. Diese Klasse arbeitet sehr eng mit der Klasse <Brush zusammen. Außer den Mausklicks auf Buttons im <ButtonFrame <Tools geschehen alle <SDL_Events im Zeichenbereich <Area welche in der Hauptschleife verarbeitet werden und immer die Funktion <Paint() in der Klasse <Brush aufruft. Dabei werden für die verschiedenen Arten von <SDL_Events unterschiedliche Parameter übergeben. Die Klasse <Brush erbt von <TSingleton und ist das Bindeglied zwischen der grafischen Benutzeroberfläche und dem Physikmodul. In der Funktion <Paint() werden hier alle Körper gezeichnet und Funktionen im Physikmodul angestoßen.
+
+//besonders markante anforderungen erläutern
+//(-grüner kreis)
+//-vektor zeichnen -> Zahlen darstellen
+
+//weitere herausforderungen lösungen verbesserungsansätze erläutern
+//-Fehlerbehebung Anker an Anker verschiebung durch berechnung des Ortes
+//-benennung der Kräfte (andere Farben für unterschiedliche Kräftearten)
+
+//Eigennamen kenntlich machen <(kursiv/fett)
+

@@ -1,0 +1,22 @@
+Die Benutzeroberfläche ist in zwei Teile unterteilt. Auf der linken Seite mit grauem Hintergrund sind die Buttons welche die verschiedenen Funktionen darstellen. Auf der rechten Seite ist die Arbeitsfläche auf der das gewünschte System konstruiert wird. Durch das Drücken eines Buttons ändert sich die Aktion, welche beim Mausklick oder Klicken und Ziehen auf der Arbeitsfläche ausgeführt wird. Die Aktion ist auf dem jeweiligen Button beschrieben.
+
+Rectangle
+Beim Klicken und Ziehen und wenn dieser Button gedrückt ist wird ein Rechteck aufgezogen. Beim loslassen der Maustaste wird die Benutzeroberfläche gesperrt und es wird die Eingabe der Körpermasse in die Konsole gefordert. Alle Körper können genau an einem Ankerpunkt eines anderen Körpers gezeichnet werden, wenn die Maus nah genug über dem Ankerpunkt anfängt und ein grüner Kreis erscheint. Die Wirkung der Gravitation wird bei allen Körpern mit Masse durch eine einzige Kraft im Mittelpunkt angreifend angenommen. Alle Körper lassen sich nicht verformen.
+
+Rod
+Beim Klicken und Ziehen und wenn dieser Button gedrückt ist wird ein Strich gezogen. Er soll einen masselosen Stab darstellen.
+
+Pointmass
+Beim Mausklick und wenn dieser Button gedrückt ist wird eine Punktmasse gezeichnet. Beim loslassen der Maustaste wird die Benutzeroberfläche gesperrt und eine Eingabe der Körpermasse in die Konsole gefordert.
+
+Ground
+Alle Körper haben Ankerpunkte, meist an Ecken, Enden oder im Mittelpunkt. Beim Mausklick auf einen Ankerpunkt und wenn dieser Button gedrückt ist wird der Körper an diesem Ankerpunkt über ein Gelenk mit der Erde verbunden. Das Gelenk ist um die Achse beweglich, welche orthogonal zur Bildschirmfläche steht.
+
+Link
+Wenn zwei Ankerpunkte zweier Körper sich überschneiden, können sie verknüpft werden. Diese Verknüpfung entspricht einer Gelenkverbindung wie oben bei Ground beschrieben.
+
+Delete
+Beim Mausklick auf einen Ankerpunkt und wenn dieser Button gedrückt ist wird der zugehörige Körper gelöscht.
+
+Compute
+Beim Mausklick auf die Arbeitsfläche und wenn dieser Button gedrückt ist wird das konstruierte System berechnet. Es werden zusätzlich zu den Gewichtskräften auch die berechneten Wechselwirkungskräfte angezeigt.
