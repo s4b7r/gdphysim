@@ -1,0 +1,9 @@
+<map id="kissms::ArgumentsOne" name="kissms::ArgumentsOne">
+<area shape="rect" id="node5" href="$classkissms_1_1_cosinus.html" title="Component representing the mathematical cosinus&#45;function. " alt="" coords="411,5,531,35"/>
+<area shape="rect" id="node7" href="$classkissms_1_1_cosinus_arc.html" title="Component representing the mathematical arcus&#45;cosinus&#45;function. " alt="" coords="401,59,540,88"/>
+<area shape="rect" id="node9" href="$classkissms_1_1_negation.html" title="Component representing the negation of a single Component. " alt="" coords="409,112,532,141"/>
+<area shape="rect" id="node11" href="$classkissms_1_1_reciprocal.html" title="Component representing the recirpocal of one single Component. " alt="" coords="404,165,537,195"/>
+<area shape="rect" id="node13" href="$classkissms_1_1_sinus.html" title="Component representing the mathematical sinus&#45;function. " alt="" coords="419,219,523,248"/>
+<area shape="rect" id="node15" href="$classkissms_1_1_sinus_arc.html" title="Component representing the mathematical arcus&#45;sinus&#45;function. " alt="" coords="408,272,533,301"/>
+<area shape="rect" id="node2" href="$classkissms_1_1_component.html" title="Representation of a mathematical component in an Equation. " alt="" coords="5,139,144,168"/>
+</map>
