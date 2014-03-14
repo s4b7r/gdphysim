@@ -19,11 +19,11 @@ Pointmass::Pointmass(int centerX, int centerY) : Solid(centerX,centerY,centerX,c
 	Anchor *a=new Anchor(centerX,centerY,this);
 	anchors.push_back(*a);
 	a->setId(anchors.size()-1);
-//	int temp;
-//	cout << "Please enter mass for pointmass: (Kilogram) "<< endl;
-//	cin >> temp;
-//	Solid::setMass(temp);
-	Solid::setMass(45);
+	int temp;
+	cout << "Please enter mass for pointmass: (Kilogram) "<< endl;
+	cin >> temp;
+	Solid::setMass(temp);
+//	Solid::setMass(45);
 }
 
 void Pointmass::draft(){

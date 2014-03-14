@@ -103,7 +103,8 @@ void Brush::paint(int x, int y, bool moved, bool initiallyLeftPressed, bool rele
 		}
 		break;
 	case 5:		//Ground
-		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
+		//		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
+		if(initiallyLeftPressed){
 			PHYSICCORE->groundHoveredAnchors(x,y);
 			GlobalInAnchorProximity=false;
 			wasInitallyLeftPressed=false;
@@ -111,7 +112,8 @@ void Brush::paint(int x, int y, bool moved, bool initiallyLeftPressed, bool rele
 		}
 		break;
 	case 4:		//Link
-		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
+		//		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
+		if(initiallyLeftPressed){
 			PHYSICCORE->linkHoveredAnchors(x,y);
 			GlobalInAnchorProximity=false;
 			wasInitallyLeftPressed=false;
