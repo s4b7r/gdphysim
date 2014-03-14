@@ -363,8 +363,8 @@ ResultCode Equationsystem::solve() {
 		eqStack.pop();
 	}
 
-	/*	DP("Okay");
-	exit(0);*/
+	//DP("Okay");
+	/*exit(0);*/
 	return rc;
 
 }

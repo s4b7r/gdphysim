@@ -103,7 +103,7 @@ Variable** Physiccore::addInteractiveForceVarFromSolidToRodOfAnchor(Anchor a){
 		systemEquationsPerElement.at(a.getLink()->getPlink()->getId())->xVariables.push_back(fx);
 		systemEquationsPerElement.at(a.getLink()->getPlink()->getId())->yVariables.push_back(fy);
 		elements.at(a.getLink()->getPlink()->getId())->addForces(fOrigin,a.getOrigin()[X],a.getOrigin()[Y],0);
-
+		systemEquationsPerElement.at(a.getLink()->getPlink()->getId())->varCount++;
 		a.getLink()->setHasForce(true);
 
 		return v;
@@ -111,8 +111,63 @@ Variable** Physiccore::addInteractiveForceVarFromSolidToRodOfAnchor(Anchor a){
 	return 0;
 }
 
+void Physiccore::addTorqueEquation(int id){
+	Equation *torqueEq=new Equation();
+	int x=rand()%1000+1;
+	int y=rand()%1000+1;
+	Constant *tG = new Constant();
+	Constant *zero = new Constant();
+	zero->setValue(0);
+	tG->setValue(elements.at(id)->getMass()*GRAVITY*(elements.at(id)->getCenter(X)-x));		//negatives Drehmoment von der Gewichtskraft verursacht
+	Addition *tempAd1=new Addition();
+	Addition *tempAd2=new Addition();
+	Addition *tempAd3=new Addition();
+	Addition *tempAd4=new Addition();
+	Addition *tempAd12=new Addition();
+	Addition *tempAd34=new Addition();
+	Addition *tempAdBoss=new Addition();
+
+	Multiplication *mx[4];
+	Multiplication *my[4];
+	for(int k=0;k<4;k++){
+		mx[k]=new Multiplication();
+		mx[k]->setArguments(zero,zero);
+		my[k]=new Multiplication();
+		my[k]->setArguments(zero,zero);
+	}
+	Constant *cx[4];
+	Constant *cy[4];
+	for(int k=0;k<4;k++){
+		cx[k]=new Constant();
+		cx[k]->setValue(0);
+		cy[k]=new Constant();
+		cy[k]->setValue(0);
+	}
+
+	for(unsigned int i=0;i<systemEquationsPerElement.at(id)->xVariables.size();i++){
+		cx[i]->setValue(elements.at(id)->getForces(fOrigin,i+1,X)-x);
+		cy[i]->setValue(-y+elements.at(id)->getForces(fOrigin,i+1,Y));
+		mx[i]->setArguments(cx[i],systemEquationsPerElement.at(id)->yVariables.at(i));
+		my[i]->setArguments(cy[i],systemEquationsPerElement.at(id)->xVariables.at(i));
+	}
+
+	tempAd1->setArguments(mx[0],my[0]);
+	tempAd2->setArguments(mx[1],my[1]);
+	tempAd3->setArguments(mx[2],my[2]);
+	tempAd4->setArguments(mx[3],my[3]);
+	tempAd34->setArguments(tempAd3,tempAd4);
+	tempAd12->setArguments(tempAd1,tempAd2);
+	tempAdBoss->setArguments(tempAd12,tempAd34);
+	torqueEq->setArguments(tempAdBoss,tG);
+	torqueEq->setDebugId(12);
+	equationSystem.addEquation(torqueEq);
+}
+
 int Physiccore::fillEquationSystem(){
-	for(unsigned int p=0;p<elements.size();p++)systemEquationsPerElement.push_back(new SystemEquations);
+	for(unsigned int p=0;p<elements.size();p++){
+		systemEquationsPerElement.push_back(new SystemEquations);
+		systemEquationsPerElement.at(p)->varCount=0;
+	}
 	//	printf("elements.size() %d\n",elements.size());
 	//	printf("systemEquationsPerElement.size() %d\n",systemEquationsPerElement.size());
 
@@ -167,6 +222,11 @@ int Physiccore::fillEquationSystem(){
 					stringstream fx2Name;
 					Variable *fy2=new Variable();
 					stringstream fy2Name;
+					if(elements.at(i)->getAnchors().at(j).getLink()!=NULL && elements.at(i)->getAnchors().at(j).getLink()->getPlink()->getType()==POINTMASS){
+						//						systemEquationsPerElement.at(i)->varCount++;
+					}else{
+						systemEquationsPerElement.at(i)->varCount+=2;
+					}
 					if(elements.at(i)->getAnchors().at(j).getLink()==NULL){
 						fx2Name << i << "toGroundX" << j;
 						fy2Name << i << "toGroundY" << j;
@@ -198,9 +258,12 @@ int Physiccore::fillEquationSystem(){
 						equationSystem.addEquation(ey);
 
 						elements.at(elements.at(i)->getAnchors().at(j).getLink()->getPlink()->getId())->addForces(fOrigin,elements.at(i)->getAnchors().at(j).getOrigin()[X],elements.at(i)->getAnchors().at(j).getOrigin()[Y],0);
-						systemEquationsPerElement.at(elements.at(i)->getAnchors().at(j).getLink()->getPlink()->getId())->xVariables.push_back(fx1);		//todo anscheinend schreibt er die in das elements.at(i)
+						systemEquationsPerElement.at(elements.at(i)->getAnchors().at(j).getLink()->getPlink()->getId())->xVariables.push_back(fx1);
 						systemEquationsPerElement.at(elements.at(i)->getAnchors().at(j).getLink()->getPlink()->getId())->yVariables.push_back(fy1);
 						elements.at(i)->getAnchors().at(j).getLink()->setHasForce(true);
+						if(elements.at(i)->getAnchors().at(j).getLink()->getPlink()->getType()!=POINTMASS){
+							systemEquationsPerElement.at(elements.at(i)->getAnchors().at(j).getLink()->getPlink()->getId())->varCount+=2;
+						}
 					}
 					fx2->setName((char*)fx2Name.str().c_str());
 					fy2->setName((char*)fy2Name.str().c_str());
@@ -220,6 +283,7 @@ int Physiccore::fillEquationSystem(){
 		}else if(elements.at(i)->getType()==POINTMASS){
 			if(elements.at(i)->getAnchors().at(0).getGrounded()){
 				Variable *fx2=new Variable();
+				fx2->setValue(0);
 				stringstream fx2Name;
 				Variable *fy2=new Variable();
 				stringstream fy2Name;
@@ -241,37 +305,43 @@ int Physiccore::fillEquationSystem(){
 			Addition *xForceAd=new Addition();
 			Equation *yForceEq=new Equation();
 			Addition *yForceAd=new Addition();
-			Equation *torqueEq=new Equation();
+			//			Equation *torqueEq=new Equation();
 			Constant *nG = new Constant();
 			Constant *zero = new Constant();
 			zero->setValue(0);
 			nG->setValue(elements.at(i)->getMass()*GRAVITY);
+//			printf("\n%d\n",systemEquationsPerElement.at(i)->varCount);
+			for(int t=0;t<=(systemEquationsPerElement.at(i)->varCount-3);t++){
+				addTorqueEquation(i);
+			}
 
 			if(systemEquationsPerElement.at(i)->xVariables.size()==1){
 				xForceEq->setArguments(systemEquationsPerElement.at(i)->xVariables.at(0),zero);
 				yForceEq->setArguments(systemEquationsPerElement.at(i)->yVariables.at(0),nG);
 
-				Addition *tempAd1=new Addition();
-				Multiplication *tempMu11=new Multiplication();
-				Multiplication *tempMu12=new Multiplication();
-				Constant *cx1=new Constant();
-				Constant *cy1=new Constant();
+				//				Addition *tempAd1=new Addition();
+				//				Multiplication *tempMu11=new Multiplication();
+				//				Multiplication *tempMu12=new Multiplication();
+				//				Constant *cx1=new Constant();
+				//				Constant *cy1=new Constant();
 
-				cx1->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
-				cy1->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
-
-				tempMu11->setArguments(cx1,systemEquationsPerElement.at(i)->yVariables.at(0));
-				tempMu12->setArguments(cy1,systemEquationsPerElement.at(i)->xVariables.at(0));
-
-				tempAd1->setArguments(tempMu11,tempMu12);
-				torqueEq->setArguments(tempAd1,zero);
+				//				cx1->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
+				//				cy1->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
+				//
+				//				tempMu11->setArguments(cx1,systemEquationsPerElement.at(i)->yVariables.at(0));
+				//				tempMu12->setArguments(cy1,systemEquationsPerElement.at(i)->xVariables.at(0));
+				//
+				//				tempAd1->setArguments(tempMu11,tempMu12);
+				//				torqueEq->setArguments(tempAd1,zero);
 			}else if(systemEquationsPerElement.at(i)->xVariables.size()==2){
 				xForceAd->setArguments(systemEquationsPerElement.at(i)->xVariables.at(0),systemEquationsPerElement.at(i)->xVariables.at(1));
 				yForceAd->setArguments(systemEquationsPerElement.at(i)->yVariables.at(0),systemEquationsPerElement.at(i)->yVariables.at(1));
 				xForceEq->setArguments(xForceAd,zero);
 				yForceEq->setArguments(yForceAd,nG);
 
-				Addition *tempAd21=new Addition();
+
+
+				/*Addition *tempAd21=new Addition();
 				Multiplication *tempMu211=new Multiplication();
 				Multiplication *tempMu221=new Multiplication();
 				Constant *cx21=new Constant();
@@ -302,7 +372,7 @@ int Physiccore::fillEquationSystem(){
 				Addition *adfin2=new Addition();
 				adfin2->setArguments(tempAd21,tempAd22);
 
-				torqueEq->setArguments(adfin2,zero);
+				torqueEq->setArguments(adfin2,zero);*/
 			}else if(systemEquationsPerElement.at(i)->xVariables.size()==3){
 				Addition *xTemp3=new Addition();
 				Addition *yTemp3=new Addition();
@@ -313,55 +383,55 @@ int Physiccore::fillEquationSystem(){
 				xForceEq->setArguments(xForceAd,zero);
 				yForceEq->setArguments(yForceAd,nG);
 
-				Addition *tempAd31=new Addition();
-				Multiplication *tempMu311=new Multiplication();
-				Multiplication *tempMu321=new Multiplication();
-				Constant *cx31=new Constant();
-				Constant *cy31=new Constant();
-
-				cx31->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
-				cy31->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
-
-				tempMu311->setArguments(cx31,systemEquationsPerElement.at(i)->yVariables.at(0));
-				tempMu321->setArguments(cy31,systemEquationsPerElement.at(i)->xVariables.at(0));
-
-				tempAd31->setArguments(tempMu311,tempMu321);
-
-				Addition *tempAd32=new Addition();
-				Multiplication *tempMu312=new Multiplication();
-				Multiplication *tempMu322=new Multiplication();
-				Constant *cx32=new Constant();
-				Constant *cy32=new Constant();
-
-				cx32->setValue(elements.at(i)->getForces(fOrigin,2,X)-elements.at(i)->getCenter(X));
-				cy32->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,2,Y));
-
-				tempMu312->setArguments(cx32,systemEquationsPerElement.at(i)->yVariables.at(1));
-				tempMu322->setArguments(cy32,systemEquationsPerElement.at(i)->xVariables.at(1));
-
-				tempAd32->setArguments(tempMu312,tempMu322);
-
-				Addition *tempAd33=new Addition();
-				Multiplication *tempMu313=new Multiplication();
-				Multiplication *tempMu323=new Multiplication();
-				Constant *cx33=new Constant();
-				Constant *cy33=new Constant();
-
-				cx33->setValue(elements.at(i)->getForces(fOrigin,3,X)-elements.at(i)->getCenter(X));
-				cy33->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,3,Y));
-
-				tempMu313->setArguments(cx33,systemEquationsPerElement.at(i)->yVariables.at(2));
-				tempMu323->setArguments(cy33,systemEquationsPerElement.at(i)->xVariables.at(2));
-
-				tempAd33->setArguments(tempMu313,tempMu323);
-
-				Addition *adfin31=new Addition();
-				adfin31->setArguments(tempAd31,tempAd32);
-
-				Addition *adfin32=new Addition();
-				adfin32->setArguments(adfin31,tempAd33);
-
-				torqueEq->setArguments(adfin32,zero);
+				//				Addition *tempAd31=new Addition();
+				//				Multiplication *tempMu311=new Multiplication();
+				//				Multiplication *tempMu321=new Multiplication();
+				//				Constant *cx31=new Constant();
+				//				Constant *cy31=new Constant();
+				//
+				//				cx31->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
+				//				cy31->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
+				//
+				//				tempMu311->setArguments(cx31,systemEquationsPerElement.at(i)->yVariables.at(0));
+				//				tempMu321->setArguments(cy31,systemEquationsPerElement.at(i)->xVariables.at(0));
+				//
+				//				tempAd31->setArguments(tempMu311,tempMu321);
+				//
+				//				Addition *tempAd32=new Addition();
+				//				Multiplication *tempMu312=new Multiplication();
+				//				Multiplication *tempMu322=new Multiplication();
+				//				Constant *cx32=new Constant();
+				//				Constant *cy32=new Constant();
+				//
+				//				cx32->setValue(elements.at(i)->getForces(fOrigin,2,X)-elements.at(i)->getCenter(X));
+				//				cy32->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,2,Y));
+				//
+				//				tempMu312->setArguments(cx32,systemEquationsPerElement.at(i)->yVariables.at(1));
+				//				tempMu322->setArguments(cy32,systemEquationsPerElement.at(i)->xVariables.at(1));
+				//
+				//				tempAd32->setArguments(tempMu312,tempMu322);
+				//
+				//				Addition *tempAd33=new Addition();
+				//				Multiplication *tempMu313=new Multiplication();
+				//				Multiplication *tempMu323=new Multiplication();
+				//				Constant *cx33=new Constant();
+				//				Constant *cy33=new Constant();
+				//
+				//				cx33->setValue(elements.at(i)->getForces(fOrigin,3,X)-elements.at(i)->getCenter(X));
+				//				cy33->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,3,Y));
+				//
+				//				tempMu313->setArguments(cx33,systemEquationsPerElement.at(i)->yVariables.at(2));
+				//				tempMu323->setArguments(cy33,systemEquationsPerElement.at(i)->xVariables.at(2));
+				//
+				//				tempAd33->setArguments(tempMu313,tempMu323);
+				//
+				//				Addition *adfin31=new Addition();
+				//				adfin31->setArguments(tempAd31,tempAd32);
+				//
+				//				Addition *adfin32=new Addition();
+				//				adfin32->setArguments(adfin31,tempAd33);
+				//
+				//				torqueEq->setArguments(adfin32,zero);
 			}else if(systemEquationsPerElement.at(i)->xVariables.size()==4){
 				Addition *xTemp4=new Addition();
 				Addition *yTemp4=new Addition();
@@ -376,77 +446,77 @@ int Physiccore::fillEquationSystem(){
 				xForceEq->setArguments(xForceAd,zero);
 				yForceEq->setArguments(yForceAd,nG);
 
-				Addition *tempAd41=new Addition();
-				Multiplication *tempMu411=new Multiplication();
-				Multiplication *tempMu421=new Multiplication();
-				Constant *cx41=new Constant();
-				Constant *cy41=new Constant();
-
-				cx41->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
-				cy41->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
-
-				tempMu411->setArguments(cx41,systemEquationsPerElement.at(i)->yVariables.at(0));
-				tempMu421->setArguments(cy41,systemEquationsPerElement.at(i)->xVariables.at(0));
-
-				tempAd41->setArguments(tempMu411,tempMu421);
-
-				Addition *tempAd42=new Addition();
-				Multiplication *tempMu412=new Multiplication();
-				Multiplication *tempMu422=new Multiplication();
-				Constant *cx42=new Constant();
-				Constant *cy42=new Constant();
-
-				cx42->setValue(elements.at(i)->getForces(fOrigin,2,X)-elements.at(i)->getCenter(X));
-				cy42->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,2,Y));
-
-				tempMu412->setArguments(cx42,systemEquationsPerElement.at(i)->yVariables.at(1));
-				tempMu422->setArguments(cy42,systemEquationsPerElement.at(i)->xVariables.at(1));
-
-				tempAd42->setArguments(tempMu412,tempMu422);
-
-				Addition *tempAd43=new Addition();
-				Multiplication *tempMu413=new Multiplication();
-				Multiplication *tempMu423=new Multiplication();
-				Constant *cx43=new Constant();
-				Constant *cy43=new Constant();
-
-				cx43->setValue(elements.at(i)->getForces(fOrigin,3,X)-elements.at(i)->getCenter(X));
-				cy43->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,3,Y));
-
-				tempMu413->setArguments(cx43,systemEquationsPerElement.at(i)->yVariables.at(2));
-				tempMu423->setArguments(cy43,systemEquationsPerElement.at(i)->xVariables.at(2));
-
-				tempAd43->setArguments(tempMu413,tempMu423);
-
-				Addition *tempAd44=new Addition();
-				Multiplication *tempMu414=new Multiplication();
-				Multiplication *tempMu424=new Multiplication();
-				Constant *cx44=new Constant();
-				Constant *cy44=new Constant();
-
-				cx44->setValue(elements.at(i)->getForces(fOrigin,4,X)-elements.at(i)->getCenter(X));
-				cy44->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,4,Y));
-
-				tempMu414->setArguments(cx44,systemEquationsPerElement.at(i)->yVariables.at(3));
-				tempMu424->setArguments(cy44,systemEquationsPerElement.at(i)->xVariables.at(3));
-
-				tempAd44->setArguments(tempMu414,tempMu424);
-
-				Addition *adfin41=new Addition();
-				adfin41->setArguments(tempAd41,tempAd42);
-
-				Addition *adfin42=new Addition();
-				adfin42->setArguments(adfin41,tempAd43);
-
-				Addition *adfin43=new Addition();
-				adfin43->setArguments(adfin42,tempAd44);
-
-				torqueEq->setArguments(adfin43,zero);
+				//				Addition *tempAd41=new Addition();
+				//				Multiplication *tempMu411=new Multiplication();
+				//				Multiplication *tempMu421=new Multiplication();
+				//				Constant *cx41=new Constant();
+				//				Constant *cy41=new Constant();
+				//
+				//				cx41->setValue(elements.at(i)->getForces(fOrigin,1,X)-elements.at(i)->getCenter(X));
+				//				cy41->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,1,Y));
+				//
+				//				tempMu411->setArguments(cx41,systemEquationsPerElement.at(i)->yVariables.at(0));
+				//				tempMu421->setArguments(cy41,systemEquationsPerElement.at(i)->xVariables.at(0));
+				//
+				//				tempAd41->setArguments(tempMu411,tempMu421);
+				//
+				//				Addition *tempAd42=new Addition();
+				//				Multiplication *tempMu412=new Multiplication();
+				//				Multiplication *tempMu422=new Multiplication();
+				//				Constant *cx42=new Constant();
+				//				Constant *cy42=new Constant();
+				//
+				//				cx42->setValue(elements.at(i)->getForces(fOrigin,2,X)-elements.at(i)->getCenter(X));
+				//				cy42->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,2,Y));
+				//
+				//				tempMu412->setArguments(cx42,systemEquationsPerElement.at(i)->yVariables.at(1));
+				//				tempMu422->setArguments(cy42,systemEquationsPerElement.at(i)->xVariables.at(1));
+				//
+				//				tempAd42->setArguments(tempMu412,tempMu422);
+				//
+				//				Addition *tempAd43=new Addition();
+				//				Multiplication *tempMu413=new Multiplication();
+				//				Multiplication *tempMu423=new Multiplication();
+				//				Constant *cx43=new Constant();
+				//				Constant *cy43=new Constant();
+				//
+				//				cx43->setValue(elements.at(i)->getForces(fOrigin,3,X)-elements.at(i)->getCenter(X));
+				//				cy43->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,3,Y));
+				//
+				//				tempMu413->setArguments(cx43,systemEquationsPerElement.at(i)->yVariables.at(2));
+				//				tempMu423->setArguments(cy43,systemEquationsPerElement.at(i)->xVariables.at(2));
+				//
+				//				tempAd43->setArguments(tempMu413,tempMu423);
+				//
+				//				Addition *tempAd44=new Addition();
+				//				Multiplication *tempMu414=new Multiplication();
+				//				Multiplication *tempMu424=new Multiplication();
+				//				Constant *cx44=new Constant();
+				//				Constant *cy44=new Constant();
+				//
+				//				cx44->setValue(elements.at(i)->getForces(fOrigin,4,X)-elements.at(i)->getCenter(X));
+				//				cy44->setValue(-elements.at(i)->getCenter(Y)+elements.at(i)->getForces(fOrigin,4,Y));
+				//
+				//				tempMu414->setArguments(cx44,systemEquationsPerElement.at(i)->yVariables.at(3));
+				//				tempMu424->setArguments(cy44,systemEquationsPerElement.at(i)->xVariables.at(3));
+				//
+				//				tempAd44->setArguments(tempMu414,tempMu424);
+				//
+				//				Addition *adfin41=new Addition();
+				//				adfin41->setArguments(tempAd41,tempAd42);
+				//
+				//				Addition *adfin42=new Addition();
+				//				adfin42->setArguments(adfin41,tempAd43);
+				//
+				//				Addition *adfin43=new Addition();
+				//				adfin43->setArguments(adfin42,tempAd44);
+				//
+				//				torqueEq->setArguments(adfin43,zero);
 			}
 
 			equationSystem.addEquation(xForceEq);
 			equationSystem.addEquation(yForceEq);
-			equationSystem.addEquation(torqueEq);
+			//			equationSystem.addEquation(torqueEq);
 		}
 	}
 	return 0;
@@ -504,11 +574,11 @@ void Physiccore::solve(){
 	//		}
 	//		printf("\n");
 	//	}
-
+	equationSystem.solve();
 	for(unsigned int i=0;i<elements.size();i++){
 		for(unsigned int j=0;j<systemEquationsPerElement.at(i)->xVariables.size();j++){
-			equationSystem.calculateFor(systemEquationsPerElement.at(i)->xVariables.at(j));
-			equationSystem.calculateFor(systemEquationsPerElement.at(i)->yVariables.at(j));
+			//			equationSystem.calculateFor(systemEquationsPerElement.at(i)->xVariables.at(j));
+			//			equationSystem.calculateFor(systemEquationsPerElement.at(i)->yVariables.at(j));
 			elements.at(i)->addForces(fValue,systemEquationsPerElement.at(i)->xVariables.at(j)->getQuantity(),-(systemEquationsPerElement.at(i)->yVariables.at(j)->getQuantity()),0);
 			//			printf("\n%s : %f\n",systemEquationsPerElement.at(i)->xVariables.at(j)->getName(),systemEquationsPerElement.at(i)->xVariables.at(j)->getQuantity());
 			//			printf("\n%s : %f",systemEquationsPerElement.at(i)->yVariables.at(j)->getName(),systemEquationsPerElement.at(i)->yVariables.at(j)->getQuantity());
@@ -518,4 +588,5 @@ void Physiccore::solve(){
 	for(unsigned int h=0;h<elements.size();h++)elements.at(h)->clearSolid();
 	systemEquationsPerElement.clear();
 	equationSystem.clearSystem();
+	anchorPositions.clear();
 }
