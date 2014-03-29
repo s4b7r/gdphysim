@@ -5,7 +5,7 @@
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
-
+/*
 #include "gui/Framework.hpp"
 #include <iostream>
 
@@ -23,7 +23,7 @@ int main() {
 				<< " "
 				<< test1.getCenter(Z)
 				<< " "
-				<< test1.getForces(fValue).at(0)[1] << endl;*/
+				<< test1.getForces(fValue).at(0)[1] << endl;
 
 
 	int appWidth = 1024;
@@ -37,3 +37,4 @@ int main() {
 //	f.at(0)->draft();
 	return 0;
 }
+*/
