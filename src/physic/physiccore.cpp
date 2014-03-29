@@ -67,6 +67,7 @@ int reverse(int k){
 Variable** Physiccore::addInteractiveForceVarFromSolidToRodOfAnchor(Anchor a){
 	if(!(a.getLink()->getHasForce())){
 		Variable* v[2];
+		// TODO Local array v is returned, but is only local and will be lost on return
 
 		Variable *fx=new Variable();
 		stringstream fxName;
