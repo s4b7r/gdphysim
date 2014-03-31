@@ -11,7 +11,14 @@
 
 class GlofViewport {
 
+public:
 
+	GlofViewport();
+	virtual ~GlofViewport();
+
+private:
+
+	GlofCamera *camera;
 
 };
 

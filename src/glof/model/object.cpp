@@ -7,3 +7,11 @@
 
 #include "glof/glof.h"
 
+GlofObject::GlofObject() {
+}
+
+GlofObject::~GlofObject() {
+}
+
+void GlofObject::render() {
+}

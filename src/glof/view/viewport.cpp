@@ -7,3 +7,14 @@
 
 #include "glof/glof.h"
 
+GlofViewport::GlofViewport() {
+
+	camera = 0;
+
+}
+
+GlofViewport::~GlofViewport() {
+
+	delete camera;
+
+}

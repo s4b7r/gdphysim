@@ -16,6 +16,12 @@ public:
 	GlofScreen();
 	virtual ~GlofScreen();
 
+	GlofViewport* newViewport();
+
+private:
+
+	std::vector<GlofViewport*> viewports;
+
 };
 
 

@@ -20,7 +20,7 @@ public:
 
 private:
 
-	std::vector<GlofObject> objects;
+	std::vector<GlofObject*> objects;
 
 };
 

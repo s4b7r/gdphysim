@@ -11,6 +11,12 @@ GlofModel::GlofModel() {
 }
 
 GlofModel::~GlofModel() {
+
+	while( !objects.empty() ) {
+		delete objects.back();
+		objects.pop_back();
+	}
+
 }
 
 void GlofModel::render() {

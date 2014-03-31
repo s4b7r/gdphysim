@@ -28,9 +28,9 @@ private:
 
 	bool isInit;
 
-	GlofModel* model;
+	GlofModel *model;
 
-	std::vector<GlofScreen> screens;
+	std::vector<GlofScreen*> screens;
 
 	Glof();
 

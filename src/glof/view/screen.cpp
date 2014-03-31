@@ -11,4 +11,17 @@ GlofScreen::GlofScreen() {
 }
 
 GlofScreen::~GlofScreen() {
+
+	while( !viewports.empty() ) {
+		delete viewports.back();
+		viewports.pop_back();
+	}
+
+}
+
+GlofViewport* GlofScreen::newViewport() {
+
+	viewports.push_back(new GlofViewport);
+	return viewports.back();
+
 }
