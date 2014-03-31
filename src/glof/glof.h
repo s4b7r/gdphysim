@@ -9,12 +9,19 @@
 #define GLOF_H_
 
 
-#include "glof/model/model.h"
+#include <stdlib.h>
+#include <vector>
+
+namespace glof {
+
 #include "glof/model/object.h"
+#include "glof/model/model.h"
 
 #include "glof/view/screen.h"
 #include "glof/view/viewport.h"
 #include "glof/view/camera.h"
+
+}
 
 
 #endif /* GLOF_H_ */
