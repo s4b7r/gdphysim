@@ -609,9 +609,10 @@ void test16() {
 	co00->setValue(0);
 	co12->setValue(12);
 
-	sys->calculateFor(varX);
+	//sys->calculateFor(varX);
 	//sys->calculateFor(varY);
 	//sys->calculateFor(varZ);
+	sys->solve();
 
 	printf("x= %f\n", varX->getQuantity());
 	printf("y= %f\n", varY->getQuantity());
@@ -870,53 +871,53 @@ void test20() {
 
 }
 
-/*int main(int argc, char **argv) {
+int kissmstest(int argc, char **argv) {
 
-	//test1(); // okay
-	//printf("\n\n");
-	//test2(); // okay
-	//printf("\n\n");
-	//test3(); // okay
-	//printf("\n\n");
-	//test4(); // okay
-	//printf("\n\n");
-	//test5(); // okay
-	//printf("\n\n");
-	//test6(); // okay
-	//printf("\n\n");
-	//test7(); // okay
-	//printf("\n\n");
-	//test8(); // okay
-	//printf("\n\n");
-	//test9(); // okay
-	//printf("\n\n");
-	//test10(); // okay
-	//printf("\n\n");
-	//test11(); // okay
-	//printf("\n\n");
-	//test12(); // okay
-	//printf("\n\n");
-	//test13(); // okay
-	//printf("\n\n");
-	//test14(); // okay
-	//printf("\n\n");
-	//test15(); // okay
-	//printf("\n\n");
-	//test16(); // TODO Failure in test16()
-	//printf("\n\n");
-	//test17(); // okay
-	//printf("\n\n");
-	//testKevin(); // see testKevin()
-	//printf("\n\n");
-	//test18(); // okay
-	//printf("\n\n");
-	//test19(); // okay
+	test1(); // okay
+	printf("\n\n");
+	test2(); // okay
+	printf("\n\n");
+	test3(); // okay
+	printf("\n\n");
+	test4(); // okay
+	printf("\n\n");
+	test5(); // okay
+	printf("\n\n");
+	test6(); // okay
+	printf("\n\n");
+	test7(); // okay
+	printf("\n\n");
+	test8(); // okay
+	printf("\n\n");
+	test9(); // okay
+	printf("\n\n");
+	test10(); // okay
+	printf("\n\n");
+	test11(); // okay
+	printf("\n\n");
+	test12(); // okay
+	printf("\n\n");
+	test13(); // okay
+	printf("\n\n");
+	test14(); // okay
+	printf("\n\n");
+	test15(); // okay
+	printf("\n\n");
+	test16(); // TODO Failure in test16()
+	printf("\n\n");
+	test17(); // okay
+	printf("\n\n");
+	testKevin(); // see testKevin()
+	printf("\n\n");
+	test18(); // okay
+	printf("\n\n");
+	test19(); // okay
 	printf("\n\n");
 	test20();
 
 	return 0;
 
-}*/
+}
 
 
 
