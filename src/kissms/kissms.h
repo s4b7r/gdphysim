@@ -8,8 +8,8 @@
 #ifndef KISSMS_H_
 #define KISSMS_H_
 
-// XXX Recreate recursive procedures as iterative ones
-// XXX Upgrade to modern C++ libraries
+// Recreate recursive procedures as iterative ones  <-- is not necessary yet
+// Upgrade to modern C++ libraries  <-- do when needed or if you have time
 
 // Set debug flag to enable debug output
 #define KISSMS_DEBUG_FLAG

@@ -90,7 +90,7 @@ std::string Vector::getQuality() {
 
 void Vector::getVariables(std::vector<Variable*>* variables) {
 
-	// XXX Check if Vector::getVariables() has to be implemented
+	// Not implemented
 
 }
 

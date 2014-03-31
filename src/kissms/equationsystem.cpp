@@ -133,12 +133,12 @@ ResultCode Equationsystem::solveFor(Variable* variable) {
 					Component *valueComponentB = 0;
 					traceItB = traceVariables->begin();
 					while( traceItB != traceVariables->end() && valueComponentB == 0 ) {
-						// TODO Simplify: *traceItB equals *traceIt
+						// Should: Simplify: *traceItB equals *traceIt  <-- when necessary
 						if( (*traceItB).variable == *varIt ) {
 							DP("Eq1 to solve rec.dep. with: " << solveEquation->getQuality());
 							DP("Eq2 to solve rec.dep. with: " << (*traceItB).equation->getQuality());
 							DP("Variable to be eliminated: " << variable->getName());
-							rc = (*traceItB).equation->solveFor(variable); // XXX Maybe a problem
+							rc = (*traceItB).equation->solveFor(variable); // Maybe a problem, but not yet
 							if( rc != Successful ) {
 								DP("Eqsys: Rec.Dep. solve 1 returns " << rc);
 								return rc;

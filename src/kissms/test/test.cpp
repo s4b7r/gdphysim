@@ -903,7 +903,7 @@ int kissmstest(int argc, char **argv) {
 	printf("\n\n");
 	test15(); // okay
 	printf("\n\n");
-	test16(); // TODO Failure in test16()
+	test16(); // Failure in test16()  <-- solve when necessary
 	printf("\n\n");
 	test17(); // okay
 	printf("\n\n");

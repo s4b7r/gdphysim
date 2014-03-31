@@ -198,7 +198,7 @@ void Solid::setAnchorLink(int num, Anchor* l){
 	return forces[v];
 }*/
 
-/*Solid::~Solid(){						//TODO change this when Simon builds his own Vector destructor
+/*Solid::~Solid(){
 	deleteVector(eloPoint);
 	deleteVector(center);
 	for(int i=0;i<2;i++){
@@ -219,7 +219,7 @@ void Solid::fill3dVector(Vector &vec, int x, int y, int z){
 	vec.setArgument(2,values[2]);
 }
 
-void Solid::deleteVector(Vector &del){		//TODO erase this when Simon builds his own Vector destructor
+void Solid::deleteVector(Vector &del){
 	for(int i=0;i<3;i++){
 		if(del.getArgument(i)!=NULL)free(del.getArgument(i));
 	}

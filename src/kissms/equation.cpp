@@ -417,7 +417,7 @@ void Equation::getScalarEquations() {
 ResultCode Equation::standardizeLinear(Variable *variable) {
 	// This is the symbolic method
 
-	// TODO Check for conditions to standardize to linear Equation
+	// Need: Check for conditions to standardize to linear Equation  <-- when necessary
 
 	DP("Equation::standardizeLinear(" << variable->getName() << ")");
 
