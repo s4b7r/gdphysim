@@ -37,20 +37,9 @@ int Glof::init(int* argcp, char** argv) {
 
 }
 
-GlofScreen* Glof::newScreen() {
-
-	screens.push_back(new GlofScreen());
-	return screens.back();
-
-}
-
 Glof::~Glof() {
 
 	delete model;
-	while( !screens.empty() ) {
-		delete screens.back();
-		screens.pop_back();
-	}
 
 }
 
