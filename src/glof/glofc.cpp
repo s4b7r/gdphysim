@@ -77,8 +77,9 @@ void Glof::deleteWindow(int id) {
 		if( itW->id == id ) {
 			windows.erase(itW);
 			itW = windows.end();
+		} else {
+			itW++;
 		}
-		itW++;
 	}
 	// Destroy GLUT window
 	glutDestroyWindow(id);
@@ -87,7 +88,14 @@ void Glof::deleteWindow(int id) {
 
 Glof::~Glof() {
 
+	// Delete GlofModel
 	delete model;
+
+	// Delete all GlofCameras
+	while( !cameras.empty() ) {
+		delete cameras.back();
+		cameras.pop_back();
+	}
 
 }
 
@@ -117,5 +125,31 @@ Glof::Glof() {
 
 }
 
+GlofCamera* Glof::newCamera() {
 
+	// Create new GlofCamera
+	GlofCamera *camera = new GlofCamera();
+	// Add it to cameras field
+	cameras.push_back(camera);
+	// Return pointer
+	return camera;
 
+}
+
+void Glof::deleteCamera(GlofCamera* camera) {
+
+	// Remove camera from cameras field
+	std::vector<GlofCamera*>::iterator itC;
+	itC = cameras.begin();
+	while( itC != cameras.end() ) {
+		if( *itC == camera ) {
+			// ... and remove the object from memory
+			delete *itC;
+			cameras.erase(itC);
+			itC = cameras.end();
+		} else {
+			itC++;
+		}
+	}
+
+}

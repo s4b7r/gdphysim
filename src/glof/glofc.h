@@ -31,6 +31,10 @@ public:
 
 	void deleteWindow( int id );
 
+	GlofCamera* newCamera();
+
+	void deleteCamera( GlofCamera *camera );
+
 private:
 
 	static Glof *myPointer;
@@ -40,6 +44,8 @@ private:
 	GlofModel *model;
 
 	std::vector<GlofWindow> windows;
+
+	std::vector<GlofCamera*> cameras;
 
 	Glof();
 

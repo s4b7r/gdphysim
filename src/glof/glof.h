@@ -15,10 +15,12 @@
 // Include OpenGL, GLU and GLUT
 #include <GL/glut.h>
 
+// Include GLOF model classes
 #include "glof/model/object.h"
 #include "glof/model/model.h"
 
-#include "glof/model/camera.h"
+// Include GLOF camera
+#include "glof/camera.h"
 
 // Include central GLOF-class
 #include "glof/glofc.h"
