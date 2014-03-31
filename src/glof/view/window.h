@@ -30,6 +30,8 @@ public:
 
 	int getId();
 
+	void render();
+
 private:
 
 	int glutId;

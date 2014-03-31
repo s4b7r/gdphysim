@@ -106,6 +106,8 @@ int GlofWindow::init() {
 	} else {
 		glutId = glutCreateSubWindow(parent->getId(), x, y, w, h);
 	}
+	// Bind glut callbacks
+	glutDisplayFunc(render);
 
 	return 0;
 
@@ -114,5 +116,11 @@ int GlofWindow::init() {
 int GlofWindow::getId() {
 
 	return glutId;
+
+}
+
+void GlofWindow::render() {
+
+	// Implement!
 
 }
