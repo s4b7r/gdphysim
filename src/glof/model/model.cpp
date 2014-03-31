@@ -7,8 +7,11 @@
 
 #include "glof/glof.h"
 
-namespace glof {
+GlofModel::GlofModel() {
+}
 
+GlofModel::~GlofModel() {
+}
 
-
+void GlofModel::render() {
 }

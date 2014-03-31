@@ -7,8 +7,3 @@
 
 #include "glof/glof.h"
 
-namespace glof {
-
-
-
-}

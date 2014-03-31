@@ -9,15 +9,16 @@
 #define SCREEN_H_
 
 
-namespace glof {
+class GlofScreen {
 
-class Screen {
+public:
 
-
+	GlofScreen();
+	virtual ~GlofScreen();
 
 };
 
-}
+
 
 
 #endif /* SCREEN_H_ */

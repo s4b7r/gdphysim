@@ -7,8 +7,8 @@
 
 #include "glof/glof.h"
 
-namespace glof {
+GlofScreen::GlofScreen() {
+}
 
-
-
+GlofScreen::~GlofScreen() {
 }

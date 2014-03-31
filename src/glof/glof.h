@@ -12,8 +12,8 @@
 #include <stdlib.h>
 #include <vector>
 
-// All parts of GLOF belong to the namespace glof
-namespace glof {
+// Include OpenGL, GLU and GLUT
+#include <GL/glut.h>
 
 // Include model classes
 #include "glof/model/object.h"
@@ -24,7 +24,8 @@ namespace glof {
 #include "glof/view/viewport.h"
 #include "glof/view/camera.h"
 
-}
+// Include central GLOF-class
+#include "glof/glofc.h"
 
 
 #endif /* GLOF_H_ */

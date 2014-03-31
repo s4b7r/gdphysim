@@ -9,24 +9,21 @@
 #define MODEL_H_
 
 
-namespace glof {
-
-class Model {
+class GlofModel {
 
 public:
 
-	Model();
-	virtual ~Model();
+	GlofModel();
+	virtual ~GlofModel();
 
 	void render();
 
 private:
 
-	std::vector<Object> objects;
+	std::vector<GlofObject> objects;
 
 };
 
-}
 
 
 #endif /* MODEL_H_ */

@@ -8,16 +8,10 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
-
-namespace glof {
-
-class Camera {
-
-
+class GlofCamera {
 
 };
 
-}
 
 
 #endif /* CAMERA_H_ */

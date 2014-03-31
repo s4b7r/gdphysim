@@ -9,20 +9,17 @@
 #define OBJECT_H_
 
 
-namespace glof {
-
-class Object {
+class GlofObject {
 
 public:
 
-	Object();
-	virtual ~Object();
+	GlofObject();
+	virtual ~GlofObject();
 
 	void render();
 
 };
 
-}
 
 
 #endif /* OBJECT_H_ */
