@@ -11,6 +11,12 @@
 class Glof {
 
 public:
+
+	struct GlofWindow {
+		int id;
+		std::vector<int> subwindows;
+	};
+
 	static Glof* getGlof();
 
 	static void deleteGlof();
@@ -19,6 +25,12 @@ public:
 
 	GlofModel* getModel();
 
+	int newWindow( char *name );
+
+	int newSubwindow( int pId, int pX, int pY, int w, int h );
+
+	void deleteWindow( int id );
+
 private:
 
 	static Glof *myPointer;
@@ -26,6 +38,8 @@ private:
 	bool isInit;
 
 	GlofModel *model;
+
+	std::vector<GlofWindow> windows;
 
 	Glof();
 

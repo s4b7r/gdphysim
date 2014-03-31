@@ -37,6 +37,54 @@ int Glof::init(int* argcp, char** argv) {
 
 }
 
+int Glof::newWindow(char* name) {
+
+	// Create new GLUT window
+	struct GlofWindow newWindow;
+	newWindow.id = glutCreateWindow(name);
+	// Add new window to windows field
+	windows.push_back(newWindow);
+	// Return window id
+	return newWindow.id;
+
+}
+
+int Glof::newSubwindow(int pId, int pX, int pY, int w, int h) {
+
+	// Create new GLUT subwindow
+	int id = glutCreateSubWindow(pId, pX, pY, w, h);
+	// Add to parent's subwindows field
+	std::vector<GlofWindow>::iterator itW;
+	itW = windows.begin();
+	while( itW != windows.end() ) {
+		if( itW->id == pId ) {
+			itW->subwindows.push_back(id);
+			itW = windows.end();
+		}
+		itW++;
+	}
+	// Return subwindow id
+	return id;
+
+}
+
+void Glof::deleteWindow(int id) {
+
+	// Remove window from windows field
+	std::vector<GlofWindow>::iterator itW;
+	itW = windows.begin();
+	while( itW != windows.end() ) {
+		if( itW->id == id ) {
+			windows.erase(itW);
+			itW = windows.end();
+		}
+		itW++;
+	}
+	// Destroy GLUT window
+	glutDestroyWindow(id);
+
+}
+
 Glof::~Glof() {
 
 	delete model;
