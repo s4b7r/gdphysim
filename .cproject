@@ -93,8 +93,11 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="glof|ogl|kissms" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/glof"/>
+						<entry excluding="view|model|glof|ogl|kissms" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="model|view" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/glof"/>
+						<entry excluding="objects" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/glof/model"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/glof/model/objects"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/glof/view"/>
 						<entry excluding="test|component" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms"/>
 						<entry excluding="vector|scalar-leaf|vector-one|vector-two|scalar-two|scalar-one" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/kissms/component/scalar-leaf"/>
