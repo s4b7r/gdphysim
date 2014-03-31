@@ -10,6 +10,21 @@
 
 class GlofCamera {
 
+public:
+
+	GlofCamera();
+	virtual ~GlofCamera();
+
+	void bindWindow( int windowId );
+
+	void removeBind( int windowId );
+
+	void render();
+
+private:
+
+	std::vector<int> windowBinds;
+
 };
 
 
