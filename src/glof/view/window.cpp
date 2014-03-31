@@ -106,8 +106,11 @@ int GlofWindow::init() {
 	} else {
 		glutId = glutCreateSubWindow(parent->getId(), x, y, w, h);
 	}
-	// Bind glut callbacks
+	// Bind GLUT callbacks
 	glutDisplayFunc(render);
+	// OpenGL settings
+	glShadeModel(GL_SMOOTH);
+	glEnable(GL_DEPTH_TEST);
 
 	return 0;
 
@@ -122,5 +125,10 @@ int GlofWindow::getId() {
 void GlofWindow::render() {
 
 	// Implement!
+
+	// Clear GL color and depth buffer
+	// Clear GL model and projection matrix
+	// Call camera's render function
+	// Swap buffers
 
 }

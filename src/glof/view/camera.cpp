@@ -25,4 +25,8 @@ void GlofCamera::render() {
 
 	// Implement!
 
+	// Set perspective in projection matrix
+	// Transform model matrix for camera's position and orientation
+	// Call model's render function
+
 }

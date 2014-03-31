@@ -28,9 +28,6 @@ int Glof::init(int* argcp, char** argv) {
 	glutInit(argcp, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 
-	// Initialise OpenGL
-	glShadeModel(GL_SMOOTH);
-
 	// Create Model
 	model = new GlofModel();
 
