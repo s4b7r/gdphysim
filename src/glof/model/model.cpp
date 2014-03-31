@@ -8,6 +8,9 @@
 #include "glof/glof.h"
 
 GlofModel::GlofModel() {
+
+	// Need to implement?
+
 }
 
 GlofModel::~GlofModel() {
@@ -20,4 +23,7 @@ GlofModel::~GlofModel() {
 }
 
 void GlofModel::render() {
+
+	// Implement
+
 }

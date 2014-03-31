@@ -8,9 +8,15 @@
 #include "glof/glof.h"
 
 GlofCamera::GlofCamera() {
+
+	// Need to implement?
+
 }
 
 GlofCamera::~GlofCamera() {
+
+	// Need to implement?
+
 }
 
 void GlofCamera::bindWindow(int windowId) {
@@ -36,4 +42,7 @@ void GlofCamera::removeBind(int windowId) {
 }
 
 void GlofCamera::render() {
+
+	// Implement!
+
 }
