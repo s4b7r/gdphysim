@@ -9,7 +9,15 @@
 #define CAMERA_H_
 
 
+namespace glof {
 
+class Camera {
+
+
+
+};
+
+}
 
 
 #endif /* CAMERA_H_ */

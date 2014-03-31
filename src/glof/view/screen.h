@@ -9,7 +9,15 @@
 #define SCREEN_H_
 
 
+namespace glof {
 
+class Screen {
+
+
+
+};
+
+}
 
 
 #endif /* SCREEN_H_ */

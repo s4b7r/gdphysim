@@ -9,7 +9,15 @@
 #define VIEWPORT_H_
 
 
+namespace glof {
 
+class Viewport {
+
+
+
+};
+
+}
 
 
 #endif /* VIEWPORT_H_ */
