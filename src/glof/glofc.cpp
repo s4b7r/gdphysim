@@ -12,6 +12,7 @@ Glof* Glof::myPointer = 0;
 void Glof::deleteGlof() {
 
 	delete myPointer;
+	myPointer = 0;
 
 }
 
@@ -37,64 +38,15 @@ int Glof::init(int* argcp, char** argv) {
 
 }
 
-int Glof::newWindow(char* name) {
-
-	// Create new GLUT window
-	struct GlofWindow newWindow;
-	newWindow.id = glutCreateWindow(name);
-	// Add new window to windows field
-	windows.push_back(newWindow);
-	// Return window id
-	return newWindow.id;
-
-}
-
-int Glof::newSubwindow(int pId, int pX, int pY, int w, int h) {
-
-	// Create new GLUT subwindow
-	int id = glutCreateSubWindow(pId, pX, pY, w, h);
-	// Add to parent's subwindows field
-	std::vector<GlofWindow>::iterator itW;
-	itW = windows.begin();
-	while( itW != windows.end() ) {
-		if( itW->id == pId ) {
-			itW->subwindows.push_back(id);
-			itW = windows.end();
-		}
-		itW++;
-	}
-	// Return subwindow id
-	return id;
-
-}
-
-void Glof::deleteWindow(int id) {
-
-	// Remove window from windows field
-	std::vector<GlofWindow>::iterator itW;
-	itW = windows.begin();
-	while( itW != windows.end() ) {
-		if( itW->id == id ) {
-			windows.erase(itW);
-			itW = windows.end();
-		} else {
-			itW++;
-		}
-	}
-	// Destroy GLUT window
-	glutDestroyWindow(id);
-
-}
-
 Glof::~Glof() {
 
 	// Delete GlofModel
 	delete model;
 
-	// Delete all GlofCameras
-	while( !cameras.empty() ) {
-		delete cameras.back();
-		cameras.pop_back();
+	// Delete all GlofWindows
+	while( !windows.empty() ) {
+		delete windows.back();
+		windows.pop_back();
 	}
 
 }
@@ -125,31 +77,32 @@ Glof::Glof() {
 
 }
 
-GlofCamera* Glof::newCamera() {
+GlofWindow* Glof::newWindow() {
 
-	// Create new GlofCamera
-	GlofCamera *camera = new GlofCamera();
-	// Add it to cameras field
-	cameras.push_back(camera);
-	// Return pointer
-	return camera;
+	// Create new Window
+	GlofWindow *newWindow = new GlofWindow();
+	// Push on windows vector
+	windows.push_back(newWindow);
+	// Return
+	return newWindow;
+
 
 }
 
-void Glof::deleteCamera(GlofCamera* camera) {
+void Glof::deleteWindow(GlofWindow* window) {
 
-	// Remove camera from cameras field
-	std::vector<GlofCamera*>::iterator itC;
-	itC = cameras.begin();
-	while( itC != cameras.end() ) {
-		if( *itC == camera ) {
-			// ... and remove the object from memory
-			delete *itC;
-			cameras.erase(itC);
-			itC = cameras.end();
+	// Remove from windows vector
+	std::vector<GlofWindow*>::iterator itW;
+	itW = windows.begin();
+	while( itW != windows.end() ) {
+		if( *itW == window ) {
+			windows.erase(itW);
+			itW = windows.end();
 		} else {
-			itC++;
+			itW++;
 		}
 	}
+	// Clear memory
+	delete window;
 
 }

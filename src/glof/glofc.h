@@ -12,11 +12,6 @@ class Glof {
 
 public:
 
-	struct GlofWindow {
-		int id;
-		std::vector<int> subwindows;
-	};
-
 	static Glof* getGlof();
 
 	static void deleteGlof();
@@ -25,15 +20,9 @@ public:
 
 	GlofModel* getModel();
 
-	int newWindow( char *name );
+	GlofWindow* newWindow();
 
-	int newSubwindow( int pId, int pX, int pY, int w, int h );
-
-	void deleteWindow( int id );
-
-	GlofCamera* newCamera();
-
-	void deleteCamera( GlofCamera *camera );
+	void deleteWindow( GlofWindow *window );
 
 private:
 
@@ -43,9 +32,7 @@ private:
 
 	GlofModel *model;
 
-	std::vector<GlofWindow> windows;
-
-	std::vector<GlofCamera*> cameras;
+	std::vector<GlofWindow*> windows;
 
 	Glof();
 

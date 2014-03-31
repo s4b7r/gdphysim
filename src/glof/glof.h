@@ -11,6 +11,7 @@
 // Include C standard libraries
 #include <stdlib.h>
 #include <vector>
+#include <string.h>
 
 // Include OpenGL, GLU and GLUT
 #include <GL/glut.h>
@@ -19,8 +20,9 @@
 #include "glof/model/object.h"
 #include "glof/model/model.h"
 
-// Include GLOF camera
-#include "glof/camera.h"
+// Include GLOF view classes
+#include "glof/view/camera.h"
+#include "glof/view/window.h"
 
 // Include central GLOF-class
 #include "glof/glofc.h"
