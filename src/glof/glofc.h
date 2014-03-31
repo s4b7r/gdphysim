@@ -19,9 +19,6 @@ public:
 
 	GlofModel* getModel();
 
-	GlofScreen* newScreen();
-
-
 private:
 
 	static Glof *myPointer;
@@ -29,8 +26,6 @@ private:
 	bool isInit;
 
 	GlofModel *model;
-
-	std::vector<GlofScreen*> screens;
 
 	Glof();
 
