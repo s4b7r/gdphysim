@@ -17,6 +17,8 @@ Rod::Rod(int centerX, int centerY, int eloX, int eloY) : Solid(centerX,centerY,e
 	a=new Anchor(2*centerX-eloX,2*centerY-eloY,this);
 	anchors.push_back(*a);
 	a->setId(anchors.size()-1);
+	variance=3;
+	Solid::setMass(0);
 }
 void Rod::draft(){
 	lineRGBA(SCREEN,2*center[X]-eloPoint[X],2*center[Y]-eloPoint[Y],eloPoint[X],eloPoint[Y],0,0,0,255);

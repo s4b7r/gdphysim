@@ -136,7 +136,7 @@ void Brush::paint(int x, int y, bool moved, bool initiallyLeftPressed, bool rele
 		}
 		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
 			if(GlobalInAnchorProximity){
-				PHYSICCORE->addElement(new Rigidrect(GlobalAnchorCoordsInProximity[0]+(x-GlobalAnchorCoordsInProximity[0])/2,GlobalAnchorCoordsInProximity[1]+(y-GlobalAnchorCoordsInProximity[1])/2,x,y));
+				PHYSICCORE->addElement(new Rigidrect(GlobalAnchorCoordsInProximity[0]+(x-GlobalAnchorCoordsInProximity[0])/2,GlobalAnchorCoordsInProximity[1]+(y-GlobalAnchorCoordsInProximity[1])/2,GlobalAnchorCoordsInProximity[0],GlobalAnchorCoordsInProximity[1]));
 			}else{
 				PHYSICCORE->addElement(new Rigidrect(xTemp+(x-xTemp)/2,yTemp+(y-yTemp)/2,x,y));
 			}
@@ -173,7 +173,7 @@ void Brush::paint(int x, int y, bool moved, bool initiallyLeftPressed, bool rele
 		}
 		if(!initiallyLeftPressed && released && wasInitallyLeftPressed){
 			if(GlobalInAnchorProximity){
-				PHYSICCORE->addElement(new Rod(GlobalAnchorCoordsInProximity[0]+(x-GlobalAnchorCoordsInProximity[0])/2,GlobalAnchorCoordsInProximity[1]+(y-GlobalAnchorCoordsInProximity[1])/2,x,y));
+				PHYSICCORE->addElement(new Rod(GlobalAnchorCoordsInProximity[0]+(x-GlobalAnchorCoordsInProximity[0])/2,GlobalAnchorCoordsInProximity[1]+(y-GlobalAnchorCoordsInProximity[1])/2,GlobalAnchorCoordsInProximity[0],GlobalAnchorCoordsInProximity[1]));
 			}else{
 				PHYSICCORE->addElement(new Rod(xTemp+(x-xTemp)/2,yTemp+(y-yTemp)/2,x,y));
 			}

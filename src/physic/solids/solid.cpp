@@ -18,6 +18,8 @@ Solid::Solid(int centerX, int centerY, int eloX, int eloY){
 	center[2]=0;
 
 	id=-1;
+
+	variance=0;
 }
 
 Solid::~Solid(){
@@ -119,7 +121,7 @@ void Solid::drawVector(int rx, int ry, double x, double y, int r, int g, int b){
 		SDL_BlitSurface(numbersImage, &numberRect, SCREEN, &drect);
 		drect.x=drect.x+6;
 	}
-//	printf("\n");
+	//	printf("\n");
 	SDL_Flip(SCREEN);
 }
 
@@ -128,11 +130,11 @@ void Solid::draft(){
 		drawVector(forces[0].at(i)[X],forces[0].at(i)[Y],forces[1].at(i)[X],forces[1].at(i)[Y],255,0,0);
 	}
 
-//	for(int j=-1;j<2;j++){
-//		for(int k=-1;k<2;k++){
-//			drawVector(500,400,j*548,k*387,0,0,0);
-//		}
-//	}
+	//	for(int j=-1;j<2;j++){
+	//		for(int k=-1;k<2;k++){
+	//			drawVector(500,400,j*548,k*387,0,0,0);
+	//		}
+	//	}
 
 	for(unsigned int i=0;i<anchors.size();i++){
 		if(anchors.at(i).getLink()!=NULL){
@@ -156,18 +158,20 @@ Anchor* Solid::getAnchorAddr(int num){
 
 void Solid::setMass(int m){
 	mass=m;
-	if(mass!=0){
-		forces[0].push_back(center);
-		int* G= new int[3];
-		G[0]=0;
-		G[1]=mass*GRAVITY;
-		G[2]=0;
-		forces[1].push_back(G);
-	}
+	forces[0].push_back(center);
+	int* G= new int[3];
+	G[0]=0;
+	G[1]=mass*GRAVITY;
+	G[2]=0;
+	forces[1].push_back(G);
 }
 
 int Solid::getForces(vecType i, int num, dimension p){
-	return forces[i].at(num)[p];
+	if((int)(forces[i].size())>num){
+		return forces[i].at(num)[p];
+	}else{
+		return -1;
+	}
 }
 
 void Solid::addForces(vecType i,int x, int y, int z){

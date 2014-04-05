@@ -30,11 +30,12 @@ Rigidrect::Rigidrect(int centerX, int centerY, int eloX, int eloY) : Solid(cente
 	a=new Anchor(eloX,2*centerY-eloY,this);
 	anchors.push_back(*a);
 	a->setId(anchors.size()-1);
-	int temp;
-	cout << "Please enter mass for rectangle: (Kilogram) "<< endl;
-	cin >> temp;
-	Solid::setMass(temp);
-//	Solid::setMass(45);
+	variance=3;
+//	int temp;
+//	cout << "Please enter mass for rectangle: (Kilogram) "<< endl;
+//	cin >> temp;
+//	Solid::setMass(temp);
+	Solid::setMass(45);
 }
 
 void Rigidrect::draft(){

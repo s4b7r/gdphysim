@@ -19,8 +19,6 @@ using kissms::Variable;
 using std::vector;
 
 struct SystemEquations{
-//	vector<Equation> forceEquations;
-//	vector<Equation> torqueEquations;
 	vector<Variable*> xVariables;
 	vector<Variable*> yVariables;
 	int varCount;
@@ -34,7 +32,6 @@ private:
 	Equationsystem equationSystem;
 
 	void setAnchorsPosition();
-	Variable** addInteractiveForceVarFromSolidToRodOfAnchor(Anchor a);
 	int fillEquationSystem();
 	void addTorqueEquation(int id);
 

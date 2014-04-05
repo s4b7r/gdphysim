@@ -23,6 +23,7 @@ protected:
 	int mass;
 	int center[3];
 	int eloPoint[3];
+	char variance; //degrees of freedom 1, 2 or 3.
 	vector<Anchor> anchors;
  	vector<int*> forces[2]; //forces[0]: origins of forces; forces[1]: value of forces
 
@@ -33,6 +34,7 @@ public:
 
 	/*static void deleteVector(Vector &del);
 	static void fill3dVector(Vector &vec, int x, int y, int z);*/
+	char getVariance(){return variance;}
 	void setMass(int m);
 	int getMass(){return mass;}
 	void setId(int i){id=i;}
@@ -41,6 +43,7 @@ public:
 	int getCenter(dimension p);
 	void addForces(vecType i,int x, int y, int z);
 	int getForces(vecType i, int num, dimension p);
+	int getForcesSize(vecType i){return forces[i].size();}
 	void clearSolid();
 	vector<Anchor> getAnchors();
 	void setAnchorLink(int num, Anchor* l);
