@@ -16,7 +16,7 @@ public:
 	GlofObject();
 	virtual ~GlofObject();
 
-	void render();
+	virtual void render() = 0;
 
 };
 
