@@ -22,6 +22,6 @@ GlofObject::~GlofObject() {
 void GlofObject::render() {
 
 
-	// Implement
+	// Todo Implement GlofObject::render()
 
 }

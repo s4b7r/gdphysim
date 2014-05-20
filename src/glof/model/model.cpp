@@ -24,6 +24,12 @@ GlofModel::~GlofModel() {
 
 void GlofModel::render() {
 
-	// Implement
+	// Render all objects
+	std::vector<GlofObject*>::iterator objectIterator;
+	objectIterator = objects.begin();
+	while( objectIterator != objects.end() ) {
+		(*objectIterator)->render();
+		objectIterator++;
+	}
 
 }

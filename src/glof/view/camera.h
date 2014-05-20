@@ -17,7 +17,18 @@ public:
 
 	void render();
 
+	GLdouble getAspect() const;
+	void setAspect(GLdouble aspect);
+
+	GLdouble getFovy() const;
+	void setFovy(GLdouble fovy);
+
 private:
+
+	GLdouble fovy;
+	GLdouble aspect;
+	GLdouble zNear;
+	GLdouble zFar;
 
 	GLdouble x;
 	GLdouble y;

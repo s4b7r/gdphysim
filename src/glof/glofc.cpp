@@ -18,7 +18,7 @@ void Glof::deleteGlof() {
 
 int Glof::init(int* argcp, char** argv) {
 
-	// GLFO should not be initialised twice
+	// GLOF should not be initialised twice
 	if( isInit ) {
 		return 1;
 	}

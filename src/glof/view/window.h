@@ -50,6 +50,8 @@ private:
 
 	std::vector<GlofWindow*> windows;
 
+	GlofCamera *camera;
+
 };
 
 

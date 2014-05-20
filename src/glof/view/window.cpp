@@ -16,8 +16,9 @@ GlofWindow::GlofWindow() {
 	w = 0;
 	h = 0;
 	name = (char*)malloc(sizeof(char) * 6);
-	strcat(name, "Title");
+	strcpy(name, "Title");
 	parent = 0;
+	camera = 0;
 
 }
 
@@ -124,11 +125,26 @@ int GlofWindow::getId() {
 
 void GlofWindow::render() {
 
-	// Implement!
-
-	// Clear GL color and depth buffer
-	// Clear GL model and projection matrix
-	// Call camera's render function
+	// If I have no subwindows, I render myself
+	if( windows.empty() ) {
+		// Clear GL color and depth buffer
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		// Clear GL model and projection matrix
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		// Call camera's render function
+		camera->render();
+	} else { // If I have subwindows, I render them
+		std::vector<GlofWindow*>::iterator subwindowIterator;
+		subwindowIterator = windows.begin();
+		while( subwindowIterator != windows.end() ) {
+			(*subwindowIterator)->render();
+			subwindowIterator++;
+		}
+	}
 	// Swap buffers
+	glutSwapBuffers();
 
 }
