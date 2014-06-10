@@ -17,6 +17,28 @@ public:
 
 	virtual void render();
 
+	GLdouble getPositionX();
+	GLdouble getPositionY();
+	GLdouble getPositionZ();
+	void setPosition(GLdouble x, GLdouble y, GLdouble z);
+
+	GLdouble getRotationX();
+	GLdouble getRotationY();
+	GLdouble getRotationZ();
+	void setRotation(GLdouble rotX, GLdouble rotY, GLdouble rotZ);
+
+private:
+
+	GLdouble x;
+	GLdouble y;
+	GLdouble z;
+
+	GLdouble rotX;
+	GLdouble rotY;
+	GLdouble rotZ;
+
+	GLdouble scale;
+
 };
 
 

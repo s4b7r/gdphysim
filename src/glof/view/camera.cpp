@@ -39,7 +39,7 @@ void GlofCamera::render() {
 
 }
 
-GLdouble GlofCamera::getAspect() const {
+GLdouble GlofCamera::getAspect() {
 	return aspect;
 }
 
@@ -47,10 +47,28 @@ void GlofCamera::setAspect(GLdouble aspect) {
 	this->aspect = aspect;
 }
 
-GLdouble GlofCamera::getFovy() const {
+GLdouble GlofCamera::getFovy() {
 	return fovy;
 }
 
 void GlofCamera::setFovy(GLdouble fovy) {
 	this->fovy = fovy;
+}
+
+GLdouble GlofCamera::getPositionX() {
+	return x;
+}
+
+GLdouble GlofCamera::getPositionY() {
+	return y;
+}
+
+GLdouble GlofCamera::getPositionZ() {
+	return z;
+}
+
+void GlofCamera::setPosition(GLdouble x, GLdouble y, GLdouble z) {
+	this->x = x;
+	this->y = y;
+	this->z = z;
 }
